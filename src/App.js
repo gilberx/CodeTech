@@ -3,7 +3,7 @@ import LandingPage from './LandingPage.jsx'
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <LandingPage></LandingPage>
     </div>
   );

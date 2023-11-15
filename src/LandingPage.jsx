@@ -54,7 +54,7 @@ function ResponsiveAppBar() {
                 color: 'inherit',
                 fontSize: '30px',
                 textDecoration: 'none',
-                mr: 80,
+                mr: 60,
               }}
             >
               CodeTech

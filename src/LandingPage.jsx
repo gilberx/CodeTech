@@ -19,6 +19,7 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const faviconPath = process.env.PUBLIC_URL + '/favicon.ico';
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -37,11 +38,25 @@ function ResponsiveAppBar() {
 
   return (
     <div>
-      <div style={{display: 'flex', justifyContent: 'center', marginTop: '35px'}}>
-      <AppBar position="relative" style={{backgroundColor: '#212121', width: '80%', borderRadius: '35px'}}>
+      <div>
+      <AppBar position="fixed" style={{backgroundColor: '#212121', 
+        width: '80%', 
+        borderRadius: '40px', 
+        boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2)',
+        left: '50%',
+        transform: 'translateX(-50%)', 
+        marginTop: '30px'}}>
         <Container maxWidth="100%">
           <Toolbar disableGutters>
-            <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 0 }} />
+          <img
+            src={faviconPath}
+            alt="Favicon"
+            style={{ display: { xs: 'none', md: 'flex' }, 
+            marginRight: 0, 
+            height: '50px', 
+            width: '50px', 
+            marginRight: '10px' }}
+          />
             <Typography
               variant="h6"
               noWrap
@@ -54,7 +69,7 @@ function ResponsiveAppBar() {
                 color: 'inherit',
                 fontSize: '30px',
                 textDecoration: 'none',
-                mr: 60,
+                mr: 40,
               }}
             >
               CodeTech
@@ -128,6 +143,10 @@ function ResponsiveAppBar() {
                   color: 'white', 
                   display: 'block', 
                   mr: 6,
+                  textTransform: 'none', 
+                  borderRadius: '25px',
+                  width: '150px',
+                  height: '50px',
                   textTransform: 'none' }}
                 >
                   {page}
@@ -144,7 +163,8 @@ function ResponsiveAppBar() {
                   borderRadius: '25px',
                   width: '150px',
                   height: '50px',
-                  textTransform: 'none'
+                  textTransform: 'none',
+                  fontSize: 16
                 }}>
                   Sign Up
                 </Button>
@@ -159,7 +179,9 @@ function ResponsiveAppBar() {
                   borderRadius: '25px',
                   width: '150px',
                   height: '50px',
-                  textTransform: 'none'
+                  textTransform: 'none',
+                  fontWeight: '800',
+                  fontSize: 16
                 }}>
                   Login
                 </Button>
@@ -168,7 +190,7 @@ function ResponsiveAppBar() {
         </Container>
       </AppBar>
     </div>
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+    <div style={{ marginTop: '50px',display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
       <p style={{ color: '#353535', fontFamily: 'Montserrat, sans-serif', fontWeight: 800, fontSize: 120, textAlign: 'center' }}>
         Code learning<br></br>
         just got better!
@@ -177,7 +199,7 @@ function ResponsiveAppBar() {
       Empowering coders, one lesson at a time.<br></br>Join us! It's free.
       </p>
     </div>
-    <div style={{marginTop: '180px',display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '80px'}}>
+    <div style={{marginTop: '200px',display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '80px'}}>
       <Button style={{
                   my: 2,
                   backgroundColor: '#F5FFFD',
@@ -195,7 +217,11 @@ function ResponsiveAppBar() {
       </Button>
     </div>
     <div>
-        <Box sx={{ bgcolor: '#212121', height: '100vh', borderRadius: '40px' }} />
+        <Box sx={{ marginTop: '30px',bgcolor: '#212121', height: 758, borderRadius: '40px' }}>
+          <p style={{color: '#FFFFFF', marginLeft: '30px'}}>
+          What is CodeTech?
+          </p>
+        </Box>
     </div>
   </div>
   );

@@ -12,6 +12,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import Divider from '@mui/material/Divider';
+import Paper from '@mui/material/Paper';
 
 const pages = ['Join a Class', 'Courses', 'How it Works', 'About Us'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -69,7 +71,7 @@ function ResponsiveAppBar() {
                 color: 'inherit',
                 fontSize: '30px',
                 textDecoration: 'none',
-                mr: 40,
+                mr: 60,
               }}
             >
               CodeTech
@@ -161,7 +163,7 @@ function ResponsiveAppBar() {
                   mr: 4,
                   border: '2px solid white',
                   borderRadius: '25px',
-                  width: '150px',
+                  width: '120px',
                   height: '50px',
                   textTransform: 'none',
                   fontSize: 16
@@ -177,7 +179,7 @@ function ResponsiveAppBar() {
                   color: 'white',
                   display: 'block',
                   borderRadius: '25px',
-                  width: '150px',
+                  width: '120px',
                   height: '50px',
                   textTransform: 'none',
                   fontWeight: '800',
@@ -212,16 +214,78 @@ function ResponsiveAppBar() {
                   fontWeight: 600,
                   fontSize: 22,
                   textTransform: 'none',
+                  boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)'
                 }}>
         Start learning now!
       </Button>
     </div>
     <div>
-        <Box sx={{ marginTop: '30px',bgcolor: '#212121', height: 758, borderRadius: '40px' }}>
-          <p style={{color: '#FFFFFF', marginLeft: '30px'}}>
-          What is CodeTech?
-          </p>
+        <Box sx={{ marginTop: '30px',bgcolor: '#212121', height: 758, borderRadius: '40px', paddingLeft: '80px', paddingTop: '60px', paddingRight: '80px' }}>
+          <p style={{color: 'rgba(255, 255, 255, 0.2)', marginLeft: '30px', fontSize: '28px', fontFamily: 'Montserrat, sans-serif', fontWeight: '500'}}>
+          What is <t style={{color: '#458C83', fontSize: '31px'}}>CodeTech </t>?</p>
+          <div style={{ maxWidth: '90%',marginTop: '10px' }}>
+            <Divider variant="inset" style={{backgroundColor: '#EDEDED'}}/>
+          </div>
+          <div style={{ position: 'absolute', marginLeft: '172vh', marginTop: '-50px'}}>
+            <Button style={{backgroundColor: '#458C83',color: '#F5FFFD',borderRadius: '50px', fontSize: '58px', width: '100px', height: '100px', fontWeight: 'semi-bold'}}>?</Button>
+          </div>
+          <Box sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            '& > :not(style)': {
+              m: 1,
+              width: 400,
+              height: 300, 
+              marginTop:'10vh',
+            },
+          }}>
+            <Paper elevation={2} style={{backgroundColor: '#474747', color:'white', marginLeft: '35px',maginTop: '20px', paddingLeft:'30px', fontSize: '28px', fontFamily: 'Montserrat, sans-serif', paddingTop: '10px', borderRadius:'20px'}}>
+                  Unlocks your Potential
+            <Divider style={{backgroundColor: '#EDEDED'}}/>
+            </Paper>
+            <Paper elevation={2} style={{backgroundColor: '#458C83', color:'white',marginLeft: '25vh',maginTop: '20px', paddingLeft:'30px', fontSize: '28px', fontFamily: 'Montserrat, sans-serif', paddingTop: '10px', borderRadius:'20px'}}>
+                  Interactive Learning <br></br>Experience
+            <Divider style={{backgroundColor: '#EDEDED'}}/>
+            </Paper>
+            <Paper elevation={2} style={{backgroundColor: '#474747', color:'white', marginLeft: '25vh',maginTop: '20px', paddingLeft:'30px', fontSize: '28px', fontFamily: 'Montserrat, sans-serif', paddingTop: '10px', borderRadius:'20px'}}>
+                  Track, Achieve, Succeed
+            <Divider style={{backgroundColor: '#EDEDED'}}/>
+            </Paper>
+
+          </Box>
         </Box>
+    </div>
+    <div style={{paddingLeft: '10vh', marginBottom: '10vh'}}>
+          <p style={{fontFamily:'Montserrat, sans-serif', fontSize: '44px', color: 'black'}}>Dive into <t style={{fontFamily:'Montserrat, sans-serif', fontSize: '44px', fontWeight: 'Bold', color:'#458C83'}}>CodeTech's<br></br>Courses!</t></p>
+    </div>
+    <div>
+    <Box sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            '& > :not(style)': {
+              m: 1,
+              width: 300,
+              height: 400, 
+              marginTop:'10vh',
+            },
+            alignItems: 'center'
+          }}>
+              <Button style={{backgroundColor: '#F1F1F1', color:'#353535', marginLeft: '10px',maginTop: '20px', fontSize: '28px', fontFamily: 'Montserrat, sans-serif', paddingTop: '10px', border: '10px solid white', borderRadius:'30px', boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)'}}>
+                    Introduction to C
+              </Button>
+              <Button  style={{backgroundColor: '#F1F1F1', color:'#353535',marginLeft: '10px',maginTop: '20px', fontSize: '28px', fontFamily: 'Montserrat, sans-serif', paddingTop: '10px',  border: '10px solid white', borderRadius:'30px', boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)'}}>
+                    Introduction to C++
+              </Button>
+              <Button  style={{backgroundColor: '#F1F1F1', color:'#353535', marginLeft: '10px',maginTop: '20px', fontSize: '28px', fontFamily: 'Montserrat, sans-serif', paddingTop: '10px',  border: '10px solid white', borderRadius:'30px', boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)'}}>
+                    Introduction to C#
+              </Button>
+              <Button style={{backgroundColor: '#F1F1F1', color:'#353535', marginLeft: '10px',maginTop: '20px', fontSize: '28px', fontFamily: 'Montserrat, sans-serif', paddingTop: '10px',  border: '10px solid white', borderRadius:'30px', boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)'}}>
+                    Introduction to C#
+              </Button>
+              <Button style={{backgroundColor: '#F1F1F1', color:'#353535', marginLeft: '10px',maginTop: '20px', fontSize: '28px', fontFamily: 'Montserrat, sans-serif', paddingTop: '10px',  border: '10px solid white', borderRadius:'30px', boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)'}}>
+                    Introduction to C#
+              </Button>
+          </Box>
     </div>
   </div>
   );

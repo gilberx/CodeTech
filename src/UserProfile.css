@@ -1,0 +1,89 @@
+
+
+.user-profile-page {
+    display: flex;
+  }
+  
+  .profile-sidebar {
+    width: 200px;
+    height: 175px;
+    border-radius: 20px;
+    background-color: #000000;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    margin-left: 200px;
+  }
+  
+  .profile-sidebar button {
+    display: block;
+    border-radius: 20px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #458C83;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .profile-content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+  }
+  
+  .user-profile {
+    width: 600px;
+    border-radius: 20px;
+    margin: 0 auto;
+    padding-right: 10px;
+    padding-left: 10px;
+    background-color: #000000;
+  }
+  
+  .inputField {
+    text-align: right;
+  }
+  
+  .user-profile h2 {
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+  
+  .user-profile label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .user-profile input {
+    width: 550px;
+    padding: 8px;
+    margin-top: 4px;
+    border-radius: 10px;
+  }
+  
+  .user-profile button {
+    background-color: #458C83;
+    color: white;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .user-profile button:hover {
+    background-color: #45a049;
+  }
+  
+  .user-profile button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+  
+  .userButtons {
+    text-align: center;
+  }

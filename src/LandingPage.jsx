@@ -224,7 +224,7 @@ function ResponsiveAppBar() {
           <p style={{color: 'rgba(255, 255, 255, 0.2)', marginLeft: '30px', fontSize: '28px', fontFamily: 'Montserrat, sans-serif', fontWeight: '500'}}>
           What is <t style={{color: '#458C83', fontSize: '31px'}}>CodeTech </t>?</p>
           <div style={{ maxWidth: '90%',marginTop: '10px' }}>
-            <Divider variant="inset" style={{backgroundColor: '#EDEDED', width:'100%'}}/>
+            <Divider variant="inset" style={{backgroundColor: '#EDEDED'}}/>
           </div>
           <div style={{ position: 'absolute', marginLeft: '172vh', marginTop: '-50px'}}>
             <Button style={{backgroundColor: '#458C83',color: '#F5FFFD',borderRadius: '50px', fontSize: '58px', width: '100px', height: '100px', fontWeight: 'semi-bold'}}>?</Button>
@@ -239,7 +239,7 @@ function ResponsiveAppBar() {
               marginTop:'10vh',
             },
           }}>
-            <Paper elevation={2} style={{backgroundColor: '#474747', color:'white', marginLeft: '35px',maginTop: '20px', paddingLeft:'30px', fontSize: '28px', fontFamily: 'Montserrat, sans-serif', paddingTop: '20px', borderRadius:'20px'}}>
+            <Paper elevation={2} style={{backgroundColor: '#474747', color:'white',  marginLeft: '35px',maginTop: '20px', paddingLeft:'30px', fontSize: '28px', fontFamily: 'Montserrat, sans-serif', paddingTop: '20px', borderRadius:'20px'}}>
                   Unlocks your Potential
             <Divider style={{backgroundColor: '#EDEDED'}}/>
             </Paper>

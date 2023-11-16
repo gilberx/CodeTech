@@ -2,8 +2,18 @@ import React from "react";
 
 const Register = () => {
     return (
-        <main className="regis-main">
-            helloo again
+        <main>
+            <img className="bg" src="/signupbg.png" alt="background" />
+            <div className="regis-main">
+                <div className="regis-img">
+                    <img src="/signup-left.png" alt="left img" />
+                </div>
+                <div className="regis-content">
+                    <h1>Enter your account details</h1>
+                    <p>Account Information</p>
+                </div>
+
+            </div>
         </main>
     );
 }

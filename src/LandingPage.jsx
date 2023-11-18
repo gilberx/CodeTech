@@ -15,6 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import { useNavigate } from 'react-router-dom';
+import './App.css';
 
 
 const pages = ['Join a Class', 'Courses', 'How it Works', 'About Us'];
@@ -63,9 +64,10 @@ function ResponsiveAppBar() {
             alt="Favicon"
             style={{ display: { xs: 'none', md: 'flex' }, 
             marginRight: 0, 
-            height: '50px', 
-            width: '50px', 
-            marginRight: '10px' }}
+            height: '40px', 
+            width: '40px', 
+            marginRight: '10px',
+            marginLeft: '-10px' }}
           />
             <Typography
               variant="h6"
@@ -77,9 +79,9 @@ function ResponsiveAppBar() {
                 fontFamily: 'Inter, sans-serif',
                 fontWeight: '600',
                 color: 'inherit',
-                fontSize: '30px',
+                fontSize: '25px',
                 textDecoration: 'none',
-                mr: 60,
+                mr: 15,
               }}
             >
               CodeTech
@@ -148,16 +150,17 @@ function ResponsiveAppBar() {
                   onClick={handleCloseNavMenu}
                   sx={{fontFamily: 'Inter, sans-serif',
                   color: 'inherit',
-                  fontSize: '18px',
+                  fontSize: '14px',
                   my: 2, 
                   color: 'white', 
                   display: 'block', 
-                  mr: 6,
+                  mr: 4,
                   textTransform: 'none', 
                   borderRadius: '25px',
-                  width: '150px',
-                  height: '50px',
-                  textTransform: 'none' }}
+                  width: '125px',
+                  height: '28px',
+                  textTransform: 'none',
+                  marginBottom: '20px' }}
                 >
                   {page}
                 </Button>
@@ -168,13 +171,13 @@ function ResponsiveAppBar() {
                 sx={{
                   color: 'white',
                   display: 'block',
-                  mr: 4,
+                  mr: 2,
                   border: '2px solid white',
                   borderRadius: '25px',
-                  width: '120px',
-                  height: '50px',
+                  width: '115px',
+                  height: '40px',
                   textTransform: 'none',
-                  fontSize: 16
+                  fontSize: '14px'
                 }}>
                   Sign Up
                 </Button>
@@ -187,8 +190,8 @@ function ResponsiveAppBar() {
                   color: 'white',
                   display: 'block',
                   borderRadius: '25px',
-                  width: '120px',
-                  height: '50px',
+                  width: '115px',
+                  height: '40px',
                   textTransform: 'none',
                   fontWeight: '800',
                   fontSize: 16
@@ -200,7 +203,7 @@ function ResponsiveAppBar() {
         </Container>
       </AppBar>
     </div>
-    <div style={{ marginTop: '50px',
+    <div style={{ marginTop: '180px',
       display: 'flex', 
       justifyContent: 'center', 
       alignItems: 'center', 
@@ -208,8 +211,8 @@ function ResponsiveAppBar() {
     }}>
       <p style={{ color: '#353535', 
         fontFamily: 'Montserrat, sans-serif', 
-        fontWeight: 800, fontSize: 120, 
-        textAlign: 'center' 
+        fontWeight: 800, fontSize: 100, 
+        textAlign: 'center', 
       }}>
         Code learning<br></br>
         just got better!

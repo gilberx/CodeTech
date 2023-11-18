@@ -14,9 +14,13 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
+import { useNavigate } from 'react-router-dom';
+
 
 const pages = ['Join a Class', 'Courses', 'How it Works', 'About Us'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -37,6 +41,10 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const navigate = useNavigate();
+
+  
 
   return (
     <div>
@@ -156,7 +164,7 @@ function ResponsiveAppBar() {
               ))}
             </Box>
             <Box>
-                <Button onClick={handleCloseNavMenu}
+                <Button onClick={() => navigate('/register')}
                 sx={{
                   color: 'white',
                   display: 'block',
@@ -192,16 +200,35 @@ function ResponsiveAppBar() {
         </Container>
       </AppBar>
     </div>
-    <div style={{ marginTop: '50px',display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-      <p style={{ color: '#353535', fontFamily: 'Montserrat, sans-serif', fontWeight: 800, fontSize: 120, textAlign: 'center' }}>
+    <div style={{ marginTop: '50px',
+      display: 'flex', 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      flexDirection: 'column' 
+    }}>
+      <p style={{ color: '#353535', 
+        fontFamily: 'Montserrat, sans-serif', 
+        fontWeight: 800, fontSize: 120, 
+        textAlign: 'center' 
+      }}>
         Code learning<br></br>
         just got better!
       </p>
-      <p style={{ color: '#353535', fontFamily: 'Inter, sans-serif', fontSize: 39, textAlign: 'center', marginTop: '-60px' }}>
+      <p style={{ color: '#353535', 
+        fontFamily: 'Inter, sans-serif', 
+        fontSize: 39, 
+        textAlign: 'center', 
+        marginTop: '-60px' 
+      }}>
       Empowering coders, one lesson at a time.<br></br>Join us! It's free.
       </p>
     </div>
-    <div style={{marginTop: '200px',display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '80px'}}>
+    <div style={{marginTop: '200px',
+      display: 'flex', 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      marginBottom: '80px'
+    }}>
       <Button style={{
                   my: 2,
                   backgroundColor: '#F5FFFD',

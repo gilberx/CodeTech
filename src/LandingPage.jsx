@@ -15,11 +15,44 @@ import AdbIcon from '@mui/icons-material/Adb';
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import { useNavigate } from 'react-router-dom';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 import './App.css';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 
 const pages = ['Join a Class', 'Courses', 'How it Works', 'About Us'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const data = [
+  {
+    name: 'Introduction to C',
+    img: '/public/18.png',
+  },
+  {
+    name: 'Introduction to C#',
+    img: '/public/19.png',
+  },
+  {
+    name: 'Introduction to C++',
+    img: '/public/17.png'
+  },
+  {
+    name: 'C Intermediate',
+    img: '/public/18'
+  },
+  {
+    name: 'C# Intermediate',
+    img: '/public/19.png'
+  },
+  {
+    name: 'C++ Intermediate',
+    img: '/public/17.png'
+  }
+]
 
 
 
@@ -44,6 +77,14 @@ function ResponsiveAppBar() {
   };
 
   const navigate = useNavigate();
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1
+  };
 
   
 
@@ -300,22 +341,20 @@ function ResponsiveAppBar() {
             },
             alignItems: 'center'
           }}>
-              <Button style={{backgroundColor: '#F1F1F1', color:'#353535', marginLeft: '10px',maginTop: '20px', fontSize: '28px', fontFamily: 'Montserrat, sans-serif', paddingTop: '10px', border: '10px solid white', borderRadius:'30px', boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)'}}>
-                    Introduction to C
-              </Button>
-              <Button  style={{backgroundColor: '#F1F1F1', color:'#353535',marginLeft: '10px',maginTop: '20px', fontSize: '28px', fontFamily: 'Montserrat, sans-serif', paddingTop: '10px',  border: '10px solid white', borderRadius:'30px', boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)'}}>
-                    Introduction to C++
-              </Button>
-              <Button  style={{backgroundColor: '#F1F1F1', color:'#353535', marginLeft: '10px',maginTop: '20px', fontSize: '28px', fontFamily: 'Montserrat, sans-serif', paddingTop: '10px',  border: '10px solid white', borderRadius:'30px', boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)'}}>
-                    Introduction to C#
-              </Button>
-              <Button style={{backgroundColor: '#F1F1F1', color:'#353535', marginLeft: '10px',maginTop: '20px', fontSize: '28px', fontFamily: 'Montserrat, sans-serif', paddingTop: '10px',  border: '10px solid white', borderRadius:'30px', boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)'}}>
-                    Introduction to C#
-              </Button>
-              <Button style={{backgroundColor: '#F1F1F1', color:'#353535', marginLeft: '10px',maginTop: '20px', fontSize: '28px', fontFamily: 'Montserrat, sans-serif', paddingTop: '10px',  border: '10px solid white', borderRadius:'30px', boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)'}}>
-                    Introduction to C#
-              </Button>
-          </Box>
+              <Slider {...settings}>
+        {data.map((d) => (
+          <div key={d.name} style={{ backgroundColor: 'white', height: '450px' }} className="text-black rounded-xl">
+          <div style={{ height: '56px', backgroundColor: 'indigo', display: 'flex', justifyContent: 'center', alignItems: 'center' }} className='rounded-t-xl'>
+            <img src={d.img} alt="" style={{ height: '44px', width: '44px', borderRadius: '50%' }} />
+          </div>
+        
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '4px', padding: '16px' }}>
+            <p style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{d.name}</p>
+          </div>
+        </div>
+        ))}
+      </Slider>
+    </Box>
     </div>
   </div>
   );

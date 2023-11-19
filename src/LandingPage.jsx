@@ -19,38 +19,24 @@ import './App.css';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import LeftArrow from "./left-arrow.svg";
+import RightArrow from "./right-arrow.svg";
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 
 
 const pages = ['Join a Class', 'Courses', 'How it Works', 'About Us'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-const data = [
-  {
-    name: 'Introduction to C',
-    img: '/public/18.png',
-  },
-  {
-    name: 'Introduction to C#',
-    img: '/public/19.png',
-  },
-  {
-    name: 'Introduction to C++',
-    img: '/public/17.png'
-  },
-  {
-    name: 'C Intermediate',
-    img: '/public/18'
-  },
-  {
-    name: 'C# Intermediate',
-    img: '/public/19.png'
-  },
-  {
-    name: 'C++ Intermediate',
-    img: '/public/17.png'
-  }
-]
 
+const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
+  <img src={LeftArrow} alt="prevArrow" {...props} />
+);
 
+const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
+  <img src={RightArrow} alt="nextArrow" {...props} />
+);
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -75,11 +61,15 @@ function ResponsiveAppBar() {
   const navigate = useNavigate();
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1
+    slidesToShow: 5,
+    slidesToScroll: 1, 
+    prevArrow: true,
+    nextArrow: true,
+    nextArrow: <SlickArrowRight />,
+    prevArrow: <SlickArrowLeft />
   };
 
   
@@ -323,26 +313,236 @@ function ResponsiveAppBar() {
         </Box>
     </div>
     <div style={{paddingLeft: '10vh', marginBottom: '10vh'}}>
-          <p style={{fontFamily:'Montserrat, sans-serif', fontSize: '44px', color: 'black'}}>Dive into <t style={{fontFamily:'Montserrat, sans-serif', fontSize: '44px', fontWeight: 'Bold', color:'#458C83'}}>CodeTech's<br></br>Courses!</t></p>
+          <p style={{fontFamily:'Montserrat, sans-serif', fontSize: '44px', color: 'black', marginTop: '80px'}}>Dive into <t style={{fontFamily:'Montserrat, sans-serif', fontSize: '44px', fontWeight: 'Bold', color:'#458C83'}}>CodeTech's<br></br>Courses!</t></p>
     </div>
     <div>
-      <div style={{ marginTop: '20px' }}>
-        <Slider {...settings}>
-          {data.map((d) => (
-            <div key={d.name} style={{ backgroundColor: 'white', height: '450px', color: 'black', borderRadius: 'xl' }}>
-              <div style={{ height: '56px', backgroundColor: 'indigo-500', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: 'xl' }}>
-                <img src={d.img} alt="" style={{ height: '44px', width: '44px', borderRadius: 'full' }} />
-              </div>
+    <div style={{
+      maxWidth: '85%',
+      margin: '0 auto',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
 
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '4px', padding: '4px' }}>
-                <p style={{ fontSize: 'xl', fontWeight: 'semibold' }}>{d.name}</p>
-                <p style={{ textAlign: 'center' }}>{d.review}</p>
-                <button style={{ backgroundColor: 'indigo-500', color: 'white', fontSize: 'lg', padding: '1px 6px', borderRadius: 'xl' }}>Read More</button>
+    }}>
+        <Slider {...settings}>
+          <div>
+            <Button style={{
+              border: '10px solid white',
+              borderRadius: '20px',
+              height: '300px',
+              width: '210px',
+              backgroundColor: '#F1F1F1',
+              boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginLeft:'15px'
+            }}>
+              <div>
+                <img src="/18.png" alt="Icon" style={{ marginTop:'-30px',height: '90px', width: '155px' }} />
               </div>
-            </div>
-          ))}
+              <div style={{marginTop:'20px', maxWidth:'90%'}}>
+                <p style={{fontSize:'19px',fontWeight: '600',fontFamily:'Montserrat, sans-serif', color: '#353535', textTransform: 'none'}}>
+                  Introduction to C
+                </p>
+              </div>
+            </Button>
+          </div>
+          <div>
+            <Button style={{
+              border: '10px solid white',
+              borderRadius: '20px',
+              height: '300px',
+              width: '210px',
+              backgroundColor: '#F1F1F1',
+              boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginLeft:'15px'
+            }}>
+              <div>
+                <img src="/19.png" alt="Icon" style={{ marginTop:'-30px',height: '100px', width: '175px' }} />
+              </div>
+              <div style={{marginTop:'20px', maxWidth:'90%'}}>
+                <p style={{fontSize:'19px',fontWeight: '600',fontFamily:'Montserrat, sans-serif', color: '#353535', textTransform: 'none'}}>
+                  Introduction to C#
+                </p>
+              </div>
+            </Button>
+          </div>
+          <div>
+          <Button style={{
+              border: '10px solid white',
+              borderRadius: '20px',
+              height: '300px',
+              width: '210px',
+              backgroundColor: '#F1F1F1',
+              boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginLeft:'15px'
+            }}>
+              <div>
+                <img src="/17.png" alt="Icon" style={{ marginTop:'-30px',height: '100px', width: '175px' }} />
+              </div>
+              <div style={{marginTop:'20px', maxWidth:'90%'}}>
+                <p style={{fontSize:'19px',fontWeight: '600',fontFamily:'Montserrat, sans-serif', color: '#353535', textTransform: 'none'}}>
+                  Introduction to C++
+                </p>
+              </div>
+            </Button>
+          </div>
+          <div>
+          <Button style={{
+              border: '10px solid white',
+              borderRadius: '20px',
+              height: '300px',
+              width: '210px',
+              backgroundColor: '#F1F1F1',
+              boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginLeft:'15px'
+            }}>
+              <div>
+                <img src="/19.png" alt="Icon" style={{ marginTop:'-30px',height: '100px', width: '175px' }} />
+              </div>
+              <div style={{marginTop:'20px', maxWidth:'90%'}}>
+                <p style={{fontSize:'19px',fontWeight: '600',fontFamily:'Montserrat, sans-serif', color: '#353535', textTransform: 'none'}}>
+                  C Intermediate
+                </p>
+              </div>
+            </Button>
+          </div>
+          <div>
+          <Button style={{
+              border: '10px solid white',
+              borderRadius: '20px',
+              height: '300px',
+              width: '210px',
+              backgroundColor: '#F1F1F1',
+              boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginLeft:'15px'
+            }}>
+              <div>
+                <img src="/19.png" alt="Icon" style={{ marginTop:'-30px',height: '100px', width: '175px' }} />
+              </div>
+              <div style={{marginTop:'20px', maxWidth:'90%'}}>
+                <p style={{fontSize:'19px',fontWeight: '600',fontFamily:'Montserrat, sans-serif', color: '#353535', textTransform: 'none'}}>
+                  C# Intermediate
+                </p>
+              </div>
+            </Button>
+          </div>
+          <div>
+          <Button style={{
+              border: '10px solid white',
+              borderRadius: '20px',
+              height: '300px',
+              width: '210px',
+              backgroundColor: '#F1F1F1',
+              boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginLeft:'15px'
+            }}>
+              <div>
+                <img src="/19.png" alt="Icon" style={{ marginTop:'-30px',height: '100px', width: '175px' }} />
+              </div>
+              <div style={{marginTop:'20px', maxWidth:'90%'}}>
+                <p style={{fontSize:'19px',fontWeight: '600',fontFamily:'Montserrat, sans-serif', color: '#353535', textTransform: 'none'}}>
+                  C++ Intermediate
+                </p>
+              </div>
+            </Button>
+          </div>
         </Slider>
       </div>
+    </div>
+    <div style={{paddingLeft: '10vh', marginBottom: '5vh', marginTop:'10vh', textAlign: 'right', marginRight: '20vh'}}>
+      <p style={{fontFamily:'Montserrat, sans-serif', fontSize: '44px', color: 'black', marginTop: '80px'}}>Why <t style={{fontFamily:'Montserrat, sans-serif', fontSize: '44px', fontWeight: 'Bold', color:'#458C83'}}>Code</t><t style={{fontFamily:'Montserrat, sans-serif', fontSize: '44px', color: 'black', marginTop: '80px'}}>?</t></p>
+    </div>
+    <div style={{ 
+      marginTop: '40px',
+      maxWidth: '80%',
+      margin: '0 auto',
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-around', 
+      }}>
+    <Card sx={{ maxWidth: 300 }}>
+      <CardMedia
+        sx={{ height: 140 }}
+        image="/static/images/cards/contemplative-reptile.jpg"
+        title="green iguana"
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+        It’s popular
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+        Technical skills are in high demand. Over 60% of new jobs worldwide will require tech skills.
+        </Typography>
+      </CardContent>
+    </Card>
+    <Card sx={{ maxWidth: 300 }}>
+      <CardMedia
+        sx={{ height: 140 }}
+        image="/static/images/cards/contemplative-reptile.jpg"
+        title="green iguana"
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+        It’s promising
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+        Unlock your earning potential! Entry-level programmers in the Philippines earn on average over P30,000 in salary.
+        </Typography>
+      </CardContent>
+    </Card>
+    <Card sx={{ maxWidth: 300 }}>
+      <CardMedia
+        sx={{ height: 140 }}
+        image="/static/images/cards/contemplative-reptile.jpg"
+        title="green iguana"
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+        It’s fun
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+        Imagine combining your passion and skill with your creativity, and making something new everyday!
+        </Typography>
+      </CardContent>
+    </Card>
+    </div>
+    <div style={{marginTop: '20vh', marginBottom: '5vh', textAlign: 'center'}}>
+      <p >
+        Start here on CodeTech by joining a class or<br></br>starting a course!
+      </p>
+    </div>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom:'14vh' }}>
+      <Button style={{backgroundColor: '#E6ECEA',color:'#212121', height:'40px',width:'200px',fontSize:'20px',fontWeight:'520', fontFamily:'Inter, sans-serif',borderRadius:'20px',boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)', textTransform: 'none'}}>
+        Start  Learning
+      </Button>
+    </div>
+    <div>
+      <Box style={{maxWidth:'100%', height: '50vh'}}>
+
+      </Box>
     </div>
   </div>
   );

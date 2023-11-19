@@ -15,10 +15,6 @@ import AdbIcon from '@mui/icons-material/Adb';
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import { useNavigate } from 'react-router-dom';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import './App.css';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
@@ -262,16 +258,16 @@ function ResponsiveAppBar() {
         fontFamily: 'Inter, sans-serif', 
         fontSize: 39, 
         textAlign: 'center', 
-        marginTop: '-60px' 
+        marginTop: '10px' 
       }}>
       Empowering coders, one lesson at a time.<br></br>Join us! It's free.
       </p>
     </div>
-    <div style={{marginTop: '200px',
+    <div style={{marginTop: '90px',
       display: 'flex', 
       justifyContent: 'center', 
       alignItems: 'center', 
-      marginBottom: '80px'
+      marginBottom: '10px'
     }}>
       <Button style={{
                   my: 2,
@@ -294,7 +290,7 @@ function ResponsiveAppBar() {
         <Box sx={{ marginTop: '30px',bgcolor: '#212121', height: 758, borderRadius: '40px', paddingLeft: '80px', paddingTop: '60px', paddingRight: '80px' }}>
           <p style={{color: 'rgba(255, 255, 255, 0.2)', marginLeft: '30px', fontSize: '28px', fontFamily: 'Montserrat, sans-serif', fontWeight: '500'}}>
           What is <t style={{color: '#458C83', fontSize: '31px'}}>CodeTech </t>?</p>
-          <div style={{ maxWidth: '90%',marginTop: '10px' }}>
+          <div style={{ maxWidth: '100%',marginTop: '10px' }}>
             <Divider variant="inset" style={{backgroundColor: '#EDEDED'}}/>
           </div>
           <div style={{ position: 'absolute', marginLeft: '172vh', marginTop: '-50px'}}>
@@ -310,15 +306,15 @@ function ResponsiveAppBar() {
               marginTop:'10vh',
             },
           }}>
-            <Paper elevation={2} style={{backgroundColor: '#474747', color:'white',  marginLeft: '35px',maginTop: '20px', paddingLeft:'30px', fontSize: '28px', fontFamily: 'Montserrat, sans-serif', paddingTop: '20px', borderRadius:'20px'}}>
+            <Paper elevation={2} style={{width: '300px',backgroundColor: '#474747', color:'white',  marginLeft: '20px',maginTop: '20px', paddingLeft:'30px', fontSize: '20px', fontFamily: 'Montserrat, sans-serif', paddingTop: '20px', borderRadius:'20px'}}>
                   Unlocks your Potential
             <Divider style={{backgroundColor: '#EDEDED'}}/>
             </Paper>
-            <Paper elevation={2} style={{backgroundColor: '#458C83', color:'white',marginLeft: '25vh',maginTop: '20px', paddingLeft:'30px', fontSize: '28px', fontFamily: 'Montserrat, sans-serif', paddingTop: '20px', borderRadius:'20px'}}>
+            <Paper elevation={2} style={{width: '300px',backgroundColor: '#458C83', color:'white',marginLeft: '20vh',maginTop: '20px', paddingLeft:'30px', fontSize: '20px', fontFamily: 'Montserrat, sans-serif', paddingTop: '20px', borderRadius:'20px'}}>
                   Interactive Learning <br></br>Experience
             <Divider style={{backgroundColor: '#EDEDED'}}/>
             </Paper>
-            <Paper elevation={2} style={{backgroundColor: '#474747', color:'white', marginLeft: '25vh',maginTop: '20px', paddingLeft:'30px', fontSize: '28px', fontFamily: 'Montserrat, sans-serif', paddingTop: '20px', borderRadius:'20px'}}>
+            <Paper elevation={2} style={{width: '300px',backgroundColor: '#474747', color:'white', marginLeft: '20vh',maginTop: '20px', paddingLeft:'30px', fontSize: '20px', fontFamily: 'Montserrat, sans-serif', paddingTop: '20px', borderRadius:'20px'}}>
                   Track, Achieve, Succeed
             <Divider style={{backgroundColor: '#EDEDED'}}/>
             </Paper>
@@ -330,31 +326,23 @@ function ResponsiveAppBar() {
           <p style={{fontFamily:'Montserrat, sans-serif', fontSize: '44px', color: 'black'}}>Dive into <t style={{fontFamily:'Montserrat, sans-serif', fontSize: '44px', fontWeight: 'Bold', color:'#458C83'}}>CodeTech's<br></br>Courses!</t></p>
     </div>
     <div>
-    <Box sx={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            '& > :not(style)': {
-              m: 1,
-              width: 300,
-              height: 400, 
-              marginTop:'10vh',
-            },
-            alignItems: 'center'
-          }}>
-              <Slider {...settings}>
-        {data.map((d) => (
-          <div key={d.name} style={{ backgroundColor: 'white', height: '450px' }} className="text-black rounded-xl">
-          <div style={{ height: '56px', backgroundColor: 'indigo', display: 'flex', justifyContent: 'center', alignItems: 'center' }} className='rounded-t-xl'>
-            <img src={d.img} alt="" style={{ height: '44px', width: '44px', borderRadius: '50%' }} />
-          </div>
-        
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '4px', padding: '16px' }}>
-            <p style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{d.name}</p>
-          </div>
-        </div>
-        ))}
-      </Slider>
-    </Box>
+      <div style={{ marginTop: '20px' }}>
+        <Slider {...settings}>
+          {data.map((d) => (
+            <div key={d.name} style={{ backgroundColor: 'white', height: '450px', color: 'black', borderRadius: 'xl' }}>
+              <div style={{ height: '56px', backgroundColor: 'indigo-500', display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: 'xl' }}>
+                <img src={d.img} alt="" style={{ height: '44px', width: '44px', borderRadius: 'full' }} />
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '4px', padding: '4px' }}>
+                <p style={{ fontSize: 'xl', fontWeight: 'semibold' }}>{d.name}</p>
+                <p style={{ textAlign: 'center' }}>{d.review}</p>
+                <button style={{ backgroundColor: 'indigo-500', color: 'white', fontSize: 'lg', padding: '1px 6px', borderRadius: 'xl' }}>Read More</button>
+              </div>
+            </div>
+          ))}
+        </Slider>
+      </div>
     </div>
   </div>
   );

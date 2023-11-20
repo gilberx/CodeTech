@@ -22,7 +22,7 @@ const JoinCreate = () => {
   
   return (
     <div>
-      <p style={{ marginTop: '200px', marginLeft: '100px', fontStyle: 'Montserrat', fontSize: '35px', fontWeight: 'semi-bold' }}>Join or Create Class</p>
+      <p style={{ marginTop: '200px', marginLeft: '100px', fontStyle: 'Montserrat', fontSize: '30px', fontWeight: 'semi-bold' }}>Join or Create Class</p>
       <hr className='line' />
 
       <nav>

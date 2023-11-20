@@ -5,17 +5,18 @@ import Register from './Register'
 import JoinClass from './JoinClass'
 import HelpCenter from './HelpCenter'
 import AboutUs from './AboutUs'
+import JoinCreate from './JoinCreate';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="register" element={<Register />} />        
+        <Route path="/register" element={<Register />} />        
         <Route path="/joinClass" element={<JoinClass/>} />
+        <Route path="/JoinCreate" element={<JoinCreate />} />
         <Route path="/helpCenter" element={<HelpCenter />} />
         <Route path="/aboutUs" element={<AboutUs />} />  
-
       </Routes>
     </Router>
     

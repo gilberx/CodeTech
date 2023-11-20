@@ -292,28 +292,114 @@ function ResponsiveAppBar() {
             '& > :not(style)': {
               m: 1,
               width: 400,
-              height: 300, 
+              height: 100, 
               marginTop:'10vh',
             },
           }}>
-            <Paper elevation={2} style={{width: '300px',backgroundColor: '#474747', color:'white',  marginLeft: '20px',maginTop: '20px', paddingLeft:'30px', fontSize: '20px', fontFamily: 'Montserrat, sans-serif', paddingTop: '20px', borderRadius:'20px'}}>
-                  Unlocks your Potential
-            <Divider style={{backgroundColor: '#EDEDED'}}/>
+          <div style={{display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-around',}}>
+            <Paper elevation={2} style={{
+                width: '300px',
+                height:'150px',
+                backgroundColor: '#474747', 
+                color:'white',  
+                marginLeft: '120vh',
+                maginTop: '30px', 
+                paddingLeft:'0px', 
+                fontSize: '20px', 
+                fontFamily: 'Montserrat, sans-serif', 
+                paddingTop: '20px', 
+                borderRadius:'20px',textAlign:'10px'
+              }}>
+                  <p style={{marginLeft:'35px', marginBottom:'30px', fontWeight:'600', fontSize:'18px'}}>Unlocks your Potential</p>
+            <Divider style={{backgroundColor: '#EDEDED', marginBottom:'10px'}}/>
+            <div style={{display:'flex', justifyContent:'center', alignItems:'center',marginTop:'30px'}}>
+            <Paper style={{backgroundColor: 'rgba(163, 163, 163, 0.33)', width:'260px', height:'100px',borderRadius:'20px', marginLeft:'10px', marginRight:'10px',display:'flex', justifyContent:'center', alignItems:'center'}}>
+              <Paper style={{backgroundColor: 'rgba(163, 163, 163, 0.33)', width:'220px', height:'135px',borderRadius:'20px', marginRight:'0px',}}>
+                <Paper style={{backgroundColor:'#A3A3A3', borderRadius:'20px',width:'300px', height:'150px', marginTop:'38px',  marginLeft:'-40px'}}>
+                  <p style={{fontSize:'15px', paddingTop:'20px', paddingLeft:'10px', paddingRight:'15px', fontWeight:'600'}}>CodeTech provides <t style={{color:'#458C83', fontWeight:'600'}}>structured coding lessons and tutorials</t>, offering a comprehensive foundation in programming languages.</p>
+                </Paper>
+              </Paper>
             </Paper>
-            <Paper elevation={2} style={{width: '300px',backgroundColor: '#458C83', color:'white',marginLeft: '20vh',maginTop: '20px', paddingLeft:'30px', fontSize: '20px', fontFamily: 'Montserrat, sans-serif', paddingTop: '20px', borderRadius:'20px'}}>
-                  Interactive Learning <br></br>Experience
-            <Divider style={{backgroundColor: '#EDEDED'}}/>
+            </div>
             </Paper>
-            <Paper elevation={2} style={{width: '300px',backgroundColor: '#474747', color:'white', marginLeft: '20vh',maginTop: '20px', paddingLeft:'30px', fontSize: '20px', fontFamily: 'Montserrat, sans-serif', paddingTop: '20px', borderRadius:'20px'}}>
-                  Track, Achieve, Succeed
-            <Divider style={{backgroundColor: '#EDEDED'}}/>
+            <Paper elevation={2} style={{
+                width: '300px',
+                height:'150px',
+                backgroundColor: '#458C83', 
+                color:'white',  
+                marginLeft: '120px',
+                maginTop: '20px', 
+                paddingLeft:'0px', 
+                fontSize: '20px', 
+                fontFamily: 'Montserrat, sans-serif', 
+                paddingTop: '20px', 
+                borderRadius:'20px',textAlign:'10px'
+              }}>
+                  <p style={{marginLeft:'45px', marginBottom:'10px', fontWeight:'600', fontSize:'18px'}}>Interactive Learning Experience</p>
+            <Divider style={{backgroundColor: '#EDEDED', marginBottom:'10px'}}/>
+            <div style={{display:'flex', justifyContent:'center', alignItems:'center',marginTop:'30px'}}>
+            <Paper style={{backgroundColor: 'rgba(163, 163, 163, 0.33)', width:'260px', height:'100px',borderRadius:'20px', marginLeft:'10px', marginRight:'10px',display:'flex', justifyContent:'center', alignItems:'center'}}>
+              <Paper style={{backgroundColor: 'rgba(163, 163, 163, 0.33)', width:'220px', height:'135px',borderRadius:'20px', marginRight:'0px',}}>
+                <Paper style={{backgroundColor:'#A3A3A3', borderRadius:'20px',width:'300px', height:'150px', marginTop:'38px',  marginLeft:'-40px'}}>
+                  <p style={{fontSize:'15px', paddingTop:'20px', paddingLeft:'10px', paddingRight:'15px', fontWeight:'600'}}>With <t style={{color:'#458C83', fontWeight:'600'}}>quizzes and coding challenges</t>after each lesson, CodeTech ensures active engagement and reinforces 
+your understanding.</p>
+                </Paper>
+              </Paper>
             </Paper>
-
+            </div>
+            </Paper>
+            <Paper elevation={2} style={{
+                width: '300px',
+                height:'150px',
+                backgroundColor: '#474747', 
+                color:'white',  
+                marginLeft: '120px',
+                maginTop: '20px', 
+                paddingLeft:'0px', 
+                fontSize: '20px', 
+                fontFamily: 'Montserrat, sans-serif', 
+                paddingTop: '20px', 
+                borderRadius:'20px',textAlign:'10px'
+              }}>
+                  <p style={{marginLeft:'35px', marginBottom:'30px', fontWeight:'600', fontSize:'18px'}}>Track, Achieve, Succeed</p>
+            <Divider style={{backgroundColor: '#EDEDED', marginBottom:'10px'}}/>
+            <div style={{display:'flex', justifyContent:'center', alignItems:'center',marginTop:'30px'}}>
+            <Paper style={{backgroundColor: 'rgba(163, 163, 163, 0.33)', width:'260px', height:'100px',borderRadius:'20px', marginLeft:'10px', marginRight:'10px',display:'flex', justifyContent:'center', alignItems:'center'}}>
+              <Paper style={{backgroundColor: 'rgba(163, 163, 163, 0.33)', width:'220px', height:'135px',borderRadius:'20px', marginRight:'0px',}}>
+                <Paper style={{backgroundColor:'#A3A3A3', borderRadius:'20px',width:'300px', height:'150px', marginTop:'38px',  marginLeft:'-40px'}}>
+                  <p style={{fontSize:'15px', paddingTop:'20px', paddingLeft:'10px', paddingRight:'15px', fontWeight:'600'}}>CodeTech offers robust <t style={{color:'#458C83', fontWeight:'600'}}>progress tracking</t>features, allowing you to monitor your advancement through completed lessons
+and quiz scores.</p>
+                </Paper>
+              </Paper>
+            </Paper>
+            </div>
+            </Paper>
+          </div>
           </Box>
         </Box>
     </div>
-    <div style={{paddingLeft: '10vh', marginBottom: '10vh'}}>
-          <p style={{fontFamily:'Montserrat, sans-serif', fontSize: '44px', color: 'black', marginTop: '80px'}}>Dive into <t style={{fontFamily:'Montserrat, sans-serif', fontSize: '44px', fontWeight: 'Bold', color:'#458C83'}}>CodeTech's<br></br>Courses!</t></p>
+    <div style={{
+        paddingLeft: '10vh', 
+        marginBottom: '10vh'
+      }}>
+          <p style={{
+              fontFamily:'Montserrat, sans-serif', 
+              fontSize: '44px', 
+              color: 'black', 
+              marginTop: '80px'
+            }}>Dive into <t style={{
+                fontFamily:'Montserrat, sans-serif', 
+                fontSize: '44px', 
+                fontWeight: 'Bold', 
+                color:'#458C83'
+              }}>
+                CodeTech's
+                <br></br>
+                  Courses!
+                  </t>
+                  </p>
     </div>
     <div>
     <div style={{

@@ -1,7 +1,6 @@
-import './App.css';
 import LandingPage from './LandingPage.jsx'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Register from './Register.js'
+import Register from './Register.jsx'
 
 function App() {
   return (

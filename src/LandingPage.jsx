@@ -19,8 +19,8 @@ import './App.css';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import LeftArrow from "./left-arrow.svg";
-import RightArrow from "./right-arrow.svg";
+import LeftArrow from "./prev.png";
+import RightArrow from "./next.png";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -31,11 +31,11 @@ const pages = ['Join a Class', 'Courses', 'How it Works', 'About Us'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
-  <img src={LeftArrow} alt="prevArrow" {...props} />
+  <img src={LeftArrow} alt="prevArrow" {...props} style={{height:'45px',width:'60px'}}/>
 );
 
 const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
-  <img src={RightArrow} alt="nextArrow" {...props} />
+  <img src={RightArrow} alt="nextArrow" {...props} style={{height:'45px',width:'60px'}} />
 );
 
 function ResponsiveAppBar() {

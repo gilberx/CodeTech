@@ -1,5 +1,5 @@
 import './Register.css';
-import { useState } from "react";
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChalkboardTeacher, faUser } from '@fortawesome/free-solid-svg-icons';
 const Register = () => {

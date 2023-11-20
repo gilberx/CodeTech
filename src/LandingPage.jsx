@@ -283,8 +283,8 @@ function ResponsiveAppBar() {
           <div style={{ maxWidth: '100%',marginTop: '10px' }}>
             <Divider variant="inset" style={{backgroundColor: '#EDEDED'}}/>
           </div>
-          <div style={{ position: 'absolute', marginLeft: '172vh', marginTop: '-50px'}}>
-            <Button style={{backgroundColor: '#458C83',color: '#F5FFFD',borderRadius: '50px', fontSize: '58px', width: '100px', height: '100px', fontWeight: 'semi-bold'}}>?</Button>
+          <div style={{ position: 'absolute', marginLeft: '175vh', marginTop: '-40px'}}>
+            <Button style={{backgroundColor: '#458C83',color: '#F5FFFD',borderRadius: '50px', fontSize: '45px', width: '80px', height: '80px', fontWeight: 'semi-bold'}}>?</Button>
           </div>
           <Box sx={{
             display: 'flex',

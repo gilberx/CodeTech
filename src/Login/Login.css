@@ -1,0 +1,53 @@
+* {
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+}
+  
+body{
+    font-family: 'Montserrat', sans-serif; 
+    background-color: #F5FFFD;
+}
+  
+  
+.login-main-bg{
+    background-image: url(/public/loginbg.png);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+  
+.login-main{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 7rem;
+    padding: 0 2rem;
+}
+
+.login-left{
+    display: flex;
+    align-items: center;
+    
+    margin-left: 100px;
+}
+
+.login-right{
+    display: flex;
+    flex-direction: column;
+    margin-right: 150px;
+    color: #F0F0F0;
+    justify-content: center;
+    align-items: end;
+    text-align: end; 
+}
+
+.login-right img {
+    width: 400px;
+
+}
+
+.right{
+    margin-top: 20px;
+}

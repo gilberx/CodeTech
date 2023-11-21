@@ -26,6 +26,7 @@ body{
     padding: 0 2rem;
 }
 
+
 .login-left{
     display: flex;
     align-items: center;
@@ -43,7 +44,7 @@ body{
     text-align: end; 
 }
 
-.login-right img {
+.login-right .right img {
     width: 400px;
 
 }

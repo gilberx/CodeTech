@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box;
+}
+
+body{
+    font-family: 'Montserrat', sans-serif; 
+    background-color: #F5FFFD;
+}
+
+
+.regis-main-bg{
+    background-image: url(/public/signupbg.png);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    
+}
+
+.regis-main{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 7rem;
+    padding: 0 2rem;
+}
+
+.regis-img{
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+    color: #F0F0F0;
+    justify-content: center;
+}
+
+.regis-img img {
+    width: 500px;
+}
+
+.logo-title img{
+    width: 35px;
+    margin-right: 10px;
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.logo-title span{
+    font-size: 20px;
+    margin-top: 2px;
+    font-weight:550;
+}
+
+.regis-img .span{
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+.regis-content{
+    display: flex;
+    align-items: center;
+}
+
+form .small-text{
+    text-align: left;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+
+form{
+    width: 500px;
+}
+
+@media only screen and (max-width: 1236px) {
+    .regis-img .left img{
+      display: none /* Change the width to 100% for smaller screens */
+    }
+
+    .regis-main {
+        grid-template-columns: 1fr; /* Change to a single column layout for smaller screens */
+        grid-gap: 2rem; /* Adjusted gap for smaller screens */
+      }
+
+    .regis-img{
+        justify-content: end;
+        margin-left: 10px;
+        margin-top: 50px;
+    }
+    main{
+        background-image: none;
+        background-position: center;
+        background-size: cover;
+        height: 100vh;
+        
+    }
+
+  
+    .regis-img,
+    form h1,
+    .small-text,
+    .input-div,
+    .labelline,
+    .account-type,
+    .btn,
+    .small-text {
+      color: black; /* Change text color to black for smaller screens */
+    }
+  }
+
+.input-div {
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 15px;
+
+}
+
+
+input{
+    position: absolute;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 15px;
+    line-height: 40px;
+    border-radius: 10px;
+    border: 1px solid #7c7c7c;
+    background: transparent;
+    transition: 0.1s ease;
+    z-index: 1111;
+}
+
+.labelline{
+    position: absolute;
+    font-size: 1rem;
+    color: #7c7c7c;
+    padding: 0 15px;
+    margin: 0 8px;
+    background-color: #F5FFFD;
+    transition: 0.2s ease;
+}
+
+input:focus,
+input:valid{
+    border: 2px solid #458C83;
+}
+
+input:focus + .labelline,
+input:valid + .labelline{
+    color: #458C83;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 12px;
+    transform: translate(-20px, -16px) scale(0.70);
+    z-index: 1111;
+}
+
+.input-side-by-side {
+    display: flex;
+    gap: 10px; /* Adjust the gap as needed */
+}
+
+.input-side-by-side .input-div {
+    flex: 1;
+}
+
+
+.input-side-by-side input:focus,
+.input-side-by-side input:valid{
+    border: 2px solid #458C83;
+}
+
+.input-side-by-side input:focus + .labelline,
+.input-side-by-side input:valid + .labelline{
+    color: #458C83;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 12px;
+    transform: translate(-18px, -16px) scale(0.70);
+    z-index: 1111;
+    width: calc(50% - 5px);;
+}
+
+
+
+.account-type {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #7c7c7c;
+    border-radius: 10px;
+    margin-right: 10px;
+    font-weight: bold;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+}
+
+.account-type.selected {
+    border: 2px solid #458C83;
+    color: #458C83;
+}
+
+.btn{
+    display: block;
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    outline: none;
+    border: none;
+    background-image: linear-gradient(to right, #75afa7,#458C83 , #75afa7);
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    margin-top: 30px;
+}   

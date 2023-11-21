@@ -52,11 +52,11 @@ const Login = () => {
                                 </div>
                             </div>
                             <div style={{marginTop:'20px', marginBottom:'20px'}}>
-                                <span className="small-text">Forgot Password?</span>
+                                <span className="small-text"><Link to="/forgotpassword" style={{textDecoration:"none"}}>Forgot Password?</Link></span>
                             </div>
                             <button className="btn">Log In</button>
                             <div style={{textAlign: 'right'}}>
-                                <span className="small-text">Don't have an account? <Link to="/">Sign up</Link></span>
+                                <span className="small-text">Don't have an account? <Link to="/register" style={{textDecoration:"none"}}>Sign up</Link></span>
                             </div>
                         </form>
                     </div>

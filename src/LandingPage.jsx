@@ -575,11 +575,14 @@ and quiz scores.</p>
         image="/static/images/cards/contemplative-reptile.jpg"
         title="green iguana"
       />
-      <CardContent>
+      <CardContent style={{display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center'}}>
         <Typography gutterBottom variant="h5" component="div">
         It’s popular
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.secondary" >
         Technical skills are in high demand. Over 60% of new jobs worldwide will require tech skills.
         </Typography>
       </CardContent>
@@ -590,7 +593,10 @@ and quiz scores.</p>
         image="/static/images/cards/contemplative-reptile.jpg"
         title="green iguana"
       />
-      <CardContent>
+      <CardContent style={{display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center'}}>
         <Typography gutterBottom variant="h5" component="div">
         It’s promising
         </Typography>
@@ -605,7 +611,10 @@ and quiz scores.</p>
         image="/static/images/cards/contemplative-reptile.jpg"
         title="green iguana"
       />
-      <CardContent>
+      <CardContent style={{display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center'}}>
         <Typography gutterBottom variant="h5" component="div">
         It’s fun
         </Typography>
@@ -626,7 +635,25 @@ and quiz scores.</p>
       </Button>
     </div>
     <div>
-      <Box style={{maxWidth:'100%', height: '50vh'}}>
+      <Box style={{maxWidth:'100%', height: '50vh', display:'flex', flexDirection:'rows', }}>
+        <div style={{paddingTop:'20vh', paddingLeft:'15vh', paddingRight:'10vh'}}>
+          <div style={{display: 'flex', flexDirection: 'row'}}>
+            <img src={faviconPath} style={{height:"70px", width:"70px", maxWidth:'20%'}}/>
+            <p style={{marginTop:'15px', marginLeft:'10px', fontSize:'35px', fontWeight:'600', fontFamily:'Montserrat, sans-serif', color: '#F0F0F0'}}>CodeTech</p>
+          </div>
+          <div>
+            <p style={{color:'#F0F0F0', marginLeft:'20px'}}>Code learning just got better.</p>
+          </div>
+        </div>
+        <Divider orientation="vertical" variant="middle" flexItem style={{backgroundColor: '#EDEDED', height: '33vh', marginTop:'90px'}} />
+        <div style={{paddingTop:'15vh'}}>
+          <div style={{display:'flex', flexDirection:'column', marginLeft:'8vh'}}>
+           <p style={{marginBottom:'20px', fontSize:'19px', fontWeight:'600', color:'#F5FFFD'}}>Get in Touch</p>
+           <p style={{marginBottom:'20px', color:'#F5FFFD'}}>N. Bacalso Avenue, Cebu City, Cebu 6000</p>
+           <p style={{marginBottom:'20px', color:'#F5FFFD'}}>+63 929 843 0999</p>
+           <p style={{marginBottom:'20px', color:'#F5FFFD'}}>css@cit.edu</p>
+          </div>
+        </div>
 
       </Box>
     </div>

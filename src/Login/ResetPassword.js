@@ -36,7 +36,7 @@ const ResetPassword = () =>{
                             
                             <input 
                                 className="input"
-                                type="text"
+                                type="password"
                                 id="confirmpwd-reset"
                                 autoComplete="off"
                                 required

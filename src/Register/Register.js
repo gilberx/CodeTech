@@ -146,7 +146,7 @@ const Register = () => {
 
                         <button className="btn">Sign Up</button>
                         <div style={{textAlign: 'right'}}>
-                            <span className="small-text">Already have an account? <Link to="/login">Sign in</Link></span>
+                            <span className="small-text">Already have an account? <Link to="/login" className='link-text'>Sign in</Link></span>
                         </div>
                     </form>
                 </div>

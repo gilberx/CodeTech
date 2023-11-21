@@ -1,4 +1,6 @@
 import './ForgotPassword.css';
+import { Link } from 'react-router-dom';
+
 
 const ForgotPassword = () =>{
     
@@ -10,8 +12,6 @@ const ForgotPassword = () =>{
                     <div style={{marginTop:'10px', marginBottom:'20px', textAlign:'center'}}>
                         <span className="small-text">Enter your email and we'll send you a verification code</span>
                     </div>
-                
-
                     <div className="input-div">
                         <div>
                             
@@ -30,8 +30,10 @@ const ForgotPassword = () =>{
                             <div className="labelline">Email Address</div>
                         </div>
                     </div>
-
-                    <button className="btn">Get Code</button>
+                    
+                    <Link to="/getCode" className='link-btn'>
+                        <button className="btn">Get Code</button>
+                    </Link>
                 </form>
             </div>
         </main>

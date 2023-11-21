@@ -265,13 +265,14 @@ function ResponsiveAppBar() {
                   color: '#212121',
                   display: 'block',
                   borderRadius: '35px',
-                  width: '300px',
-                  height: '70px', 
+                  width: '200px',
+                  height: '50px', 
                   fontFamily: 'Inter, sans-serif',
                   fontWeight: 600,
-                  fontSize: 22,
+                  fontSize: 18,
                   textTransform: 'none',
-                  boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)'
+                  boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)', 
+                  marginTop:'10px'
                 }}>
         Start learning now!
       </Button>
@@ -579,6 +580,7 @@ and quiz scores.</p>
               flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'center'}}>
+        <img src='./2.png' alt='icon' style={{width:'250px', marginTop:'-19vh'}}/>
         <Typography gutterBottom variant="h5" component="div">
         It’s popular
         </Typography>
@@ -597,7 +599,9 @@ and quiz scores.</p>
               flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'center'}}>
+        <img src='./1.png' alt='icon' style={{width:'250px', marginTop:'-19vh'}}/>
         <Typography gutterBottom variant="h5" component="div">
+          
         It’s promising
         </Typography>
         <Typography variant="body2" color="text.secondary">
@@ -615,6 +619,7 @@ and quiz scores.</p>
               flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'center'}}>
+        <img src='./3.png' alt='icon' style={{width:'250px', marginTop:'-19vh'}}/>
         <Typography gutterBottom variant="h5" component="div">
         It’s fun
         </Typography>
@@ -638,8 +643,8 @@ and quiz scores.</p>
       <Box style={{maxWidth:'100%', height: '50vh', display:'flex', flexDirection:'rows', }}>
         <div style={{paddingTop:'20vh', paddingLeft:'15vh', paddingRight:'10vh'}}>
           <div style={{display: 'flex', flexDirection: 'row'}}>
-            <img src={faviconPath} style={{height:"70px", width:"70px", maxWidth:'20%'}}/>
-            <p style={{marginTop:'15px', marginLeft:'10px', fontSize:'35px', fontWeight:'600', fontFamily:'Montserrat, sans-serif', color: '#F0F0F0'}}>CodeTech</p>
+            <img src={faviconPath} style={{height:"70px", width:"70px",}}/>
+            <p style={{marginTop:'15px', marginLeft:'5px', fontSize:'35px', fontWeight:'600', fontFamily:'Montserrat, sans-serif', color: '#F0F0F0'}}>CodeTech</p>
           </div>
           <div>
             <p style={{color:'#F0F0F0', marginLeft:'20px'}}>Code learning just got better.</p>
@@ -647,14 +652,36 @@ and quiz scores.</p>
         </div>
         <Divider orientation="vertical" variant="middle" flexItem style={{backgroundColor: '#EDEDED', height: '33vh', marginTop:'90px'}} />
         <div style={{paddingTop:'15vh'}}>
-          <div style={{display:'flex', flexDirection:'column', marginLeft:'8vh'}}>
-           <p style={{marginBottom:'20px', fontSize:'19px', fontWeight:'600', color:'#F5FFFD'}}>Get in Touch</p>
-           <p style={{marginBottom:'20px', color:'#F5FFFD'}}>N. Bacalso Avenue, Cebu City, Cebu 6000</p>
-           <p style={{marginBottom:'20px', color:'#F5FFFD'}}>+63 929 843 0999</p>
-           <p style={{marginBottom:'20px', color:'#F5FFFD'}}>css@cit.edu</p>
+          <div style={{display:'flex', flexDirection:'column', marginLeft:'20vh'}}>
+            <p style={{marginBottom:'20px', fontSize:'19px', fontWeight:'600', color:'#F5FFFD'}}>Get in Touch</p>
+            <div style={{display:'flex', flexDirection:'row'}}>
+              <img src="/foot1.png" alt="Icon" style={{height:'19px', width:'15px'}} />
+              <p style={{marginBottom:'20px', color:'#F5FFFD', marginLeft:'19px'}}>N. Bacalso Avenue, Cebu City, Cebu 6000</p>
+            </div>
+            <div style={{display:'flex', flexDirection:'row'}}>
+              <img src="/foot2.png" alt="Icon" style={{height:'19px', width:'15px'}} />
+              <p style={{marginBottom:'20px', color:'#F5FFFD', marginLeft:'19px'}}>+63 929 843 0999</p>
+            </div>
+            <div style={{display:'flex', flexDirection:'row'}}>
+              <img src="/foot3.png" alt="Icon" style={{height:'19px', width:'24px'}} />
+              <p style={{marginBottom:'20px', color:'#F5FFFD', marginLeft:'10px'}}>css@cit.edu</p>
+            </div>
           </div>
         </div>
-
+        <Divider orientation="vertical" variant="middle" flexItem style={{backgroundColor: '#EDEDED', height: '33vh', marginTop:'90px', marginLeft:'15vh'}} />
+        <div style={{paddingTop:'15vh', marginLeft:'-5vh'}}>
+          <div style={{display:'flex', flexDirection:'column', marginLeft:'20vh'}}>
+            <p style={{marginBottom:'20px', fontSize:'19px', fontWeight:'600', color:'#F5FFFD'}}>Other Links</p>
+            <div style={{display:'flex', flexDirection:'row'}}>
+              <img src="/foot1.png" alt="Icon" style={{height:'19px', width:'15px'}} />
+              <p style={{marginBottom:'20px', color:'#F5FFFD', marginLeft:'19px'}}>Terms and Conditions</p>
+            </div>
+            <div style={{display:'flex', flexDirection:'row'}}>
+              <img src="/foot2.png" alt="Icon" style={{height:'19px', width:'15px'}} />
+              <p style={{marginBottom:'20px', color:'#F5FFFD', marginLeft:'19px'}}>Help Center</p>
+            </div>
+          </div>
+        </div>
       </Box>
     </div>
   </div>

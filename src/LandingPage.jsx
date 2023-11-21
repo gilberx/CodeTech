@@ -210,7 +210,7 @@ function ResponsiveAppBar() {
                 </Button>
             </Box>
             <Box>
-                <Button onClick={handleCloseNavMenu}
+                <Button onClick={() => navigate('/login')}
                 sx={{
                   my: 2,
                   backgroundColor: '#458C83',

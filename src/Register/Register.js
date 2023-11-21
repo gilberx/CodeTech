@@ -2,6 +2,8 @@ import './Register.css';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChalkboardTeacher, faUser } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+
 const Register = () => {
     const [selectedAccountType, setSelectedAccountType] = useState('personal');
 
@@ -10,7 +12,7 @@ const Register = () => {
     };
 
     return (
-        <main>
+        <main className='regis-main-bg'>
             {/* <img className="bg" src="/signupbg.png" alt="background" /> */}
             <div className="regis-main">
                 <div className="regis-img">
@@ -21,7 +23,9 @@ const Register = () => {
                     <h1>We're so glad to <br/>have you on board!</h1>
 
                     <span className="span">Code Learning just got better!</span>
-                    <img src="/signup-left.png" alt="left img" />
+                    <div className="left">
+                        <img src="/signup-left.png" alt="left img" />
+                    </div>
                 </div>
                 <div className="regis-content">
                     <form>{/* on submit */}
@@ -142,7 +146,7 @@ const Register = () => {
 
                         <button className="btn">Sign Up</button>
                         <div style={{textAlign: 'right'}}>
-                            <span className="small-text">Already have an account? Sign in</span>
+                            <span className="small-text">Already have an account? <Link to="/login">Sign in</Link></span>
                         </div>
                     </form>
                 </div>

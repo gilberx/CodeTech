@@ -313,7 +313,7 @@ function Courses() {
                             fontSize:'15px', 
                             width:'150px', 
                             height:'43px', 
-                            fontWeight:'semi-bold', 
+                            fontWeight:'600', 
                             textTransform:'none', 
                             fontFamily:'Montserrat, sans-serif'}}>
                 Intermediate

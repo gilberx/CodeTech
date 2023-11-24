@@ -22,13 +22,12 @@ import "slick-carousel/slick/slick-theme.css";
 import LeftArrow from "./prev.png";
 import RightArrow from "./next.png";
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
+import CardActions from '@mui/material/CardActions';      
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 
 
 const pages = ['Join a Class', 'Courses', 'How it Works', 'About Us'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
   <img src={LeftArrow} alt="prevArrow" {...props} style={{height:'45px',width:'60px'}}/>
@@ -52,6 +51,7 @@ function ResponsiveAppBar() {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+
   };
 
   const handleCloseUserMenu = () => {
@@ -100,7 +100,7 @@ function ResponsiveAppBar() {
               variant="h6"
               noWrap
               component="a"
-              href="#app-bar-with-responsive-menu"
+              onClick={() => navigate('/')}
               sx={{
                 display: { xs: 'none', md: 'flex' },
                 fontFamily: 'Inter, sans-serif',
@@ -171,10 +171,8 @@ function ResponsiveAppBar() {
               CodeTech
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              {pages.map((page) => (
                 <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
+                  onClick={() => navigate('/register')}
                   sx={{fontFamily: 'Inter, sans-serif',
                   color: 'inherit',
                   fontSize: '14px',
@@ -189,9 +187,62 @@ function ResponsiveAppBar() {
                   textTransform: 'none',
                   marginBottom: '20px' }}
                 >
-                  {page}
+                  Join a Class
                 </Button>
-              ))}
+                <Button
+                  onClick={() => navigate('/Courses')}
+                  sx={{fontFamily: 'Inter, sans-serif',
+                  color: 'inherit',
+                  fontSize: '14px',
+                  my: 2, 
+                  color: 'white', 
+                  display: 'block', 
+                  mr: 4,
+                  textTransform: 'none', 
+                  borderRadius: '25px',
+                  width: '125px',
+                  height: '28px',
+                  textTransform: 'none',
+                  marginBottom: '20px' }}
+                >
+                  Courses
+                </Button>
+                <Button
+                  onClick={() => navigate('/register')}
+                  sx={{fontFamily: 'Inter, sans-serif',
+                  color: 'inherit',
+                  fontSize: '14px',
+                  my: 2, 
+                  color: 'white', 
+                  display: 'block', 
+                  mr: 4,
+                  textTransform: 'none', 
+                  borderRadius: '25px',
+                  width: '125px',
+                  height: '28px',
+                  textTransform: 'none',
+                  marginBottom: '20px' }}
+                >
+                  How it Works
+                </Button>
+                <Button
+                  onClick={() => navigate('/register')}
+                  sx={{fontFamily: 'Inter, sans-serif',
+                  color: 'inherit',
+                  fontSize: '14px',
+                  my: 2, 
+                  color: 'white', 
+                  display: 'block', 
+                  mr: 4,
+                  textTransform: 'none', 
+                  borderRadius: '25px',
+                  width: '125px',
+                  height: '28px',
+                  textTransform: 'none',
+                  marginBottom: '20px' }}
+                >
+                  About Us
+                </Button>
             </Box>
             <Box>
                 <Button onClick={() => navigate('/register')}
@@ -272,7 +323,7 @@ function ResponsiveAppBar() {
                   fontSize: 18,
                   textTransform: 'none',
                   boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)', 
-                  marginTop:'10px'
+                  marginTop:'5px'
                 }}>
         Start learning now!
       </Button>
@@ -285,7 +336,7 @@ function ResponsiveAppBar() {
             <Divider variant="inset" style={{backgroundColor: '#EDEDED'}}/>
           </div>
           <div style={{ position: 'absolute', marginLeft: '175vh', marginTop: '-40px'}}>
-            <Button style={{backgroundColor: '#458C83',color: '#F5FFFD',borderRadius: '50px', fontSize: '45px', width: '80px', height: '80px', fontWeight: 'semi-bold'}}>?</Button>
+            <Button style={{backgroundColor: '#458C83',color: '#F5FFFD',borderRadius: '50px', fontSize: '45px', width: '80px', height: '80px', fontWeight: 'semi-bold', }}>?</Button>
           </div>
           <Box sx={{
             display: 'flex',
@@ -559,85 +610,81 @@ and quiz scores.</p>
         </Slider>
       </div>
     </div>
-    <div style={{paddingLeft: '10vh', marginBottom: '5vh', marginTop:'10vh', textAlign: 'right', marginRight: '20vh'}}>
-      <p style={{fontFamily:'Montserrat, sans-serif', fontSize: '44px', color: 'black', marginTop: '80px'}}>Why <t style={{fontFamily:'Montserrat, sans-serif', fontSize: '44px', fontWeight: 'Bold', color:'#458C83'}}>Code</t><t style={{fontFamily:'Montserrat, sans-serif', fontSize: '44px', color: 'black', marginTop: '80px'}}>?</t></p>
-    </div>
-    <div style={{ 
-      marginTop: '40px',
-      maxWidth: '80%',
-      margin: '0 auto',
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-around', 
-      }}>
-    <Card sx={{ maxWidth: 300 }}>
-      <CardMedia
-        sx={{ height: 140 }}
-        image="/static/images/cards/contemplative-reptile.jpg"
-        title="green iguana"
-      />
-      <CardContent style={{display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center'}}>
-        <img src='./2.png' alt='icon' style={{width:'250px', marginTop:'-19vh'}}/>
-        <Typography gutterBottom variant="h5" component="div">
-        It’s popular
-        </Typography>
-        <Typography variant="body2" color="text.secondary" >
-        Technical skills are in high demand. Over 60% of new jobs worldwide will require tech skills.
-        </Typography>
-      </CardContent>
-    </Card>
-    <Card sx={{ maxWidth: 300 }}>
-      <CardMedia
-        sx={{ height: 140 }}
-        image="/static/images/cards/contemplative-reptile.jpg"
-        title="green iguana"
-      />
-      <CardContent style={{display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center'}}>
-        <img src='./1.png' alt='icon' style={{width:'250px', marginTop:'-19vh'}}/>
-        <Typography gutterBottom variant="h5" component="div">
-          
-        It’s promising
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-        Unlock your earning potential! Entry-level programmers in the Philippines earn on average over P30,000 in salary.
-        </Typography>
-      </CardContent>
-    </Card>
-    <Card sx={{ maxWidth: 300 }}>
-      <CardMedia
-        sx={{ height: 140 }}
-        image="/static/images/cards/contemplative-reptile.jpg"
-        title="green iguana"
-      />
-      <CardContent style={{display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center'}}>
-        <img src='./3.png' alt='icon' style={{width:'250px', marginTop:'-19vh'}}/>
-        <Typography gutterBottom variant="h5" component="div">
-        It’s fun
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-        Imagine combining your passion and skill with your creativity, and making something new everyday!
-        </Typography>
-      </CardContent>
-    </Card>
-    </div>
-    <div style={{marginTop: '20vh', marginBottom: '5vh', textAlign: 'center'}}>
-      <p >
-        Start here on CodeTech by joining a class or<br></br>starting a course!
-      </p>
-    </div>
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom:'14vh' }}>
-      <Button style={{backgroundColor: '#E6ECEA',color:'#212121', height:'40px',width:'200px',fontSize:'20px',fontWeight:'520', fontFamily:'Inter, sans-serif',borderRadius:'20px',boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)', textTransform: 'none'}}>
-        Start  Learning
-      </Button>
+    <div style={{backgroundColor:'#FFFFFF', height:'110vh'}}>
+      <div style={{paddingLeft: '10vh', marginBottom: '5vh', marginTop:'10vh', textAlign: 'right', marginRight: '20vh'}}>
+        <p style={{fontFamily:'Montserrat, sans-serif', fontSize: '44px', color: 'black', marginTop: '80px'}}>Why <t style={{fontFamily:'Montserrat, sans-serif', fontSize: '44px', fontWeight: 'Bold', color:'#458C83'}}>Code</t><t style={{fontFamily:'Montserrat, sans-serif', fontSize: '44px', color: 'black', marginTop: '80px'}}>?</t></p>
+      </div>
+      <div style={{ 
+        marginTop: '40px',
+        maxWidth: '80%',
+        margin: '0 auto',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around', 
+        }}>
+      <Card sx={{ maxWidth: 300 }}>
+        <CardMedia
+          sx={{ height: 140 }}
+        />
+        <CardContent style={{display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center'}}>
+          <img src='./2.png' alt='icon' style={{width:'250px', marginTop:'-19vh'}}/>
+          <Typography gutterBottom variant="h5" component="div">
+          It’s popular
+          </Typography>
+          <Typography variant="body2" color="text.secondary" >
+          Technical skills are in high demand. Over 60% of new jobs worldwide will require tech skills.
+          </Typography>
+        </CardContent>
+      </Card>
+      <Card sx={{ maxWidth: 300 }}>
+        <CardMedia
+          sx={{ height: 140 }}
+        />
+        <CardContent style={{display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center'}}>
+          <img src='./1.png' alt='icon' style={{width:'250px', marginTop:'-19vh'}}/>
+          <Typography gutterBottom variant="h5" component="div">
+            
+          It’s promising
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+          Unlock your earning potential! Entry-level programmers in the Philippines earn on average over P30,000 in salary.
+          </Typography>
+        </CardContent>
+      </Card>
+      <Card sx={{ maxWidth: 300 }}>
+        <CardMedia
+          sx={{ height: 140 }}
+        />
+        <CardContent style={{display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center'}}>
+          <img src='./3.png' alt='icon' style={{width:'250px', marginTop:'-19vh'}}/>
+          <Typography gutterBottom variant="h5" component="div">
+          It’s fun
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+          Imagine combining your passion and skill with your creativity, and making something new everyday!
+          </Typography>
+        </CardContent>
+      </Card>
+      </div>
+      <div style={{marginTop: '20vh', marginBottom: '5vh', textAlign: 'center'}}>
+        <p  style={{color: '#939393'}}>
+          Start here on CodeTech by joining a class or<br></br>starting a course!
+        </p>
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom:'14vh' }}>
+        <Button style={{backgroundColor: '#F5FFFD',color:'#212121', height:'55px',width:'225px',fontSize:'20px',fontWeight:'520', fontFamily:'Inter, sans-serif',borderRadius:'28px',boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)', textTransform: 'none'}}>
+          Start  Learning
+        </Button>
+      </div>
     </div>
     <div>
       <Box style={{maxWidth:'100%', height: '50vh', display:'flex', flexDirection:'rows', }}>

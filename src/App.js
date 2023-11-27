@@ -4,6 +4,8 @@ import Register from './Register/Register.js';
 import Login from './Login/Login.js';
 import ForgotPassword from './Login/ForgotPassword.js'
 import Courses from './Courses/Courses.jsx'
+import Courses2 from './Courses/BeginnerCourse.jsx'
+import Courses3 from './Courses/IntermediateCourse.jsx'
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
         <Route path="/login" element={<Login />}/>
         <Route path="/forgotpassword" element={<ForgotPassword/>}/>
         <Route path="/Courses" element={<Courses/>}/>
+        <Route path="/Courses=BeginnerPage" element={<Courses2/>}/>
+        <Route path="/Courses=IntermediatePage" element={<Courses3/>}/>
       </Routes>
     </Router>
   );

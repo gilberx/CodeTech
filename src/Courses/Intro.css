@@ -1,0 +1,7 @@
+.introC{
+    background-image: url(/public/CourseBackgroundIntro.png);
+    background-size: cover;
+    background-position: center;
+    max-width: 100%;
+    height: 100vh;
+ }

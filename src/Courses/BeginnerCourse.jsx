@@ -282,7 +282,8 @@ function Courses() {
                         justifyContent:'center', 
                         alignItems:'center', 
                         borderRadius:'15px'}}>
-            <Button style={{backgroundColor:'#458C83', 
+            <Button onClick={() => navigate('/Courses=IntroductionToC')}
+            style={{backgroundColor:'#458C83', 
                             color:'#FFFFFF', 
                             width:'220px', 
                             borderRadius:'20px', 
@@ -330,7 +331,7 @@ function Courses() {
           <img src='/CoursesImage.png' style={{width:'100vh',}}/>
         </div>
         <div style={{marginBottom:'-100px'}}>
-          <Box style={{maxWidth:'100%', height: '48vh', display:'flex', flexDirection:'rows', }}>
+          <Box style={{maxWidth:'100%', height: '47vh', display:'flex', flexDirection:'rows', }}>
             <div style={{paddingTop:'20vh', paddingLeft:'15vh', paddingRight:'10vh'}}>
               <div style={{display: 'flex', flexDirection: 'row'}}>
                 <img src={faviconPath} style={{height:"70px", width:"70px",}}/>

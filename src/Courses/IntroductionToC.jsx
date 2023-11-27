@@ -15,7 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import { useNavigate } from 'react-router-dom';
-import './Courses.css';
+import './Intro.css';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -50,7 +50,7 @@ function Courses() {
   const navigate = useNavigate();
 
   return (
-    <main class='courses-main-bg'>
+    <div class='introC'>
       <div>
       <AppBar position="fixed" style={{backgroundColor: '#212121', 
         width: '80%', 
@@ -256,23 +256,31 @@ function Courses() {
         </Container>
       </AppBar>
       </div>
-      <div>
-        <Paper>
-          <div>
-            <Paper style={{borderRadius:'20px', backgroundColor:'#6FDDCF'}}>
-                <p style={{fontSize:'35px', 
-                fontWeight:'1000', 
+      <div style={{marginTop:'130px', display:'flex', justifyContent:'center', alignItems:'center'}}>
+        <Paper style={{width:'85vh',
+        height:'180px', 
+        display:'flex', 
+        flexDirection:'row', 
+        backgroundColor:'#E2F8F3', 
+        borderRadius:'15px', paddingTop:'20px'}}>
+          <div style={{maxWidth:'25%', paddingTop:'15px', marginLeft:'-20px'}}>
+            <img src="/18.png" style={{height:'100px'}}/>
+          </div>
+          <div style={{maxWidth:'70%', paddingLeft:'20px'}}>
+            <Paper style={{borderRadius:'25px', backgroundColor:'#6FDDCF', width:'270px', height:'45px'}}>
+                <p style={{fontSize:'25px', 
+                fontWeight:'800', 
                 fontFamily:'Montserrat, sans-serif', 
-                textTransform:'none', color:'black'}}>Introduction to C</p>
+                textTransform:'none', color:'black', textAlign:'center', paddingTop:'7px'}}>Introduction to C</p>
             </Paper>
-            <p style={{fontFamily:'Montserrat, sans-serif', fontSize:'20px'}}>C is a general-purpose programming language that is 
+            <p style={{fontFamily:'Montserrat, sans-serif', fontSize:'15px', paddingTop:'10px'}}>C is a general-purpose programming language that is 
               efficient, portable, and powerful. It is used to develop a 
               wide variety of applications, including operating 
               systems, embedded systems, and system software.</p>
           </div>  
         </Paper>
       </div>
-    </main>
+    </div>
   );
 }
 export default Courses;

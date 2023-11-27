@@ -6,6 +6,7 @@ import ForgotPassword from './Login/ForgotPassword.js'
 import Courses from './Courses/Courses.jsx'
 import Courses2 from './Courses/BeginnerCourse.jsx'
 import Courses3 from './Courses/IntermediateCourse.jsx'
+import IntroductionToC from './Courses/IntroductionToC.jsx'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/Courses" element={<Courses/>}/>
         <Route path="/Courses=BeginnerPage" element={<Courses2/>}/>
         <Route path="/Courses=IntermediatePage" element={<Courses3/>}/>
+        <Route path="/Courses=IntroductionToC" element={<IntroductionToC/>}/>
       </Routes>
     </Router>
   );

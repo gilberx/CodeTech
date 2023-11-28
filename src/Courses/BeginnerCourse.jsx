@@ -61,7 +61,7 @@ function Courses() {
         marginTop: '30px'}}>
         <Container maxWidth="100%">
           <Toolbar disableGutters>
-          <img
+          <img onClick={() => navigate('/')}
             src={faviconPath}
             alt="Favicon"
             style={{ display: { xs: 'none', md: 'flex' }, 

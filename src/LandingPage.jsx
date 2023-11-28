@@ -86,7 +86,7 @@ function ResponsiveAppBar() {
         marginTop: '30px'}}>
         <Container maxWidth="100%">
           <Toolbar disableGutters>
-          <img onClick={() => navigate('/')}
+          <img
             src={faviconPath}
             alt="Favicon"
             style={{ display: { xs: 'none', md: 'flex' }, 

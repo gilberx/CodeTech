@@ -306,27 +306,31 @@ function Courses() {
         borderRadius:'30px'}}>Take Course</Button>
       </div>
       <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column', marginTop:'50px'}}>
-      <button onClick={toggleDrawer1} style={{
-        width:'400px', backgroundColor:'transparent', fontSize:'20px'
-      }}>Basic Concepts</button>
-      {isDrawerOpen1 && (
-        <div>
-          <button style={{ display: 'block', marginBottom: '5px' }}>Button 1</button>
-          <button style={{ display: 'block', marginBottom: '5px' }}>Button 2</button>
-          <button style={{ display: 'block' }}>Button 3</button>
-        </div>
-      )}
-    </div>
-    <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
-      <button onClick={toggleDrawer2}>Toggle Drawer</button>
-      {isDrawerOpen2 && (
-        <div>
-          <button style={{ display: 'block', marginBottom: '5px' }}>Button 1</button>
-          <button style={{ display: 'block', marginBottom: '5px' }}>Button 2</button>
-          <button style={{ display: 'block' }}>Button 3</button>
-        </div>
-      )}
-    </div>
+        <button onClick={toggleDrawer1} style={{
+          width:'400px', backgroundColor:'transparent', fontSize:'20px', border:'0px solid black'
+        }}>Basic Concepts</button>
+        <Divider variant="inset" style={{backgroundColor: '#000000', marginTop:'10px'}}/>
+        {isDrawerOpen1 && (
+          <div>
+            <button style={{ display: 'block', marginBottom: '5px' }}>Button 1</button>
+            <button style={{ display: 'block', marginBottom: '5px' }}>Button 2</button>
+            <button style={{ display: 'block' }}>Button 3</button>
+          </div>
+        )}
+      </div>
+
+      <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
+        <button onClick={toggleDrawer2} style={{
+          width:'400px', backgroundColor:'transparent', fontSize:'20px', border:'0px solid black'
+        }}>Toggle Drawer</button>
+        {isDrawerOpen2 && (
+          <div>
+            <button style={{ display: 'block', marginBottom: '5px' }}>Button 1</button>
+            <button style={{ display: 'block', marginBottom: '5px' }}>Button 2</button>
+            <button style={{ display: 'block' }}>Button 3</button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

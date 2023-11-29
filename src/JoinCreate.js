@@ -14,15 +14,16 @@ const JoinCreate = () => {
   };
 
   const handleJoinClick = () => {
+    // Add your logic for joining a class
   };
 
   const handleCreateClassClick = () => {
+    // Add your logic for creating a class
   };
-  
-  
+
   return (
-    <div>
-      <p style={{ marginTop: '200px', marginLeft: '100px', fontStyle: 'Montserrat', fontSize: '30px', fontWeight: 'semi-bold' }}>Join or Create Class</p>
+    <div style={{ fontFamily: 'Montserrat, sans-serif' }}>
+      <p style={{ marginTop: '200px', marginLeft: '100px', fontSize: '30px', fontWeight: 'semi-bold' }}>Join or Create Class</p>
       <hr className='line' />
 
       <nav>
@@ -41,18 +42,13 @@ const JoinCreate = () => {
       {isModalOpen && (
         <Modal onClose={handleCloseModal}>
           <div className="form">
-         
-              <p style={{fontSize:'25px', fontWeight:'bold', backgroundColor:'white', marginBottom:'0px'}}>Create your Class</p>
-         
-                <p style={{fontSize:'20px', backgroundColor:'white', marginBottom:'2px'}}>Class name</p>
-                  <input className='classname' type="text" />
-      
-                <p style={{fontSize:'20px', backgroundColor:'white', marginBottom:'2px'}}>Description</p>
-                  <input className='description' placeholder="Let people know what this class is all about" /> 
-
-                <p style={{fontSize:'20px', backgroundColor:'white', marginBottom:'5px'}}>Class Code</p>
-                  <input className='classcode' type='text' /> 
-          
+            <p style={{ fontSize: '25px', fontWeight: 'bold', backgroundColor: 'white', marginBottom: '0px' }}>Create your Class</p>
+            <p style={{ fontSize: '20px', backgroundColor: 'white', marginBottom: '2px' }}>Class name</p>
+            <input className='classname' type="text" />
+            <p style={{ fontSize: '20px', backgroundColor: 'white', marginBottom: '2px' }}>Description</p>
+            <input className='description' placeholder="Let people know what this class is all about" />
+            <p style={{ fontSize: '20px', backgroundColor: 'white', marginBottom: '5px' }}>Class Code</p>
+            <input className='classcode' type='text' />
             <button className='submit' type="submit" onClick={handleCreateClassClick}>Create Class</button> <br></br>
           </div>
         </Modal>

@@ -1,0 +1,55 @@
+.header-container {
+    background-color: #458C83;
+    height: 160px;
+  }
+  
+  .container {
+    width: 1266px;
+    height: 582px;
+    background-color: white;
+    margin-left: 90px;
+  }
+  
+  .header-title {
+    font-weight: 500;
+    margin-top: 40px;
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .input-div{
+    margin-left: 40px;
+  }
+
+  .title {
+    width: 1160px;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid #A9A9A9;
+    font-size: 18px;
+    padding-left: 10px;
+  }
+  
+  .content{
+    margin-top: 10px;
+    width: 1160px;
+    height: 300px;
+    border-radius: 10px;
+    border: 1px solid #A9A9A9;
+    font-size: 18px;
+    padding-left: 10px;
+    justify-content: flex-start;   
+    padding-left: 10px;
+  }
+
+  .submit {
+    width: 200px;
+    height: 50px;
+    border-radius: 54px;
+    border: none;
+    background-color: #458C83;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    margin-left: 10px;
+  }

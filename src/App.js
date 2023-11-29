@@ -1,22 +1,21 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './Login'
-import Register from './Register'
 import JoinClass from './JoinClass'
-import HelpCenter from './HelpCenter'
-import AboutUs from './AboutUs'
 import JoinCreate from './JoinCreate';
+import AddQuiz from './AddQuiz';
+import Class from './Class'
+
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />        
         <Route path="/joinClass" element={<JoinClass/>} />
         <Route path="/JoinCreate" element={<JoinCreate />} />
-        <Route path="/helpCenter" element={<HelpCenter />} />
-        <Route path="/aboutUs" element={<AboutUs />} />  
+        <Route path="/Class" element={<Class />} />
+        <Route path="/AddQuiz" element={<AddQuiz />} />
+
+
       </Routes>
     </Router>
     

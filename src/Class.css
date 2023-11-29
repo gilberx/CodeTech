@@ -1,0 +1,75 @@
+.ViewQuiz{
+  width: 634px;
+  height: 80px;
+  border: none;
+  border-radius: 10px;
+  margin-left: 90px;
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.ViewQuiz:hover{
+  background-color: white;
+}
+
+.ViewLesson{
+  width: 632px;
+  height: 80px;
+  border: none;
+  border-radius: 10px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.ViewLesson:hover{
+background-color: white;
+
+}
+
+.AddQuiz{
+margin-left: 1200px;
+margin-top: 530px;
+position: absolute;
+width: 38px;
+border-radius: 100px;
+background-color: #458C83;
+color: white;
+border: none;
+font-size: 30px;
+}
+.AddQuiz:hover{
+background-color: #9AD0C2;
+}
+
+.AddLesson{
+
+}
+
+.container{
+  width: 1266px;
+  height: 582px;
+  background-color: white;
+  display: flex;
+  margin-left: 90px;
+  margin-top: -11px;
+}
+
+.header{
+  background-color: #458C83;
+}
+
+.header-container {
+  background-color: #458C83;
+  height: 160px;
+  margin-top: -50px;
+}
+
+.header-text {
+  font-weight: bold;
+  margin-left: 100px;
+  font-size: 30px;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  padding-top: 110px;
+}

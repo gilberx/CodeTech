@@ -31,6 +31,17 @@ function Courses() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const faviconPath = process.env.PUBLIC_URL + '/favicon.ico';
+  const [isDrawerOpen1, setDrawerOpen1] = React.useState(false);
+  const [isDrawerOpen2, setDrawerOpen2] = React.useState(false);
+
+
+  const toggleDrawer1 = () => {
+    setDrawerOpen1(!isDrawerOpen1);
+  };
+
+  const toggleDrawer2 = () => {
+    setDrawerOpen2(!isDrawerOpen2);
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -280,6 +291,42 @@ function Courses() {
           </div>  
         </Paper>
       </div>
+      <div style={{
+        marginTop:'20px',
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center'
+      }}>
+        <Button style={{fontWeight:'800', 
+        fontFamily:'Montserrat, sans-serif', 
+        backgroundColor:'#458C83', 
+        color:'#FFFFFF',
+        width:'200px',
+        fontSize:'20px',
+        borderRadius:'30px'}}>Take Course</Button>
+      </div>
+      <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column', marginTop:'50px'}}>
+      <button onClick={toggleDrawer1} style={{
+        width:'400px', backgroundColor:'transparent', fontSize:'20px'
+      }}>Basic Concepts</button>
+      {isDrawerOpen1 && (
+        <div>
+          <button style={{ display: 'block', marginBottom: '5px' }}>Button 1</button>
+          <button style={{ display: 'block', marginBottom: '5px' }}>Button 2</button>
+          <button style={{ display: 'block' }}>Button 3</button>
+        </div>
+      )}
+    </div>
+    <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
+      <button onClick={toggleDrawer2}>Toggle Drawer</button>
+      {isDrawerOpen2 && (
+        <div>
+          <button style={{ display: 'block', marginBottom: '5px' }}>Button 1</button>
+          <button style={{ display: 'block', marginBottom: '5px' }}>Button 2</button>
+          <button style={{ display: 'block' }}>Button 3</button>
+        </div>
+      )}
+    </div>
     </div>
   );
 }

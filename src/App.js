@@ -4,6 +4,8 @@ import JoinClass from './JoinClass'
 import JoinCreate from './JoinCreate';
 import AddQuiz from './AddQuiz';
 import Class from './Class'
+import AddLesson from './AddLesson'
+
 
 
 function App() {
@@ -14,8 +16,7 @@ function App() {
         <Route path="/JoinCreate" element={<JoinCreate />} />
         <Route path="/Class" element={<Class />} />
         <Route path="/AddQuiz" element={<AddQuiz />} />
-
-
+        <Route path="/AddLesson" element={<AddLesson />} />
       </Routes>
     </Router>
     

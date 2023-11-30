@@ -22,7 +22,7 @@
   }
 
   .title {
-    width: 1160px;
+    width: 1170px;
     height:40px;
     border-radius: 10px;
     border: 1px solid #A9A9A9;
@@ -30,10 +30,10 @@
     padding-left: 10px;
   }
   
-  .question{
+  .lesson{
     margin-top: 10px;
     width: 1160px;
-    height: 150px;
+    height: 300px;
     border-radius: 10px;
     border: 1px solid #A9A9A9;
     font-size: 18px;
@@ -55,36 +55,3 @@
     margin-left: 10px;
   }
 
-  .optA{
-    width: 250px;
-    height: 40px;
-    border-radius: 10px;
-    border: 1px solid #A9A9A9;
-    font-size: 18px;
-    padding-left: 10px;
-    margin-top: 10px;
-  }
-
-  .optB, .optC, .optD{
-    width: 250px;
-    height: 40px;
-    border-radius: 10px;
-    border: 1px solid #A9A9A9;
-    font-size: 18px;
-    padding-left: 10px;
-    margin-left: 40px;
-  }
-
-  .correctAns{
-    width: 300px;
-    height: 40px;
-    border-radius: 10px;
-    border: 1px solid #A9A9A9;
-    font-size: 18px;
-    padding-left: 10px;
-  }
-
-  .answer{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-  }

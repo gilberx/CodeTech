@@ -15,10 +15,17 @@ const handleAddQuiz = () => {
       <br></br><br></br><br></br><br></br>
       <div className='container'>
         <div className='input-div'>
-          <p className="header-title">Add Questions</p>
+          <p className="header-title">Add Quiz</p>
           <input className='title' placeholder='Title' type="text" />
-          <textarea className='content' rows="10"></textarea>
-          <button className='submit' onClick={handleAddQuiz}>Submit Questions</button>
+          <textarea className='question' placeholder='Question' rows="10"></textarea>
+          <input className='optA' placeholder='Option A' type="text" />
+          <input className='optB' placeholder='Option B' type="text" />
+          <input className='optC' placeholder='Option C' type="text" />
+          <input className='optD' placeholder='Option D' type="text" />
+          <p className='answer'>Answer of the above Question</p>
+          <input className='correctAns' placeholder='' type="text" />
+          <br></br>
+          <button className='submit' onClick={handleAddQuiz}>Submit Question</button>
         </div>
       </div>
     </div>

@@ -1,9 +1,9 @@
 .ViewQuiz{
-  width: 634px;
+  width: 635px;
   height: 80px;
   border: none;
   border-radius: 10px;
-  margin-left: 90px;
+  margin-left: 158px;
   font-size: 25px;
   font-weight: bold;
   margin-top: 20px;
@@ -20,6 +20,8 @@
   border-radius: 10px;
   font-size: 25px;
   font-weight: bold;
+  margin: auto;
+
 }
 
 .ViewLesson:hover{
@@ -46,13 +48,12 @@ background-color: #9AD0C2;
 
 }
 
-.container{
+.container1{
   width: 1266px;
   height: 582px;
   background-color: white;
   display: flex;
-  margin-left: 90px;
-  margin-top: -11px;
+  margin: auto;
 }
 
 .header{

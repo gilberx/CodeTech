@@ -30,7 +30,7 @@ const TeacherPage = () => {
       <button className='ViewLesson' onClick={handleViewLesson}>
         Lesson
       </button>
-      <div className='container'>
+      <div className='container1'>
         <div>
         <Link to="/AddQuiz">
         <button className='AddQuiz' onClick={handleAddQuiz}>

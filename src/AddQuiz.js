@@ -9,13 +9,13 @@ const handleAddQuiz = () => {
 
   return (
     <div>
-      <div className="header-container">
+      <div className="header-container2">
         {/* You can add content or components for the header here */}
       </div>
-      <br></br><br></br><br></br><br></br>
-      <div className='container'>
-        <div className='input-div'>
-          <p className="header-title">Add Quiz</p>
+      <br></br>
+      <div className='container2'>
+        <div className='input-div2'><br></br>
+          <p className="header-title2">Add Quiz</p>
           <input className='title' placeholder='Title' type="text" />
           <textarea className='question' placeholder='Question' rows="10"></textarea>
           <input className='optA' placeholder='Option A' type="text" />
@@ -25,7 +25,7 @@ const handleAddQuiz = () => {
           <p className='answer'>Answer of the above Question</p>
           <input className='correctAns' placeholder='' type="text" />
           <br></br>
-          <button className='submit' onClick={handleAddQuiz}>Submit Question</button>
+          <button className='submitbtn' onClick={handleAddQuiz}>Submit Question</button>
         </div>
       </div>
     </div>

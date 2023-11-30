@@ -1,28 +1,28 @@
-.header-container {
+.header-container3 {
     background-color: #458C83;
     height: 160px;
   }
   
-  .container {
+  .container3 {
     width: 1266px;
     height: 582px;
     background-color: white;
-    margin-left: 90px;
+    margin: auto;
+    margin-bottom: 50px;  
   }
   
-  .header-title {
+  .header-title3 {
     font-weight: 500;
-    margin-top: 40px;
     font-size: 30px;
     font-family: 'Montserrat', sans-serif;
   }
   
-  .input-div{
+  .input-div3{
     margin-left: 40px;
   }
 
-  .title {
-    width: 1170px;
+  .title3 {
+    width: 1165px;
     height:40px;
     border-radius: 10px;
     border: 1px solid #A9A9A9;
@@ -43,7 +43,7 @@
     font-family: 'Montserrat', sans-serif;
   }
 
-  .submit {
+  .submitbtn2 {
     width: 150px;
     height: 40px;
     border-radius: 54px;
@@ -53,5 +53,6 @@
     font-weight: bold;
     color: white;
     margin-left: 10px;
+    margin-top: 20px;
   }
 

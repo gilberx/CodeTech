@@ -33,6 +33,9 @@ function Courses() {
   const faviconPath = process.env.PUBLIC_URL + '/favicon.ico';
   const [isDrawerOpen1, setDrawerOpen1] = React.useState(false);
   const [isDrawerOpen2, setDrawerOpen2] = React.useState(false);
+  const [isDrawerOpen3, setDrawerOpen3] = React.useState(false);
+  const [isDrawerOpen4, setDrawerOpen4] = React.useState(false);
+  const [isDrawerOpen5, setDrawerOpen5] = React.useState(false);
 
 
   const toggleDrawer1 = () => {
@@ -41,6 +44,18 @@ function Courses() {
 
   const toggleDrawer2 = () => {
     setDrawerOpen2(!isDrawerOpen2);
+  };
+
+  const toggleDrawer3 = () => {
+    setDrawerOpen3(!isDrawerOpen3);
+  };
+
+  const toggleDrawer4 = () => {
+    setDrawerOpen4(!isDrawerOpen4);
+  };
+
+  const toggleDrawer5 = () => {
+    setDrawerOpen5(!isDrawerOpen5);
   };
 
   const handleOpenNavMenu = (event) => {
@@ -307,27 +322,59 @@ function Courses() {
       </div>
       <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column', marginTop:'50px'}}>
         <button onClick={toggleDrawer1} style={{
-          width:'400px', backgroundColor:'transparent', fontSize:'20px', border:'0px solid black'
+           paddingLeft:'10px',display:'flex', justifyContent:'left',width:'400px', backgroundColor:'transparent', fontSize:'20px', borderBottom: '2px solid #000', borderTop:'0px',borderLeft:'0px',borderRight:'0px', marginBottom:'10px', paddingBottom:'10px'
         }}>Basic Concepts</button>
-        <Divider variant="inset" style={{backgroundColor: '#000000', marginTop:'10px'}}/>
         {isDrawerOpen1 && (
           <div>
-            <button style={{ display: 'block', marginBottom: '5px' }}>Button 1</button>
-            <button style={{ display: 'block', marginBottom: '5px' }}>Button 2</button>
-            <button style={{ display: 'block' }}>Button 3</button>
+            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 1</button>
+            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 2</button>
+            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 3</button>
           </div>
         )}
       </div>
-
       <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
         <button onClick={toggleDrawer2} style={{
-          width:'400px', backgroundColor:'transparent', fontSize:'20px', border:'0px solid black'
-        }}>Toggle Drawer</button>
+          paddingLeft:'10px',display:'flex', justifyContent:'left',width:'400px', backgroundColor:'transparent', fontSize:'20px', borderBottom: '2px solid #000', borderTop:'0px',borderLeft:'0px',borderRight:'0px', marginBottom:'10px', paddingBottom:'10px'
+        }}>Conditional and Loops</button>
         {isDrawerOpen2 && (
           <div>
-            <button style={{ display: 'block', marginBottom: '5px' }}>Button 1</button>
-            <button style={{ display: 'block', marginBottom: '5px' }}>Button 2</button>
-            <button style={{ display: 'block' }}>Button 3</button>
+            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 1</button>
+            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 2</button>
+            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 3</button>
+          </div>
+        )}
+      </div>
+      <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
+        <button onClick={toggleDrawer3} style={{
+          paddingLeft:'10px',display:'flex', justifyContent:'left',width:'400px', backgroundColor:'transparent', fontSize:'20px', borderBottom: '2px solid #000', borderTop:'0px',borderLeft:'0px',borderRight:'0px', marginBottom:'10px', paddingBottom:'10px'
+        }}>Function, Arrays & Pointers</button>
+        {isDrawerOpen3 && (
+          <div>
+            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 1</button>
+            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 2</button>
+            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 3</button>
+          </div>
+        )}
+      </div>
+      <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
+        <button onClick={toggleDrawer4} style={{
+          paddingLeft:'10px',display:'flex', justifyContent:'left',width:'400px', backgroundColor:'transparent', fontSize:'20px', borderBottom: '2px solid #000', borderTop:'0px',borderLeft:'0px',borderRight:'0px', marginBottom:'10px', paddingBottom:'10px'
+        }}>Strings, Function & Pointers</button>
+        {isDrawerOpen4 && (
+          <div>
+            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px'}}>Button 1</button>
+            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 2</button>
+            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px'}}>Button 3</button>
+          </div>
+        )}
+      </div>
+      <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
+        <button onClick={toggleDrawer5} style={{
+          paddingLeft:'10px',display:'flex', justifyContent:'left',width:'400px', backgroundColor:'transparent', fontSize:'20px', borderBottom: '2px solid #000', borderTop:'0px',borderLeft:'0px',borderRight:'0px', marginBottom:'10px', paddingBottom:'10px'
+        }}>Final Exam</button>
+        {isDrawerOpen5 && (
+          <div>
+            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 1</button>
           </div>
         )}
       </div>

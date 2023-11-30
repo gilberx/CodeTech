@@ -310,8 +310,8 @@ function ResponsiveAppBar() {
       alignItems: 'center', 
       marginBottom: '10px'
     }}>
-      <Button style={{
-                  my: 2,
+      <Button onClick={() => navigate('/Courses')}
+          style={{my: 2,
                   backgroundColor: '#F5FFFD',
                   color: '#212121',
                   display: 'block',

@@ -326,9 +326,9 @@ function Courses() {
         }}>Basic Concepts</button>
         {isDrawerOpen1 && (
           <div>
-            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 1</button>
-            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 2</button>
-            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 3</button>
+            <button style={{ border:'none', backgroundColor:'#E2F8F3', display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px', fontSize:'15px', fontWeight:'800', fontFamily:'Montserrat, sans-serif', display:'flex',justifyContent:'left',}}><p style={{fontSize:'10px', fontFamily:'Montserrat, sans-serif', fontWeight:'600'}}>Lessons</p>What is C?</button>
+            <button style={{ border:'none', backgroundColor:'#E2F8F3',display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 2</button>
+            <button style={{ border:'none', backgroundColor:'#E2F8F3',display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 3</button>
           </div>
         )}
       </div>
@@ -338,9 +338,9 @@ function Courses() {
         }}>Conditional and Loops</button>
         {isDrawerOpen2 && (
           <div>
-            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 1</button>
-            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 2</button>
-            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 3</button>
+            <button style={{  border:'none', backgroundColor:'#E2F8F3',display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 1</button>
+            <button style={{  border:'none', backgroundColor:'#E2F8F3',display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 2</button>
+            <button style={{  border:'none', backgroundColor:'#E2F8F3',display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 3</button>
           </div>
         )}
       </div>
@@ -350,9 +350,9 @@ function Courses() {
         }}>Function, Arrays & Pointers</button>
         {isDrawerOpen3 && (
           <div>
-            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 1</button>
-            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 2</button>
-            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 3</button>
+            <button style={{  border:'none', backgroundColor:'#E2F8F3',display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 1</button>
+            <button style={{  border:'none', backgroundColor:'#E2F8F3',display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 2</button>
+            <button style={{  border:'none', backgroundColor:'#E2F8F3',display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 3</button>
           </div>
         )}
       </div>
@@ -362,9 +362,9 @@ function Courses() {
         }}>Strings, Function & Pointers</button>
         {isDrawerOpen4 && (
           <div>
-            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px'}}>Button 1</button>
-            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 2</button>
-            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px'}}>Button 3</button>
+            <button style={{  border:'none', backgroundColor:'#E2F8F3',display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px'}}>Button 1</button>
+            <button style={{  border:'none', backgroundColor:'#E2F8F3',display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 2</button>
+            <button style={{  border:'none', backgroundColor:'#E2F8F3',display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px'}}>Button 3</button>
           </div>
         )}
       </div>
@@ -374,7 +374,7 @@ function Courses() {
         }}>Final Exam</button>
         {isDrawerOpen5 && (
           <div>
-            <button style={{ display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 1</button>
+            <button style={{  border:'none', backgroundColor:'#E2F8F3',display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 1</button>
           </div>
         )}
       </div>

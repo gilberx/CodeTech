@@ -326,9 +326,34 @@ function Courses() {
         }}>Basic Concepts</button>
         {isDrawerOpen1 && (
           <div>
-            <button style={{ border:'none', backgroundColor:'#E2F8F3', display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px', fontSize:'15px', fontWeight:'800', fontFamily:'Montserrat, sans-serif', display:'flex',justifyContent:'left',}}><p style={{fontSize:'10px', fontFamily:'Montserrat, sans-serif', fontWeight:'600'}}>Lessons</p>What is C?</button>
-            <button style={{ border:'none', backgroundColor:'#E2F8F3',display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 2</button>
-            <button style={{ border:'none', backgroundColor:'#E2F8F3',display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 3</button>
+            <Paper style={{ border:'none', 
+            backgroundColor:'#E2F8F3', 
+            display: 'block', 
+            marginBottom: '10px', 
+            width:'55vh', 
+            height:'50px', 
+            borderRadius:'15px', 
+            fontSize:'15px', 
+            fontWeight:'800', 
+            fontFamily:'Montserrat, sans-serif', 
+            display:'flex',
+            justifyContent:'left',}}><p style={{fontSize:'10px', 
+                                                fontFamily:'Montserrat, sans-serif', 
+                                                fontWeight:'600'}}>Lessons</p>What is C?</Paper>
+            <button style={{ border:'none', 
+            backgroundColor:'#E2F8F3',
+            display: 'block', 
+            marginBottom: '10px', 
+            width:'55vh', 
+            height:'50px', 
+            borderRadius:'15px' }}>Button 2</button>
+            <button style={{ border:'none', 
+            backgroundColor:'#E2F8F3',
+            display: 'block', 
+            marginBottom: '10px', 
+            width:'55vh', 
+            height:'50px', 
+            borderRadius:'15px' }}>Button 3</button>
           </div>
         )}
       </div>

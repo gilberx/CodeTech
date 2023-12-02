@@ -320,34 +320,102 @@ function Courses() {
         fontSize:'20px',
         borderRadius:'30px'}}>Take Course</Button>
       </div>
-      <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column', marginTop:'50px'}}>
-        <button onClick={toggleDrawer1} style={{
-           paddingLeft:'10px',display:'flex', justifyContent:'left',width:'400px', backgroundColor:'transparent', fontSize:'20px', borderBottom: '2px solid #000', borderTop:'0px',borderLeft:'0px',borderRight:'0px', marginBottom:'10px', paddingBottom:'10px'
-        }}>Basic Concepts</button>
+      <div style={{display:'flex', 
+      justifyContent:'center', 
+      alignItems:'center', 
+      flexDirection:'column', 
+      marginTop:'50px'}}>
+        <button class='buttoncontainer' onClick={toggleDrawer1}>Basic Concepts</button>
         {isDrawerOpen1 && (
           <div>
-            <Paper style={{ border:'none', 
-            backgroundColor:'#E2F8F3', 
-            display: 'block', 
-            marginBottom: '10px', 
-            width:'55vh', 
-            height:'50px', 
-            borderRadius:'15px', 
-            fontSize:'15px', 
-            fontWeight:'800', 
-            fontFamily:'Montserrat, sans-serif', 
-            display:'flex',
-            justifyContent:'left',}}><p style={{fontSize:'10px', 
-                                                fontFamily:'Montserrat, sans-serif', 
-                                                fontWeight:'600'}}>Lessons</p>What is C?</Paper>
-            <button style={{ border:'none', 
+            <Paper class='papercontainer'>
+              <div style={{display:'flex', flexDirection:'row'}}>
+                <div style={{display:'flex', justifyContent:'left', alignItems:'center', maxWidth:'80%'}}>
+                  <img src='./lessonlogo.png' style={{height:'30px', marginTop:'0px'}}/>
+                  <div style={{display:'flex', flexDirection:'column'}}>
+                    <p>Lessons</p>What is C?
+                  </div>
+                </div>
+                <div style={{display:'flex', justifyContent:'right', alignItems:'center'}}>
+                  <img src='lessonlocklogo.png' style={{height:'30px', marginTop:'0px'}}/>
+                </div>
+              </div>
+            </Paper>
+            <Paper class='papercontainer'>
+              <div style={{display:'flex', flexDirection:'row'}}>
+                <img src='./lessonlogo.png' style={{height:'30px', marginTop:'10px'}}/>
+                <div style={{display:'flex', flexDirection:'column'}}>
+                  <p>Lessons</p>Hello World!
+                </div>
+                  <img src='lessonlocklogo.png' style={{height:'30px', marginTop:'10px', marginLeft:'198px'}}/>
+              </div>
+            </Paper>
+            <Paper class='papercontainer'>
+              <div style={{display:'flex', flexDirection:'row'}}>
+                <img src='./lessonlogo.png' style={{height:'30px', marginTop:'10px'}}/>
+                <div style={{display:'flex', flexDirection:'column'}}>
+                  <p>Lessons</p>Data Types
+                </div>
+                  <img src='lessonlocklogo.png' style={{height:'30px', marginTop:'10px', marginLeft:'207px'}}/>
+              </div>
+            </Paper>
+            <Paper class='papercontainer'>
+              <div style={{display:'flex', flexDirection:'row'}}>
+                <img src='./lessonlogo.png' style={{height:'30px', marginTop:'10px'}}/>
+                <div style={{display:'flex', flexDirection:'column'}}>
+                  <p>Lessons</p>Input & Output
+                </div>
+                  <img src='lessonlocklogo.png' style={{height:'30px', marginTop:'10px', marginLeft:'176px'}}/>
+              </div>
+            </Paper>
+            <Paper class='papercontainer'>
+              <div style={{display:'flex', flexDirection:'row'}}>
+                <img src='./lessonlogo.png' style={{height:'30px', marginTop:'10px'}}/>
+                <div style={{display:'flex', flexDirection:'column'}}>
+                  <p>Lessons</p>Comments
+                </div>
+                  <img src='lessonlocklogo.png' style={{height:'30px', marginTop:'10px', marginLeft:'209px'}}/>
+              </div>
+            </Paper>
+            <Paper class='papercontainer'>
+              <div style={{display:'flex', flexDirection:'row'}}>
+                <img src='./lessonlogo.png' style={{height:'30px', marginTop:'10px'}}/>
+                <div style={{display:'flex', flexDirection:'column'}}>
+                  <p>Lessons</p>Operators
+                </div>
+                  <img src='lessonlocklogo.png' style={{height:'30px', marginTop:'10px', marginLeft:'217px'}}/>
+              </div>
+            </Paper>
+            <Paper class='papercontainer'>
+              <div style={{display:'flex', flexDirection:'row'}}>
+                <img src='./lessonlogo.png' style={{height:'30px', marginTop:'10px'}}/>
+                <div style={{display:'flex', flexDirection:'column', color:'red'}}>
+                  <p>Lessons</p>Module Quiz
+                </div>
+                  <img src='lessonlocklogo.png' style={{height:'30px', marginTop:'10px', marginLeft:'196px'}}/>
+              </div>
+            </Paper>
+            
+            
+          </div>
+        )}
+      </div>
+      <div style={{display:'flex', 
+      justifyContent:'center', 
+      alignItems:'center', 
+      flexDirection:'column'}}>
+        <button class='buttoncontainer' onClick={toggleDrawer2}>Conditional and Loops</button>
+        {isDrawerOpen2 && (
+          <div>
+            <Paper class='papercontainer'>Button 1</Paper>
+            <button style={{  border:'none', 
             backgroundColor:'#E2F8F3',
             display: 'block', 
             marginBottom: '10px', 
             width:'55vh', 
             height:'50px', 
             borderRadius:'15px' }}>Button 2</button>
-            <button style={{ border:'none', 
+            <button style={{  border:'none', 
             backgroundColor:'#E2F8F3',
             display: 'block', 
             marginBottom: '10px', 
@@ -357,27 +425,47 @@ function Courses() {
           </div>
         )}
       </div>
-      <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
-        <button onClick={toggleDrawer2} style={{
-          paddingLeft:'10px',display:'flex', justifyContent:'left',width:'400px', backgroundColor:'transparent', fontSize:'20px', borderBottom: '2px solid #000', borderTop:'0px',borderLeft:'0px',borderRight:'0px', marginBottom:'10px', paddingBottom:'10px'
-        }}>Conditional and Loops</button>
-        {isDrawerOpen2 && (
-          <div>
-            <button style={{  border:'none', backgroundColor:'#E2F8F3',display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 1</button>
-            <button style={{  border:'none', backgroundColor:'#E2F8F3',display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 2</button>
-            <button style={{  border:'none', backgroundColor:'#E2F8F3',display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 3</button>
-          </div>
-        )}
-      </div>
-      <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
+      <div style={{display:'flex', 
+      justifyContent:'center', 
+      alignItems:'center', 
+      flexDirection:'column'}}>
         <button onClick={toggleDrawer3} style={{
-          paddingLeft:'10px',display:'flex', justifyContent:'left',width:'400px', backgroundColor:'transparent', fontSize:'20px', borderBottom: '2px solid #000', borderTop:'0px',borderLeft:'0px',borderRight:'0px', marginBottom:'10px', paddingBottom:'10px'
+          paddingLeft:'10px',
+          display:'flex', 
+          justifyContent:'left',
+          width:'400px', 
+          backgroundColor:'transparent', 
+          fontSize:'20px', 
+          borderBottom: '2px solid #000', 
+          borderTop:'0px',
+          borderLeft:'0px',
+          borderRight:'0px', 
+          marginBottom:'10px', 
+          paddingBottom:'10px'
         }}>Function, Arrays & Pointers</button>
         {isDrawerOpen3 && (
           <div>
-            <button style={{  border:'none', backgroundColor:'#E2F8F3',display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 1</button>
-            <button style={{  border:'none', backgroundColor:'#E2F8F3',display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 2</button>
-            <button style={{  border:'none', backgroundColor:'#E2F8F3',display: 'block', marginBottom: '10px', width:'55vh', height:'50px', borderRadius:'15px' }}>Button 3</button>
+            <button style={{  border:'none', 
+            backgroundColor:'#E2F8F3',
+            display: 'block', 
+            marginBottom: '10px', 
+            width:'55vh', 
+            height:'50px', 
+            borderRadius:'15px' }}>Button 1</button>
+            <button style={{  border:'none', 
+            backgroundColor:'#E2F8F3',
+            display: 'block', 
+            marginBottom: '10px', 
+            width:'55vh', 
+            height:'50px', 
+            borderRadius:'15px' }}>Button 2</button>
+            <button style={{  border:'none',
+             backgroundColor:'#E2F8F3',
+             display: 'block', 
+             marginBottom: '10px', 
+             width:'55vh', 
+             height:'50px', 
+             borderRadius:'15px' }}>Button 3</button>
           </div>
         )}
       </div>

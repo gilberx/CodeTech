@@ -1,6 +1,12 @@
 import './ForgotPassword.css';
+import { useEffect } from 'react';
+
 
 const ResetPassword = () =>{
+
+    useEffect(() => {
+        document.title = "CodeTech";
+      }, []);
     
     return(
         <main className='forgot-main'>

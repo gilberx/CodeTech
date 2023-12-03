@@ -23,6 +23,7 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import { useEffect } from 'react';
 
 
 const pages = ['Join a Class', 'Courses', 'How it Works', 'About Us'];
@@ -48,6 +49,10 @@ function Courses() {
   };
 
   const navigate = useNavigate();
+  
+  useEffect(() => {
+    document.title = "CodeTech";
+  }, []);
 
   return (
     <main class='courses-main-bg'>
@@ -300,7 +305,8 @@ function Courses() {
                         alignItems:'center', 
                         borderRadius:'15px',
                         marginTop:'20px'}}>
-            <Button style={{backgroundColor:'#458C83', 
+            <Button onClick={() => navigate('/Courses=IntroductionToCSharp')}
+            style={{backgroundColor:'#458C83', 
                             color:'#FFFFFF', 
                             width:'220px', 
                             borderRadius:'20px', 
@@ -317,7 +323,8 @@ function Courses() {
                         alignItems:'center', 
                         borderRadius:'15px',
                         marginTop:'20px'}}>
-            <Button style={{backgroundColor:'#458C83', 
+            <Button onClick={() => navigate('/Courses=IntroductionToC++')}
+            style={{backgroundColor:'#458C83', 
                             color:'#FFFFFF', 
                             width:'220px', 
                             borderRadius:'20px', 

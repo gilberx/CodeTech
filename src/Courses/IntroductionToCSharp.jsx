@@ -37,6 +37,7 @@ function Courses() {
   const [isDrawerOpen3, setDrawerOpen3] = React.useState(false);
   const [isDrawerOpen4, setDrawerOpen4] = React.useState(false);
   const [isDrawerOpen5, setDrawerOpen5] = React.useState(false);
+  const [isDrawerOpen6, setDrawerOpen6] = React.useState(false);
 
 
   const toggleDrawer1 = () => {
@@ -57,6 +58,10 @@ function Courses() {
 
   const toggleDrawer5 = () => {
     setDrawerOpen5(!isDrawerOpen5);
+  };
+
+  const toggleDrawer6 = () => {
+    setDrawerOpen6(!isDrawerOpen6);
   };
 
   const handleOpenNavMenu = (event) => {
@@ -295,19 +300,19 @@ function Courses() {
         backgroundColor:'#E2F8F3', 
         borderRadius:'15px', paddingTop:'20px'}}>
           <div style={{maxWidth:'25%', paddingTop:'15px', marginLeft:'-20px'}}>
-            <img src="/18.png" style={{height:'100px'}}/>
+            <img src="/19.png" style={{height:'110px'}}/>
           </div>
           <div style={{maxWidth:'70%', paddingLeft:'20px'}}>
             <Paper style={{borderRadius:'25px', backgroundColor:'#6FDDCF', width:'270px', height:'45px'}}>
                 <p style={{fontSize:'25px', 
                 fontWeight:'800', 
                 fontFamily:'Montserrat, sans-serif', 
-                textTransform:'none', color:'black', textAlign:'center', paddingTop:'7px'}}>Introduction to C</p>
+                textTransform:'none', color:'black', textAlign:'center', paddingTop:'7px'}}>Introduction to C#</p>
             </Paper>
-            <p style={{fontFamily:'Montserrat, sans-serif', fontSize:'15px', paddingTop:'10px'}}>C is a general-purpose programming language that is 
-              efficient, portable, and powerful. It is used to develop a 
-              wide variety of applications, including operating 
-              systems, embedded systems, and system software.</p>
+            <p style={{fontFamily:'Montserrat, sans-serif', fontSize:'15px', paddingTop:'10px'}}>C# is a general-purpose, object-oriented programming 
+            language used to develop a wide variety of 
+            applications, including desktop, web, mobile, and
+            game applications.</p>
           </div>  
         </Paper>
       </div>
@@ -333,8 +338,8 @@ function Courses() {
       marginTop:'50px'}}>
         <button class='buttoncontainer' onClick={toggleDrawer1}>
           <img src='./topiclogo.png' style={{height:'35px', marginLeft:'-10px'}}/>
-          Basic Concepts
-          <img src='./dropdownlogo.png' style={{height:'30px', marginLeft:'155px'}}/>
+          Getting Started
+          <img src='./dropdownlogo.png' style={{height:'30px', marginLeft:'156px'}}/>
         </button>
         {isDrawerOpen1 && (
           <div>
@@ -438,7 +443,7 @@ function Courses() {
       flexDirection:'column'}}>
         <button class='buttoncontainer' onClick={toggleDrawer2}>
           <img src='./topiclogo.png' style={{height:'35px', marginLeft:'-10px'}}/>
-          Conditional & Loops
+          Operators & Strings
           <img src='./dropdownlogo.png' style={{height:'30px', marginLeft:'115px'}}/>
         </button>
         {isDrawerOpen2 && (
@@ -543,8 +548,8 @@ function Courses() {
       flexDirection:'column'}}>
         <button class='buttoncontainer' onClick={toggleDrawer3}>
           <img src='./topiclogo.png' style={{height:'35px', marginLeft:'-10px'}}/>
-          Function, Arrays & Pointers
-          <img src='./dropdownlogo.png' style={{height:'30px', marginLeft:'50px'}}/>
+          Decision Making
+          <img src='./dropdownlogo.png' style={{height:'30px', marginLeft:'144px'}}/>
         </button>
         {isDrawerOpen3 && (
           <div>
@@ -645,8 +650,8 @@ function Courses() {
       <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
       <button class='buttoncontainer' onClick={toggleDrawer4}>
           <img src='./topiclogo.png' style={{height:'35px', marginLeft:'-10px'}}/>
-          Strings, Function & Pointers
-          <img src='./dropdownlogo.png' style={{height:'30px', marginLeft:'44px'}}/>
+          Loops
+          <img src='./dropdownlogo.png' style={{height:'30px', marginLeft:'236px'}}/>
         </button>
         {isDrawerOpen4 && (
           <div>
@@ -745,12 +750,114 @@ function Courses() {
         )}
       </div>
       <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
-        <button class='buttoncontainer' onClick={toggleDrawer5} style={{color:"red", fontWeight:'600'}}>
+      <button class='buttoncontainer' onClick={toggleDrawer5}>
+          <img src='./topiclogo.png' style={{height:'35px', marginLeft:'-10px'}}/>
+          Methods
+          <img src='./dropdownlogo.png' style={{height:'30px', marginLeft:'214px'}}/>
+        </button>
+        {isDrawerOpen5 && (
+          <div>
+          <Paper class='papercontainer'>
+            <div style={{display:'flex', flexDirection:'row'}}>
+              <div style={{display:'flex', justifyContent:'left', alignItems:'center', maxWidth:'80%'}}>
+                <img src='./lessonlogo.png' style={{height:'30px'}}/>
+                <div style={{display:'flex', flexDirection:'column'}}>
+                  <p>Lessons</p>What is C?
+                </div>
+              </div>
+              <div style={{display:'flex', justifyContent:'right', alignItems:'center'}}>
+                <img src='lessonlocklogo.png' style={{height:'30px', marginLeft:'210px'}}/>
+              </div>
+            </div>
+          </Paper>
+          <Paper class='papercontainer'>
+            <div style={{display:'flex', flexDirection:'row'}}>
+              <div style={{display:'flex', justifyContent:'left', alignItems:'center', maxWidth:'80%'}}>
+                <img src='./lessonlogo.png' style={{height:'30px'}}/>
+                <div style={{display:'flex', flexDirection:'column'}}>
+                  <p>Lessons</p>Hello World!
+                </div>
+              </div> 
+              <div style={{display:'flex', justifyContent:'right', alignItems:'center'}}>
+                <img src='lessonlocklogo.png' style={{height:'30px', marginLeft:'198px'}}/> 
+              </div>
+            </div>
+          </Paper>
+          <Paper class='papercontainer'>
+            <div style={{display:'flex', flexDirection:'row'}}>
+              <div style={{display:'flex', justifyContent:'left', alignItems:'center', maxWidth:'80%'}}>
+                <img src='./lessonlogo.png' style={{height:'30px'}}/>
+                <div style={{display:'flex', flexDirection:'column'}}>
+                  <p>Lessons</p>Data Types
+                </div>
+              </div>
+              <div style={{display:'flex', justifyContent:'right', alignItems:'center'}}>
+                <img src='lessonlocklogo.png' style={{height:'30px', marginLeft:'207px'}}/>
+              </div>
+            </div>
+          </Paper>
+          <Paper class='papercontainer'>
+            <div style={{display:'flex', flexDirection:'row'}}>
+              <div style={{display:'flex', justifyContent:'left', alignItems:'center', maxWidth:'80%'}}>
+                <img src='./lessonlogo.png' style={{height:'30px'}}/>
+                <div style={{display:'flex', flexDirection:'column'}}>
+                  <p>Lessons</p>Input & Output
+                </div>
+              </div>
+              <div style={{display:'flex', justifyContent:'right', alignItems:'center'}}>
+                <img src='lessonlocklogo.png' style={{height:'30px', marginLeft:'176px'}}/>
+              </div>
+            </div>
+          </Paper>
+          <Paper class='papercontainer'>
+            <div style={{display:'flex', flexDirection:'row'}}>
+              <div style={{display:'flex', justifyContent:'left', alignItems:'center', maxWidth:'80%'}}>
+                <img src='./lessonlogo.png' style={{height:'30px'}}/>
+                <div style={{display:'flex', flexDirection:'column'}}>
+                  <p>Lessons</p>Comments
+                </div>
+              </div>
+              <div style={{display:'flex', justifyContent:'right', alignItems:'center'}}>
+                <img src='lessonlocklogo.png' style={{height:'30px', marginLeft:'209px'}}/>
+              </div>
+            </div>
+          </Paper>
+          <Paper class='papercontainer'>
+            <div style={{display:'flex', flexDirection:'row'}}>
+              <div style={{display:'flex', justifyContent:'left', alignItems:'center', maxWidth:'80%'}}>
+                <img src='./lessonlogo.png' style={{height:'30px'}}/>
+                <div style={{display:'flex', flexDirection:'column'}}>
+                  <p>Lessons</p>Operators
+                  </div>
+              </div> 
+              <div style={{display:'flex', justifyContent:'right', alignItems:'center'}}>   
+                <img src='lessonlocklogo.png' style={{height:'30px', marginLeft:'217px'}}/>
+              </div>
+            </div>
+          </Paper>
+          <Paper class='papercontainer'>
+            <div style={{display:'flex', flexDirection:'row'}}>
+              <div style={{display:'flex', justifyContent:'left', alignItems:'center', maxWidth:'80%'}}>
+                <img src='./lessonlogo.png' style={{height:'30px'}}/>
+                <div style={{display:'flex', flexDirection:'column', color:'red'}}>
+                  <p>Lessons</p>Module Quiz
+                </div>
+              </div>
+              <div style={{display:'flex', justifyContent:'right', alignItems:'center'}}>
+                <img src='lessonlocklogo.png' style={{height:'30px', marginLeft:'196px'}}/>
+                </div>
+            </div>
+          </Paper> 
+        </div>
+        )}
+      </div>
+      <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
+        <button class='buttoncontainer' onClick={toggleDrawer6} style={{color:"red", fontWeight:'600'}}>
             <img src='./topiclogo.png' style={{height:'35px', marginLeft:'-10px'}}/>
             Final Exam
             <img src='./dropdownlogo.png' style={{height:'30px', marginLeft:'185px'}}/>
         </button>
-        {isDrawerOpen5 && (
+        {isDrawerOpen6 && (
           <div>
           <Paper class='papercontainer'>
             <div style={{display:'flex', flexDirection:'row'}}>

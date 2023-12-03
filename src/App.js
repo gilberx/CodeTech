@@ -7,6 +7,8 @@ import Courses from './Courses/Courses.jsx'
 import Courses2 from './Courses/BeginnerCourse.jsx'
 import Courses3 from './Courses/IntermediateCourse.jsx'
 import IntroductionToC from './Courses/IntroductionToC.jsx'
+import IntroductionToCSharp from './Courses/IntroductionToCSharp.jsx'
+import IntroductionToCplusplus from './Courses/IntroductionToCplusplus.jsx'
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path="/Courses=BeginnerPage" element={<Courses2/>}/>
         <Route path="/Courses=IntermediatePage" element={<Courses3/>}/>
         <Route path="/Courses=IntroductionToC" element={<IntroductionToC/>}/>
+        <Route path="/Courses=IntroductionToCSharp" element={<IntroductionToCSharp/>}/>
+        <Route path="/Courses=IntroductionToCplusplus" element={<IntroductionToCplusplus/>}/>
       </Routes>
     </Router>
   );

@@ -23,6 +23,7 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import { useEffect } from 'react';
 
 
 const pages = ['Join a Class', 'Courses', 'How it Works', 'About Us'];
@@ -48,6 +49,10 @@ function Courses() {
   };
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = "CodeTech";
+  }, []);
 
   return (
     <main class='courses-main-bg'>

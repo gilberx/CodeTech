@@ -3,7 +3,14 @@ import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChalkboardTeacher, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+
 const Login = () => {
+
+    useEffect(() => {
+        document.title = "CodeTech";
+      }, []);
+
     return (
         <main className='login-main-bg'>
             <div className="login-main">

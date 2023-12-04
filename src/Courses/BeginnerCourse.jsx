@@ -323,7 +323,7 @@ function Courses() {
                         alignItems:'center', 
                         borderRadius:'15px',
                         marginTop:'20px'}}>
-            <Button onClick={() => navigate('/Courses=IntroductionToC++')}
+            <Button onClick={() => navigate('/Courses=IntroductionToCplusplus')}
             style={{backgroundColor:'#458C83', 
                             color:'#FFFFFF', 
                             width:'220px', 

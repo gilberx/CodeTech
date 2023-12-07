@@ -43,7 +43,7 @@ body{
     text-align: end; 
 }
 
-.login-right img {
+.login-right .right img {
     width: 400px;
 
 }

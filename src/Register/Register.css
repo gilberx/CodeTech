@@ -126,7 +126,7 @@ form{
 }
 
 
-input{
+.input-div input{
     position: absolute;
     width: 100%;
     outline: none;
@@ -150,8 +150,8 @@ input{
     transition: 0.2s ease;
 }
 
-input:focus,
-input:valid{
+.input-div input:focus,
+.input-div input:valid{
     border: 2px solid #458C83;
 }
 
@@ -159,8 +159,8 @@ input:valid{
     border: 2px solid red;
 }
 
-input:focus + .labelline,
-input:valid + .labelline{
+.input-div input:focus + .labelline,
+.input-div input:valid + .labelline{
     color: #458C83;
     height: 30px;
     line-height: 30px;

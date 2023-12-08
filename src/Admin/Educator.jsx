@@ -4,24 +4,395 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useRef, useEffect, useContext,  } from 'react';
 import "./Admin.css";
-import { faTachometerAlt, faChalkboardTeacher, faUserGraduate, faBook, faExclamationTriangle, faSignOut } from '@fortawesome/free-solid-svg-icons';
+import UserContext from "../Register/UserContext";
+import Modal from "../Modal";
+import { faTachometerAlt, faChalkboardTeacher, faUserGraduate, faBook, faExclamationTriangle, faSignOut, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { Paper } from "@mui/material";
+
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+const NAME_REGEX = /^[a-zA-Z][a-zA-Z-_]{1,23}$/;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
 function Educator() {
-    const paperStyle={padding:"50px 20px", width:"600", margin:"20px auto"}
+    
+    const { user, setUser } = useContext(UserContext);
+    useEffect(() => {
+        console.log("logged in user: ", user);
+    }, [user]);
+
     const [isAddOpen, setIsAddOpen] = useState(false);
     const [isUpdateOpen, setIsUpdateOpen] = useState(false);
     const [educators, setEducators] = useState([]);
+    
+    const [submitClicked, setSubmitClicked] = useState(false);
+    
+    const [role, setRole] = useState('educator');
+    const [isDelete, setIsDelete] = useState(false);
+
+    const [email, setEmail] = useState('');
+    const [emailExists, setEmailExists] = useState(false);
+    const [validEmail, setValidEmail] = useState(false);
+    const [emailFocus, setEmailFocus] = useState(false);
+
+    const [username, setUsername] = useState('');
+    // const [validUsername, setValidUsername] = useState(true);
+    const [usernameExists, setUsernameExists] = useState(false);
+    const [usernameFocus, setUsernameFocus] = useState(false);
+
+    const [firstname, setFirstname] = useState('');
+    const [validFirstname, setValidFirstname] = useState(false);
+    const [firstnameFocus, setFirstnameFocus] = useState(false);
+
+    const [lastname, setLastname] = useState('');
+    const [validLastname, setValidLastname] = useState(false);
+    const [lastnameFocus, setLastnameFocus] = useState(false);
+
+    const [pwd, setPwd] = useState('');
+    const [validPwd, setValidPwd] = useState(false);
+    const [pwdFocus, setPwdFocus] = useState(false);
+
+    const [matchPwd, setMatchPwd] = useState('');
+    const [validMatch, setValidMatch] = useState(false);
+    const [matchFocus, setMatchFocus] = useState(false);
+
+    const [errMsg, setErrMsg] = useState(false);
+    const [emptyInput, setEmptyInput] = useState(false);
+
+    const [updateUserId, setUpdateUserId] = useState(null);
+
+    const handleLogout = () => {
+        
+        setUser(null);
+    
+        localStorage.removeItem('user');
+        window.location.href = "/login";
+      };
+    
+    const resetForm = () => {
+        setEmail('');
+        setUsername('');
+        setFirstname('');
+        setLastname('');
+        setPwd('');
+        setMatchPwd('');
+        setErrMsg('');
+        setEmptyInput(false);
+        setSubmitClicked(false);
+        setEmailExists(false);
+        setUsernameExists(false);
+        setValidEmail(false);
+        setValidPwd(false);
+        setValidMatch(false);
+        setValidFirstname(false);
+        setValidLastname(false);
+        setSubmitClicked(false);
+      };
+
+    
+    const handleCloseAddModal = () => {
+        setIsAddOpen(false);
+        resetForm();
+    };
+
+    const handleCloseUpdateModal = () => {
+        setIsUpdateOpen(false);
+        setUpdateUserId(null); // Reset the update user id when the modal is closed
+        resetForm();
+      };
+    
+      const handleEdit = (educator) => {
+        setUpdateUserId(educator.userid);
+        setIsUpdateOpen(true);
+
+        setEmail(educator.email);
+        setUsername(educator.username);
+        setFirstname(educator.firstname);
+        setLastname(educator.lastname);
+        setErrMsg('');
+        setEmptyInput(false);
+        setSubmitClicked(false);
+        setEmailExists(false);
+        setUsernameExists(false);
+        setValidEmail(true);
+        setValidPwd(false);
+        setValidMatch(false);
+        setValidFirstname(true);
+        setValidLastname(true);
+      };
+    useEffect(() => {
+        const result = EMAIL_REGEX.test(email);
+        setValidEmail(result);
+        setEmailExists(false);
+        if (email && EMAIL_REGEX.test(email)) {
+            checkEmailExists();
+        }
+
+        
+    }, [email,]);
 
     useEffect(() => {
-        fetch("https://localhost:8080/user/getAllUsers")
-        .then(res=>res.json())
-        .then((result)=>{
-            setEducators(result);
+        setUsernameExists(false);
+        if (username) {
+          checkUsernameExists();
         }
-        )
-    }, [])
+    }, [username]);
+
+    useEffect(() => {
+        const result = PWD_REGEX.test(pwd);
+        setValidPwd(result);
+        const match = pwd === matchPwd;
+        setValidMatch(match);
+    }, [pwd, matchPwd])
+
+    useEffect(() => {
+        const result1 = NAME_REGEX.test(firstname);
+        const result2 = NAME_REGEX.test(lastname);
+        setValidFirstname(result1);
+        setValidLastname(result2);
+    }, [lastname, firstname])
+
+    const checkUsernameExists = async () => {
+        try {
+            const response = await fetch(`http://localhost:8080/user/checkUsername/${username}`);
+            const data = await response.json();
+    
+            console.log("Username exists:", data.exists);
+            setUsernameExists(data.exists);
+        } catch (error) {
+            console.error('Error checking username existence:', error);
+        }
+    };
+
+    const checkEmailExists = async () => {
+        try {
+          const response = await fetch(`http://localhost:8080/user/checkEmail/${email}`);
+          const data = await response.json();
+    
+          setEmailExists(data.exists);
+        } catch (error) {
+          console.error('Error checking email existence:', error);
+        }
+    };
+
+    const handleSubmitUpdate = async (e) => {
+        e.preventDefault();
+        setSubmitClicked(true);
+    
+        if(submitClicked && (!firstname || !lastname || !matchPwd || !email || !username|| !pwd)){
+            setEmptyInput(true);
+        }
+        
+        const v1 = PWD_REGEX.test(pwd);
+        if(!v1){
+            setErrMsg("Invalid password");
+            console.log(errMsg)
+            return;
+        }
+        const v2 = EMAIL_REGEX.test(email);
+        if(!v2){
+            setErrMsg("Invalid email input")
+            console.log(errMsg)
+            return;
+        }
+        const v3 = NAME_REGEX.test(firstname);
+        if(!v3){
+            setErrMsg("Must use letters only")
+            console.log(errMsg)
+            return;
+        }
+        const v4 = NAME_REGEX.test(lastname);
+        if(!v4){
+            setErrMsg("Must use letters only")
+            console.log(errMsg)
+            return;
+        }
+
+        if(!validMatch){
+            setErrMsg("Must match the first password input field.")
+            console.log(errMsg)
+            return;
+        }
+    
+        const user = {
+          username,
+          email,
+          password: pwd,
+          firstname,
+          lastname,
+          role,
+          isDelete,
+        };
+        console.log("email: ", email);
+    
+        try {
+          const response = await fetch(`http://localhost:8080/user/updateUser?userid=${updateUserId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(user),
+          });
+    
+          if (response.ok) {
+            console.log('User updated successfully:', user);
+            handleCloseUpdateModal();
+          } else {
+            console.error('Update failed:', response.statusText);
+          }
+        } catch (error) {
+          console.error('Error during update:', error.message);
+        }
+        handleCloseUpdateModal();
+    };
+
+    useEffect(() => {
+        fetch("http://localhost:8080/user/getAllUsers")
+          .then((res) => res.json())
+          .then((result) => {
+            const activeEducators = result.filter(
+              (user) => !user.isDelete && user.role === 'educator'
+            );
+      
+            setEducators(activeEducators);
+            const deletedUsers = result.filter(
+              (user) =>
+                user.isDelete &&
+                (user.username ||
+                  user.email ||
+                  user.password ||
+                  user.firstname ||
+                  user.lastname ||
+                  user.role)
+            );
+      
+            if (deletedUsers.length > 0) {
+              for (let i = 0; i < deletedUsers.length; i++) {
+                const userIdToDelete = deletedUsers[i].userid;
+                handleDelete(userIdToDelete);
+              }
+              console.log('Deleted users with values in other columns:', deletedUsers);
+            }
+          })
+          .catch((error) => {
+            console.error('Error fetching users:', error);
+          });
+      }, []);
+
+    const handleDelete = (userid) => {
+        fetch(`http://localhost:8080/user/removeUser?userid=${userid}`, {
+            method: 'PUT',
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                console.log('User removed successfully:', result);
+            })
+            .catch((error) => {
+                console.error('Error removing user:', error);
+            });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setSubmitClicked(true);
+        
+        if(submitClicked && (!firstname || !lastname || !matchPwd || !email || !username)){
+            setEmptyInput(true);
+        }
+        
+        const v1 = PWD_REGEX.test(pwd);
+        if(!v1){
+            setErrMsg("Invalid password");
+            console.log(errMsg)
+            return;
+        }
+        if (emailExists) {
+            setErrMsg("Email address already exists!");
+            setSubmitClicked(false);
+            console.log("errMsg2: ",errMsg)
+            return;
+        }
+        console.log("username exists? ", usernameExists)
+        if (usernameExists) {
+            setErrMsg("Username already exists!");
+            setSubmitClicked(false);
+            console.log("errMsg2: ", errMsg)
+            return;
+        }
+        const v2 = EMAIL_REGEX.test(email);
+        if(!v2){
+            setErrMsg("Invalid email input")
+            console.log(errMsg)
+            return;
+        }
+        const v3 = NAME_REGEX.test(firstname);
+        if(!v3){
+            setErrMsg("Must use letters only")
+            console.log(errMsg)
+            return;
+        }
+        const v4 = NAME_REGEX.test(lastname);
+        if(!v4){
+            setErrMsg("Must use letters only")
+            console.log(errMsg)
+            return;
+        }
+        if(!validMatch){
+            setErrMsg("Must match the first password input field.")
+            console.log(errMsg)
+            return;
+        }
+        const user = {username, email, password: pwd, firstname, lastname, role, isDelete}
+        console.log("user: ", user);
+        try {
+            const response = await fetch("http://localhost:8080/user/insertUser", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(user),
+            });
+
+    
+            if (response.ok) {
+                
+                const userData = await response.json();
+                console.log("New User Registered: ", userData);
+            } else {
+                console.error('Registration failed:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error during registration:', error.message);
+        }
+
+        handleCloseAddModal();
+        
+    }
+
+    const isAdmin =
+    user &&
+    user.userid === 1 &&
+    user.email === 'admin@cit.edu' &&
+    user.username === 'admin' &&
+    user.firstname === 'code' &&
+    user.lastname === 'tech' &&
+    user.password === 'CodeTech!23' &&
+    user.isDelete === false &&
+    user.role === 'admin';
+
+    if (!isAdmin) {
+        return (
+            <main className='a-notadmin-main'>
+            <div className='a-notadmin-container'>
+                <form className='a-notadmin-form'>
+                    <h1 style={{fontSize:'35px',textAlign:'center'}}>Off Access!</h1>
+                    <div style={{marginTop:'10px', marginBottom:'20px', textAlign:'center', padding:"0 10px"}}>
+                        <span className="small-text">This page is for admin-only access. You don't have the necessary privileges to view this content.</span>
+                    </div>
+                    <Link to="/login" className='link-btn'>
+                        <button className="btn">Go to login</button>
+                    </Link>
+                </form>
+            </div>
+        </main>
+        );
+    }
     return(
         <main style={{ display: 'flex' }}>
 
@@ -62,7 +433,7 @@ function Educator() {
                     </Link>
                 </li>
                 <li className="a-logout">
-                    <Link to="/#" className='a-link-text'>
+                    <Link to="/#" className='a-link-text' onClick={handleLogout}>
                         <FontAwesomeIcon icon={faSignOut} style={{fontSize:"1.2rem"}} />
                         <span>Logout</span>
                     </Link>
@@ -86,28 +457,351 @@ function Educator() {
             </div>
 
             <div className="a-card-container">
-                <h3 className="a-main-title">Today's data</h3>
-                <div className="a-card-wrapper ">
-                    <div className="a-table">
-                        <Paper elevation={3} style={paperStyle}>
-                            {educators.map(educator=>(
-                                <Paper elevation={6} style={{margin:"10px", padding:"15px",textAlign:"left"}} key={educator.userid}>
-                                    UserID: {educator.userid}
-                                    Username: {educator.username}
-                                    Email: {educator.email}
-                                    Password: {educator.password}
-                                    Firstname: {educator.firstname}
-                                    Lastname: {educator.lastname}
-                                    Role: {educator.role}
-                                    IsDeleted: {educator.isdeleted}
-                                </Paper>
-                            ))}
-                        </Paper>
-                    </div>
+                    {/* <div className="a-card-wrapper"> */}
+                        {/* <Paper elevation={3} style={paperStyle}> */}
+
+                        <div className="a-add-educator-btn">
+                            <button className="a-add-btn-educator" onClick={() => setIsAddOpen(true)}>
+                                Add +
+                            </button>
+                        </div>
+                        {educators.length === 0 ? (
+                            <div className="a-no-educators">
+                                <p>There are currently no active educators...</p>
+                            </div>
+                        ) : (
+                            <div style={{ overflowX: 'auto' }}>
+                            <table className="a-table">
+                                <thead>
+                                <tr>
+                                    <th>User ID</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Password</th>
+                                    <th>Firstname</th>
+                                    <th>Lastname</th>
+                                    <th>Role</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {educators.map((educator) => (
+                                    <tr key={educator.userid}>
+                                    <td>{educator.userid}</td>
+                                    <td>{educator.username}</td>
+                                    <td>{educator.email}</td>
+                                    <td>{educator.password}</td>
+                                    <td>{educator.firstname}</td>
+                                    <td>{educator.lastname}</td>
+                                    <td>{educator.role}</td>
+                                    <td>
+                                        <button className="a-btn-educator "
+                                        onClick={() => handleEdit(educator)}
+                                        >
+                                        Edit
+                                        </button>
+                                        <button className="a-btn-educator a-red-bg"
+                                        onClick={() => handleDelete(educator.userid)}
+                                        >
+                                        Delete
+                                        </button>
+                                    </td>
+                                    </tr>
+                                ))}
+                                </tbody>
+                            </table>
+                            </div>
+                        )}
+                            
+                        {/* </Paper> */}
+                    {/* </div> */}
+                </div>
+        </div>
+        {isAddOpen && (
+        <Modal onClose={handleCloseAddModal}>
+          <div>
+            
+            <p style={{ fontSize: '25px', fontWeight: 'bold', backgroundColor: 'white', marginBottom: '0px' }}>Add New Educator</p>
+            <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Email Address</p>
+            <input
+            className={`a-input ${emailFocus && email && !validEmail ? 'invalid' : ''}`}
+            type="text"
+            id="email"
+            autoComplete="off"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            aria-invalid={validEmail ? "false" : "true"}
+            aria-describedby="uidnote"
+            onFocus={()=> setEmailFocus(true)}
+            onBlur={()=> setEmailFocus(false)}
+            />
+            
+            {submitClicked && email && !validEmail ? (
+                <p id="uidnote" className="instructions instructions-shake">
+                    <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
+                    Invalid email
+                </p>
+            ) : null}
+
+            <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Username</p>
+            <input
+            className={`a-input ${usernameFocus && username && usernameExists ? 'invalid' : ''}`}
+            type="text"
+            id="username"
+            autoComplete="off"
+            required
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            aria-invalid={!usernameExists ? "false" : "true"}
+            aria-describedby="uidnote"
+            onFocus={()=> setUsernameFocus(true)}
+            onBlur={()=> setUsernameFocus(false)}
+            />
+            
+            {submitClicked && email && !validEmail ? (
+                <p id="uidnote" className="instructions instructions-shake">
+                    <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
+                    Invalid email
+                </p>
+            ) : null}
+
+            <div className="a-names-input">
+                <div>
+                    <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Firstname</p>
+                    <input
+                        className={`a-input ${firstnameFocus && firstname && validFirstname ? '' : 'invalid'}`}
+                        type="text"
+                        id="firstname"
+                        autoComplete="off"
+                        required
+                        value={firstname}
+                        onChange={(e) => setFirstname(e.target.value)}
+                        aria-invalid={!validFirstname}
+                        onFocus={() => setFirstnameFocus(true)}
+                        onBlur={() => setFirstnameFocus(false)}
+                    />
+                    {submitClicked && !firstname && !validFirstname  ? (
+                        <p id="uidnote" className="instructions instructions-shake">
+                            <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
+                            Firstname is required
+                        </p>
+                    ) : null}
+                </div>
+
+                <div>
+                    <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Lastname</p>
+                    <input
+                        className={`a-input ${lastnameFocus && lastname && validLastname ? '' : 'invalid'}`}
+                        type="text"
+                        id="lastname"
+                        autoComplete="off"
+                        required
+                        value={lastname}
+                        onChange={(e) => setLastname(e.target.value)}
+                        aria-invalid={!validLastname}
+                        onFocus={() => setLastnameFocus(true)}
+                        onBlur={() => setLastnameFocus(false)}
+                    />
+                    {submitClicked && !lastname ? (
+                        <p id="uidnote" className="instructions instructions-shake">
+                            <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
+                            Lastname is required
+                        </p>
+                    ) : null}
                 </div>
             </div>
-        </div>
-        
+
+            <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Password</p>
+            <input
+            className={`a-input ${pwdFocus && pwd && !validPwd ? 'invalid' : ''}`}
+            type="password"
+            id="pwd"
+            autoComplete="off"
+            required
+            onChange={(e) => setPwd(e.target.value)}
+            aria-invalid={validPwd ? "false" : "true"}
+            aria-describedby="uidnote"
+            onFocus={()=> setPwdFocus(true)}
+            onBlur={()=> setPwdFocus(false)}
+            />
+            
+            {submitClicked && pwd && !validPwd ? (
+                <p id="uidnote" className="instructions instructions-shake">
+                    <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
+                    Must be at least 8 characters and include lowercase, uppercase, number, and a special character.
+                </p>
+            ) : null}
+
+            <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Confirm Password</p>
+            <input
+            className={`a-input ${matchFocus && matchPwd && !validMatch ? 'invalid' : ''}`}
+            type="password"
+            id="confirmpwd"
+            autoComplete="off"
+            required
+            onChange={(e) => setMatchPwd(e.target.value)}
+            aria-invalid={validMatch ? "false" : "true"}
+            aria-describedby="uidnote"
+            onFocus={()=> setMatchFocus(true)}
+            onBlur={()=> setMatchFocus(false)}
+            />
+            
+            {submitClicked && matchPwd && !validMatch ? (
+                <p id="uidnote" className="instructions instructions-shake">
+                    <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
+                    Must match the first password input field.
+                </p>
+            ) : null}
+            
+            <button className='submit' type="submit" onClick={handleSubmit}>Add</button> <br></br>
+          </div>
+        </Modal>
+      )}
+
+        {isUpdateOpen && (
+        <Modal onClose={handleCloseUpdateModal}>
+          <div>
+            <p style={{ fontSize: '25px', fontWeight: 'bold', backgroundColor: 'white', marginBottom: '0px' }}>
+              Update Educator
+            </p>
+            <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Email Address</p>
+            <input
+            className={`a-input ${emailFocus && email && !validEmail ? 'invalid' : ''}`}
+            type="text"
+            id="email"
+            autoComplete="off"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            aria-invalid={validEmail ? "false" : "true"}
+            aria-describedby="uidnote"
+            onFocus={()=> setEmailFocus(true)}
+            onBlur={()=> setEmailFocus(false)}
+            />
+            
+            {submitClicked && email && !validEmail ? (
+                <p id="uidnote" className="instructions instructions-shake">
+                    <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
+                    Invalid email
+                </p>
+            ) : null}
+
+            <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Username</p>
+            <input
+            className={`a-input ${usernameFocus && username && usernameExists ? 'invalid' : ''}`}
+            type="text"
+            id="username"
+            autoComplete="off"
+            required
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            aria-invalid={!usernameExists ? "false" : "true"}
+            aria-describedby="uidnote"
+            onFocus={()=> setUsernameFocus(true)}
+            onBlur={()=> setUsernameFocus(false)}
+            />
+            
+            {submitClicked && email && !validEmail ? (
+                <p id="uidnote" className="instructions instructions-shake">
+                    <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
+                    Invalid email
+                </p>
+            ) : null}
+
+            <div className="a-names-input">
+                <div>
+                    <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Firstname</p>
+                    <input
+                        className={`a-input ${firstnameFocus && firstname && validFirstname ? '' : 'invalid'}`}
+                        type="text"
+                        id="firstname"
+                        autoComplete="off"
+                        required
+                        value={firstname}
+                        onChange={(e) => setFirstname(e.target.value)}
+                        aria-invalid={!validFirstname}
+                        onFocus={() => setFirstnameFocus(true)}
+                        onBlur={() => setFirstnameFocus(false)}
+                    />
+                    {submitClicked && !firstname && !validFirstname  ? (
+                        <p id="uidnote" className="instructions instructions-shake">
+                            <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
+                            Firstname is required
+                        </p>
+                    ) : null}
+                </div>
+
+                <div>
+                    <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Lastname</p>
+                    <input
+                        className={`a-input ${lastnameFocus && lastname && validLastname ? '' : 'invalid'}`}
+                        type="text"
+                        id="lastname"
+                        autoComplete="off"
+                        required
+                        value={lastname}
+                        onChange={(e) => setLastname(e.target.value)}
+                        aria-invalid={!validLastname}
+                        onFocus={() => setLastnameFocus(true)}
+                        onBlur={() => setLastnameFocus(false)}
+                    />
+                    {submitClicked && !lastname ? (
+                        <p id="uidnote" className="instructions instructions-shake">
+                            <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
+                            Lastname is required
+                        </p>
+                    ) : null}
+                </div>
+            </div>
+
+            <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Password</p>
+            <input
+            className={`a-input ${pwdFocus && pwd && !validPwd ? 'invalid' : ''}`}
+            type="password"
+            id="pwd"
+            autoComplete="off"
+            required
+            onChange={(e) => setPwd(e.target.value)}
+            aria-invalid={validPwd ? "false" : "true"}
+            aria-describedby="uidnote"
+            onFocus={()=> setPwdFocus(true)}
+            onBlur={()=> setPwdFocus(false)}
+            />
+            
+            {submitClicked && pwd && !validPwd ? (
+                <p id="uidnote" className="instructions instructions-shake">
+                    <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
+                    Must be at least 8 characters and include lowercase, uppercase, number, and a special character.
+                </p>
+            ) : null}
+
+            <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Confirm Password</p>
+            <input
+            className={`a-input ${matchFocus && matchPwd && !validMatch ? 'invalid' : ''}`}
+            type="password"
+            id="confirmpwd"
+            autoComplete="off"
+            required
+            onChange={(e) => setMatchPwd(e.target.value)}
+            aria-invalid={validMatch ? "false" : "true"}
+            aria-describedby="uidnote"
+            onFocus={()=> setMatchFocus(true)}
+            onBlur={()=> setMatchFocus(false)}
+            />
+            
+            {submitClicked && matchPwd && !validMatch ? (
+                <p id="uidnote" className="instructions instructions-shake">
+                    <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
+                    Must match the first password input field.
+                </p>
+            ) : null}
+            <button className="submit" type="submit" onClick={handleSubmitUpdate}>
+              Update
+            </button>
+          </div>
+        </Modal>
+      )}
         
         </main>
     );

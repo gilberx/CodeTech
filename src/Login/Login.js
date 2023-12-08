@@ -2,7 +2,7 @@ import './Login.css';
 import { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle} from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import UserContext from '../Register/UserContext';
 const Login = () => {
@@ -25,7 +25,29 @@ const Login = () => {
 
     useEffect(() => {
         console.log("logged in user: ", user);
+        const isAdmin =
+        user &&
+        user.userid === 1 &&
+        user.email === 'admin@cit.edu' &&
+        user.username === 'admin' &&
+        user.firstname === 'code' &&
+        user.lastname === 'tech' &&
+        user.password === 'CodeTech!23' &&
+        user.isDelete === false &&
+        user.role === 'admin';
+
+        if (isAdmin) {
+            handleDashboardRedirect();
+            return;
+        }
     }, [user]);
+
+    const handleDashboardRedirect = () => {
+        // Perform any additional actions needed before navigating to /dashboard
+        console.log('Navigating to /dashboard...');
+        // You can add any other logic here before navigating
+        window.location.href = '/dashboard'; // This changes the URL directly
+    };
     useEffect(() => {
         setValidUsername(true);
         setValidPwd(true);
@@ -35,6 +57,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         setSubmitClicked(true);
+        
 
         if(submitClicked && (!pwd || !username)){
             setEmptyInput(true);
@@ -50,6 +73,8 @@ const Login = () => {
             setValidPwd(false);
             return;
         }
+
+
 
         try {
             const response = await fetch('http://localhost:8080/user/authenticate', {
@@ -90,7 +115,11 @@ const Login = () => {
             // Handle fetch error
             console.error('Error:', error);
         }
+
+        
     };
+
+    
     
     return (
         <main className='login-main-bg'>

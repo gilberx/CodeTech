@@ -20,7 +20,7 @@ const Register = () => {
     const [submitClicked, setSubmitClicked] = useState(false);
     
     const [role, setRole] = useState('learner');
-    const [isdeleted, setIsDeleted] = useState(false);
+    const [isDelete, setIsDelete] = useState(false);
 
     const [email, setEmail] = useState('');
     const [emailExists, setEmailExists] = useState(false);
@@ -50,6 +50,8 @@ const Register = () => {
 
     const [errMsg, setErrMsg] = useState(false);
     const [emptyInput, setEmptyInput] = useState(false);
+
+    
 
     useEffect(() => {
         if(userRef.current){
@@ -177,7 +179,7 @@ const Register = () => {
             console.log(errMsg)
             return;
         }
-        const user = {username, email, password: pwd, firstname, lastname, role, isdeleted}
+        const user = {username, email, password: pwd, firstname, lastname, role, isDelete}
         console.log("user: ", user);
         try {
             const response = await fetch("http://localhost:8080/user/insertUser", {

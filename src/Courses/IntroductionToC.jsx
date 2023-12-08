@@ -37,6 +37,7 @@ function Courses() {
   const [isDrawerOpen3, setDrawerOpen3] = React.useState(false);
   const [isDrawerOpen4, setDrawerOpen4] = React.useState(false);
   const [isDrawerOpen5, setDrawerOpen5] = React.useState(false);
+  const [isCourseTaken, setIsCourseTaken] = React.useState(false);
 
 
   const toggleDrawer1 = () => {
@@ -79,6 +80,11 @@ function Courses() {
   useEffect(() => {
     document.title = "CodeTech";
   }, []);
+
+  const handleTakeCourse = () => {
+    setIsCourseTaken(true);
+    // Add any other logic you need when the course is taken
+  };
 
   return (
     <div class='introC'>
@@ -324,7 +330,8 @@ function Courses() {
         width:'200px',
         fontSize:'20px',
         borderRadius:'30px',
-        boxShadow:'0px 2px 4px rgba(0,0,0,0.2)'}}>Take Course</Button>
+        boxShadow:'0px 2px 4px rgba(0,0,0,0.2)'}}
+        onClick={handleTakeCourse}>Take Course</Button>
       </div>
       <div style={{display:'flex', 
       justifyContent:'center', 
@@ -338,7 +345,7 @@ function Courses() {
         </button>
         {isDrawerOpen1 && (
           <div>
-            <Paper class='papercontainer'>
+            <Paper class='papercontainer' style={{display:'flex', flexDirection:'column', alignItems:'center', paddingTop:'10px', paddingBottom:'10px', height:'auto'}}>
               <div style={{display:'flex', flexDirection:'row'}}>
                 <div style={{display:'flex', justifyContent:'left', alignItems:'center', maxWidth:'80%'}}>
                   <img src='./lessonlogo.png' style={{height:'30px'}}/>
@@ -350,8 +357,28 @@ function Courses() {
                   <img src='lessonlocklogo.png' style={{height:'30px', marginLeft:'210px'}}/>
                 </div>
               </div>
+              <div>
+              {isCourseTaken && (
+                  <Button
+                    style={{
+                      width: '350px',
+                      height: '40px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      backgroundColor: '#458C83',
+                      borderRadius: '20px',
+                      color: '#FFFFFF',
+                      fontFamily: 'Montserrat, sans-serif',
+                      marginTop: '5px',
+                    }}
+                  >
+                    Learn
+                  </Button>
+                )}
+              </div>
             </Paper>
-            <Paper class='papercontainer'>
+            <Paper class='papercontainer' style={{display:'flex', flexDirection:'column', alignItems:'center', paddingTop:'10px', paddingBottom:'10px', height:'auto'}}>
               <div style={{display:'flex', flexDirection:'row'}}>
                 <div style={{display:'flex', justifyContent:'left', alignItems:'center', maxWidth:'80%'}}>
                   <img src='./lessonlogo.png' style={{height:'30px'}}/>
@@ -362,6 +389,26 @@ function Courses() {
                 <div style={{display:'flex', justifyContent:'right', alignItems:'center'}}>
                   <img src='lessonlocklogo.png' style={{height:'30px', marginLeft:'198px'}}/> 
                 </div>
+              </div>
+              <div>
+              {isCourseTaken && (
+                  <Button
+                    style={{
+                      width: '350px',
+                      height: '40px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      backgroundColor: '#458C83',
+                      borderRadius: '20px',
+                      color: '#FFFFFF',
+                      fontFamily: 'Montserrat, sans-serif',
+                      marginTop: '5px',
+                    }}
+                  >
+                    Learn
+                  </Button>
+                )}
               </div>
             </Paper>
             <Paper class='papercontainer'>

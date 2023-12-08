@@ -155,6 +155,10 @@ input:valid{
     border: 2px solid #458C83;
 }
 
+.input.invalid:focus {
+    border: 2px solid red;
+}
+
 input:focus + .labelline,
 input:valid + .labelline{
     color: #458C83;
@@ -172,6 +176,7 @@ input:valid + .labelline{
 
 .input-side-by-side .input-div {
     flex: 1;
+    width: 245px;
 }
 
 
@@ -179,6 +184,7 @@ input:valid + .labelline{
 .input-side-by-side input:valid{
     border: 2px solid #458C83;
 }
+
 
 .input-side-by-side input:focus + .labelline,
 .input-side-by-side input:valid + .labelline{
@@ -254,4 +260,39 @@ input:valid + .labelline{
         color: #75afa7;
         font-weight: 600;
       }
+}
+
+.instructions {
+    color: red;
+    font-size: 0.6rem; /* Adjust the font size as needed */
+    padding-top: 5px;
+    margin-left: 5px;
+}
+
+.instructions-name {
+    color: red;
+    font-size: 0.6rem; /* Adjust the font size as needed */
+    margin-top: 5px; /* Adjust the margin as needed */
+    margin-left: 5px;
+}
+
+.offscreen {
+    position: absolute;
+    left: -9999px;
+}
+
+.instructions-shake {
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
 }

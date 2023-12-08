@@ -9,6 +9,12 @@ import { UserProvider } from './Register/UserContext'; // Import the UserProvide
 import Dashboard from './Admin/Dashboard.jsx';
 import '@fortawesome/fontawesome-free/css/all.css';
 import Educator from './Admin/Educator.jsx';
+import Courses from './Courses/Courses.jsx'
+import Courses2 from './Courses/BeginnerCourse.jsx'
+import Courses3 from './Courses/IntermediateCourse.jsx'
+import IntroductionToC from './Courses/IntroductionToC.jsx'
+import IntroductionToCSharp from './Courses/IntroductionToCSharp.jsx'
+import IntroductionToCplusplus from './Courses/IntroductionToCplusplus.jsx'
 
 function App() {
   return (
@@ -22,6 +28,12 @@ function App() {
           <Route path="/getcode" element={<ResetPassword />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/educator" element={<Educator />} />
+          <Route path="/Courses" element={<Courses/>}/>
+          <Route path="/Courses=BeginnerPage" element={<Courses2/>}/>
+          <Route path="/Courses=IntermediatePage" element={<Courses3/>}/>
+          <Route path="/Courses=IntroductionToC" element={<IntroductionToC/>}/>
+          <Route path="/Courses=IntroductionToCSharp" element={<IntroductionToCSharp/>}/>
+          <Route path="/Courses=IntroductionToCplusplus" element={<IntroductionToCplusplus/>}/>
         </Routes>
       </UserProvider>
     </Router>

@@ -30,7 +30,7 @@ const Navbar = () => {
   const pages = ['Join a Class', 'Courses', 'How it Works', 'About Us'];
   return (
     <div>
-      <AppBar position="fixed" style={{ backgroundColor: '#212121', 
+      <AppBar position="fixed" style={{backgroundColor: '#212121', 
         width: '80%', 
         borderRadius: '40px', 
         boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2)',
@@ -53,7 +53,7 @@ const Navbar = () => {
               variant="h6"
               noWrap
               component="a"
-              href="#app-bar-with-responsive-menu"
+              onClick={() => navigate('/')}
               sx={{
                 display: { xs: 'none', md: 'flex' },
                 fontFamily: 'Inter, sans-serif',
@@ -124,10 +124,8 @@ const Navbar = () => {
               CodeTech
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              {pages.map((page) => (
                 <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
+                  onClick={() => navigate('/register')}
                   sx={{fontFamily: 'Inter, sans-serif',
                   color: 'inherit',
                   fontSize: '14px',
@@ -142,9 +140,62 @@ const Navbar = () => {
                   textTransform: 'none',
                   marginBottom: '20px' }}
                 >
-                  {page}
+                  Join a Class
                 </Button>
-              ))}
+                <Button
+                  onClick={() => navigate('/Courses')}
+                  sx={{fontFamily: 'Inter, sans-serif',
+                  color: 'inherit',
+                  fontSize: '14px',
+                  my: 2, 
+                  color: 'white', 
+                  display: 'block', 
+                  mr: 4,
+                  textTransform: 'none', 
+                  borderRadius: '25px',
+                  width: '125px',
+                  height: '28px',
+                  textTransform: 'none',
+                  marginBottom: '20px' }}
+                >
+                  Courses
+                </Button>
+                <Button
+                  onClick={() => navigate('/register')}
+                  sx={{fontFamily: 'Inter, sans-serif',
+                  color: 'inherit',
+                  fontSize: '14px',
+                  my: 2, 
+                  color: 'white', 
+                  display: 'block', 
+                  mr: 4,
+                  textTransform: 'none', 
+                  borderRadius: '25px',
+                  width: '125px',
+                  height: '28px',
+                  textTransform: 'none',
+                  marginBottom: '20px' }}
+                >
+                  How it Works
+                </Button>
+                <Button
+                  onClick={() => navigate('/register')}
+                  sx={{fontFamily: 'Inter, sans-serif',
+                  color: 'inherit',
+                  fontSize: '14px',
+                  my: 2, 
+                  color: 'white', 
+                  display: 'block', 
+                  mr: 4,
+                  textTransform: 'none', 
+                  borderRadius: '25px',
+                  width: '125px',
+                  height: '28px',
+                  textTransform: 'none',
+                  marginBottom: '20px' }}
+                >
+                  About Us
+                </Button>
             </Box>
             <Box>
                 <Button onClick={() => navigate('/register')}

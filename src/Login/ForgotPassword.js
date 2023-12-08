@@ -1,8 +1,13 @@
 import './ForgotPassword.css';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 
 const ForgotPassword = () =>{
+
+    useEffect(() => {
+        document.title = "CodeTech";
+      }, []);
     
     return(
         <main className='forgot-main'>

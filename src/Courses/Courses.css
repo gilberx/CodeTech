@@ -1,0 +1,7 @@
+.courses-main-bg {
+    background-image: url(/public/CoursesBackgroud.png);
+    background-size: cover;
+    background-position: center;
+    height: 208vh;
+    max-width: 100%;
+  }

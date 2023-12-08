@@ -5,7 +5,7 @@ import JoinCreate from './JoinCreate';
 import AddQuiz from './AddQuiz';
 import Class from './Class'
 import AddLesson from './AddLesson'
-
+import AboutUs  from './AboutUs'
 
 
 function App() {
@@ -17,6 +17,7 @@ function App() {
         <Route path="/Class" element={<Class />} />
         <Route path="/AddQuiz" element={<AddQuiz />} />
         <Route path="/AddLesson" element={<AddLesson />} />
+        <Route path="/AboutUs" element={<AboutUs/>} />
       </Routes>
     </Router>
     

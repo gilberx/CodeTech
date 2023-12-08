@@ -1,0 +1,92 @@
+body {
+  background-color: #F0F0F0;
+  color: black;
+  font-family: 'Montserrat';
+}
+
+.line {
+  width: 90%;
+  margin-top: 10px;
+  opacity: 40%;
+  color: #EDEDED;
+}
+
+.Create {
+  background-color: rgba(69, 140, 131, 0.5);
+  font-size: 22px;
+  margin-left: 100px;
+  border: none;
+  border-radius: 20px;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 25px;
+  position: relative;
+  margin-top: 50px;
+  display: inline-block;
+  font-weight: bold;
+  color: #353535;
+}
+
+.Join {
+  background-color: rgba(69, 140, 131, 0.5);
+  font-size: 22px;
+  margin-left: 100px;
+  border: none;
+  border-radius: 20px;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 25px;
+  position: relative;
+  margin-top: 50px;
+  display: inline-block;
+  font-weight: bold;
+  color: #353535;
+  margin-left: 30px;
+}
+
+.entercode {
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 15px;
+  border: none;
+  font-weight: bold;
+}
+
+.Joinbutton {
+  margin-top: 70px;
+  width: 200px;
+  height: 50px;
+  border-radius: 54px;
+  border: none;
+  background-color: #458C83;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.Createbutton {
+  margin-top: 170px;
+  width: 200px;
+  height: 50px;
+  border-radius: 54px;
+  border: none;
+  background-color: #458C83;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.footer {
+  margin-top: 400px;
+  text-align: center;
+}

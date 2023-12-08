@@ -2,11 +2,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useState, useRef, useEffect, useContext,  } from 'react';
 import "./Admin.css";
 import { faTachometerAlt, faChalkboardTeacher, faUserGraduate, faBook, faExclamationTriangle, faSignOut } from '@fortawesome/free-solid-svg-icons';
 
 
 function Educator() {
+
+    const [educators, setEducators] = useState([])
     return(
         <main style={{ display: 'flex' }}>
 
@@ -73,92 +76,7 @@ function Educator() {
             <div className="a-card-container">
                 <h3 className="a-main-title">Today's data</h3>
                 <div className="a-card-wrapper ">
-                    <div className="a-payment-card a-light-red">
-                        <div className="a-card-header">
-                            <div className="a-amount">
-                                <span className="a-title">Total Educator</span>
-                                <span className="a-amount-value">50</span>
-
-                            </div>
-                            <FontAwesomeIcon icon={faChalkboardTeacher} 
-                                style={{
-                                    color:"#fff", 
-                                    padding: "1rem", 
-                                    height: "30px", 
-                                    width: "30px", 
-                                    textAlign: "center",
-                                    borderRadius: "50%",
-                                    fontSize: "0.5rem",
-                                    background: "red"}}>
-
-                            </FontAwesomeIcon>
-                        </div>
-                    </div>
-                    <div className="a-payment-card a-light-purple">
-                        <div className="a-card-header">
-                            <div className="a-amount">
-                                <span className="a-title">Total Learner</span>
-                                <span className="a-amount-value">50</span>
-
-                            </div>
-                            <FontAwesomeIcon icon={faUserGraduate} 
-                                style={{
-                                    color:"#fff", 
-                                    padding: "1rem", 
-                                    height: "30px", 
-                                    width: "30px", 
-                                    textAlign: "center",
-                                    borderRadius: "50%",
-                                    fontSize: "0.5rem",
-                                    background: "purple"}}>
-
-                            </FontAwesomeIcon>
-                        </div>
-                    </div>
-
-                    <div className="a-payment-card a-light-green">
-                        <div className="a-card-header">
-                            <div className="a-amount">
-                                <span className="a-title">Total Courses</span>
-                                <span className="a-amount-value">50</span>
-
-                            </div>
-                            <FontAwesomeIcon icon={faBook} 
-                                style={{
-                                    color:"#fff", 
-                                    padding: "1rem", 
-                                    height: "30px", 
-                                    width: "30px", 
-                                    textAlign: "center",
-                                    borderRadius: "50%",
-                                    fontSize: "0.5rem",
-                                    background: "green"}}>
-
-                            </FontAwesomeIcon>
-                        </div>
-                    </div>
-
-                    <div className="a-payment-card a-light-blue">
-                        <div className="a-card-header">
-                            <div className="a-amount">
-                                <span className="a-title">Total Tickets</span>
-                                <span className="a-amount-value">50</span>
-
-                            </div>
-                            <FontAwesomeIcon icon={faExclamationTriangle} 
-                                style={{
-                                    color:"#fff", 
-                                    padding: "1rem", 
-                                    height: "30px", 
-                                    width: "30px", 
-                                    textAlign: "center",
-                                    borderRadius: "50%",
-                                    fontSize: "0.5rem",
-                                    background: "blue"}}>
-
-                            </FontAwesomeIcon>
-                        </div>
-                    </div>
+                    <div className="a-table"></div>
                 </div>
             </div>
         </div>

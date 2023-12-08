@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import './App.css';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 

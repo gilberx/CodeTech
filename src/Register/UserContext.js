@@ -12,7 +12,7 @@ export const UserProvider = ({ children }) => {
       console.log("logged in user(usercontext): ", user);
     }
     
-  }, []);
+  }, [user]);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

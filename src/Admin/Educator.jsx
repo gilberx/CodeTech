@@ -5,11 +5,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useRef, useEffect, useContext,  } from 'react';
 import "./Admin.css";
 import { faTachometerAlt, faChalkboardTeacher, faUserGraduate, faBook, faExclamationTriangle, faSignOut } from '@fortawesome/free-solid-svg-icons';
+import { Paper } from "@mui/material";
 
 
 function Educator() {
+    const paperStyle={padding:"50px 20px", width:"600", margin:"20px auto"}
+    const [isAddOpen, setIsAddOpen] = useState(false);
+    const [isUpdateOpen, setIsUpdateOpen] = useState(false);
+    const [educators, setEducators] = useState([]);
 
-    const [educators, setEducators] = useState([])
+    useEffect(() => {
+        fetch("https://localhost:8080/user/getAllUsers")
+        .then(res=>res.json())
+        .then((result)=>{
+            setEducators(result);
+        }
+        )
+    }, [])
     return(
         <main style={{ display: 'flex' }}>
 
@@ -76,11 +88,26 @@ function Educator() {
             <div className="a-card-container">
                 <h3 className="a-main-title">Today's data</h3>
                 <div className="a-card-wrapper ">
-                    <div className="a-table"></div>
+                    <div className="a-table">
+                        <Paper elevation={3} style={paperStyle}>
+                            {educators.map(educator=>(
+                                <Paper elevation={6} style={{margin:"10px", padding:"15px",textAlign:"left"}} key={educator.userid}>
+                                    UserID: {educator.userid}
+                                    Username: {educator.username}
+                                    Email: {educator.email}
+                                    Password: {educator.password}
+                                    Firstname: {educator.firstname}
+                                    Lastname: {educator.lastname}
+                                    Role: {educator.role}
+                                    IsDeleted: {educator.isdeleted}
+                                </Paper>
+                            ))}
+                        </Paper>
+                    </div>
                 </div>
             </div>
         </div>
-
+        
         
         </main>
     );

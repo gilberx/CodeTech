@@ -16,7 +16,6 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { useEffect } from 'react';
 import Navbar from './Navbar';
-import Navbar2 from './Navbar2';
 
 
 
@@ -55,7 +54,7 @@ function ResponsiveAppBar() {
   return (
     <div>
       <div>
-        <Navbar2/>
+        <Navbar/>
       </div>
       <div style={{ marginTop: '180px',
         display: 'flex', 

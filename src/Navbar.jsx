@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 
+  const { user, setUser } = useContext(UserContext);
   const faviconPath = process.env.PUBLIC_URL + '/favicon.ico';
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
@@ -197,39 +198,67 @@ const Navbar = () => {
                   About Us
                 </Button>
             </Box>
-            <Box>
-                <Button onClick={() => navigate('/register')}
-                sx={{
-                  color: 'white',
-                  display: 'block',
-                  mr: 2,
-                  border: '2px solid white',
-                  borderRadius: '25px',
-                  width: '115px',
-                  height: '40px',
-                  textTransform: 'none',
-                  fontSize: '14px'
-                }}>
-                  Sign Up
-                </Button>
-            </Box>
-            <Box>
-                <Button onClick={() => navigate('/login')}
-                sx={{
-                  my: 2,
-                  backgroundColor: '#458C83',
-                  color: 'white',
-                  display: 'block',
-                  borderRadius: '25px',
-                  width: '115px',
-                  height: '40px',
-                  textTransform: 'none',
-                  fontWeight: '800',
-                  fontSize: 16
-                }}>
-                  Login
-                </Button>
-            </Box>
+            {user !== null ? (
+              // If user is not null, show these elements
+              <>
+                <Box>
+                  <Button onClick={() => navigate('/login')}
+                    sx={{
+                      my: 2,
+                      backgroundColor: '#458C83',
+                      color: 'white',
+                      display: 'block',
+                      borderRadius: '25px',
+                      width: '115px',
+                      height: '40px',
+                      fontWeight: '800',
+                      fontSize: 16
+                    }}>
+                    Learner
+                  </Button>
+                </Box>
+                <Box>
+                  <img src="./ProfileLogo.png" style={{ height: '50px', marginTop: 4 }} />
+                </Box>
+              </>
+            ) : (
+              // If user is null, show these elements
+              <>
+                <Box>
+                  <Button onClick={() => navigate('/register')}
+                    sx={{
+                      color: 'white',
+                      display: 'block',
+                      mr: 2,
+                      border: '2px solid white',
+                      borderRadius: '25px',
+                      width: '115px',
+                      height: '40px',
+                      textTransform: 'none',
+                      fontSize: '14px'
+                    }}>
+                    Sign Up
+                  </Button>
+                </Box>
+                <Box>
+                  <Button onClick={() => navigate('/login')}
+                    sx={{
+                      my: 2,
+                      backgroundColor: '#458C83',
+                      color: 'white',
+                      display: 'block',
+                      borderRadius: '25px',
+                      width: '115px',
+                      height: '40px',
+                      textTransform: 'none',
+                      fontWeight: '800',
+                      fontSize: 16
+                    }}>
+                    Login
+                  </Button>
+                </Box>
+              </>
+            )}
           </Toolbar>
         </Container>
       </AppBar>

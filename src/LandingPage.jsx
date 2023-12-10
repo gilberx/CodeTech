@@ -15,8 +15,8 @@ import RightArrow from "./next.png";
 import Card from '@mui/material/Card';    
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import { useEffect } from 'react';
 import Navbar from './Navbar';
+import UserContext from './Register/UserContext';
 
 
 

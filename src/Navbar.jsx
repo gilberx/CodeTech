@@ -11,6 +11,8 @@ import AdbIcon from '@mui/icons-material/Adb';
 import Button from '@mui/material/Button';
 import Container from '@mui/system/Container';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from "react";
+import UserContext from './Register/UserContext';
 
 const Navbar = () => {
 

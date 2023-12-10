@@ -42,7 +42,7 @@ function Dashboard() {
                           <span className="small-text">This page is for admin-only access. You don't have the necessary privileges to view this content.</span>
                       </div>
                       <Link to="/login" className='link-btn'>
-                          <button className="btn">Go to login</button>
+                          <button className="btn">Go back</button>
                       </Link>
                   </form>
               </div>

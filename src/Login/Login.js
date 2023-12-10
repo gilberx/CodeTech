@@ -63,7 +63,6 @@ const Login = () => {
             setEmptyInput(true);
         }
 
-        // Basic validation
         if (!username) {
             setValidUsername(false);
             return;
@@ -73,8 +72,6 @@ const Login = () => {
             setValidPwd(false);
             return;
         }
-
-
 
         try {
             const response = await fetch('http://localhost:8080/user/authenticate', {
@@ -86,33 +83,26 @@ const Login = () => {
             });
     
             if (response.ok) {
-                const responseData = await response.json(); // Parse JSON response
+                const responseData = await response.json(); 
                 console.log('Authentication successful:', responseData);
-
-                // Set user information in the context or state
                 setUser(responseData.user);
                 console.log('user:', user);
 
                 localStorage.setItem('user', JSON.stringify(responseData.user));
             } else if (response.status === 401) {
-                const errorData = await response.json(); // Parse JSON error response
+                const errorData = await response.json(); 
                 if (errorData.error === "Username/email not registered") {
-                    // Username/email not registered
                     setValidUsername(false);
                     setNotFoundError(true);
                 } else if (errorData.error === "Invalid password") {
-                    // Invalid password
                     setValidPwd(false);
                 } else {
-                    // Handle other errors
                     console.error('Authentication error:', errorData.error);
                 }
             } else {
-                // Handle other errors
                 console.error('Authentication error:', response.statusText);
             }
         } catch (error) {
-            // Handle fetch error
             console.error('Error:', error);
         }
 

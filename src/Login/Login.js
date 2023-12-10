@@ -48,6 +48,13 @@ const Login = () => {
         // You can add any other logic here before navigating
         window.location.href = '/dashboard'; // This changes the URL directly
     };
+
+    const handleRedirect = () => {
+        // Perform any additional actions needed before navigating to /dashboard
+        console.log('Navigating to /CodeTech...');
+        // You can add any other logic here before navigating
+        window.location.href = '/'; // This changes the URL directly
+    };
     useEffect(() => {
         setValidUsername(true);
         setValidPwd(true);
@@ -87,8 +94,8 @@ const Login = () => {
                 console.log('Authentication successful:', responseData);
                 setUser(responseData.user);
                 console.log('user:', user);
-
                 localStorage.setItem('user', JSON.stringify(responseData.user));
+                handleRedirect();
             } else if (response.status === 401) {
                 const errorData = await response.json(); 
                 if (errorData.error === "Username/email not registered") {
@@ -105,7 +112,7 @@ const Login = () => {
         } catch (error) {
             console.error('Error:', error);
         }
-
+        
         
     };
 

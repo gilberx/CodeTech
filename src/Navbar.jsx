@@ -129,42 +129,48 @@ const Navbar = () => {
               CodeTech
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                <Button
-                  onClick={() => navigate('/joinclass')}
-                  sx={{fontFamily: 'Inter, sans-serif',
-                  color: 'inherit',
-                  fontSize: '14px',
-                  my: 2, 
-                  color: 'white', 
-                  display: 'block', 
-                  mr: 4,
-                  textTransform: 'none', 
-                  borderRadius: '25px',
-                  width: '125px',
-                  height: '28px',
-                  textTransform: 'none',
-                  marginBottom: '20px' }}
-                >
-                  Join a Class
-                </Button>
-                <Button
-                  onClick={() => navigate('/Courses')}
-                  sx={{fontFamily: 'Inter, sans-serif',
-                  color: 'inherit',
-                  fontSize: '14px',
-                  my: 2, 
-                  color: 'white', 
-                  display: 'block', 
-                  mr: 4,
-                  textTransform: 'none', 
-                  borderRadius: '25px',
-                  width: '125px',
-                  height: '28px',
-                  textTransform: 'none',
-                  marginBottom: '20px' }}
-                >
-                  Courses
-                </Button>
+            {user !== null && user.role !== 'admin' && (
+                <>
+                  <Button
+                    onClick={() => navigate('/joinclass')}
+                    sx={{fontFamily: 'Inter, sans-serif',
+                    color: 'inherit',
+                    fontSize: '14px',
+                    my: 2, 
+                    color: 'white', 
+                    display: 'block', 
+                    mr: 4,
+                    textTransform: 'none', 
+                    borderRadius: '25px',
+                    width: '125px',
+                    height: '28px',
+                    textTransform: 'none',
+                    marginBottom: '20px' 
+                    }}
+                  >
+                    Join a Class
+                  </Button>
+                  <Button
+                    onClick={() => navigate('/Courses')}
+                    sx={{fontFamily: 'Inter, sans-serif',
+                    color: 'inherit',
+                    fontSize: '14px',
+                    my: 2, 
+                    color: 'white', 
+                    display: 'block', 
+                    mr: 4,
+                    textTransform: 'none', 
+                    borderRadius: '25px',
+                    width: '125px',
+                    height: '28px',
+                    textTransform: 'none',
+                    marginBottom: '20px' 
+                    }}
+                  >
+                    Courses
+                  </Button>
+                </>
+              )}
                 <Button
                   onClick={() => navigate('/register')}
                   sx={{fontFamily: 'Inter, sans-serif',
@@ -201,6 +207,29 @@ const Navbar = () => {
                 >
                   About Us
                 </Button>
+
+                {user !==null && user.role === 'admin' && (
+                  <>
+                  <Button
+                  onClick={() => navigate('/dashboard')}
+                  sx={{fontFamily: 'Inter, sans-serif',
+                  color: 'inherit',
+                  fontSize: '14px',
+                  my: 2, 
+                  color: 'white', 
+                  display: 'block', 
+                  mr: 4,
+                  textTransform: 'none', 
+                  borderRadius: '25px',
+                  width: '125px',
+                  height: '28px',
+                  textTransform: 'none',
+                  marginBottom: '20px' }}
+                >
+                  Dashboard
+                </Button>
+                  </>
+                )}
             </Box>
             {user !== null ? (
               // If user is not null, show these elements

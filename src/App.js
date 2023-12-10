@@ -14,7 +14,12 @@ import JoinCreate from './JoinCreate';
 import AddQuiz from './AddQuiz';
 import Class from './Class'
 import AddLesson from './AddLesson'
-
+import Courses from './Courses/Courses.jsx'
+import Courses2 from './Courses/BeginnerCourse.jsx'
+import Courses3 from './Courses/IntermediateCourse.jsx'
+import IntroductionToC from './Courses/IntroductionToC.jsx'
+import IntroductionToCSharp from './Courses/IntroductionToCSharp.jsx'
+import IntroductionToCplusplus from './Courses/IntroductionToCplusplus.jsx'
 
 function App() {
   return (
@@ -33,6 +38,12 @@ function App() {
           <Route path="/Class" element={<Class />} />
           <Route path="/AddQuiz" element={<AddQuiz />} />
           <Route path="/AddLesson" element={<AddLesson />} />
+          <Route path="/Courses" element={<Courses/>}/>
+          <Route path="/Courses=BeginnerPage" element={<Courses2/>}/>
+          <Route path="/Courses=IntermediatePage" element={<Courses3/>}/>
+          <Route path="/Courses=IntroductionToC" element={<IntroductionToC/>}/>
+          <Route path="/Courses=IntroductionToCSharp" element={<IntroductionToCSharp/>}/>
+          <Route path="/Courses=IntroductionToCplusplus" element={<IntroductionToCplusplus/>}/>
         </Routes>
       </UserProvider>
     </Router>

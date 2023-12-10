@@ -25,8 +25,9 @@ import AboutUs  from './AboutUs'
 
 function App() {
   return (
+    <UserProvider>
     <Router>
-      <UserProvider>
+      
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/register" element={<Register />} />
@@ -48,8 +49,9 @@ function App() {
           <Route path="/Courses=IntroductionToCSharp" element={<IntroductionToCSharp/>}/>
           <Route path="/Courses=IntroductionToCplusplus" element={<IntroductionToCplusplus/>}/>
         </Routes>
-      </UserProvider>
+      
     </Router>
+    </UserProvider>
   );
 }
 

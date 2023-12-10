@@ -10,6 +10,7 @@ body {
   width: 90%;
   margin-top: 10px;
   opacity: 40%;
+  margin: 0 auto;
   color: #EDEDED;
 }
 
@@ -31,6 +32,7 @@ body {
   display: inline-block;
   font-weight: bold;
   color: #353535;
+  
 }
 
 .Join {
@@ -74,6 +76,7 @@ body {
   font-size: 20px;
   font-weight: bold;
   color: white;
+  cursor: pointer;
 }
 
 .Createbutton {
@@ -86,6 +89,7 @@ body {
   font-size: 20px;
   font-weight: bold;
   color: white;
+  cursor: pointer;
 }
 
 .footer {

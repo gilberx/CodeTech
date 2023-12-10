@@ -4,6 +4,9 @@ import Modal from './Modal';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './JoinCreate.css';
+import Navbar from './Navbar';
+import UserContext from './Register/UserContext';
+import { useContext } from "react";
 
 function JoinCreate() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -12,6 +15,8 @@ function JoinCreate() {
   const [classcode, setClassCode] = useState('');
 
   const navigate = useNavigate();
+
+  const { user, setUser } = useContext(UserContext);
 
   const handleCreateClick = () => {
     setIsModalOpen(true);
@@ -66,13 +71,21 @@ function JoinCreate() {
 
   return (
     <div style={{ fontFamily: 'Montserrat, sans-serif' }}>
-      <p style={{ marginTop: '200px', marginLeft: '100px', fontSize: '30px', fontWeight: 'semi-bold' }}>Join or Create Class</p>
+      <Navbar/>
+      <p style={{ margin:'200px 0 20px 100px', fontSize: '30px', fontWeight: 'semi-bold' }}>Join or Create Class</p>
       <hr className='line' />
 
       <nav>
         <button className="Create" onClick={handleCreateClick}>
           Create a Class
-          <button className='Createbutton' onClick={handleCreateClick}>Create Class</button>
+          <button className='Createbutton' 
+                  onClick={handleCreateClick} 
+                  disabled={user && user.role == 'learner'}
+                  style={{
+                    backgroundColor: user && user.role === 'learner' ? '#ccc' : '#458C83',
+                    cursor: user && user.role === 'learner' ? 'not-allowed' : 'pointer',
+                    // Add other styles as needed
+                  }}>Create Class</button>
         </button>
 
         <button className="Join">

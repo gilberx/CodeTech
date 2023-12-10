@@ -130,7 +130,7 @@ const Navbar = () => {
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                 <Button
-                  onClick={() => navigate('/register')}
+                  onClick={() => navigate('/joinclass')}
                   sx={{fontFamily: 'Inter, sans-serif',
                   color: 'inherit',
                   fontSize: '14px',
@@ -206,19 +206,19 @@ const Navbar = () => {
               // If user is not null, show these elements
               <>
                 <Box>
-                  <Button onClick={() => navigate('/login')}
+                  <Button 
                     sx={{
                       my: 2,
                       backgroundColor: '#458C83',
                       color: 'white',
                       display: 'block',
                       borderRadius: '25px',
-                      width: '115px',
+                      width: '125px',
                       height: '40px',
                       fontWeight: '800',
                       fontSize: 16
                     }}>
-                    Learner
+                    {user.role}
                   </Button>
                 </Box>
                 <Box>

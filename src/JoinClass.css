@@ -10,6 +10,7 @@
 .line {
   width: 90%;
   margin-top: 10px;
+  margin: 0 auto;
   opacity: 40%;
   color: #EDEDED;
 }

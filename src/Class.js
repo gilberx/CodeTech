@@ -1,10 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import './Class.css';
 
 const TeacherPage = () => {
   const [showQuizContainer, setShowQuizContainer] = useState(false);
   const [showLessonContainer, setShowLessonContainer] = useState(false);
+  const [classInfo, setClassInfo] = useState(null);
+
+  useEffect(() => {
+    const fetchClassInfo = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/createClass/getClassByCode/CSIT321-G1`);
+        setClassInfo(response.data);
+      } catch (error) {
+        console.error('An error occurred while fetching class information:', error);
+      }
+    };
+
+    fetchClassInfo();
+  }, []);
+
+  // Define classname and use it in the JSX
+const classname = classInfo && classInfo.classname ? classInfo.classname : 'Class Name Loading...';
 
   const handleViewQuiz = () => {
     setShowQuizContainer(true);
@@ -26,8 +44,8 @@ const TeacherPage = () => {
 
   return (
     <div>
-      <div className="header-container">
-        <p className="header-text">CSIT321-G1</p>
+      <div className="header-container5">
+        <p className="header-text">{classname}</p>
       </div>
       <button className='ViewQuiz' onClick={handleViewQuiz}>
         Quiz

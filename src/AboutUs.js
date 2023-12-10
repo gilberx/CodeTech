@@ -1,16 +1,20 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import './AboutUs.css';
+import Navbar from "./Navbar";
 
 function AboutUs() {
     let message = `There are many variations of passages of CodeTech available but the \n majority have suffered alteration in some injected humour.`;
 
     return (
+        
         <section className="section-white">
             <div className="header-container3">
+                <Navbar/>
                 <div className="row">
                     <div className="col-md-12 text-center">
                         <h2 className="section-title">The Team Behind CodeTech</h2>
+                        
                         <p className="section-subtitle">{message}</p>
                     </div>
                 </div>

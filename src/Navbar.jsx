@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import { useContext } from "react";
 import UserContext from './Register/UserContext';
 
+
 const Navbar = () => {
 
   const { user, setUser } = useContext(UserContext);
@@ -40,17 +41,17 @@ const Navbar = () => {
         left: '50%',
         transform: 'translateX(-50%)', 
         marginTop: '30px'}}>
-        <Container maxWidth="100%">
+        <Container maxWidth="100%" >
           <Toolbar disableGutters>
           <img
             src={faviconPath}
-            alt="Favicon"
+            alt="Favicon" onClick={() => navigate('/')}
             style={{ display: { xs: 'none', md: 'flex' }, 
             marginRight: 0, 
             height: '40px', 
             width: '40px', 
             marginRight: '10px',
-            marginLeft: '-10px' }}
+            marginLeft: '-10px',cursor: 'pointer' }}
           />
             <Typography
               variant="h6"
@@ -65,6 +66,7 @@ const Navbar = () => {
                 fontSize: '25px',
                 textDecoration: 'none',
                 mr: 15,
+                cursor: 'pointer'
               }}
             >
               CodeTech
@@ -182,7 +184,7 @@ const Navbar = () => {
                   How it Works
                 </Button>
                 <Button
-                  onClick={() => navigate('/register')}
+                  onClick={() => navigate('/aboutus')}
                   sx={{fontFamily: 'Inter, sans-serif',
                   color: 'inherit',
                   fontSize: '14px',

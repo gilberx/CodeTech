@@ -129,7 +129,7 @@ function Educator() {
         }
 
         
-    }, [email,]);
+    }, [email]);
 
     useEffect(() => {
         setUsernameExists(false);
@@ -155,10 +155,14 @@ function Educator() {
     const checkUsernameExists = async () => {
         try {
             const response = await fetch(`http://localhost:8080/user/checkUsername/${username}`);
+            
             const data = await response.json();
+            
+            if (data.exists && data.userid !== updateUserId) {
+                console.log("data exists:", data.exists);
+                setUsernameExists(data.exists);
+            }
     
-            console.log("Username exists:", data.exists);
-            setUsernameExists(data.exists);
         } catch (error) {
             console.error('Error checking username existence:', error);
         }
@@ -168,8 +172,14 @@ function Educator() {
         try {
           const response = await fetch(`http://localhost:8080/user/checkEmail/${email}`);
           const data = await response.json();
-    
-          setEmailExists(data.exists);
+            
+            console.log("data email user id: ", data.userid)
+            console.log("update email user id: ", updateUserId)
+            if(data.exists && data.userid !== updateUserId){
+                console.log("email exist: ", data.exists)
+                setEmailExists(data.exists);
+            }
+          
         } catch (error) {
           console.error('Error checking email existence:', error);
         }
@@ -178,11 +188,9 @@ function Educator() {
     const handleSubmitUpdate = async (e) => {
         e.preventDefault();
         setSubmitClicked(true);
-    
         if(submitClicked && (!firstname || !lastname || !matchPwd || !email || !username|| !pwd)){
             setEmptyInput(true);
         }
-        
         const v1 = PWD_REGEX.test(pwd);
         if(!v1){
             setErrMsg("Invalid password");
@@ -211,6 +219,21 @@ function Educator() {
         if(!validMatch){
             setErrMsg("Must match the first password input field.")
             console.log(errMsg)
+            return;
+        }
+
+        if (emailExists) {
+            setErrMsg("Email address already exists!");
+            setSubmitClicked(false);
+            console.log("errMsg2: ",errMsg)
+            return;
+        }
+
+        console.log("username exists: ", usernameExists)
+        if (usernameExists) {
+            setErrMsg("Username already exists!");
+            setSubmitClicked(false);
+            console.log("errMsg2: ", errMsg)
             return;
         }
     
@@ -275,7 +298,7 @@ function Educator() {
           .catch((error) => {
             console.error('Error fetching users:', error);
           });
-      }, []);
+      }, [isAddOpen, isUpdateOpen]);
 
     const handleDelete = (userid) => {
         fetch(`http://localhost:8080/user/removeUser?userid=${userid}`, {
@@ -543,6 +566,12 @@ function Educator() {
                     Invalid email
                 </p>
             ) : null}
+            {submitClicked && email && emailExists ? (
+                <p id="uidnote" className="instructions instructions-shake">
+                    <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
+                    Email already taken
+                </p>
+            ) : null}
 
             <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Username</p>
             <input
@@ -559,10 +588,10 @@ function Educator() {
             onBlur={()=> setUsernameFocus(false)}
             />
             
-            {submitClicked && email && !validEmail ? (
+            {submitClicked && username && usernameExists ? (
                 <p id="uidnote" className="instructions instructions-shake">
                     <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
-                    Invalid email
+                    Username Taken
                 </p>
             ) : null}
 
@@ -667,7 +696,7 @@ function Educator() {
             </p>
             <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Email Address</p>
             <input
-            className={`a-input ${emailFocus && email && !validEmail ? 'invalid' : ''}`}
+            className={`a-input ${emailFocus && email && !validEmail || emailExists ? 'invalid' : ''}`}
             type="text"
             id="email"
             autoComplete="off"
@@ -687,6 +716,13 @@ function Educator() {
                 </p>
             ) : null}
 
+            {email && emailExists ? (
+                <p id="uidnote" className="instructions instructions-shake">
+                    <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
+                    Email already taken
+                </p>
+            ) : null}
+
             <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Username</p>
             <input
             className={`a-input ${usernameFocus && username && usernameExists ? 'invalid' : ''}`}
@@ -702,10 +738,10 @@ function Educator() {
             onBlur={()=> setUsernameFocus(false)}
             />
             
-            {submitClicked && email && !validEmail ? (
+            {username && usernameExists ? (
                 <p id="uidnote" className="instructions instructions-shake">
                     <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
-                    Invalid email
+                    Username already taken
                 </p>
             ) : null}
 

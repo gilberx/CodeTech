@@ -67,7 +67,7 @@ function AboutUs() {
                     </div>
                     <div className="col-sm-6 col-md-4">
                         <div className="team-item">
-                            <img src="https://demo.epic-webdesign.com/tf-pacifico/v1/images/team3a.jpg" className="team-img" alt="pic" />
+                            <img src="gilbert.png" className="team-img" alt="pic" />
                             <h3>GILBERT R. CAÑEDO JR.</h3>
                             <div className="team-info"><p>Front-end Developer</p></div>
                             <p className="info">Meet Gilbert, a dedicated and aspiring developer currently pursuing a Bachelor of Science in Information Technology at Cebu Institute of Technology-University. As a third-year student, he is passionate about exploring the dynamic world of technology and honing his skills in software development.</p>

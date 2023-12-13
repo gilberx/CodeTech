@@ -51,7 +51,6 @@ function Courses() {
   }, []);
 
   const handleTakeCourse = async () => {
-    // Data to be sent in the POST request
     const courseData = {
       cid: "3",
       title: "Introduction to C++",
@@ -60,7 +59,6 @@ function Courses() {
     };
 
     try {
-      // Make a POST request to your API endpoint
       const response = await fetch('http://localhost:8080/courses/insertCourse', {
         method: 'POST',
         headers: {
@@ -69,7 +67,6 @@ function Courses() {
         body: JSON.stringify(courseData),
       });
 
-      // Check if the request was successful (status code 2xx)
       if (response.ok) {
         setIsCourseTaken(true);
       } else {

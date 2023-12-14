@@ -301,16 +301,20 @@ function Educator() {
       }, [isAddOpen, isUpdateOpen]);
 
     const handleDelete = (userid) => {
-        fetch(`http://localhost:8080/user/removeUser?userid=${userid}`, {
-            method: 'PUT',
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                console.log('User removed successfully:', result);
+        const isConfirmed = window.confirm("Are you sure you want to delete this?");
+        if (isConfirmed) {
+            fetch(`http://localhost:8080/user/removeUser?userid=${userid}`, {
+                method: 'PUT',
             })
-            .catch((error) => {
-                console.error('Error removing user:', error);
-            });
+                .then((res) => res.json())
+                .then((result) => {
+                    console.log('User removed successfully:', result);
+                })
+                .catch((error) => {
+                    console.error('Error removing user:', error);
+                });
+            
+         }
     };
 
     const handleSubmit = async (e) => {

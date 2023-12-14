@@ -50,10 +50,10 @@ const Login = () => {
     };
 
     const handleRedirect = () => {
-        // Perform any additional actions needed before navigating to /dashboard
+        
         console.log('Navigating to /CodeTech...');
-        // You can add any other logic here before navigating
-        window.location.href = '/'; // This changes the URL directly
+        
+        window.location.href = '/'; 
     };
     useEffect(() => {
         setValidUsername(true);

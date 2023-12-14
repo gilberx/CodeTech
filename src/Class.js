@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Class.css';
+import Navbar from './Navbar';
 
 const TeacherPage = () => {
   const [showQuizContainer, setShowQuizContainer] = useState(false);
@@ -44,6 +45,7 @@ const classname = classInfo && classInfo.classname ? classInfo.classname : 'Clas
 
   return (
     <div>
+      <Navbar/>
       <div className="header-container5">
         <p className="header-text">{classname}</p>
       </div>

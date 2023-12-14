@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './ViewGoals.css';
+import UserContext from './Register/UserContext';
+import Navbar from './Navbar';
 
 const ViewGoals = () => {
   const linkStyle = {
@@ -10,7 +12,10 @@ const ViewGoals = () => {
 
   const [goals, setGoals] = useState([]);
   const [completedGoalsCount, setCompletedGoalsCount] = useState(0);
-
+  const {user, setUser} = useContext(UserContext);
+  useEffect(() => {
+    console.log("logged in user: ", user);
+  }, [user]);
   useEffect(() => {
     // Fetch goals when the component mounts
     fetch("http://localhost:8080/userGoals/getAllUserGoals")
@@ -79,9 +84,26 @@ const ViewGoals = () => {
         console.error('Error deleting goal:', error);
       });
   };
-
+  if (!user) {
+    return (
+        <main className='a-notadmin-main'>
+        <div className='a-notadmin-container'>
+            <form className='a-notadmin-form'>
+                <h1 style={{fontSize:'35px',textAlign:'center'}}>You are not logged in!</h1>
+                <div style={{marginTop:'10px', marginBottom:'20px', textAlign:'center', padding:"0 10px"}}>
+                    <span className="small-text">Log in to access your personalized profile and unlock exclusive features!</span>
+                </div>
+                <Link to="/login" className='link-btn'>
+                    <button className="btn">Go to login</button>
+                </Link>
+            </form>
+        </div>
+    </main>
+    );
+  }
   return (
     <div className="viewgoals-page">
+      <Navbar/>
       <div className="viewgoals-sidebar">
         <Link to="/progress" style={linkStyle}>
           <button>Progress</button>

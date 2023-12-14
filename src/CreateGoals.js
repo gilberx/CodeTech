@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './CreateGoals.css';
+import UserContext from './Register/UserContext';
+import Navbar from './Navbar';
 
 const CreateGoals = () => {
   const [userGoals, setGoal] = useState('');
+  const {user, setUser} = useContext(UserContext);
+  useEffect(() => {
+    console.log("logged in user: ", user);
+  }, [user]);
 
   const handleInputChange = (e) => {
     setGoal(e.target.value);
@@ -22,10 +28,9 @@ const CreateGoals = () => {
     })
       .then(response => response.json())
       .then(data => {
-        // Handle the response from the server
         console.log(data);
         alert("Goal created successfully!");
-        setGoal(''); // Clear the textarea after successful creation
+        setGoal(''); 
       })
       .catch(error => {
         console.error('Error:', error);
@@ -37,9 +42,26 @@ const CreateGoals = () => {
     textDecoration: 'none',
     color: '#ffffff',
   };
-
+  if (!user) {
+    return (
+        <main className='a-notadmin-main'>
+        <div className='a-notadmin-container'>
+            <form className='a-notadmin-form'>
+                <h1 style={{fontSize:'35px',textAlign:'center'}}>You are not logged in!</h1>
+                <div style={{marginTop:'10px', marginBottom:'20px', textAlign:'center', padding:"0 10px"}}>
+                    <span className="small-text">Log in to access your personalized profile and unlock exclusive features!</span>
+                </div>
+                <Link to="/login" className='link-btn'>
+                    <button className="btn">Go to login</button>
+                </Link>
+            </form>
+        </div>
+    </main>
+    );
+  }
   return (
     <div className="creategoals-page">
+      <Navbar/>
       <div className="creategoals-sidebar">
         <Link to="/progress" style={linkStyle}>
           <button>Progress</button>

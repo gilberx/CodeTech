@@ -20,7 +20,7 @@ function Dashboard() {
     
         localStorage.removeItem('user');
         window.location.href = "/login";
-      };
+    };
       const isAdmin =
       user &&
       user.userid === 1 &&

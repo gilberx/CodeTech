@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Modal from './Modal';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './JoinCreate.css';
 import Navbar from './Navbar';
 import UserContext from './Register/UserContext';
@@ -68,7 +68,6 @@ function JoinCreate() {
       alert('Already exist');
     }
   };
-
   return (
     <div style={{ fontFamily: 'Montserrat, sans-serif' }}>
       <Navbar/>

@@ -108,6 +108,13 @@ const Register = () => {
         setRole(type);
     };
 
+    const handleRedirect = () => {
+        
+        console.log('Navigating to /CodeTech...');
+        
+        window.location.href = '/'; 
+    };
+
     const checkEmailExists = async () => {
         try {
           const response = await fetch(`http://localhost:8080/user/checkEmail/${email}`);
@@ -195,6 +202,8 @@ const Register = () => {
                 console.log("New User Registered: ", userData);
                 setUser(userData);
                 localStorage.setItem('user', JSON.stringify(userData));
+            
+                handleRedirect();
             } else {
                 console.error('Registration failed:', response.statusText);
                 

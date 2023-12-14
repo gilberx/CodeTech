@@ -65,7 +65,7 @@ const Navbar = () => {
                 color: 'inherit',
                 fontSize: '25px',
                 textDecoration: 'none',
-                mr: 15,
+                mr: 11,
                 cursor: 'pointer'
               }}
             >
@@ -109,25 +109,6 @@ const Navbar = () => {
               </Menu>
             </Box>
             <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href="#app-bar-with-responsive-menu"
-              sx={{
-                mr: 2,
-                display: { xs: 'flex', md: 'none' },
-                flexGrow: 1,
-                fontFamily: 'Inter, sans-serif',
-                fontWeight: '600',
-                color: 'inherit',
-                fontSize: '30px',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
-              CodeTech
-            </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {user !== null && user.role !== 'admin' && (
                 <>
@@ -139,7 +120,7 @@ const Navbar = () => {
                     my: 2, 
                     color: 'white', 
                     display: 'block', 
-                    mr: 4,
+                    mr: 1,
                     textTransform: 'none', 
                     borderRadius: '25px',
                     width: '125px',
@@ -158,7 +139,7 @@ const Navbar = () => {
                     my: 2, 
                     color: 'white', 
                     display: 'block', 
-                    mr: 4,
+                    mr: 1,
                     textTransform: 'none', 
                     borderRadius: '25px',
                     width: '125px',
@@ -179,7 +160,7 @@ const Navbar = () => {
                   my: 2, 
                   color: 'white', 
                   display: 'block', 
-                  mr: 4,
+                  mr: 1,
                   textTransform: 'none', 
                   borderRadius: '25px',
                   width: '125px',
@@ -197,7 +178,7 @@ const Navbar = () => {
                   my: 2, 
                   color: 'white', 
                   display: 'block', 
-                  mr: 4,
+                  mr: 1,
                   textTransform: 'none', 
                   borderRadius: '25px',
                   width: '125px',
@@ -250,12 +231,14 @@ const Navbar = () => {
                     {user.role}
                   </Button>
                 </Box>
-                <Box>
-                  <img src="./ProfileLogo.png" style={{ height: '50px', marginTop: 4 }} />
+                <Box
+                  onClick={() => navigate('/userProfile')}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <img src="./ProfileLogo.png" alt="Profile" style={{ height: '50px', marginTop: 4 }} />
                 </Box>
               </>
             ) : (
-              // If user is null, show these elements
               <>
                 <Box>
                   <Button onClick={() => navigate('/register')}

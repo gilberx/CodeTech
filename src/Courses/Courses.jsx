@@ -25,6 +25,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { useEffect } from 'react';
 import Navbar from '../Navbar';
+import Footer from '../Footer';
 
 
 const pages = ['Join a Class', 'Courses', 'How it Works', 'About Us'];
@@ -132,49 +133,7 @@ function Courses() {
           <img src='/CoursesImage.png' style={{width:'100vh'}}/>
         </div>
         <div style={{marginBottom:'-100px'}}>
-          <Box style={{maxWidth:'100%', height: '48vh', display:'flex', flexDirection:'rows', }}>
-            <div style={{paddingTop:'20vh', paddingLeft:'15vh', paddingRight:'10vh'}}>
-              <div style={{display: 'flex', flexDirection: 'row'}}>
-                <img src={faviconPath} style={{height:"70px", width:"70px",}}/>
-                <p style={{marginTop:'15px', marginLeft:'5px', fontSize:'35px', fontWeight:'600', fontFamily:'Montserrat, sans-serif', color: '#F0F0F0'}}>CodeTech</p>
-              </div>
-              <div>
-                <p style={{color:'#F0F0F0', marginLeft:'20px'}}>Code learning just got better.</p>
-              </div>
-            </div>
-            <Divider orientation="vertical" variant="middle" flexItem style={{backgroundColor: '#EDEDED', height: '33vh', marginTop:'90px'}} />
-            <div style={{paddingTop:'15vh'}}>
-              <div style={{display:'flex', flexDirection:'column', marginLeft:'20vh'}}>
-                <p style={{marginBottom:'20px', fontSize:'19px', fontWeight:'600', color:'#F5FFFD'}}>Get in Touch</p>
-                <div style={{display:'flex', flexDirection:'row'}}>
-                  <img src="/foot1.png" alt="Icon" style={{height:'19px', width:'15px'}} />
-                  <p style={{marginBottom:'20px', color:'#F5FFFD', marginLeft:'19px'}}>N. Bacalso Avenue, Cebu City, Cebu 6000</p>
-                </div>
-                <div style={{display:'flex', flexDirection:'row'}}>
-                  <img src="/foot2.png" alt="Icon" style={{height:'19px', width:'15px'}} />
-                  <p style={{marginBottom:'20px', color:'#F5FFFD', marginLeft:'19px'}}>+63 929 843 0999</p>
-                </div>
-                <div style={{display:'flex', flexDirection:'row'}}>
-                  <img src="/foot3.png" alt="Icon" style={{height:'19px', width:'24px'}} />
-                  <p style={{marginBottom:'20px', color:'#F5FFFD', marginLeft:'10px'}}>css@cit.edu</p>
-                </div>
-              </div>
-            </div>
-            <Divider orientation="vertical" variant="middle" flexItem style={{backgroundColor: '#EDEDED', height: '33vh', marginTop:'90px', marginLeft:'15vh'}} />
-            <div style={{paddingTop:'15vh', marginLeft:'-5vh'}}>
-              <div style={{display:'flex', flexDirection:'column', marginLeft:'20vh'}}>
-                <p style={{marginBottom:'20px', fontSize:'19px', fontWeight:'600', color:'#F5FFFD'}}>Other Links</p>
-                <div style={{display:'flex', flexDirection:'row'}}>
-                  <img src="/foot1.png" alt="Icon" style={{height:'19px', width:'15px'}} />
-                  <p style={{marginBottom:'20px', color:'#F5FFFD', marginLeft:'19px'}}>Terms and Conditions</p>
-                </div>
-                <div style={{display:'flex', flexDirection:'row'}}>
-                  <img src="/foot2.png" alt="Icon" style={{height:'19px', width:'15px'}} />
-                  <p style={{marginBottom:'20px', color:'#F5FFFD', marginLeft:'19px'}}>Help Center</p>
-                </div>
-              </div>
-            </div>
-          </Box>
+         <Footer/>
         </div>
       </div>
     </main>

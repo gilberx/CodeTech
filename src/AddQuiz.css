@@ -1,6 +1,6 @@
 .header-container2 {
     background-color: #458C83;
-    height: 200px;
+    height: 160px;
   }
   
   .container2 {
@@ -16,6 +16,7 @@
     font-weight: 500;
     font-size: 30px;
     font-family: 'Montserrat', sans-serif;
+    margin-bottom: 20px;
   }
   
   .input-div2{
@@ -23,12 +24,13 @@
   }
 
   .title {
-    width: 1168px;
+    width: 1164px;
     height:40px;
     border-radius: 10px;
     border: 1px solid #A9A9A9;
     font-size: 18px;
     padding-left: 10px;
+    margin-bottom: 20px;
   }
   
   .question{
@@ -69,7 +71,8 @@
     border: 1px solid #A9A9A9;
     font-size: 18px;
     padding-left: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   .optB, .optC, .optD{
@@ -94,4 +97,5 @@
   .answer{
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
+    margin-bottom: 10px;
   }

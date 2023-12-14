@@ -2,6 +2,7 @@
 import React from "react";
 import './AboutUs.css';
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 function AboutUs() {
     let message = `There are many variations of passages of CodeTech available but the \n majority have suffered alteration in some injected humour.`;
@@ -121,7 +122,12 @@ function AboutUs() {
                     </div>
                 </div>
             </div>
+            <div style={{marginTop: '500px', marginBottom: '-100px'}}>
+                <Footer/>
+            </div>
         </section>
+
+        
     );
 }
 

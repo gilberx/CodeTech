@@ -21,6 +21,15 @@ import IntroductionToC from './Courses/IntroductionToC.jsx'
 import IntroductionToCSharp from './Courses/IntroductionToCSharp.jsx'
 import IntroductionToCplusplus from './Courses/IntroductionToCplusplus.jsx'
 import AboutUs  from './AboutUs'
+import Achievements from './Achievements.js';
+import Progress from './Progress.js';
+import Settings from './Settings.js';
+import Goals from './Goals.js';
+import CreateGoals from './CreateGoals.js';
+import ViewGoals from './ViewGoals.js';
+import EditGoals from './EditGoals.js';
+import UserProfile from './UserProfile.js';
+
 
 
 function App() {
@@ -48,7 +57,16 @@ function App() {
           <Route path="/Courses=IntroductionToC" element={<IntroductionToC/>}/>
           <Route path="/Courses=IntroductionToCSharp" element={<IntroductionToCSharp/>}/>
           <Route path="/Courses=IntroductionToCplusplus" element={<IntroductionToCplusplus/>}/>
-        </Routes>
+
+              <Route path="/userprofile" element={<UserProfile />} />
+              <Route path="/achievements" element={<Achievements />} />
+              <Route path="/progress" element={<Progress />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/goals" element={<Goals />} />
+              <Route path="/creategoals/:group" element={<CreateGoals />} />
+              <Route path="/viewgoals/:group" element={<ViewGoals />} />
+              <Route path="/editgoals/:sid" element={<EditGoals />} />
+          </Routes>
       
     </Router>
     </UserProvider>

@@ -164,9 +164,6 @@
     font-weight: 600;
 }
 
-.a-card-detail{
-
-}
 
 .a-light-red{
    background: rgb(251, 233, 233); 
@@ -182,7 +179,165 @@
     background: rgb(236, 236, 254); 
  }
 
+ .a-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .a-table th,
+  .a-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .a-table th {
+    background-color: #458C83;
+    color: #fff;
+  }
+  
+  .a-table tbody tr:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .a-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .a-table tbody td {
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
 
 
+  .a-btn-educator {
+    width: 50px;
+    height: 20px;
+    border-radius: 54px;
+    border: none;
+    background: #458C83;
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
 
+  .a-btn-educator:hover {
+    background-color: #35756F; /* Change the background color on hover */
+}
+
+  .a-red-bg{
+    background: rgb(204, 87, 87);
+  }
+
+  .a-row-deleted {
+    background-color: #ffcccc; /* You can adjust the color as needed */
+}
+
+.a-add-btn-educator {
+    width: 80px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    background: #458C83;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .a-add-btn-educator:hover {
+    background-color: #35756F;
+    transform: scale(1.05); /* Add a slight scale effect on hover */
+}
+
+
+input{
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    padding: 0 15px;
+    line-height: 40px;
+    border-radius: 10px;
+    border: 1px solid #7c7c7c;
+    background: transparent;
+    transition: 0.1s ease;
+    z-index: 1111;
+}
+
+.a-input.invalid:focus {
+    border: 1px solid red;
+}
+
+.a-names-input{
+    display: flex;
+    gap: 1rem;
+}
+
+.a-names-input input{
+    width: 320px;
+
+}
+
+
+/* NOT LOGGED IN */
+
+
+.a-notadmin-main{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-image: linear-gradient(to right, #75afa7,#ACD2CB , #75afa7);
+    justify-content: center;
+}
+
+.a-notadmin-container{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.a-notadmin-form {
+    background-color: #F5FFFD;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 10px;
+    padding: 40px 20px;
+    border-radius: 10px; /* Adjust the value to your desired border radius */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adjust the values for the box shadow */
+    transition: box-shadow 0.3s ease; /* Add a smooth transition effect */
+}
+
+.a-notadmin-form:hover {
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* Adjust the values for the box shadow on hover */
+}
+
+.a-notadmin-form button{
+    width: 400px;
+    margin: 20px auto;
+}
+
+.a-notadmin-form .input-div input {
+    width: 100%;
+    max-width: 400px;
+    left: 50%;
+    transform: translateX(-50%);
+    outline: none;
+
+}
+
+.a-notadmin-form .input-div .labelline{
+    padding: 0 10px;
+    margin: 0 40px;
+    background-color: #F5FFFD;
+    transition: 0.2s ease;
+}

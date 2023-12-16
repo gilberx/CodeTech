@@ -9,7 +9,7 @@ export const UserProvider = ({ children }) => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
-      console.log("logged in user(usercontext): ", user);
+      console.log("logged in user(usercontext): ", storedUser);
     }
     
   }, []);

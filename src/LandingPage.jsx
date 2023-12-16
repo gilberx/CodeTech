@@ -100,7 +100,7 @@ function ResponsiveAppBar() {
           Welcome,&nbsp;{user.username}!
             </>
           ):(<>
-          Coding learning <br/>just got better!
+          Code learning <br/>just got better!
           </>
   
           )}

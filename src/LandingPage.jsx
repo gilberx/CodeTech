@@ -5,7 +5,6 @@ import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 import './App.css';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
@@ -15,10 +14,8 @@ import RightArrow from "./next.png";
 import Card from '@mui/material/Card';    
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import { useEffect } from 'react';
 import Navbar from './Navbar';
-import UserContext from './Register/UserContext';
-import { useContext } from 'react';
-import Footer from './Footer';
 
 
 
@@ -32,9 +29,9 @@ const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
 );
 
 function ResponsiveAppBar() {
-  
+  const faviconPath = process.env.PUBLIC_URL + '/favicon.ico';
 
-  const {user, setUser} = useContext(UserContext);
+
   const navigate = useNavigate();
 
   const settings = {
@@ -55,31 +52,7 @@ function ResponsiveAppBar() {
   
 
   return (
-    
-    <div >
-      <style>
-        {`
-          body {
-            position: relative;
-            background-color: #F5FFFD;
-          }
-
-          body::before {
-            content: '';
-            position: absolute;
-            top: 550px;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px; /* Adjust the size of the circle */
-            height: 500px; /* Adjust the size of the circle */
-            background-color: #458C83;
-            border-radius: 50%;
-            border-bottom-left-radius: 0; /* Cut in half horizontally */
-      border-bottom-right-radius: 0;
-            z-index: -1;
-          }
-        `}
-      </style>
+    <div>
       <div>
         <Navbar/>
       </div>
@@ -94,17 +67,8 @@ function ResponsiveAppBar() {
           fontWeight: 800, fontSize: 100, 
           textAlign: 'center', 
         }}>
-  
-          {user ? (
-            <>
-          Welcome,&nbsp;{user.username}!
-            </>
-          ):(<>
-          Coding learning <br/>just got better!
-          </>
-  
-          )}
-          
+          Code learning<br></br>
+          just got better!
         </p>
         <p style={{ color: '#353535', 
           fontFamily: 'Inter, sans-serif', 
@@ -112,16 +76,7 @@ function ResponsiveAppBar() {
           textAlign: 'center', 
           marginTop: '10px' 
         }}>
-        Empowering coders, one lesson at a time.<br></br>
-        {user ? (
-            <>
-            <br/><br/>
-            </>
-          ):(<>
-          Join us it's free!
-          </>
-  
-          )}
+        Empowering coders, one lesson at a time.<br></br>Join us! It's free.
         </p>
       </div>
       <div style={{marginTop: '90px',
@@ -149,7 +104,7 @@ function ResponsiveAppBar() {
         </Button>
       </div>
       <div>
-          <Box sx={{ marginTop: '30px',bgcolor: '#212121', height: '600px', borderRadius: '40px', paddingLeft: '80px', paddingTop: '60px', paddingRight: '80px' }}>
+          <Box sx={{ marginTop: '30px',bgcolor: '#212121', height: 758, borderRadius: '40px', paddingLeft: '80px', paddingTop: '60px', paddingRight: '80px' }}>
             <p style={{color: 'rgba(255, 255, 255, 0.2)', marginLeft: '30px', fontSize: '28px', fontFamily: 'Montserrat, sans-serif', fontWeight: '500'}}>
             What is <t style={{color: '#458C83', fontSize: '31px'}}>CodeTech </t>?</p>
             <div style={{ maxWidth: '100%',marginTop: '10px' }}>
@@ -507,7 +462,49 @@ function ResponsiveAppBar() {
         </div>
       </div>
       <div>
-        <Footer/>
+        <Box style={{maxWidth:'100%', height: '50vh', display:'flex', flexDirection:'rows', }}>
+          <div style={{paddingTop:'20vh', paddingLeft:'15vh', paddingRight:'10vh'}}>
+            <div style={{display: 'flex', flexDirection: 'row'}}>
+              <img src={faviconPath} style={{height:"70px", width:"70px",}}/>
+              <p style={{marginTop:'15px', marginLeft:'5px', fontSize:'35px', fontWeight:'600', fontFamily:'Montserrat, sans-serif', color: '#F0F0F0'}}>CodeTech</p>
+            </div>
+            <div>
+              <p style={{color:'#F0F0F0', marginLeft:'20px'}}>Code learning just got better.</p>
+            </div>
+          </div>
+          <Divider orientation="vertical" variant="middle" flexItem style={{backgroundColor: '#EDEDED', height: '33vh', marginTop:'90px'}} />
+          <div style={{paddingTop:'15vh'}}>
+            <div style={{display:'flex', flexDirection:'column', marginLeft:'20vh'}}>
+              <p style={{marginBottom:'20px', fontSize:'19px', fontWeight:'600', color:'#F5FFFD'}}>Get in Touch</p>
+              <div style={{display:'flex', flexDirection:'row'}}>
+                <img src="/foot1.png" alt="Icon" style={{height:'19px', width:'15px'}} />
+                <p style={{marginBottom:'20px', color:'#F5FFFD', marginLeft:'19px'}}>N. Bacalso Avenue, Cebu City, Cebu 6000</p>
+              </div>
+              <div style={{display:'flex', flexDirection:'row'}}>
+                <img src="/foot2.png" alt="Icon" style={{height:'19px', width:'15px'}} />
+                <p style={{marginBottom:'20px', color:'#F5FFFD', marginLeft:'19px'}}>+63 929 843 0999</p>
+              </div>
+              <div style={{display:'flex', flexDirection:'row'}}>
+                <img src="/foot3.png" alt="Icon" style={{height:'19px', width:'24px'}} />
+                <p style={{marginBottom:'20px', color:'#F5FFFD', marginLeft:'10px'}}>css@cit.edu</p>
+              </div>
+            </div>
+          </div>
+          <Divider orientation="vertical" variant="middle" flexItem style={{backgroundColor: '#EDEDED', height: '33vh', marginTop:'90px', marginLeft:'15vh'}} />
+          <div style={{paddingTop:'15vh', marginLeft:'-5vh'}}>
+            <div style={{display:'flex', flexDirection:'column', marginLeft:'20vh'}}>
+              <p style={{marginBottom:'20px', fontSize:'19px', fontWeight:'600', color:'#F5FFFD'}}>Other Links</p>
+              <div style={{display:'flex', flexDirection:'row'}}>
+                <img src="/foot1.png" alt="Icon" style={{height:'19px', width:'15px'}} />
+                <p style={{marginBottom:'20px', color:'#F5FFFD', marginLeft:'19px'}}>Terms and Conditions</p>
+              </div>
+              <div style={{display:'flex', flexDirection:'row'}}>
+                <img src="/foot2.png" alt="Icon" style={{height:'19px', width:'15px'}} />
+                <p style={{marginBottom:'20px', color:'#F5FFFD', marginLeft:'19px'}}>Help Center</p>
+              </div>
+            </div>
+          </div>
+        </Box>
       </div>
     </div>
   );

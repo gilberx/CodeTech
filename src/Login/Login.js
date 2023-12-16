@@ -2,7 +2,7 @@ import './Login.css';
 import { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle} from '@fortawesome/free-solid-svg-icons';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import UserContext from '../Register/UserContext';
 const Login = () => {
@@ -25,36 +25,7 @@ const Login = () => {
 
     useEffect(() => {
         console.log("logged in user: ", user);
-        const isAdmin =
-        user &&
-        user.userid === 1 &&
-        user.email === 'admin@cit.edu' &&
-        user.username === 'admin' &&
-        user.firstname === 'code' &&
-        user.lastname === 'tech' &&
-        user.password === 'CodeTech!23' &&
-        user.isDelete === false &&
-        user.role === 'admin';
-
-        if (isAdmin) {
-            handleDashboardRedirect();
-            return;
-        }
     }, [user]);
-
-    const handleDashboardRedirect = () => {
-        // Perform any additional actions needed before navigating to /dashboard
-        console.log('Navigating to /dashboard...');
-        // You can add any other logic here before navigating
-        window.location.href = '/dashboard'; // This changes the URL directly
-    };
-
-    const handleRedirect = () => {
-        
-        console.log('Navigating to /CodeTech...');
-        
-        window.location.href = '/'; 
-    };
     useEffect(() => {
         setValidUsername(true);
         setValidPwd(true);
@@ -64,12 +35,12 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         setSubmitClicked(true);
-        
 
         if(submitClicked && (!pwd || !username)){
             setEmptyInput(true);
         }
 
+        // Basic validation
         if (!username) {
             setValidUsername(false);
             return;
@@ -90,33 +61,36 @@ const Login = () => {
             });
     
             if (response.ok) {
-                const responseData = await response.json(); 
+                const responseData = await response.json(); // Parse JSON response
                 console.log('Authentication successful:', responseData);
+
+                // Set user information in the context or state
                 setUser(responseData.user);
                 console.log('user:', user);
+
                 localStorage.setItem('user', JSON.stringify(responseData.user));
-                handleRedirect();
             } else if (response.status === 401) {
-                const errorData = await response.json(); 
+                const errorData = await response.json(); // Parse JSON error response
                 if (errorData.error === "Username/email not registered") {
+                    // Username/email not registered
                     setValidUsername(false);
                     setNotFoundError(true);
                 } else if (errorData.error === "Invalid password") {
+                    // Invalid password
                     setValidPwd(false);
                 } else {
+                    // Handle other errors
                     console.error('Authentication error:', errorData.error);
                 }
             } else {
+                // Handle other errors
                 console.error('Authentication error:', response.statusText);
             }
         } catch (error) {
+            // Handle fetch error
             console.error('Error:', error);
         }
-        
-        
     };
-
-    
     
     return (
         <main className='login-main-bg'>

@@ -1,54 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState, useRef, useEffect, useContext,  } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./Admin.css";
-import UserContext from "../Register/UserContext";
 import { faTachometerAlt, faChalkboardTeacher, faUserGraduate, faBook, faExclamationTriangle, faSignOut } from '@fortawesome/free-solid-svg-icons';
 
 function Dashboard() {
 
     
-    const { user, setUser } = useContext(UserContext);
-
-    useEffect(() => {
-        console.log("logged in user: ", user);
-    }, [user]);
-    const handleLogout = () => {
-        
-        setUser(null);
-    
-        localStorage.removeItem('user');
-        window.location.href = "/login";
-    };
-      const isAdmin =
-      user &&
-      user.userid === 1 &&
-      user.email === 'admin@cit.edu' &&
-      user.username === 'admin' &&
-      user.firstname === 'code' &&
-      user.lastname === 'tech' &&
-      user.password === 'CodeTech!23' &&
-      user.isDelete === false &&
-      user.role === 'admin';
-  
-      if (!isAdmin) {
-          return (
-              <main className='a-notadmin-main'>
-              <div className='a-notadmin-container'>
-                  <form className='a-notadmin-form'>
-                      <h1 style={{fontSize:'35px',textAlign:'center'}}>Off Access!</h1>
-                      <div style={{marginTop:'10px', marginBottom:'20px', textAlign:'center', padding:"0 10px"}}>
-                          <span className="small-text">This page is for admin-only access. You don't have the necessary privileges to view this content.</span>
-                      </div>
-                      <Link to="/login" className='link-btn'>
-                          <button className="btn">Go back</button>
-                      </Link>
-                  </form>
-              </div>
-          </main>
-          );
-      }
     return(
         <main style={{ display: 'flex' }}>
 
@@ -89,7 +47,7 @@ function Dashboard() {
                     </Link>
                 </li>
                 <li className="a-logout">
-                    <Link to="/login" className='a-link-text' onClick={handleLogout}>
+                    <Link to="/#" className='a-link-text'>
                         <FontAwesomeIcon icon={faSignOut} style={{fontSize:"1.2rem"}} />
                         <span>Logout</span>
                     </Link>

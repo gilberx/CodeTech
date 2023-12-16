@@ -44,7 +44,7 @@ const AddLesson = () => {
   };
   if (!user) {
     return (
-        <main className='a-notadmin-main'>
+    <main className='a-notadmin-main'>
         <div className='a-notadmin-container'>
             <form className='a-notadmin-form'>
                 <h1 style={{fontSize:'35px',textAlign:'center'}}>You are not logged in!</h1>

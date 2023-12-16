@@ -20,7 +20,7 @@ const Register = () => {
     const [submitClicked, setSubmitClicked] = useState(false);
     
     const [role, setRole] = useState('learner');
-    const [isdeleted, setIsDeleted] = useState(false);
+    const [isDelete, setIsDelete] = useState(false);
 
     const [email, setEmail] = useState('');
     const [emailExists, setEmailExists] = useState(false);
@@ -50,6 +50,8 @@ const Register = () => {
 
     const [errMsg, setErrMsg] = useState(false);
     const [emptyInput, setEmptyInput] = useState(false);
+
+    
 
     useEffect(() => {
         if(userRef.current){
@@ -104,6 +106,13 @@ const Register = () => {
 
     const handleToggle = (type) => {
         setRole(type);
+    };
+
+    const handleRedirect = () => {
+        
+        console.log('Navigating to /CodeTech...');
+        
+        window.location.href = '/'; 
     };
 
     const checkEmailExists = async () => {
@@ -177,7 +186,7 @@ const Register = () => {
             console.log(errMsg)
             return;
         }
-        const user = {username, email, password: pwd, firstname, lastname, role, isdeleted}
+        const user = {username, email, password: pwd, firstname, lastname, role, isDelete}
         console.log("user: ", user);
         try {
             const response = await fetch("http://localhost:8080/user/insertUser", {
@@ -193,6 +202,8 @@ const Register = () => {
                 console.log("New User Registered: ", userData);
                 setUser(userData);
                 localStorage.setItem('user', JSON.stringify(userData));
+            
+                handleRedirect();
             } else {
                 console.error('Registration failed:', response.statusText);
                 

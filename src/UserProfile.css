@@ -1,0 +1,121 @@
+/* App.css (or create a new CSS file) */
+
+.user-profile-page {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .picture-container {
+    display: flex;
+    gap: 10px; /*usba lang sad ni para mo layo ang picture or userId og role*/
+  }
+  
+  .profile-sidebar {
+    width: 200px;
+    height: 260px;
+    border-radius: 20px;
+    background-color: #000000;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    margin-top: 150px;
+  }
+  
+  .progress-sidebar {
+    width: 200px;
+    height: 175px;
+    border-radius: 20px;
+    background-color: #000000;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    margin-top: 150px;
+  }
+  
+  .profile-sidebar button {
+    display: block;
+    border-radius: 20px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #458C83;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .profile-sidebar button:hover {
+    background-color: #53ffe8;
+  }
+  
+  .user-profile {
+    width: 600px;
+    margin-top: 150px;
+    border-radius: 20px;
+    padding-top: 10px;
+    padding-right: 40px;
+    padding-left: 40px;
+    background-color: #000000;
+  }
+
+  .user-profile h2 {
+    margin-top: 20px;
+  }
+  
+.inputField{
+    margin-top: 20px;
+}
+  
+  .inputField input {
+    background-color: #f1f1f1;
+    border-color: #f1f1f1;
+    margin: 4px 0;
+  }
+  
+  .user-profile h2 {
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+  
+  .user-profile label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  
+  .user-profile button {
+    background-color: #458C83;
+    color: white;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .userButtons button:hover {
+    background-color: #53ffe8;
+  }
+  
+  .user-profile button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+  
+  .userButtons {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .a-names-input-userprofile{
+    display: flex;
+    gap: 1rem;
+}
+
+.a-names-input-userprofile input{
+    width: 250px;
+
+}

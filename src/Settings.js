@@ -1,19 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Settings.css';
+import UserContext from "./Register/UserContext";
 
 const Settings = ({ onUpdate }) => {
-  const [userId, setUserId] = useState("");
-  const [role, setRole] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [currentPassword, setCurrentPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
+  const { user } = useContext(UserContext);
+
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isCurrentPasswordValid, setIsCurrentPasswordValid] = useState(true);
 
   const linkStyle = {
     textDecoration: 'none',
@@ -21,34 +18,21 @@ const Settings = ({ onUpdate }) => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:8080/user/getUserById/1")
-      .then(response => response.json())
-      .then(data => {
-        if (data) {
-          setUserId(data.userid);
-          setRole(data.role);
-          setUsername(data.username);
-          setEmail(data.email);
-          setPassword(data.password);
-          setFirstname(data.firstname);
-          setLastname(data.lastname);
-        }
-      })
-      .catch(error => console.error("Error fetching user data:", error));
-  }, []);
+    console.log('User data from context:', user);
+  }, [user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setError(""); // Clear any previous error
+    setError(''); // Clear any previous error
 
     switch (name) {
-      case "currentPassword":
+      case 'currentPassword':
         setCurrentPassword(value);
         break;
-      case "newPassword":
+      case 'newPassword':
         setNewPassword(value);
         break;
-      case "confirmPassword":
+      case 'confirmPassword':
         setConfirmPassword(value);
         break;
       default:
@@ -56,50 +40,64 @@ const Settings = ({ onUpdate }) => {
     }
   };
 
-  const handleUpdate = () => {
+  const handleUpdate = async () => {
     // Check if the current password is correct
-    if (currentPassword !== password) {
+    if (currentPassword !== user.password) {
       setError('Incorrect current password');
+      setIsCurrentPasswordValid(false);
       return;
     }
 
     // Check if the new password meets criteria (e.g., length, complexity)
     if (newPassword.length < 8) {
       setError('New password must be at least 8 characters long');
+      setIsCurrentPasswordValid(true);
       return;
     }
 
     // Check if the confirm password matches the new password
     if (newPassword !== confirmPassword) {
       setError('New password and confirm password do not match');
+      setIsCurrentPasswordValid(true);
       return;
     }
 
+    const userId = user.userid;
+
+    // Assuming you have an `onUpdate` callback for handling updates
     const updatedUserData = {
       userId,
-      role,
-      username,
-      email,
+      role: user.role,
+      username: user.username,
+      email: user.email,
       password: newPassword, // Update the password
-      firstname,
-      lastname,
+      firstname: user.firstname,
+      lastname: user.lastname,
     };
 
-    fetch(`http://localhost:8080/user/updateUser?userid=${userId}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updatedUserData),
-    })
-      .then(response => response.json())
-      .then(updatedUser => {
-        onUpdate(updatedUser);
-      })
-      .catch(error => {
-        console.error('Error updating user data:', error);
-        setError('Error updating user data');
+    try {
+      const response = await fetch(`http://localhost:8080/user/updateUser?userid=${userId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedUserData),
       });
+
+      if (response.ok) {
+        setIsCurrentPasswordValid(true);
+        // Optionally, you can clear the password fields after a successful update
+        setCurrentPassword(newPassword);
+        setNewPassword('');
+        setConfirmPassword('');
+        onUpdate(updatedUserData);
+      } else {
+        console.error('Update failed:', response.statusText);
+        setError('Error updating user data');
+      }
+    } catch (error) {
+      console.error('Error during update:', error.message);
+    }
   };
 
   return (
@@ -145,6 +143,9 @@ const Settings = ({ onUpdate }) => {
           />
         </div>
         {error && <p style={{ color: 'red' }}>{error}</p>}
+        {!isCurrentPasswordValid && (
+          <p style={{ color: 'red' }}>Incorrect current password. Please try again.</p>
+        )}
         <div className="userButtons">
           <button onClick={handleUpdate}>Change Password</button>
         </div>

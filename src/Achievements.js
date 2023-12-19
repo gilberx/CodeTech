@@ -1,8 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Achievements.css';
+import Navbar from "./Navbar";
+import UserContext from "./Register/UserContext";
 
 const Achievements = () => {
+  const { user, setUser } = useContext(UserContext);
+
+  const handleLogout = () => {
+        
+    setUser(null);
+  
+    localStorage.removeItem('user');
+    window.location.href = "/login";
+  };
 
   const linkStyle = {
     textDecoration: 'none',
@@ -11,8 +22,9 @@ const Achievements = () => {
 
   return (
     <div className="achievement-page">
-      <div className="sidebar">
-            <Link to="/" style={linkStyle}>
+      <Navbar/>
+      <div className="profile-sidebar">
+            <Link to="/userProfile" style={linkStyle}>
               <button>Profile</button>
             </Link>
             <Link to="/achievements" style={linkStyle}>
@@ -24,6 +36,9 @@ const Achievements = () => {
             <Link to="/settings" style={linkStyle}>
               <button>Settings</button>
             </Link>
+           
+              <button onClick={handleLogout}>Logout</button>
+            
           </div>
     <div className="user-achievements">
       <h2>Achievements</h2>

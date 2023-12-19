@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Settings.css';
+import Navbar from "./Navbar";
 import UserContext from "./Register/UserContext";
 
 const Settings = ({ onUpdate }) => {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -100,22 +101,34 @@ const Settings = ({ onUpdate }) => {
     }
   };
 
+  const handleLogout = () => {
+        
+    setUser(null);
+  
+    localStorage.removeItem('user');
+    window.location.href = "/login";
+  };
+
   return (
     <div className="settings-page">
-       <div className="sidebar">
-          <Link to="/" style={linkStyle}>
-            <button>Profile</button>
-          </Link>
-          <Link to="/achievements" style={linkStyle}>
-            <button>Achievements</button>
-          </Link>
-          <Link to="/progress" style={linkStyle}>
-            <button>Progress</button>
-          </Link>
-          <Link to="/settings" style={linkStyle}>
-            <button>Settings</button>
-          </Link>
-        </div>
+       <Navbar/>
+      <div className="profile-sidebar">
+            <Link to="/userProfile" style={linkStyle}>
+              <button>Profile</button>
+            </Link>
+            <Link to="/achievements" style={linkStyle}>
+              <button>Achievements</button>
+            </Link>
+            <Link to="/progress" style={linkStyle}>
+              <button>Progress</button>
+            </Link>
+            <Link to="/settings" style={linkStyle}>
+              <button>Settings</button>
+            </Link>
+           
+              <button onClick={handleLogout}>Logout</button>
+            
+          </div>
       <div className="user-settings">
         <h2>Settings</h2>
         <div className="passField">

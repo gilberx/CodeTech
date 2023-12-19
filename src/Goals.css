@@ -75,3 +75,18 @@
   .goalsButtons {
     text-align: center;
   }
+
+  .cppGroup {
+    display: flex;
+    justify-content: center;
+  }
+
+  .cGroup {
+    display: flex;
+    justify-content: center;
+  }
+
+  .csGroup {
+    display: flex;
+    justify-content: center;
+  }

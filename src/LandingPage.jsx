@@ -514,7 +514,8 @@ function ResponsiveAppBar() {
             </p>
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <Button style={{backgroundColor: '#F5FFFD',color:'#212121', height:'55px',width:'225px',fontSize:'20px',fontWeight:'520', fontFamily:'Inter, sans-serif',borderRadius:'28px',boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)', textTransform: 'none'}}>
+            <Button onClick={() => navigate('/Courses')} 
+            style={{backgroundColor: '#F5FFFD',color:'#212121', height:'55px',width:'225px',fontSize:'20px',fontWeight:'520', fontFamily:'Inter, sans-serif',borderRadius:'28px',boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)', textTransform: 'none'}}>
               Start  Learning
             </Button>
           </div>

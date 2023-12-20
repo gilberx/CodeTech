@@ -1,17 +1,22 @@
 import React, {useState, useEffect, useRef} from "react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
+import Modal from "../Modal";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_CHARACTERS = 250;
 const GetInTouch = () => {
     const [activeSection, setActiveSection] = useState("emailus");
 
+    const navigate = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [validEmail, setValidEmail] = useState(false);
     const [message, setMessage] = useState('');
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [errMsg, setErrMsg] = useState('');
 
     useEffect(() => {
@@ -20,9 +25,8 @@ const GetInTouch = () => {
     }, [email]);
 
     const sectionRefs = {
-        description: useRef(null),
-        abouttheapp: useRef(null),
-        others: useRef(null),
+        contact: useRef(null),
+        emailus: useRef(null),
       };
 
       const handleIntersection = (entries) => {
@@ -56,7 +60,7 @@ const GetInTouch = () => {
               }
             });
           };
-        }, [sectionRefs]);
+    }, [sectionRefs]);
 
     const handleSectionClick = (section) => {
         setActiveSection(section);
@@ -67,6 +71,16 @@ const GetInTouch = () => {
         if (inputText.length <= MAX_CHARACTERS) {
             setMessage(inputText);
         }
+
+        const contactDetails = {name, email, message};
+
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        setEmail('');
+        setName('');
+        setMessage('');
     };
 
     const handleSubmit = async (e) => {
@@ -83,6 +97,31 @@ const GetInTouch = () => {
             setErrMsg("Invalid email input")
             return;
         }
+
+        const contactus = {name, email, message}
+        try{
+            const response = await fetch("http://localhost:8080/contactus/insertContactUs", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(contactus),
+            })
+
+            console.log("Response:", response);
+
+            if(response.ok){
+                const contactUsStatus = await response.json();
+                console.log("New Message added: ", contactUsStatus);
+                setIsModalOpen(true);
+            } else {
+                console.error('Message submition failed:', response.statusText);
+                setErrMsg('Error submitting message. Please try again later.');
+                
+            }
+        } catch (error) {
+            console.error('Error during submition:', error.message);
+            setErrMsg('Error submitting message. Please try again later.');
+        }
+
     };
     return(
         <>
@@ -90,8 +129,8 @@ const GetInTouch = () => {
             <Navbar/>
             <div className="git-content">
                 <div className="git-left-content">
-                    <div className="git-email" id="emailus">
-                        <h2>Email Us</h2>
+                    <div className="git-email" id="emailus" ref={sectionRefs.emailus}>
+                        <h2>Send us a message!</h2>
                     </div>
                     <div className="git-email-input">
                         <form>
@@ -163,11 +202,17 @@ const GetInTouch = () => {
                                     {message.length}/{MAX_CHARACTERS}
                                 </div>
                             </div>
+                            <div className="error-message" style={{ color: 'red', margin: '0', fontSize: '10px' }}>
+                                {errMsg}
+                            </div>
                             <button className="git-btn" onClick={handleSubmit}>Submit a Ticket</button>
+                            
+
+
                         </form>
 
                     </div>
-                    <div className="git-email" id="contact">
+                    <div className="git-email" id="contact" ref={sectionRefs.contact}>
                         <h2>Contact</h2>
                     </div>
                     <div className="git-contact">
@@ -196,7 +241,17 @@ const GetInTouch = () => {
                     </div>
                 </div>
             </div>
-
+            {isModalOpen && (
+                <Modal onClose={handleCloseModal}>
+                    <div className="ticket-modal-container">
+                        <h1 style={{fontSize:'20px',textAlign:'center'}}>Message successfully submitted!</h1>
+                        <div style={{marginTop:'10px', marginBottom:'20px', textAlign:'center', padding:"0 10px"}}>
+                            <span className="small-text">Thank you for reaching out to us!</span>
+                        </div>
+                        
+                    </div>
+                </Modal>
+            )}                           
             <Footer/>
             
         </main>

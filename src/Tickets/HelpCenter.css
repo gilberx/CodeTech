@@ -420,7 +420,6 @@ body{
 
 .git-sidebar {
   margin: 10vh 0;
-  border: 1px solid #777777;
 }
 
 .git-sidebar h5,
@@ -432,7 +431,6 @@ body{
   height: 30vh;
   position: sticky;
   top: 60px; 
-  border: 1px solid #777777;
 }
 
 .git-left-content{
@@ -496,8 +494,12 @@ body{
   font-weight: 600;
   font-size: 15px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  margin: 0 0 30px 0;
+  margin: 20px 0 30px 0;
   cursor: pointer;
+}
+
+.git-btn:hover {
+  background-color: #2c6b5f; /* New background color on hover */
 }
 
 .git-contact{

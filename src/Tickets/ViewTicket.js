@@ -86,7 +86,7 @@ const ViewTicket = () => {
                         </div>
                     </> }
 
-                        <Button onClick={() => navigate('/viewtickets')}
+                        <Button onClick={() => navigate('/submitticket')}
                                 style={{my: 2,
                                     backgroundColor: '#458C83',
                                     color: 'white',

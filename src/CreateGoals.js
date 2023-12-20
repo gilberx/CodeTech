@@ -17,14 +17,32 @@ const CreateGoals = () => {
 
   const handleCreateGoal = (e) => {
     e.preventDefault()
-    const createGoal={userGoals}
+
+    let course;
+    if (window.location.pathname.includes("/cppGroup")) {
+      course = "cpp";
+    } else if (window.location.pathname.includes("/cGroup")) {
+      course = "c";
+    } else if (window.location.pathname.includes("/csGroup")) {
+      course = "cs";
+    } else {
+      course = "none";
+    }
+
+    const createGoal={
+      userGoals,
+      course,
+    }
     console.log(createGoal)
     fetch("http://localhost:8080/userGoals/insertUserGoals", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(createGoal),
+      body: JSON.stringify({
+        goals: createGoal,
+        course: course,
+    }),
     })
       .then(response => response.json())
       .then(data => {

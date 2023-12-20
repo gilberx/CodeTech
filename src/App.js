@@ -30,6 +30,10 @@ import ViewGoals from './ViewGoals.js';
 import EditGoals from './EditGoals.js';
 import UserProfile from './UserProfile.js';
 import HelpCenter from './Tickets/HelpCenter.js';
+import Faq from './Tickets/Faq.js';
+import SubmitTicket from './Tickets/SubmitTicket.js';
+
+
 import Lesson1 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1.jsx'
 import Lesson1_page2 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1_page2.jsx'
 import Lesson1_page3 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1_page3.jsx'
@@ -49,8 +53,10 @@ function App() {
           <Route path="/educator" element={<Educator />} />
           <Route path="/joinClass" element={<JoinClass/>} />
           <Route path="/JoinCreate" element={<JoinCreate />} />
-          <Route path="/class/:classcode" component={Class} />
-          <Route path="/AddQuiz" element={<AddQuiz />} />
+          <Route path="/class/:classcode" element={<Class />} />
+          <Route path="/class/:classcode/addQuiz" element={<AddQuiz />} />
+          <Route path="/class/:classcode/addLesson" element={<AddLesson />} />    
+          <Route path="/AddQuiz/" element={<AddQuiz />} />
           <Route path="/AddLesson" element={<AddLesson />} />
           <Route path="/Courses" element={<Courses/>}/>
           <Route path="/AboutUs" element={<AboutUs/>} />
@@ -59,6 +65,21 @@ function App() {
           <Route path="/Courses=IntroductionToC" element={<IntroductionToC/>}/>
           <Route path="/Courses=IntroductionToCSharp" element={<IntroductionToCSharp/>}/>
           <Route path="/Courses=IntroductionToCplusplus" element={<IntroductionToCplusplus/>}/>
+
+              <Route path="/userprofile" element={<UserProfile />} />
+              <Route path="/achievements" element={<Achievements />} />
+              <Route path="/progress" element={<Progress />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/goals" element={<Goals />} />
+              <Route path="/creategoals/:group" element={<CreateGoals />} />
+              <Route path="/viewgoals/:group" element={<ViewGoals />} />
+              <Route path="/editgoals/:sid" element={<EditGoals />} />
+
+              <Route path="/helpcenter" element={<HelpCenter />} />
+              <Route path="/faq" element={<Faq />} />
+              <Route path="/submitticket" element={<SubmitTicket />} />
+          
+      
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/achievements" element={<Achievements />} />
           <Route path="/progress" element={<Progress />} />

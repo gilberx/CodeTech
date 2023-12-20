@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
-body{
-    
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Montserrat:wght@300;400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 8rem;
 }
 
 .helpcenter-main-bg {
     background-image: url(/public/bg.png);
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 110vh;
     max-width: 100%;
     font-family: 'Montserrat', sans-serif; 
   }
@@ -69,14 +71,246 @@ body{
 
 .hc-divider{
     width: 100%;
-    height: 300px;
+    height: 220px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #EDF3F2;
 }
 
 .hc-divider-container{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+
+
+
+
+/* FAQS CSS */
+
+
+body{
+    background-color: #F5FFFD;
+}
+
+.faq-main-bg {
+    background-image: url(/public/codetech-header.png);
+    background-size: cover;
+    height: 80vh;
+    max-width: 100%;
+    font-family: 'Montserrat', sans-serif; 
+  }
+
+  .faq-content{
+    padding: 80vh 150px 100px 150px;
+    color: #495453;
+    display: flex;
+    gap: 10rem;
+  }
+
+  .faq-left-content{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .faq-left-content h1{
+    font-size: 50px;
+    margin: 10vh 0;
+  }
+
+  .faq-left-content h3{
+    margin-bottom: 20px;
+  }
+
+  
+
+  .sections {
+    margin-top: 10px;
+  }
+  
+  .sections ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .faq-sidebar {
+    margin: 10vh 0;
+  }
+  
+  .faq-sidebar h5,
+  .faq-sidebar li {
+    color: #777777;
+    width: 150px;
+  }
+  .faq-sidebar-container {
+    height: 30vh;
+    position: sticky;
+    top: 60px; 
+    margin-top: 20px;
+}
+  
+  .sections a {
+    display: block;
+    padding: 5px 20px ;
+    color: #777777;
+    font-size: 13px;
+    text-decoration: none;
+  }
+  
+  .sections .active {
+    border-left: 4px solid #458C83; /* Add the vertical line for the active section */
+    color: #458C83; /* Change text color for the active section */
+    font-weight: bold;
+    margin-left: -3px; /* Optionally make the text bold for the active section */
+  }
+
+  .rotate-img {
+    transition: transform 0.3s ease; /* Optional: Add a smooth transition effect */
+  }
+
+  
+
+  .hover:hover{
+    opacity: 0.5;
+  }
+
+  .faq-accordion-container{
+    
+    background: var(--color-white);
+    border-radius: 10px;
+    padding: var(--card-padding);
+    margin: 1rem 0;
+  }
+
+  .faq-accordion-details{
+    padding: 0 30px 20px 42px;
+  }
+
+  .faq-question{
+    padding-left: 15px;
+    font-weight: bold;
+    color: #777777;
+  }
+
+  
+
+  /* TICKET CSS */
+
+  .ticket-content{
+    display: flex;
+    flex-direction: column;
+    margin: 150px 300px;
+    color: #505050;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .subheader-line {
+    border: 1px solid #e2e1e1; 
+    margin-top: 5px; 
+  }
+
+
+.ticket-inputs{
+    margin: 20px 40px;
+}
+
+.ticket-input-div{
+    margin: 20px 0;
+}
+
+.ticket-inputs form{
+    width: auto;
+}
+.ticket-input-div input{
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    margin: 5px 0;
+    padding: 0 15px;
+    line-height: 40px;
+    border-radius: 10px;
+    border: 2px solid #7c7c7c;
+    background: transparent;
+    z-index: 1111;
+}
+
+
+.ticket-input-label{
+    display: flex;
+}
+
+.ticket-input-div input:focus{
+    border: 2px solid #458C83;
+}
+
+.ticket-input.invalid:focus {
+    border: 2px solid rgb(218, 114, 114);
+}
+
+
+.ticket-side-by-side {
+    display: flex;
+    gap: 10px;
+}
+
+
+
+.ticket-side-by-side input:focus{
+    border: 2px solid #458C83;
+}
+
+.ticket-side-by-side .ticket-input-div{
+    width: 100%;
+    
+    margin: 0;
+}
+
+.ticket-side-by-side .ticket-input-div input{
+    width: 100%;
+}
+
+.ticket-input-div select {
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    margin: 5px 0;
+    padding: 0 15px;
+    line-height: 40px;
+    border-radius: 10px;
+    border: 2px solid #7c7c7c;
+    background: transparent;
+    z-index: 1111;
+    appearance: none; /* Removes default dropdown arrow on some browsers */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%237C7C7C' height='24' viewBox='0 0 24 24' width='24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Custom dropdown arrow */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    cursor: pointer;
+}
+
+.ticket-input-div select:focus {
+    border: 2px solid #458C83;
+}
+.ticket-checkboxes {
+    margin-top: 20px;
+}
+
+.ticket-checkbox {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+
+}
+
+.ticket-checkbox input {
+    margin-right: 10px;
+}
+
+.ticket-checkbox label {
+    font-size: 10px;
+    color: #505050;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
 }

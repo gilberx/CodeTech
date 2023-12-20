@@ -41,7 +41,7 @@ const Progress = () => {
   return (
     <div className="progress-page">
       <Navbar/>
-      <div className="progress-sidebar">
+      <div className="goals-sidebar">
             <Link to="/progress" style={linkStyle}>
               <button>Progress</button>
             </Link>

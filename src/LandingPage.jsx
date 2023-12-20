@@ -57,7 +57,29 @@ function ResponsiveAppBar() {
   return (
     
     <div >
-      
+       <style>
+        {`
+          body {
+            position: relative;
+            background-color: '#FFFFFF';
+          }
+
+          body::before {
+            content: '';
+            position: absolute;
+            top: 550px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px; /* Adjust the size of the circle */
+            height: 500px; /* Adjust the size of the circle */
+            background-color: #458C83;
+            border-radius: 50%;
+            border-bottom-left-radius: 0; /* Cut in half horizontally */
+      border-bottom-right-radius: 0;
+            z-index: -1;
+          }
+        `}
+      </style>
       <div>
         <Navbar/>
       </div>
@@ -274,7 +296,8 @@ function ResponsiveAppBar() {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                marginLeft:'15px'
+                marginLeft:'15px',
+                marginBottom:'20px'
               }}>
                 <div>
                   <img src="/18.png" alt="Icon" style={{ marginTop:'-30px',height: '90px', width: '155px' }} />
@@ -299,7 +322,8 @@ function ResponsiveAppBar() {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                marginLeft:'15px'
+                marginLeft:'15px',
+                marginBottom:'20px'
               }}>
                 <div>
                   <img src="/19.png" alt="Icon" style={{ marginTop:'-30px',height: '100px', width: '175px' }} />
@@ -324,7 +348,8 @@ function ResponsiveAppBar() {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                marginLeft:'15px'
+                marginLeft:'15px',
+                marginBottom:'20px'
               }}>
                 <div>
                   <img src="/17.png" alt="Icon" style={{ marginTop:'-30px',height: '100px', width: '175px' }} />
@@ -348,7 +373,8 @@ function ResponsiveAppBar() {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                marginLeft:'15px'
+                marginLeft:'15px',
+                marginBottom:'20px'
               }}>
                 <div>
                   <img src="/19.png" alt="Icon" style={{ marginTop:'-30px',height: '100px', width: '175px' }} />
@@ -372,7 +398,8 @@ function ResponsiveAppBar() {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                marginLeft:'15px'
+                marginLeft:'15px',
+                marginBottom:'20px'
               }}>
                 <div>
                   <img src="/19.png" alt="Icon" style={{ marginTop:'-30px',height: '100px', width: '175px' }} />
@@ -396,7 +423,8 @@ function ResponsiveAppBar() {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                marginLeft:'15px'
+                marginLeft:'15px',
+                marginBottom:'20px'
               }}>
                 <div>
                   <img src="/19.png" alt="Icon" style={{ marginTop:'-30px',height: '100px', width: '175px' }} />
@@ -411,7 +439,7 @@ function ResponsiveAppBar() {
           </Slider>
         </div>
       </div>
-      <div style={{backgroundColor:'#FFFFFF', height:'110vh'}}>
+      <div style={{backgroundColor:'#FFFFFF', height:'80vh'}}>
         <div style={{paddingLeft: '10vh', marginBottom: '5vh', marginTop:'10vh', textAlign: 'right', marginRight: '20vh'}}>
           <p style={{fontFamily:'Montserrat, sans-serif', fontSize: '44px', color: 'black', marginTop: '80px'}}>Why <t style={{fontFamily:'Montserrat, sans-serif', fontSize: '44px', fontWeight: 'Bold', color:'#458C83'}}>Code</t><t style={{fontFamily:'Montserrat, sans-serif', fontSize: '44px', color: 'black', marginTop: '80px'}}>?</t></p>
         </div>
@@ -476,17 +504,20 @@ function ResponsiveAppBar() {
           </CardContent>
         </Card>
         </div>
-        <div style={{marginTop: '20vh', marginBottom: '5vh', textAlign: 'center'}}>
-          <p  style={{color: '#939393'}}>
-            Start here on CodeTech by joining a class or<br></br>starting a course!
-          </p>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom:'14vh' }}>
-          <Button style={{backgroundColor: '#F5FFFD',color:'#212121', height:'55px',width:'225px',fontSize:'20px',fontWeight:'520', fontFamily:'Inter, sans-serif',borderRadius:'28px',boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)', textTransform: 'none'}}>
-            Start  Learning
-          </Button>
-        </div>
+        
       </div>
+      <div style={{padding: '50px 0', backgroundColor: '#FFFFFF'}}>
+          <div style={{ textAlign: 'center', marginBottom: '6vh'}}>
+            <p  style={{color: '#939393'}}>
+              Start here on CodeTech by joining a class or<br></br>starting a course!
+            </p>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <Button style={{backgroundColor: '#F5FFFD',color:'#212121', height:'55px',width:'225px',fontSize:'20px',fontWeight:'520', fontFamily:'Inter, sans-serif',borderRadius:'28px',boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)', textTransform: 'none'}}>
+              Start  Learning
+            </Button>
+          </div>
+        </div>
       <div>
         <Footer/>
       </div>

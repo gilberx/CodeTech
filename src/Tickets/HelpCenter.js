@@ -23,10 +23,10 @@ const HelpCenter = () => {
                     fontFamily:'Montserrat, sans-serif', 
                     textAlign:'center', 
                     color:'#F5FFFD'}}>
-                    How may we help you?
+                    Help Center
                 </Typography>
             </div>
-            <div className="hc-options">
+            <div className="hc-options" onClick={() => navigate('/faq')}>
                 <div className="hc-option">
                     <img src="/faq.png"/>
                     <h2>FAQs</h2>
@@ -53,7 +53,7 @@ const HelpCenter = () => {
             <div className="hc-divider">
                 <div className="hc-divider-container">
                     <h1>Can't find what you're looking for?</h1>
-                    <Button onClick={() => navigate('/Courses')}
+                    <Button onClick={() => navigate('/submitticket')}
                             style={{my: 2,
                                 backgroundColor: '#F5FFFD',
                                 color: '#212121',

@@ -46,11 +46,11 @@ const Goals = () => {
         <h2>Goals</h2>
         <div className="goalsButtons">
         <div className='cppGroup'>
-        <img
+        <div className='image'><img
           src="/17.png"
           alt="cpp"
           style={{ width: "125px", height: "65px", marginRight: "10px" }}
-        />
+        /></div>
         <Link to="/viewgoals/cppGroup" style={linkStyle}>
         <button>
           View Goals
@@ -65,11 +65,11 @@ const Goals = () => {
         </Link>
         </div>
         <div className='cGroup'>
-        <img
+        <div className='image'><img
           src="/18.png"
           alt="c"
           style={{ width: "125px", height: "65px", marginRight: "10px" }}
-        />
+        /></div>
         <Link to="/viewgoals/cGroup" style={linkStyle}>
         <button>
           View Goals
@@ -84,11 +84,11 @@ const Goals = () => {
         </Link>
         </div>
         <div className='csGroup'>
-        <img
+        <div className='image'><img
           src="/19.png"
           alt="cs"
-          style={{ width: "150px", height: "80px", marginRight: "10px" }}
-        />
+          style={{ width: "143px", height: "80px", marginRight: "0px" }}
+        /></div>
         <Link to="/viewgoals/csGroup" style={linkStyle}>
         <button>
           View Goals

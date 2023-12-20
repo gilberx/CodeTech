@@ -5,7 +5,7 @@ import Login from './Login/Login.js';
 import ForgotPassword from './Login/ForgotPassword.js';
 import ResetPassword from './Login/ResetPassword.js';
 import LandingPage from './LandingPage.jsx';
-import { UserProvider } from './Register/UserContext'; // Import the UserProvider
+import { UserProvider } from './Register/UserContext';
 import Dashboard from './Admin/Dashboard.jsx';
 import '@fortawesome/fontawesome-free/css/all.css';
 import Educator from './Admin/Educator.jsx';
@@ -18,8 +18,11 @@ import Courses from './Courses/Courses.jsx'
 import Courses2 from './Courses/BeginnerCourse.jsx'
 import Courses3 from './Courses/IntermediateCourse.jsx'
 import IntroductionToC from './Courses/IntroductionToC.jsx'
+import CIntermediate from './Courses/CIntermediate.jsx'
 import IntroductionToCSharp from './Courses/IntroductionToCSharp.jsx'
+import CSharpIntermediate from './Courses/CSharpIntermediate.jsx'
 import IntroductionToCplusplus from './Courses/IntroductionToCplusplus.jsx'
+import CplusplusIntermediate from './Courses/CplusplusIntermediate.jsx'
 import AboutUs  from './AboutUs'
 import Achievements from './Achievements.js';
 import Progress from './Progress.js';
@@ -32,12 +35,11 @@ import UserProfile from './UserProfile.js';
 import HelpCenter from './Tickets/HelpCenter.js';
 import Faq from './Tickets/Faq.js';
 import SubmitTicket from './Tickets/SubmitTicket.js';
-
-
 import Lesson1 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1.jsx'
 import Lesson1_page2 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1_page2.jsx'
 import Lesson1_page3 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1_page3.jsx'
 import Lesson2 from './Courses/Modules/C_Module/Module_1/Lesson2/Lesson2.jsx'
+
 
 function App() {
   return (
@@ -63,23 +65,22 @@ function App() {
           <Route path="/Courses=BeginnerPage" element={<Courses2/>}/>
           <Route path="/Courses=IntermediatePage" element={<Courses3/>}/>
           <Route path="/Courses=IntroductionToC" element={<IntroductionToC/>}/>
+          <Route path="/Courses=CIntermediate" element={<CIntermediate/>}/>
           <Route path="/Courses=IntroductionToCSharp" element={<IntroductionToCSharp/>}/>
+          <Route path="/Courses=CSharpIntermediate" element={<CSharpIntermediate/>}/>
           <Route path="/Courses=IntroductionToCplusplus" element={<IntroductionToCplusplus/>}/>
-
-              <Route path="/userprofile" element={<UserProfile />} />
-              <Route path="/achievements" element={<Achievements />} />
-              <Route path="/progress" element={<Progress />} />
-              <Route path="/settings" element={<Settings />} />
-              <Route path="/goals" element={<Goals />} />
-              <Route path="/creategoals/:group" element={<CreateGoals />} />
-              <Route path="/viewgoals/:group" element={<ViewGoals />} />
-              <Route path="/editgoals/:sid" element={<EditGoals />} />
-
-              <Route path="/helpcenter" element={<HelpCenter />} />
-              <Route path="/faq" element={<Faq />} />
-              <Route path="/submitticket" element={<SubmitTicket />} />
-          
-      
+          <Route path="/Courses=C++Intermediate" element={<CplusplusIntermediate/>}/>
+          <Route path="/userprofile" element={<UserProfile />} />
+          <Route path="/achievements" element={<Achievements />} />
+          <Route path="/progress" element={<Progress />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/goals" element={<Goals />} />
+          <Route path="/creategoals/:group" element={<CreateGoals />} />
+          <Route path="/viewgoals/:group" element={<ViewGoals />} />
+          <Route path="/editgoals/:sid" element={<EditGoals />} />
+          <Route path="/helpcenter" element={<HelpCenter />} />
+          <Route path="/faq" element={<Faq />} />
+          <Route path="/submitticket" element={<SubmitTicket />} />
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/achievements" element={<Achievements />} />
           <Route path="/progress" element={<Progress />} />

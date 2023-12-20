@@ -65,6 +65,7 @@ function ResponsiveAppBar() {
           }
 
           body::before {
+            margin-top: 80px;
             content: '';
             position: absolute;
             top: 550px;

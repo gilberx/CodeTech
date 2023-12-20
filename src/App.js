@@ -15,6 +15,10 @@ import Courses3 from './Courses/IntermediateCourse.jsx'
 import IntroductionToC from './Courses/IntroductionToC.jsx'
 import IntroductionToCSharp from './Courses/IntroductionToCSharp.jsx'
 import IntroductionToCplusplus from './Courses/IntroductionToCplusplus.jsx'
+import Lesson1 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1.jsx'
+import Lesson1_page2 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1_page2.jsx'
+import Lesson1_page3 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1_page3.jsx'
+import Lesson2 from './Courses/Modules/C_Module/Module_1/Lesson2/Lesson2.jsx'
 
 function App() {
   return (
@@ -34,6 +38,10 @@ function App() {
           <Route path="/Courses=IntroductionToC" element={<IntroductionToC/>}/>
           <Route path="/Courses=IntroductionToCSharp" element={<IntroductionToCSharp/>}/>
           <Route path="/Courses=IntroductionToCplusplus" element={<IntroductionToCplusplus/>}/>
+          <Route path="/Module1=Lesson1_page1" element={<Lesson1/>}/>
+          <Route path="/Module1=Lesson1_page2" element={<Lesson1_page2/>}/>
+          <Route path="/Module1=Lesson1_page3" element={<Lesson1_page3/>}/>
+          <Route path="/Module1=Lesson2_page1" element={<Lesson2/>}/>
         </Routes>
       </UserProvider>
     </Router>

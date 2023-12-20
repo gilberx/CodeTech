@@ -16,11 +16,13 @@
     "axios": "^1.6.2",
     "bcrypt": "^5.1.1",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.9.1",
     "react-dom": "^18.2.0",
     "react-fontawesome": "^1.7.1",
     "react-router-dom": "^6.19.0",
     "react-scripts": "5.0.1",
     "react-slick": "^0.29.0",
+    "react-syntax-highlighter": "^15.5.0",
     "slick": "^1.12.2",
     "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4"

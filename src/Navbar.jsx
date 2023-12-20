@@ -11,8 +11,9 @@ import AdbIcon from '@mui/icons-material/Adb';
 import Button from '@mui/material/Button';
 import Container from '@mui/system/Container';
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import UserContext from './Register/UserContext.js';
+import { useContext } from "react";
+import UserContext from './Register/UserContext';
+
 
 const Navbar = () => {
 
@@ -40,17 +41,17 @@ const Navbar = () => {
         left: '50%',
         transform: 'translateX(-50%)', 
         marginTop: '30px'}}>
-        <Container maxWidth="100%">
+        <Container maxWidth="100%" >
           <Toolbar disableGutters>
           <img
             src={faviconPath}
-            alt="Favicon"
+            alt="Favicon" onClick={() => navigate('/')}
             style={{ display: { xs: 'none', md: 'flex' }, 
             marginRight: 0, 
             height: '40px', 
             width: '40px', 
             marginRight: '10px',
-            marginLeft: '-10px' }}
+            marginLeft: '-10px',cursor: 'pointer' }}
           />
             <Typography
               variant="h6"
@@ -64,7 +65,8 @@ const Navbar = () => {
                 color: 'inherit',
                 fontSize: '25px',
                 textDecoration: 'none',
-                mr: 15,
+                mr: 11,
+                cursor: 'pointer'
               }}
             >
               CodeTech
@@ -107,26 +109,47 @@ const Navbar = () => {
               </Menu>
             </Box>
             <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href="#app-bar-with-responsive-menu"
-              sx={{
-                mr: 2,
-                display: { xs: 'flex', md: 'none' },
-                flexGrow: 1,
-                fontFamily: 'Inter, sans-serif',
-                fontWeight: '600',
-                color: 'inherit',
-                fontSize: '30px',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
-              CodeTech
-            </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            
+                  <Button
+                    onClick={() => navigate('/joinclass')}
+                    sx={{fontFamily: 'Inter, sans-serif',
+                    color: 'inherit',
+                    fontSize: '14px',
+                    my: 2, 
+                    color: 'white', 
+                    display: 'block', 
+                    mr: 1,
+                    textTransform: 'none', 
+                    borderRadius: '25px',
+                    width: '125px',
+                    height: '28px',
+                    textTransform: 'none',
+                    marginBottom: '20px' 
+                    }}
+                  >
+                    Join a Class
+                  </Button>
+                  <Button
+                    onClick={() => navigate('/Courses')}
+                    sx={{fontFamily: 'Inter, sans-serif',
+                    color: 'inherit',
+                    fontSize: '14px',
+                    my: 2, 
+                    color: 'white', 
+                    display: 'block', 
+                    mr: 1,
+                    textTransform: 'none', 
+                    borderRadius: '25px',
+                    width: '125px',
+                    height: '28px',
+                    textTransform: 'none',
+                    marginBottom: '20px' 
+                    }}
+                  >
+                    Courses
+                  </Button>
+                
                 <Button
                   onClick={() => navigate('/register')}
                   sx={{fontFamily: 'Inter, sans-serif',
@@ -135,43 +158,7 @@ const Navbar = () => {
                   my: 2, 
                   color: 'white', 
                   display: 'block', 
-                  mr: 4,
-                  textTransform: 'none', 
-                  borderRadius: '25px',
-                  width: '125px',
-                  height: '28px',
-                  textTransform: 'none',
-                  marginBottom: '20px' }}
-                >
-                  Join a Class
-                </Button>
-                <Button
-                  onClick={() => navigate('/Courses')}
-                  sx={{fontFamily: 'Inter, sans-serif',
-                  color: 'inherit',
-                  fontSize: '14px',
-                  my: 2, 
-                  color: 'white', 
-                  display: 'block', 
-                  mr: 4,
-                  textTransform: 'none', 
-                  borderRadius: '25px',
-                  width: '125px',
-                  height: '28px',
-                  textTransform: 'none',
-                  marginBottom: '20px' }}
-                >
-                  Courses
-                </Button>
-                <Button
-                  onClick={() => navigate('/register')}
-                  sx={{fontFamily: 'Inter, sans-serif',
-                  color: 'inherit',
-                  fontSize: '14px',
-                  my: 2, 
-                  color: 'white', 
-                  display: 'block', 
-                  mr: 4,
+                  mr: 1,
                   textTransform: 'none', 
                   borderRadius: '25px',
                   width: '125px',
@@ -182,7 +169,28 @@ const Navbar = () => {
                   How it Works
                 </Button>
                 <Button
-                  onClick={() => navigate('/register')}
+                  onClick={() => navigate('/aboutus')}
+                  sx={{fontFamily: 'Inter, sans-serif',
+                  color: 'inherit',
+                  fontSize: '14px',
+                  my: 2, 
+                  color: 'white', 
+                  display: 'block', 
+                  mr: 1,
+                  textTransform: 'none', 
+                  borderRadius: '25px',
+                  width: '125px',
+                  height: '28px',
+                  textTransform: 'none',
+                  marginBottom: '20px' }}
+                >
+                  About Us
+                </Button>
+
+                {user !==null && user.role === 'admin' && (
+                  <>
+                  <Button
+                  onClick={() => navigate('/dashboard')}
                   sx={{fontFamily: 'Inter, sans-serif',
                   color: 'inherit',
                   fontSize: '14px',
@@ -197,35 +205,12 @@ const Navbar = () => {
                   textTransform: 'none',
                   marginBottom: '20px' }}
                 >
-                  About Us
+                  Dashboard
                 </Button>
+                  </>
+                )}
             </Box>
-            {user !== null ? (
-              // If user is not null, show these elements
-              <>
-                <Box>
-                  <Button onClick={() => navigate('/login')}
-                    sx={{
-                      my: 2,
-                      backgroundColor: '#458C83',
-                      color: 'white',
-                      display: 'block',
-                      borderRadius: '25px',
-                      width: '115px',
-                      height: '40px',
-                      fontWeight: '800',
-                      fontSize: 16
-                    }}>
-                    Learner
-                  </Button>
-                </Box>
-                <Box>
-                  <img src="./ProfileLogo.png" style={{ height: '50px', marginTop: 4 }} />
-                </Box>
-              </>
-            ) : (
-              // If user is null, show these elements
-              <>
+             
                 <Box>
                   <Button onClick={() => navigate('/register')}
                     sx={{
@@ -259,8 +244,7 @@ const Navbar = () => {
                     Login
                   </Button>
                 </Box>
-              </>
-            )}
+             
           </Toolbar>
         </Container>
       </AppBar>

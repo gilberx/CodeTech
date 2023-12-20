@@ -39,6 +39,8 @@ import Lesson1 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1.jsx'
 import Lesson1_page2 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1_page2.jsx'
 import Lesson1_page3 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1_page3.jsx'
 import Lesson2 from './Courses/Modules/C_Module/Module_1/Lesson2/Lesson2.jsx'
+import ViewTicket from './Tickets/ViewTicket.js';
+import GetInTouch from './Tickets/GetInTouch.js';
 
 
 function App() {
@@ -81,6 +83,22 @@ function App() {
           <Route path="/helpcenter" element={<HelpCenter />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/submitticket" element={<SubmitTicket />} />
+          <Route path="/userprofile" element={<UserProfile />} />
+          <Route path="/achievements" element={<Achievements />} />
+          <Route path="/progress" element={<Progress />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/goals" element={<Goals />} />
+          <Route path="/creategoals/:group" element={<CreateGoals />} />
+          <Route path="/viewgoals/:group" element={<ViewGoals />} />
+          <Route path="/editgoals/:sid" element={<EditGoals />} />
+
+              <Route path="/helpcenter" element={<HelpCenter />} />
+              <Route path="/faq" element={<Faq />} />
+              <Route path="/submitticket" element={<SubmitTicket />} />
+              <Route path="/viewtickets" element={<ViewTicket />} />
+              <Route path="/getintouch" element={<GetInTouch />} />
+          
+      
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/achievements" element={<Achievements />} />
           <Route path="/progress" element={<Progress />} />

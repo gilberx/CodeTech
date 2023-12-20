@@ -468,7 +468,7 @@ const Faq = () => {
                 </div>
             </div>
 
-           </div>
+        </div>
            <div className="hc-divider">
                     <div className="hc-divider-container">
                         <h1>Can't find what you're looking for?</h1>

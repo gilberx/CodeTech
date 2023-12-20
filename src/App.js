@@ -29,8 +29,10 @@ import CreateGoals from './CreateGoals.js';
 import ViewGoals from './ViewGoals.js';
 import EditGoals from './EditGoals.js';
 import UserProfile from './UserProfile.js';
-
-
+import Lesson1 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1.jsx'
+import Lesson1_page2 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1_page2.jsx'
+import Lesson1_page3 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1_page3.jsx'
+import Lesson2 from './Courses/Modules/C_Module/Module_1/Lesson2/Lesson2.jsx'
 
 function App() {
   return (
@@ -57,17 +59,19 @@ function App() {
           <Route path="/Courses=IntroductionToC" element={<IntroductionToC/>}/>
           <Route path="/Courses=IntroductionToCSharp" element={<IntroductionToCSharp/>}/>
           <Route path="/Courses=IntroductionToCplusplus" element={<IntroductionToCplusplus/>}/>
-
-              <Route path="/userprofile" element={<UserProfile />} />
-              <Route path="/achievements" element={<Achievements />} />
-              <Route path="/progress" element={<Progress />} />
-              <Route path="/settings" element={<Settings />} />
-              <Route path="/goals" element={<Goals />} />
-              <Route path="/creategoals/:group" element={<CreateGoals />} />
-              <Route path="/viewgoals/:group" element={<ViewGoals />} />
-              <Route path="/editgoals/:sid" element={<EditGoals />} />
-          </Routes>
-      
+          <Route path="/userprofile" element={<UserProfile />} />
+          <Route path="/achievements" element={<Achievements />} />
+          <Route path="/progress" element={<Progress />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/goals" element={<Goals />} />
+          <Route path="/creategoals/:group" element={<CreateGoals />} />
+          <Route path="/viewgoals/:group" element={<ViewGoals />} />
+          <Route path="/editgoals/:sid" element={<EditGoals />} />
+          <Route path="/Module1=Lesson1_page1" element={<Lesson1/>}/>
+          <Route path="/Module1=Lesson1_page2" element={<Lesson1_page2/>}/>
+          <Route path="/Module1=Lesson1_page3" element={<Lesson1_page3/>}/>
+          <Route path="/Module1=Lesson2_page1" element={<Lesson2/>}/>
+        </Routes>
     </Router>
     </UserProvider>
   );

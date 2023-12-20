@@ -63,7 +63,27 @@ function Courses() {
 
   useEffect(() => {
     document.title = "CodeTech";
+
+    const fetchCourseData = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/courses/getCourse/1');
+        if (response.ok) {
+          // If the course with cid: 1 exists, set isCourseTaken to true
+          setIsCourseTaken(true);
+        } else {
+          // If the course with cid: 1 does not exist, set isCourseTaken to false
+          setIsCourseTaken(false);
+        }
+      } catch (error) {
+        console.error('An error occurred while fetching course data:', error);
+      }
+    };
+
+    // Call the fetchCourseData function
+    fetchCourseData();
   }, []);
+
+  
 
   const handleTakeCourse = async () => {
     const courseData = {
@@ -91,6 +111,8 @@ function Courses() {
       console.error('An error occurred while taking the course:', error);
     }
   };
+
+  
 
   return (
     <div class='introC'>
@@ -163,7 +185,7 @@ function Courses() {
               </div>
               <div>
               {isCourseTaken && (
-                  <Button
+                  <Button onClick={() => navigate('/Module1=Lesson1_page1')}
                     style={{
                       width: '350px',
                       height: '40px',

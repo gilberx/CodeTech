@@ -12,29 +12,51 @@ const ViewGoals = () => {
 
   const [goals, setGoals] = useState([]);
   const [completedGoalsCount, setCompletedGoalsCount] = useState(0);
-  const {user, setUser} = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
+
   useEffect(() => {
     console.log("logged in user: ", user);
   }, [user]);
+
   useEffect(() => {
+    const getCourseGroupFromPath = () => {
+      if (window.location.pathname.includes("/cppGroup")) {
+        return "cpp";
+      } else if (window.location.pathname.includes("/cGroup")) {
+        return "c";
+      } else if (window.location.pathname.includes("/csGroup")) {
+        return "cs";
+      }
+      return "none";
+    };
+
     // Fetch goals when the component mounts
     fetch("http://localhost:8080/userGoals/getAllUserGoals")
       .then((response) => response.json())
       .then((goalsData) => {
-        // Assuming goalsData is an array of goals from the database
         const storedGoals = JSON.parse(localStorage.getItem('goals')) || [];
+        const courseGroup = getCourseGroupFromPath();
+        console.log("Course Group:", courseGroup);
+
+        // Filter goals based on the course group in the URL
+        const filteredGoals = goalsData.filter((goal) => {
+          const included = courseGroup ? goal.goalCourse === courseGroup : true;
+          console.log(`Goal ${goal.sid}: ${goal.userGoals} - ${included ? 'Included' : 'Excluded'}`);
+          return included;
+        });
 
         // Update goals with completion state from localStorage
-        const updatedGoals = goalsData.map(goal => {
+        const updatedGoals = filteredGoals.map(goal => {
           const storedGoal = storedGoals.find(savedGoal => savedGoal.sid === goal.sid);
           const completed = storedGoal ? storedGoal.completed : false;
           return { ...goal, completed };
         });
 
-        // Count completed goals
-        const count = updatedGoals.filter(goal => goal.completed).length;
-        setCompletedGoalsCount(count);
+      const count = filteredGoals.filter((goal) => goal.goalStatus === 'complete').length;
+      setCompletedGoalsCount(count);
 
+        console.log("Filtered Goals:", filteredGoals);
+        console.log("All Updated Goals:", updatedGoals);
         setGoals(updatedGoals);
 
         // Save goals to localStorage
@@ -43,24 +65,35 @@ const ViewGoals = () => {
       .catch((error) => {
         console.error("Error fetching goals:", error);
       });
-  }, []);
+  }, [user]); // Include user in the dependency array if needed
 
-  const handleCompleteClick = (sid) => {
-    setGoals(prevGoals =>
-      prevGoals.map(goal =>
-        goal.sid === sid ? { ...goal, completed: true } : goal
-      )
-    );
-
-    // Update completion state in localStorage
-    const updatedGoals = goals.map(goal =>
-      goal.sid === sid ? { ...goal, completed: true } : goal
-    );
-    localStorage.setItem('goals', JSON.stringify(updatedGoals));
-
-    // Update completed goals count
-    const count = updatedGoals.filter(goal => goal.completed).length;
-    setCompletedGoalsCount(count);
+  const handleCompleteClick = async (sid) => {
+    try {
+      // Make a PUT request to your backend to update the goal status
+      const response = await fetch(`http://localhost:8080/userGoals/updateGoalStatus?sid=${sid}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ goalStatus: 'complete' }), // Send the new status
+      });
+  
+      if (response.ok) {
+        // If the update is successful, update the local state
+        setGoals((prevGoals) =>
+          prevGoals.map((goal) =>
+            goal.sid === sid ? { ...goal, goalStatus: 'complete' } : goal
+          )
+        );
+  
+        console.log('Goal status updated successfully:', response.status, response.statusText);
+      } else {
+        // Handle error response from the server
+        console.error('Error updating goal status:', response.status, response.statusText);
+      }
+    } catch (error) {
+      console.error('Error updating goal status:', error);
+    }
   };
 
   const handleDeleteClick = (sid) => {
@@ -84,26 +117,28 @@ const ViewGoals = () => {
         console.error('Error deleting goal:', error);
       });
   };
+
   if (!user) {
     return (
-        <main className='a-notadmin-main'>
+      <main className='a-notadmin-main'>
         <div className='a-notadmin-container'>
-            <form className='a-notadmin-form'>
-                <h1 style={{fontSize:'35px',textAlign:'center'}}>You are not logged in!</h1>
-                <div style={{marginTop:'10px', marginBottom:'20px', textAlign:'center', padding:"0 10px"}}>
-                    <span className="small-text">Log in to access your personalized profile and unlock exclusive features!</span>
-                </div>
-                <Link to="/login" className='link-btn'>
-                    <button className="btn">Go to login</button>
-                </Link>
-            </form>
+          <form className='a-notadmin-form'>
+            <h1 style={{ fontSize: '35px', textAlign: 'center' }}>You are not logged in!</h1>
+            <div style={{ marginTop: '10px', marginBottom: '20px', textAlign: 'center', padding: "0 10px" }}>
+              <span className="small-text">Log in to access your personalized profile and unlock exclusive features!</span>
+            </div>
+            <Link to="/login" className='link-btn'>
+              <button className="btn">Go to login</button>
+            </Link>
+          </form>
         </div>
-    </main>
+      </main>
     );
   }
+
   return (
     <div className="viewgoals-page">
-      <Navbar/>
+      <Navbar />
       <div className="viewgoals-sidebar">
         <Link to="/progress" style={linkStyle}>
           <button>Progress</button>
@@ -121,15 +156,17 @@ const ViewGoals = () => {
             <div className="viewgoalsButtons">
               <button
                 onClick={() => handleCompleteClick(goal.sid)}
-                disabled={goal.completed}
+                disabled={goal.goalStatus === 'complete'}
               >
-                {goal.completed ? 'Completed' : 'Complete'}
+              {goal.goalStatus === 'complete' ? 'Completed' : 'Complete'}
               </button>
               <Link to={`/editgoals/${goal.sid}`} style={linkStyle}>
-              <button>Edit</button>
+                <button>Edit</button>
               </Link>
-              <button style={{ backgroundColor: 'red' }}
-                onClick={() => handleDeleteClick(goal.sid)}>
+              <button
+                style={{ backgroundColor: 'red' }}
+                onClick={() => handleDeleteClick(goal.sid)}
+              >
                 Delete
               </button>
             </div>

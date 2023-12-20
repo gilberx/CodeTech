@@ -57,29 +57,7 @@ function ResponsiveAppBar() {
   return (
     
     <div >
-      <style>
-        {`
-          body {
-            position: relative;
-            background-color: #F5FFFD;
-          }
-
-          body::before {
-            content: '';
-            position: absolute;
-            top: 550px;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px; /* Adjust the size of the circle */
-            height: 500px; /* Adjust the size of the circle */
-            background-color: #458C83;
-            border-radius: 50%;
-            border-bottom-left-radius: 0; /* Cut in half horizontally */
-      border-bottom-right-radius: 0;
-            z-index: -1;
-          }
-        `}
-      </style>
+      
       <div>
         <Navbar/>
       </div>
@@ -100,7 +78,7 @@ function ResponsiveAppBar() {
           Welcome,&nbsp;{user.username}!
             </>
           ):(<>
-          Coding learning <br/>just got better!
+          Code learning <br/>just got better!
           </>
   
           )}

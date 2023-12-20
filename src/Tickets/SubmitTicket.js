@@ -1,43 +1,48 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import Paper from '@mui/material/Paper';
 import { useNavigate } from 'react-router-dom';
 import './HelpCenter.css';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Navbar from '../Navbar';
 import Footer from '../Footer';
-import { left } from "@popperjs/core";
+import UserContext from "../Register/UserContext";
+import { Button } from "@mui/material";
+import Modal from "../Modal";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_CHARACTERS = 250;
 
 const SubmitTicket = () => {
+
+    const {user, setUser} = useContext(UserContext);
     
     const navigate = useNavigate();
 
     const [title, setTitle] = useState('');
     const [email, setEmail] = useState('');
     const [validEmail, setValidEmail] = useState(false);
-    const [firstname, setFirstname] = useState('');
-    const [lastname, setLastname] = useState('');
+    // const [firstname, setFirstname] = useState('');
+    // const [lastname, setLastname] = useState('');
     const [category, setCategory] = useState('');
     const [details, setDetails] = useState('');
-    const [status, setStatus] = useState('');
-    const [timestamp, setTimestamp] = useState(null);
     const [consentChecked, setConsentChecked] = useState(false);
     const [accuracyChecked, setAccuracyChecked] = useState(false);
 
     const [errMsg, setErrMsg] =useState('');
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     useEffect(() => {
         const result = EMAIL_REGEX.test(email);
         setValidEmail(result);
-        console.log("valid: ",validEmail);
     }, [email]);
 
    
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        navigate('/helpcenter')
+    };
 
     const handleDetailsChange = (e) => {
         const inputText = e.target.value;
@@ -61,11 +66,13 @@ const SubmitTicket = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrMsg('');
-        if(!email || !title || !firstname || !lastname || !category || !details){
+        
+
+        if(!email || !title || !category || !details){
             setErrMsg('Please fill out all the required fields.');
             return;
         }
-        if(!consentChecked && !accuracyChecked){
+        if(!consentChecked || !accuracyChecked){
             setErrMsg("Please check both checkboxes before submitting the form.");
             return;
         }
@@ -76,7 +83,43 @@ const SubmitTicket = () => {
             return;
         }
 
+        const timestamp = new Date().toISOString();
+        const ticketDetails ={
+            title,
+            email,
+            category,
+            details,
+            status: "Open",
+            timestamp,
+            isDelete: false,
+            user: {userid: user.userid},
+            
+        }
         
+
+        try{
+            const response = await fetch("http://localhost:8080/ticket/insertTicket", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(ticketDetails),
+            })
+
+            console.log("Response:", response);
+
+            if(response.ok){
+                const ticketStatus = await response.json();
+                console.log("New Ticket added: ", ticketStatus);
+                setIsModalOpen(true);
+            } else {
+                console.error('Ticket submition failed:', response.statusText);
+                setErrMsg('Error submitting ticket. Please try again later.');
+                
+            }
+        } catch (error) {
+            console.error('Error during submition:', error.message);
+            setErrMsg('Error submitting ticket. Please try again later.');
+        }
+
     };
     return (
         <>
@@ -145,7 +188,7 @@ const SubmitTicket = () => {
 
 
 
-                        <div className="ticket-side-by-side">
+                        {/* <div className="ticket-side-by-side">
                             <div className="ticket-input-div">
                                     <div className="ticket-input-label">
                                         <h5>First Name</h5>
@@ -180,7 +223,7 @@ const SubmitTicket = () => {
                             </div>
                             
                             
-                        </div>
+                        </div> */}
 
                         <div className="ticket-input-div">
                                 <div className="ticket-input-label">
@@ -210,7 +253,6 @@ const SubmitTicket = () => {
                                 <h5>Kindly provide all the details that will help us assist you with your concern.</h5>
                                 {details === '' && <span style={{ color: 'red', margin:'5px' }}>*</span>}
                             </div>
-                            {console.log("details.lenght: ", details.length)}
                             <textarea
                                 className={`ticket-input ${details.length > MAX_CHARACTERS ? 'invalid' : ''}`}
                                 id="details"
@@ -277,6 +319,33 @@ const SubmitTicket = () => {
                     
                 </div>
             </div>
+            {isModalOpen && (
+                <Modal onClose={handleCloseModal}>
+                    <div className="ticket-modal-container">
+                        <h1 style={{fontSize:'20px',textAlign:'center'}}>Ticket successfully submitted!</h1>
+                        <div style={{marginTop:'10px', marginBottom:'20px', textAlign:'center', padding:"0 10px"}}>
+                            <span className="small-text">We'll get back to you soon!</span>
+                        </div>
+                        <Button onClick={() => navigate('/viewtickets')}
+                                style={{my: 2,
+                                    backgroundColor: '#458C83',
+                                    color: 'white',
+                                    display: 'block',
+                                    borderRadius: '15px',
+                                    width: '200px',
+                                    height: '50px', 
+                                    fontFamily: 'Inter, sans-serif',
+                                    fontWeight: 600,
+                                    fontSize: 15,
+                                    textTransform: 'none',
+                                    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)', 
+                                    marginTop:'10px'
+                                }}>
+                        View Tickets
+                        </Button>
+                    </div>
+                </Modal>
+            )}
             <Footer/>
         </main>
         </>

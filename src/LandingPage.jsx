@@ -93,7 +93,7 @@ function ResponsiveAppBar() {
         Empowering coders, one lesson at a time.<br></br>
         {user ? (
             <>
-            <br/><br/>
+            <p style={{color:'white', marginBottom:'100px'}}>Hallo</p>
             </>
           ):(<>
           Join us it's free!
@@ -262,7 +262,8 @@ function ResponsiveAppBar() {
       }}>
           <Slider {...settings}>
             <div>
-              <Button style={{
+              <Button onClick={() => navigate('/Courses=IntroductionToC')} 
+              style={{
                 border: '10px solid white',
                 borderRadius: '20px',
                 height: '300px',
@@ -286,7 +287,8 @@ function ResponsiveAppBar() {
               </Button>
             </div>
             <div>
-              <Button style={{
+              <Button onClick={() => navigate('/Courses=IntroductionToCSharp')}
+              style={{
                 border: '10px solid white',
                 borderRadius: '20px',
                 height: '300px',
@@ -310,7 +312,8 @@ function ResponsiveAppBar() {
               </Button>
             </div>
             <div>
-            <Button style={{
+            <Button onClick={() => navigate('/Courses=IntroductionToCplusplus')}
+            style={{
                 border: '10px solid white',
                 borderRadius: '20px',
                 height: '300px',

@@ -6,13 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-
-
-
-
-
-
-
+import { ProgressBar } from 'react-bootstrap';
 
 function Lesson_1() {
   const navigate = useNavigate();
@@ -24,21 +18,24 @@ function Lesson_1() {
   return (
     <main class="main-bg">
       <div id="lesson1">
-        <div class="header" style={{display:'flex', flexDirection:'row'}}>
+        <div class="header" style={{display:'flex', flexDirection:'row', backgroundColor:'white'}}>
           <p id="backbutton" onClick={() => navigate('/Courses=IntroductionToC')} >× </p>
           <p>What is C?</p>
-          <p id="progressbar">Progress Bar</p>
+          <div id="progressbar">
+            <ProgressBar variant="success" now={20} />
+          </div>
         </div>
         <div class="IntroToC">
           <p style={{fontSize:'40px',fontWeight:'600', paddingTop:'100px'}}>Introducing C</p>
           <p><strong>C</strong> is a general-purpose programming language that has been around for nearly 50 years. </p>
           <p><strong>C</strong> has been used to write everything from operating systems (including Windows and</p>
+          <p>many others) to complex programs like the Python interpreter, Git, Oracle database, and</p>
           <p>more.</p>
           <p>The versatility of C is by design. It is a low-level language that relates closely to the way</p>
           <p>machines work while still being easy to learn.</p>
         </div>
       </div>
-      <div>
+      <div style={{marginTop:'-18px'}}>
           <Box style={{width:'210vh',
           maxWidth:'100%',
           height:'90px', 

@@ -27,20 +27,20 @@ function Lesson_1() {
   return (
     <main class="main-bg">
       <div id="lesson1">
-        <div class="header" style={{display:'flex', flexDirection:'row'}}>
+        <div class="header" style={{display:'flex', flexDirection:'row',backgroundColor:'white'}}>
           <p id="backbutton" onClick={() => navigate('/Courses=IntroductionToC')}>× </p>
           <p>What is C?</p>
           <p id="progressbar">Progress Bar</p>
         </div>
         <div class="IntroToC_page2">
-          <p style={{paddingTop:'100px', fontSize:'20px'}}><strong>C</strong> is a: </p>
-          <Button style={{width:"120vh", fontFamily:'Montserrat, sans-serif', fontSize:'30px', fontWeight:'600', backgroundColor:'#458C83', color:'white', marginTop:'20px'}}>
+          <p style={{paddingTop:'75px', fontSize:'20px'}}><strong>C</strong> is a: </p>
+          <Button style={{width:"120vh", fontFamily:'Montserrat, sans-serif', fontSize:'30px', fontWeight:'600', backgroundColor:'white', color:'black', marginTop:'20px', border: '4px solid #808080',}}>
             Client-side scripting language
           </Button>
-          <Button style={{width:"120vh", fontFamily:'Montserrat, sans-serif', fontSize:'30px', fontWeight:'600', backgroundColor:'#458C83', color:'white', marginTop:'20px'}}>
+          <Button style={{width:"120vh", fontFamily:'Montserrat, sans-serif', fontSize:'30px', fontWeight:'600', backgroundColor:'white', color:'black', marginTop:'20px', border: '4px solid #808080',}}>
             Photo editing program
           </Button>
-          <Button style={{width:"120vh", fontFamily:'Montserrat, sans-serif', fontSize:'30px', fontWeight:'600', backgroundColor:'#458C83', color:'white', marginTop:'20px'}}>
+          <Button style={{width:"120vh", fontFamily:'Montserrat, sans-serif', fontSize:'30px', fontWeight:'600', backgroundColor:'white', color:'black', marginTop:'20px', border: '4px solid #808080',}}>
             General purpose programming language
           </Button>
         </div>

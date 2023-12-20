@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Lesson1.css';
+import './Lesson2.css';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
 
 
 
@@ -17,6 +18,13 @@ import Button from '@mui/material/Button';
 function Lesson_1() {
   const navigate = useNavigate();
 
+  const codeString = `#include <stdio.h>
+
+  int main() { 
+    printf("Hello, World!\\n"); 
+    return 0; 
+  }`;
+
   useEffect(() => {
     document.title = "CodeTech";
   }, []);
@@ -24,18 +32,31 @@ function Lesson_1() {
   return (
     <main class="main-bg">
       <div id="lesson1">
-        <div class="header" style={{display:'flex', flexDirection:'row'}}>
+        <div class="header" style={{display:'flex', flexDirection:'row', marginBottom:'-70px'}}>
           <p id="backbutton" onClick={() => navigate('/Courses=IntroductionToC')} >× </p>
-          <p>What is C?</p>
+          <p>Hello, World!</p>
           <p id="progressbar">Progress Bar</p>
         </div>
         <div class="IntroToC">
-          <p style={{fontSize:'40px',fontWeight:'600', paddingTop:'100px'}}>Introducing C</p>
-          <p><strong>C</strong> is a general-purpose programming language that has been around for nearly 50 years. </p>
-          <p><strong>C</strong> has been used to write everything from operating systems (including Windows and</p>
-          <p>more.</p>
-          <p>The versatility of C is by design. It is a low-level language that relates closely to the way</p>
-          <p>machines work while still being easy to learn.</p>
+          <p style={{fontSize:'30px',
+          fontWeight:'800', 
+          paddingTop:'100px', 
+          fontFamily:'Montserrat, sans-serif',marginBottom:'10px'}}>Hello World!</p>
+          <p>As when learning any new language, the place to start is with<br></br> the classic "Hello World!" program: </p>
+          <Paper style={{height:'140px', 
+          width:'400px', 
+          backgroundColor:'#E3F8F3', 
+          display:'flex', 
+          justifyContent:'left', 
+          alignItems:'center', 
+          paddingLeft:'10px', borderRadius:'10px' }}>
+            <pre style={{ margin: 0 }}>
+                <code style={{ whiteSpace: 'pre-wrap', 
+                backgroundColor: '#E3F8F3',}}>
+                  {codeString}
+                </code>
+            </pre>
+          </Paper>
         </div>
       </div>
       <div>

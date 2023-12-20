@@ -1,35 +1,74 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Paper from '@mui/material/Paper';
 import './JoinClass.css';
 import Navbar from './Navbar';
+import axios from 'axios';
 
-const JoinClass = () => (
-  <>
-    <style>{`
-      body {
-        background-color: #458C83;
-        color: white;
-        font-family: 'Montserrat', sans-serif;
+const JoinClass = () => {
+  const [classes, setClasses] = useState([]);
+
+  const handleJoinClass = () => {
+    // Handle join class logic if needed
+  };
+
+  useEffect(() => {
+    const fetchClasses = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/createClass/getClass');
+        setClasses(response.data);
+      } catch (error) {
+        console.error('Error fetching classes:', error);
       }
-    `}</style>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;https://fonts.google.com/specimen/Montserrat700&display=swap" />
-    <div>
-      <Navbar/>
-      <p style={{ margin:'200px 0 20px 100px', fontSize: '30px', fontWeight: 'semi-bold' }}>My Active Classes</p>
-      <hr className='line' />
-      <nav>
-        <button className="JoinCreate">
-          <Link className='join' to="/JoinCreate">
-            Join or Create Class
-          </Link>
-        </button>
-      </nav>
-    </div>
+    };
 
-    <footer className='footer'>
-      <p>Copyright &copy; 2023 CodeTech</p>
-    </footer>
-  </>
-);
+    fetchClasses();
+  }, []);
+
+  return (
+    <>
+      <style>{`
+        body {
+          background-color: #458C83;
+          color: white;
+          font-family: 'Montserrat', sans-serif;
+        }
+      `}</style>
+      <Navbar />
+      <div className="content-container10">
+        <div className="class-list">
+          <p className="active-classes">My Active Classes</p>
+          <hr className='line' /><br></br>
+          <div className="class-items-container">
+          {classes.map((classItem) => (
+            <Link to={`/class/${classItem.classcode}`} key={classItem.classcode} className="class-item-link">
+              <Paper onClick={handleJoinClass} className="class-item">
+                  <p>{classItem.classname}</p>
+                  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '30px' }}>
+                    <Paper style={{ backgroundColor: 'rgba(163, 163, 163, 0.33)', width: '250px', height: '100px', borderRadius: '20px', marginLeft: '10px', marginRight: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                      <Paper style={{ backgroundColor: 'rgba(163, 163, 163, 0.33)', width: '220px', height: '135px', borderRadius: '20px', marginRight: '0px' }}>
+                        <Paper style={{ backgroundColor: '#F0F0F0', borderRadius: '20px', width: '260px', height: '100px', marginTop: '38px', marginLeft: '-19.5px' }}>
+                          <p style={{ textAlign: 'center', fontSize: '15px', paddingTop: '20px', paddingLeft: '10px', paddingRight: '15px', fontWeight: '600' }}>{classItem.classdescription}</p>
+                        </Paper>
+                      </Paper>
+                    </Paper>
+                  </div>
+                </Paper>
+              </Link>
+            ))}
+            <Link to="/JoinCreate" className='join'>
+              <button className="JoinCreate">
+                Join or Create Class
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
+      <footer className='footer'>
+        <p>Copyright &copy; 2023 CodeTech</p>
+      </footer>
+    </>
+  );
+};
 
 export default JoinClass;

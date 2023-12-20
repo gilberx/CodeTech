@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Class.css';
 import Navbar from './Navbar';
 
 const TeacherPage = () => {
+  const navigate = useNavigate(); // Use useNavigate instead of useHistory
+  const { classcode } = useParams();
   const [showQuizContainer, setShowQuizContainer] = useState(false);
   const [showLessonContainer, setShowLessonContainer] = useState(false);
   const [classInfo, setClassInfo] = useState(null);
@@ -12,7 +14,7 @@ const TeacherPage = () => {
   useEffect(() => {
     const fetchClassInfo = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/createClass/getClassByCode/CSIT321-G1`);
+        const response = await axios.get(`http://localhost:8080/createClass/getClassByCode/${classcode}`);
         setClassInfo(response.data);
       } catch (error) {
         console.error('An error occurred while fetching class information:', error);
@@ -20,32 +22,34 @@ const TeacherPage = () => {
     };
 
     fetchClassInfo();
-  }, []);
+  }, [classcode]);
 
   // Define classname and use it in the JSX
-const classname = classInfo && classInfo.classname ? classInfo.classname : 'Class Name Loading...';
+  const classname = classInfo && classInfo.classname ? classInfo.classname : 'Class Name Loading...';
 
   const handleViewQuiz = () => {
     setShowQuizContainer(true);
-    setShowLessonContainer(false); // Close Lesson container if open
+    setShowLessonContainer(false);
   };
 
   const handleViewLesson = () => {
     setShowLessonContainer(true);
-    setShowQuizContainer(false); // Close Quiz container if open
+    setShowQuizContainer(false);
   };
 
   const handleAddQuiz = () => {
-    // Implement logic for adding quiz
+    // Navigate to the addQuiz page for the current class
+    navigate(`/class/${classcode}/addQuiz`);
   };
 
   const handleAddLesson = () => {
-    // Implement logic for adding lesson
+    // Navigate to the addLesson page for the current class
+    navigate(`/class/${classcode}/addLesson`);
   };
 
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <div className="header-container5">
         <p className="header-text">{classname}</p>
       </div>
@@ -59,11 +63,9 @@ const classname = classInfo && classInfo.classname ? classInfo.classname : 'Clas
       {showQuizContainer && (
         <div className='container1'>
           <div>
-            <Link to="/AddQuiz">
-              <button className='AddQuiz' onClick={handleAddQuiz}>
-                +
-              </button>
-            </Link>
+            <button className='AddQuiz' onClick={handleAddQuiz}>
+              +
+            </button>
           </div>
         </div>
       )}
@@ -71,11 +73,9 @@ const classname = classInfo && classInfo.classname ? classInfo.classname : 'Clas
       {showLessonContainer && (
         <div className='container2'>
           <div>
-            <Link to="/AddLesson">
-              <button className='AddLesson' onClick={handleAddLesson}>
-                +
-              </button>
-            </Link>
+            <button className='AddLesson' onClick={handleAddLesson}>
+              +
+            </button>
           </div>
         </div>
       )}

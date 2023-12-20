@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
-body{
-    
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 8rem;
 }
 
 .helpcenter-main-bg {
@@ -69,10 +70,11 @@ body{
 
 .hc-divider{
     width: 100%;
-    height: 300px;
+    height: 220px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #EDF3F2;
 }
 
 .hc-divider-container{
@@ -80,3 +82,116 @@ body{
     flex-direction: column;
     align-items: center;
 }
+
+
+
+
+
+/* FAQS CSS */
+
+
+body{
+    background-color: #F5FFFD;
+}
+
+.faq-main-bg {
+    background-image: url(/public/codetech-header.png);
+    background-size: cover;
+    height: 80vh;
+    max-width: 100%;
+    font-family: 'Montserrat', sans-serif; 
+  }
+
+  .faq-content{
+    padding: 80vh 150px 100px 150px;
+    color: #495453;
+    display: flex;
+    gap: 10rem;
+  }
+
+  .faq-left-content{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .faq-left-content h1{
+    font-size: 50px;
+    margin: 10vh 0;
+  }
+
+  .faq-left-content h3{
+    margin-bottom: 20px;
+  }
+
+  
+
+  .sections {
+    margin-top: 10px;
+  }
+  
+  .sections ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .faq-sidebar {
+    margin: 10vh 0;
+  }
+  
+  .faq-sidebar h5,
+  li {
+    color: #777777;
+    width: 150px;
+  }
+  .faq-sidebar-container {
+    height: 30vh;
+    position: sticky;
+    top: 60px; 
+    margin-top: 20px;
+}
+  
+  .sections a {
+    display: block;
+    padding: 5px 20px ;
+    color: #777777;
+    font-size: 13px;
+    text-decoration: none;
+  }
+  
+  .sections .active {
+    border-left: 4px solid #458C83; /* Add the vertical line for the active section */
+    color: #458C83; /* Change text color for the active section */
+    font-weight: bold;
+    margin-left: -3px; /* Optionally make the text bold for the active section */
+  }
+
+  .rotate-img {
+    transition: transform 0.3s ease; /* Optional: Add a smooth transition effect */
+  }
+
+  
+
+  .hover:hover{
+    opacity: 0.5;
+  }
+
+  .faq-accordion-container{
+    
+    background: var(--color-white);
+    border-radius: 10px;
+    padding: var(--card-padding);
+    margin: 1rem 0;
+  }
+
+  .faq-accordion-details{
+    padding: 0 30px 20px 42px;
+  }
+
+  .faq-question{
+    padding-left: 15px;
+    font-weight: bold;
+    color: #777777;
+  }
+
+  

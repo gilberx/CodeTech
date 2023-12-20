@@ -153,7 +153,7 @@ const Navbar = () => {
                 </>
               )}
                 <Button
-                  onClick={() => navigate('/register')}
+                  onClick={() => navigate('/helpcenter')}
                   sx={{fontFamily: 'Inter, sans-serif',
                   color: 'inherit',
                   fontSize: '14px',

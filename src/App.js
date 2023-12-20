@@ -30,6 +30,8 @@ import ViewGoals from './ViewGoals.js';
 import EditGoals from './EditGoals.js';
 import UserProfile from './UserProfile.js';
 import HelpCenter from './Tickets/HelpCenter.js';
+import Faq from './Tickets/Faq.js';
+import SubmitTicket from './Tickets/SubmitTicket.js';
 
 
 
@@ -69,6 +71,8 @@ function App() {
               <Route path="/editgoals/:sid" element={<EditGoals />} />
 
               <Route path="/helpcenter" element={<HelpCenter />} />
+              <Route path="/faq" element={<Faq />} />
+              <Route path="/submitticket" element={<SubmitTicket />} />
           </Routes>
       
     </Router>

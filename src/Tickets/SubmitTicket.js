@@ -9,9 +9,10 @@ import "slick-carousel/slick/slick-theme.css";
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 
-const HelpCenter = () => {
+const SubmitTicket = () => {
     const navigate = useNavigate();
     return (
+        <>
         <main className='helpcenter-main-bg'>
             <div>
             <Navbar />
@@ -74,7 +75,8 @@ const HelpCenter = () => {
             </div>
             <Footer/>
         </main>
+        </>
     );
 }
 
-export default HelpCenter;
+export default SubmitTicket;

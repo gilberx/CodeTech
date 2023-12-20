@@ -34,12 +34,15 @@ import Faq from './Tickets/Faq.js';
 import SubmitTicket from './Tickets/SubmitTicket.js';
 
 
+import Lesson1 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1.jsx'
+import Lesson1_page2 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1_page2.jsx'
+import Lesson1_page3 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1_page3.jsx'
+import Lesson2 from './Courses/Modules/C_Module/Module_1/Lesson2/Lesson2.jsx'
 
 function App() {
   return (
     <UserProvider>
     <Router>
-      
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/register" element={<Register />} />
@@ -50,7 +53,7 @@ function App() {
           <Route path="/educator" element={<Educator />} />
           <Route path="/joinClass" element={<JoinClass/>} />
           <Route path="/JoinCreate" element={<JoinCreate />} />
-          <Route path="/Class" element={<Class />} />
+          <Route path="/class/:classcode" component={Class} />
           <Route path="/AddQuiz" element={<AddQuiz />} />
           <Route path="/AddLesson" element={<AddLesson />} />
           <Route path="/Courses" element={<Courses/>}/>
@@ -73,8 +76,30 @@ function App() {
               <Route path="/helpcenter" element={<HelpCenter />} />
               <Route path="/faq" element={<Faq />} />
               <Route path="/submitticket" element={<SubmitTicket />} />
-          </Routes>
+          
       
+          <Route path="/userprofile" element={<UserProfile />} />
+          <Route path="/achievements" element={<Achievements />} />
+          <Route path="/progress" element={<Progress />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/goals" element={<Goals />} />
+          <Route path="/creategoals/:group" element={<CreateGoals />} />
+          <Route path="/viewgoals/:group" element={<ViewGoals />} />
+          <Route path="/editgoals/:sid" element={<EditGoals />} />
+          <Route path="/helpcenter" element={<HelpCenter />} />
+          <Route path="/userprofile" element={<UserProfile />} />
+          <Route path="/achievements" element={<Achievements />} />
+          <Route path="/progress" element={<Progress />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/goals" element={<Goals />} />
+          <Route path="/creategoals/:group" element={<CreateGoals />} />
+          <Route path="/viewgoals/:group" element={<ViewGoals />} />
+          <Route path="/editgoals/:sid" element={<EditGoals />} />
+          <Route path="/Module1=Lesson1_page1" element={<Lesson1/>}/>
+          <Route path="/Module1=Lesson1_page2" element={<Lesson1_page2/>}/>
+          <Route path="/Module1=Lesson1_page3" element={<Lesson1_page3/>}/>
+          <Route path="/Module1=Lesson2_page1" element={<Lesson2/>}/>
+        </Routes>
     </Router>
     </UserProvider>
   );

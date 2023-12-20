@@ -1,0 +1,47 @@
+.main-bg {
+    background-image: url(/public/CourseBackgroundIntro.png);
+    background-size: cover;
+  }
+
+#lesson1{
+    padding: 90px;
+}
+
+#progressbar{
+    margin-left: 80vh;
+}
+
+
+.header p{
+    font-size: 25px;
+    font-weight: 600;
+    font-family: Montserrat, sans-serif;
+}
+
+#backbutton{
+    margin-right: 15px;
+}
+
+.IntroToC{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 26.5vh;
+}
+.IntroToC_page2{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 8.7vh;
+}
+
+#lesson1_page3{
+    padding-top: 250px;
+    padding-bottom:264px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

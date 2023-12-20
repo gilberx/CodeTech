@@ -1,59 +1,89 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
-.app-container {
-  background-color: #458C83;
-  color: white;
-  font-family: 'Montserrat', sans-serif;
+a{
+text-decoration: none;
+}
+.content-container10 {
+  display: flex  !important;
+  flex-wrap: wrap !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  margin: 0 100px !important;
 }
 
-.line {
-  width: 90%;
-  margin-top: 10px;
-  margin: 0 auto;
-  opacity: 40%;
-  color: #EDEDED;
+.class-list {
+  flex: 1 !important;
+  margin-top: 200px !important;
 }
 
-.join {
-  text-decoration: none;
-  background-color: #212121;
-  font-size: 20px;
-  color: white;
+.class-items-container {
+  display: flex !important;
+  flex-wrap: wrap !important;
 }
+
+.class-item {
+  padding: 20px !important;
+  margin-bottom: 20px  !important;
+  width: 250px !important;
+  height: 190px !important;
+  background-color: #212121 !important;
+  color: white !important;
+  border-radius: 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  position: relative !important;
+  margin-right: 40px !important;
+}
+
 
 .JoinCreate {
-  background-color: #212121;
-  margin-left: 100px;
-  border-radius: 20px;
-  width: 250px;
-  height: 120px;
-  opacity: 40%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding-top: 25px;
-  position: relative;
-  margin-top: 50px;
+  width: 250px !important;
+  height: 120px !important;
+  background-color: #212121 !important;
+  border-radius: 20px !important;
+  opacity: 40% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  padding-top: 25px !important;
+  position: relative !important;
+  margin-top: 0 !important;
+  color: #EDEDED !important;
+  font-size: 18px !important;
 }
 
 .JoinCreate::before {
-  content: '';
-  width: 80%;
-  height: 1px;
-  background-color: white;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  opacity: 50%;
+  content: '' !important;
+  width: 80% !important;
+  height: 1px !important;
+  background-color: white !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  opacity: 50% !important;
 }
 
 .JoinCreate:hover {
-  background-color: #212121;
+  background-color: #212121 !important;
+}
+
+.active-classes {
+  font-size: 30px !important;
+  font-weight: semi-bold !important;
+}
+
+.line {
+  width: 1240px !important;
+  opacity: 40% !important;
+  color: #EDEDED !important;
+  margin-top: 50px !important;
+  margin-bottom: 50px !important;
 }
 
 .footer {
-  margin-top: 490px;
-  text-align: center;
+  text-align: center !important;
+  margin-top: 200px !important;/* Adjust the margin as needed */
 }
+
+

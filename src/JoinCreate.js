@@ -65,7 +65,7 @@ function JoinCreate() {
       setIsModalOpen(false);
     } catch (error) {
       console.error('An error occurred while creating class:', error);
-      alert('Already exist');
+      alert('Class code may already exist!');
     }
   };
   return (

@@ -40,6 +40,7 @@ import Lesson1_page3 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1_p
 import Lesson2 from './Courses/Modules/C_Module/Module_1/Lesson2/Lesson2.jsx'
 import ViewTicket from './Tickets/ViewTicket.js';
 import GetInTouch from './Tickets/GetInTouch.js';
+import Learner from './Admin/Learners.jsx';
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
           <Route path="/getcode" element={<ResetPassword />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/educator" element={<Educator />} />
+          <Route path="/learner" element={<Learner />} />
           <Route path="/joinClass" element={<JoinClass/>} />
           <Route path="/JoinCreate" element={<JoinCreate />} />
           <Route path="/class/:classcode" element={<Class />} />

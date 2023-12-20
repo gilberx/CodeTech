@@ -71,7 +71,7 @@ function Dashboard() {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/#" className='a-link-text'>
+                    <Link to="/learner" className='a-link-text'>
                         <FontAwesomeIcon icon={faUserGraduate} style={{fontSize:"1.2rem"}} />
                         <span>Learners</span>
                     </Link>

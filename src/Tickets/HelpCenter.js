@@ -41,7 +41,7 @@ const HelpCenter = () => {
                     
                 </div>
 
-                <div className="hc-option">
+                <div className="hc-option" onClick={() => navigate('/getintouch')}>
                     <img src="/contact-hc.png"/>
                     <h2>Get In Touch</h2>
                     <span>If you want to talk to us directly, we're here to listen!</span>

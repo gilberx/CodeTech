@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './Lesson1.css';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
@@ -16,7 +16,22 @@ import Button from '@mui/material/Button';
 
 function Lesson_1() {
     const navigate = useNavigate();
+    const [selectedAnswer, setSelectedAnswer] = useState(null);
+    const [answerMessage, setAnswerMessage] = useState(null);
 
+  const handleAnswerClick = (answer) => {
+    if (answer === 'General purpose programming language') {
+      setAnswerMessage('Correct Answer');
+    } else {
+      setAnswerMessage('Wrong Answer');
+    }
+    setSelectedAnswer(answer);
+  };
+
+  const handleTryAgainClick = () => {
+    setSelectedAnswer(null);
+    setAnswerMessage(null);
+  };
   
 
   useEffect(() => {
@@ -64,6 +79,14 @@ function Lesson_1() {
             fontFamily:'Montserrat, sans-serif', marginRight:'30px'}}>
               Back
             </Button>
+            {answerMessage && (
+          <div>
+            <p>{answerMessage}</p>
+            {selectedAnswer !== 'General purpose programming language' && (
+              <Button onClick={handleTryAgainClick}>Try Again</Button>
+            )}
+          </div>
+          )}
             <Button onClick={() => navigate('/Module1=Lesson1_page3')} 
             style={{backgroundColor:'#458C83', 
             height:'50px', 

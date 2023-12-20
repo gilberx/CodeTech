@@ -6,17 +6,26 @@ import { useNavigate } from 'react-router-dom';
 import './Courses.css';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 
 const pages = ['Join a Class', 'Courses', 'How it Works', 'About Us'];
 
 function Courses() {
+  const [loading, setLoading] = useState(false);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const faviconPath = process.env.PUBLIC_URL + '/favicon.ico';
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, [])
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -41,6 +50,16 @@ function Courses() {
 
   return (
     <main className='courses-main-bg'>
+    {loading ? (
+    <div id="loader">
+        <PropagateLoader
+        loading={loading}
+        size={30}
+        color={'#36d7b7'}
+      />
+    </div>
+      ):(
+    <div>
       <div>
       <Navbar />
       </div>
@@ -119,6 +138,8 @@ function Courses() {
          <Footer/>
         </div>
       </div>
+    </div>
+      )}
     </main>
   );
 }

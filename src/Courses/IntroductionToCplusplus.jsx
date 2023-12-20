@@ -5,12 +5,14 @@ import Paper from '@mui/material/Paper';
 import './Intro.css';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Navbar from '../Navbar';
+import { PropagateLoader } from 'react-spinners';
 
 const pages = ['Join a Class', 'Courses', 'How it Works', 'About Us'];
 
 function Courses() {
+  const [loading, setLoading] = useState(false)
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const faviconPath = process.env.PUBLIC_URL + '/favicon.ico';
@@ -21,6 +23,13 @@ function Courses() {
   const [isDrawerOpen5, setDrawerOpen5] = React.useState(false);
   const [isDrawerOpen6, setDrawerOpen6] = React.useState(false);
   const [isCourseTaken, setIsCourseTaken] = React.useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, [])
 
   const toggleDrawer1 = () => {
     setDrawerOpen1(!isDrawerOpen1);
@@ -79,6 +88,15 @@ function Courses() {
 
   return (
     <div class='introC'>
+      {loading ? (
+      <div id="loader">
+        <PropagateLoader
+        loading={loading}
+        size={30}
+        color={'#36d7b7'}
+      />
+    </div>):(
+      <div>
       <div>
       <Navbar/>
       </div>
@@ -710,6 +728,8 @@ function Courses() {
             </div>
         </Paper>
       </div>
+      </div>
+      )}
     </div>
   );
 }

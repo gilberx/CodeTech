@@ -6,13 +6,15 @@ import { useNavigate } from 'react-router-dom';
 import './Intro.css';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Navbar from '../Navbar';
+import { PropagateLoader } from 'react-spinners';
 
 
 const pages = ['Join a Class', 'Courses', 'How it Works', 'About Us'];
 
 function Courses() {
+  const [loading, setLoading] = useState(false)
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const faviconPath = process.env.PUBLIC_URL + '/favicon.ico';
@@ -24,6 +26,12 @@ function Courses() {
   const [isDrawerOpen6, setDrawerOpen6] = React.useState(false);
   const [isCourseTaken, setIsCourseTaken] = React.useState(false);
 
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, [])
 
   const toggleDrawer1 = () => {
     setDrawerOpen1(!isDrawerOpen1);
@@ -83,6 +91,15 @@ function Courses() {
 
   return (
     <div class='introC'>
+      {loading ? (
+      <div id="loader">
+        <PropagateLoader
+        loading={loading}
+        size={30}
+        color={'#36d7b7'}
+      />
+    </div>):(
+      <div>
       <div>
       <Navbar/>
       </div>
@@ -110,6 +127,9 @@ function Courses() {
           </div>  
         </Paper>
       </div>
+      {isCourseTaken ? (
+          <></>
+        ):(
       <div style={{
         marginTop:'20px',
         display:'flex',
@@ -126,13 +146,19 @@ function Courses() {
         boxShadow:'0px 2px 4px rgba(0,0,0,0.2)'}}
         onClick={handleTakeCourse}>Take Course</Button>
       </div>
+        )}
       <div style={{display:'flex', 
       justifyContent:'center', 
       alignItems:'center', 
       flexDirection:'column', 
       marginTop:'50px'}}>
         <button class='buttoncontainer' onClick={toggleDrawer1}>
-          <img src='./topiclogo.png' style={{height:'35px', marginLeft:'-10px'}}/>
+          {isCourseTaken ? (
+            <img src='./image1.png' style={{height:'35px', marginLeft:'-10px'}}/>
+          ):(
+            <img src='./topiclogo.png' style={{height:'35px', marginLeft:'-10px'}}/>
+          )}
+          
           Getting Started
           <img src='./dropdownlogo.png' style={{height:'30px', marginLeft:'156px'}}/>
         </button>
@@ -147,7 +173,12 @@ function Courses() {
                   </div>
                 </div>
                 <div style={{display:'flex', justifyContent:'right', alignItems:'center'}}>
-                  <img src='lessonlocklogo.png' style={{height:'30px', marginLeft:'210px'}}/>
+                  {isCourseTaken ?(
+                    <img src='topicfinished.png' style={{height:'30px', marginLeft:'210px'}}/>
+                  ):(
+                    <img src='lessonlocklogo.png' style={{height:'30px', marginLeft:'210px'}}/>
+                  )}
+                  
                 </div>
               </div>
               <div>
@@ -815,6 +846,8 @@ function Courses() {
             </div>
         </Paper>
       </div>
+      </div>
+    )}
     </div>
   );
 }

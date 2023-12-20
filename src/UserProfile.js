@@ -177,10 +177,10 @@ const handleUpdate = async (e) => {
         const userBody = {
           username,
           email,
-          password: pwd,
+          password: user.password,
           firstname,
           lastname,
-          role,
+          role: user.role,
           isDelete,
         };
         console.log("userid handleUpdate: ", user.userid);
@@ -219,7 +219,6 @@ if (!user) {
   </main>
   );
 }
-
   return (
     <div className="user-profile-page">
       <Navbar/>

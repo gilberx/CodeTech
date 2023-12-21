@@ -4,13 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChalkboardTeacher, faUser, faInfoCircle} from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import UserContext from './UserContext';
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const NAME_REGEX = /^[a-zA-Z][a-zA-Z-_]{1,23}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// CHECK IF EMAIL AND USERNAME EXISTS!!
-// validUsername = check here if theres an existing username
 const Register = () => {
 
     const userRef = useRef();
@@ -28,7 +27,6 @@ const Register = () => {
     const [emailFocus, setEmailFocus] = useState(false);
 
     const [username, setUsername] = useState('');
-    // const [validUsername, setValidUsername] = useState(true);
     const [usernameExists, setUsernameExists] = useState(false);
     const [usernameFocus, setUsernameFocus] = useState(false);
 
@@ -50,6 +48,13 @@ const Register = () => {
 
     const [errMsg, setErrMsg] = useState(false);
     const [emptyInput, setEmptyInput] = useState(false);
+    const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        setLoading(true);
+        setTimeout(() => {
+          setLoading(false);
+        }, 3000);
+      }, [])
 
     
 
@@ -62,6 +67,32 @@ const Register = () => {
     useEffect(() => {
         console.log("logged in user: ", user);
     }, [user]);
+
+    useEffect(() => {
+        console.log("logged in user: ", user);
+        const isAdmin =
+        user &&
+        user.userid === 1 &&
+        user.email === 'admin@cit.edu' &&
+        user.username === 'admin' &&
+        user.firstname === 'code' &&
+        user.lastname === 'tech' &&
+        user.password === 'CodeTech!23' &&
+        user.isDelete === false &&
+        user.role === 'admin';
+
+        if (isAdmin) {
+            handleDashboardRedirect();
+            return;
+        } else if (user){
+            handleRedirect();
+        }
+    }, [user]);
+
+    const handleDashboardRedirect = () => {
+        console.log('Navigating to /dashboard...');
+        window.location.href = '/dashboard';
+    };
 
     useEffect(() => {
         const result = PWD_REGEX.test(pwd);
@@ -220,6 +251,15 @@ const Register = () => {
 
     return (
         <main className='regis-main-bg'>
+            {loading ? (
+            <div id="loader">
+                <PropagateLoader
+                loading={loading}
+                size={30}
+                color={'#36d7b7'}
+              />
+            </div>
+              ):(
             <div className="regis-main">
                 <div className="regis-img">
                     <div className="logo-title">
@@ -442,6 +482,7 @@ const Register = () => {
 
                 
             </div>
+              )}
         </main>
     );
 }

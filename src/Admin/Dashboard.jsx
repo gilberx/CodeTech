@@ -5,17 +5,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./Admin.css";
 import UserContext from "../Register/UserContext";
 import { faTachometerAlt, faChalkboardTeacher, faUserGraduate, faBook, faExclamationTriangle, faSignOut } from '@fortawesome/free-solid-svg-icons';
-
+import PropagateLoader from "react-spinners/PropagateLoader";
 function Dashboard() {
 
     
     const { user, setUser } = useContext(UserContext);
+    const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        setLoading(true);
+        setTimeout(() => {
+          setLoading(false);
+        }, 3000);
+      }, [])
     const [counts, setCounts] = useState({
         educators: 0,
         learners: 0,
         messages: 0,
         tickets: 0,
     });
+
+    
 
     useEffect(() => {
         console.log("logged in user: ", user);
@@ -80,8 +89,18 @@ function Dashboard() {
           );
       }
     return(
+        <>
+        {loading ? (
+            <div id="loader">
+                <PropagateLoader
+                loading={loading}
+                size={30}
+                color={'#36d7b7'}
+              />
+            </div>
+              ):(
         <main style={{ display: 'flex' }}>
-
+            
         
         <div className="a-sidebar">
             <div className="a-logo">
@@ -237,6 +256,8 @@ function Dashboard() {
 
         
         </main>
+        )}
+        </>
     );
 
 }

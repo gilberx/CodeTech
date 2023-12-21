@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import './CreateGoals.css';
 import UserContext from './Register/UserContext';
 import Navbar from './Navbar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 const CreateGoals = () => {
   const [userGoals, setGoal] = useState('');

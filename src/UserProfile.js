@@ -241,9 +241,6 @@ if (!user) {
           </div>
     <div className="user-profile">
       <h2>Personal Information</h2>
-      <div className="picture-container">
-
-        {/* <div style={{backgroundColor: "white"}}>Picture</div> */}
         <div>
           <p style={{ color: "white" }}>
             User ID: <strong>{user.userid}</strong>
@@ -252,7 +249,6 @@ if (!user) {
             Role: <strong>{user.role}</strong>
           </p>
         </div>
-      </div>
       <div className="inputField">
       <p style={{ fontSize: '15px', margin: '4px 0', color: 'white' }}>Username</p>
             

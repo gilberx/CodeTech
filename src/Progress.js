@@ -49,8 +49,19 @@ const Progress = () => {
               <button>Goals</button>
             </Link>
           </div>
-    <div className="user-progress">
-      <h2>Progress</h2>
+    <div className="user-progress" style={{overflow: 'auto', maxHeight: '600px'}}>
+      <h2 style={{marginBottom: '30px'}}>Progress</h2>
+      <div style={{height: '200px', marginTop: '20px'}}>
+      <div style={{display: 'grid', placeItems: 'center', marginBottom: '10px'}}>
+      <div className='image' style={{width: '150px'}}><img
+          src="/17.png"
+          alt="cpp"
+          style={{ width: "125px", height: "65px"}}
+        /></div>
+        <div className='courseTitle'>
+          <h4>Introduction to C#</h4>
+        </div>
+        </div>
       <LinearProgress variant="determinate" value={progress} sx={{
           height: 20,
           borderRadius: 10,
@@ -60,7 +71,49 @@ const Progress = () => {
             backgroundColor: '#53ffe8',
           },
         }} />
-      <button onClick={updateProgress}>Update Progress</button>
+        </div>
+        <div style={{height: '200px', marginTop: '20px'}}>
+        <div style={{display: 'grid', placeItems: 'center', marginBottom: '10px'}}>
+        <div className='image' style={{width: '150px'}}><img
+          src="/18.png"
+          alt="cpp"
+          style={{ width: "125px", height: "65px"}}
+        /></div>
+        <div className='courseTitle'>
+          <h4>Introduction to C#</h4>
+        </div>
+        </div>
+      <LinearProgress variant="determinate" value={progress} sx={{
+          height: 20,
+          borderRadius: 10,
+          backgroundColor: '#458C83',
+          '& .MuiLinearProgress-bar': {
+            borderRadius: 10,
+            backgroundColor: '#53ffe8',
+          },
+        }} />
+        </div>
+        <div style={{height: '200px', marginTop: '20px'}}>
+        <div style={{display: 'grid', placeItems: 'center', marginBottom: '10px'}}>
+        <div className='image' style={{width: '150px'}}><img
+          src="/19.png"
+          alt="cpp"
+          style={{ width: "143px", height: "78px"}}
+        /></div>
+        <div className='courseTitle'>
+          <h4>Introduction to C#</h4>
+        </div>
+        </div>
+      <LinearProgress variant="determinate" value={progress} sx={{
+          height: 20,
+          borderRadius: 10,
+          backgroundColor: '#458C83',
+          '& .MuiLinearProgress-bar': {
+            borderRadius: 10,
+            backgroundColor: '#53ffe8',
+          },
+        }} />
+        </div>
     </div>
     </div>
   );

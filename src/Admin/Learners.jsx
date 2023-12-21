@@ -478,9 +478,9 @@ function Learner() {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/#" className='a-link-text'>
+                    <Link to="/messagedashboard" className='a-link-text'>
                         <FontAwesomeIcon icon={faBook} style={{fontSize:"1.2rem"}} />
-                        <span>Courses</span>
+                        <span>Messages</span>
                     </Link>
                 </li>
                 <li>

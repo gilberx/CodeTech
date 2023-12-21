@@ -43,6 +43,7 @@ import ViewTicket from './Tickets/ViewTicket.js';
 import GetInTouch from './Tickets/GetInTouch.js';
 import Learner from './Admin/Learners.jsx';
 import TicketDashboard from './Admin/TicketDashboard.jsx';
+import Message from './Admin/Message.jsx';
 
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
           <Route path="/educator" element={<Educator />} />
           <Route path="/learner" element={<Learner />} />
           <Route path="/ticketdashboard" element={<TicketDashboard />} />
+          <Route path="/messagedashboard" element={<Message />} />
           <Route path="/joinClass" element={<JoinClass/>} />
           <Route path="/JoinCreate" element={<JoinCreate />} />
           <Route path="/class/:classcode" element={<Class />} />

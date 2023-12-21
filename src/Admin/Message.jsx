@@ -2,20 +2,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState, useRef, useEffect, useContext,  } from 'react';
+import { useState, useEffect, useContext,  } from 'react';
 import "./Admin.css";
 import UserContext from "../Register/UserContext";
 import Modal from "../Modal";
-import Footer from "../Footer";
 import { faTachometerAlt, faChalkboardTeacher, faUserGraduate, faBook, faExclamationTriangle, faSignOut, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
-import { Paper, Box, Button } from "@mui/material";
 
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_CHARACTERS = 250;
 
 
-function TicketDashboard() {
+function Message() {
     
     const { user, setUser } = useContext(UserContext);
     useEffect(() => {
@@ -24,28 +22,25 @@ function TicketDashboard() {
 
     const [isAddOpen, setIsAddOpen] = useState(false);
     const [isUpdateOpen, setIsUpdateOpen] = useState(false);
-    const [tickets, setTickets] = useState([]);
+    const [messages, setMessages] = useState([]);
     
     const [submitClicked, setSubmitClicked] = useState(false);
 
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [validEmail, setValidEmail] = useState(false);
-
-    const [title, setTitle] = useState('');
-    const [category, setCategory] = useState(false);
-    const [details, setDetails] = useState('');
-    const [status, setStatus] = useState('');
+    const [message, setMessage] = useState('');
 
     const [errMsg, setErrMsg] = useState(false);
     const [emptyInput, setEmptyInput] = useState(false);
 
-    const [updateTicket, setUpdateTicket] = useState(null);
+    const [updateMessage, setUpdateMessage] = useState(null);
 
     const [isModalAddSuccessOpen, setIsModalAddSuccessOpen] = useState(false);
     const [isModalEditSuccessOpen, setIsModalEditSuccessOpen] = useState(false);
     const [isModalDeleteSuccessOpen, setIsModalDeleteSuccessOpen] = useState(false);
     const [isModalDeleteConfirmOpen, setIsModalDeleteConfirmOpen] = useState(false);
-    const [modalDeleteTicket, setModalDeleteTicket] = useState(null);
+    const [modalDeleteMessage, setModalDeleteMessage] = useState(null);
 
     const handleCloseModalAddSuccess = () => {
         setIsModalAddSuccessOpen(false);
@@ -64,14 +59,10 @@ function TicketDashboard() {
         setIsModalDeleteConfirmOpen(false);
     };
 
-    const handleCategoryChange = (e) => {
-        setCategory(e.target.value);
-    };
-
-    const handleDetailsChange = (e) => {
+    const handleMessageChange = (e) => {
         const inputText = e.target.value;
         if (inputText.length <= MAX_CHARACTERS) {
-            setDetails(inputText);
+            setMessage(inputText);
         }
     };
 
@@ -82,13 +73,10 @@ function TicketDashboard() {
         localStorage.removeItem('user');
         window.location.href = "/login";
       };
-    
     const resetForm = () => {
+        setName('');
+        setMessage('');
         setEmail('');
-        setTitle('');
-        setCategory('');
-        setDetails('');
-        setStatus('');
         setEmptyInput(false);
         setSubmitClicked(false);
         setValidEmail(false);
@@ -102,19 +90,17 @@ function TicketDashboard() {
 
     const handleCloseUpdateModal = () => {
         setIsUpdateOpen(false);
-        setUpdateTicket(null);
+        setUpdateMessage(null);
         resetForm();
       };
     
-      const handleEdit = (ticket) => {
-        setUpdateTicket(ticket);
+      const handleEdit = (message) => {
+        setUpdateMessage(message);
         setIsUpdateOpen(true);
 
-        setEmail(ticket.email);
-        setTitle(ticket.title);
-        setDetails(ticket.details);
-        setCategory(ticket.category);
-        setStatus(ticket.status);
+        setEmail(message.email);
+        setName(message.name);
+        setMessage(message.message);
         setErrMsg('');
         setEmptyInput(false);
         setSubmitClicked(false);
@@ -129,7 +115,7 @@ function TicketDashboard() {
     const handleSubmitUpdate = async (e) => {
         e.preventDefault();
         setSubmitClicked(true);
-        if(submitClicked && (!title || !details || !category || !email )){
+        if(submitClicked && (!name || !message || !email )){
             setEmptyInput(true);
             setErrMsg("All inputs are required")
             return;
@@ -141,27 +127,21 @@ function TicketDashboard() {
             return;
         }
         
-        const ticketDetails = {
-          title,
+        const messageDetails = {
+          name,
           email,
-          category,
-          details,
-          status,
-          timestamp: updateTicket.timestamp,
-          isDelete: false,
-          user: {userid: user.userid}
+          message
         };
-        console.log("email: ", email);
     
         try {
-          const response = await fetch(`http://localhost:8080/ticket/updateTicket?ticketid=${updateTicket.ticketid}`, {
+          const response = await fetch(`http://localhost:8080/contactus/updateContactUs?contactusid=${updateMessage.contactusid}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(ticketDetails),
+            body: JSON.stringify(messageDetails),
           });
     
           if (response.ok) {
-            console.log('Ticket updated successfully:', ticketDetails);
+            console.log('message updated successfully:', messageDetails);
             handleCloseUpdateModal();
             setIsModalEditSuccessOpen(true);
           } else {
@@ -174,44 +154,44 @@ function TicketDashboard() {
     };
 
     useEffect(() => {
-        fetch("http://localhost:8080/ticket/getAllTickets")
+        fetch("http://localhost:8080/contactus/getAllContactUs")
           .then((res) => res.json())
           .then((result) => {
-            const activeTickets = result.filter(
-              (ticket) => !ticket.isDelete
+            const activeMessages = result.filter(
+              (message) => !message.isDelete
             );
       
-            setTickets(activeTickets);
+            setMessages(activeMessages);
           })
           .catch((error) => {
-            console.error('Error fetching tickets:', error);
+            console.error('Error fetching Messages:', error);
           });
 
 
       }, [isAddOpen, isUpdateOpen, isModalDeleteSuccessOpen, isModalAddSuccessOpen, isModalEditSuccessOpen]);
 
-      const handleDelete = (ticketid) => {
-            fetch(`http://localhost:8080/ticket/removeTicket?ticketid=${ticketid}`, {
+      const handleDelete = (contactusid) => {
+            fetch(`http://localhost:8080/contactus/removeContactUs?contactusid=${contactusid}`, {
                 method: 'PUT',
             })
                 .then((res) => res.json())
                 .then((result) => {
-                    console.log('ticket removed successfully:', result);
+                    console.log('message removed successfully:', result);
                 })
                 .catch((error) => {
-                    console.error('Error removing ticket:', error);
+                    console.error('Error removing message:', error);
                 });
     };
-    const handleConfirmDelete = (ticketid) => {
+    const handleConfirmDelete = (messageid) => {
         setIsModalDeleteConfirmOpen(true);
-        setModalDeleteTicket(ticketid);
+        setModalDeleteMessage(messageid);
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setSubmitClicked(true);
         
-        if(submitClicked && (!title || !details || !category || !email )){
+        if(submitClicked && (!name || !message || !email )){
             setEmptyInput(true);
             setErrMsg("All inputs are required")
             return;
@@ -223,29 +203,23 @@ function TicketDashboard() {
             return;
         }
         
-        const ticketDetails = {
-            title,
+        const messageDetails = {
+            name,
             email,
-            category,
-            details,
-            status,
-            timestamp:new Date().toISOString(),
-            isDelete: false,
-            user: {userid: user.userid}
+            message
           };
-        console.log("ticket: ", ticketDetails);
         try {
-            const response = await fetch("http://localhost:8080/ticket/insertTicket", {
+            const response = await fetch("http://localhost:8080/contactus/insertContactUs", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(ticketDetails),
+                body: JSON.stringify(messageDetails),
             });
 
     
             if (response.ok) {
                 
-                const ticketData = await response.json();
-                console.log("New ticket Registered: ", ticketData);
+                const messageData = await response.json();
+                console.log("New message Registered: ", messageData);
                 setIsAddOpen(false); 
                 setIsModalAddSuccessOpen(true);
             } else {
@@ -312,13 +286,13 @@ function TicketDashboard() {
                         <span>Learners</span>
                     </Link>
                 </li>
-                <li>
+                <li className="a-active">
                 <Link to="/messagedashboard" className='a-link-text'>
                         <FontAwesomeIcon icon={faBook} style={{fontSize:"1.2rem"}} />
                         <span>Messages</span>
                     </Link>
                 </li>
-                <li className="a-active">
+                <li>
                     <Link to="/ticketdashboard" className='a-link-text'>
                         <FontAwesomeIcon icon={faExclamationTriangle} style={{fontSize:"1.2rem"}} />
                         <span>Tickets</span>
@@ -338,7 +312,7 @@ function TicketDashboard() {
             <div className="a-header-wrapper">
                 <div className="a-header-title">
                     <span>CodeTech</span>
-                    <h2>Tickets</h2>
+                    <h2>Messages</h2>
                 </div>
                 <div className="a-user-info">
                     <div className="user-info-box">
@@ -358,47 +332,38 @@ function TicketDashboard() {
                                 Add +
                             </button>
                         </div>
-                        {tickets.length === 0 ? (
+                        {messages.length === 0 ? (
                             <div className="a-no-educators">
-                                <p>There are currently no active tickets...</p>
+                                <p>There are currently no active messages...</p>
                             </div>
                         ) : (
                             <div style={{ overflowX: 'auto' }}>
                             <table className="a-table">
                                 <thead>
                                 <tr>
-                                    <th>Ticket ID</th>
-                                    <th>User ID</th>
-                                    <th>Title</th>
+                                    <th>Message ID</th>
+                                    <th>Name</th>
                                     <th>Email</th>
-                                    <th>Category</th>
-                                    <th>Details</th>
-                                    <th>Status</th>
-                                    <th>Timestamp</th>
+                                    <th>Message</th>
                                     <th>Actions</th>
 
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {tickets.map((ticket) => (
-                                    <tr key={ticket.ticketid}>
-                                    <td>{ticket.ticketid}</td>
-                                    <td>{ticket.user.userid}</td>
-                                    <td>{ticket.title}</td>
-                                    <td>{ticket.email}</td>
-                                    <td>{ticket.category}</td>
-                                    <td>{ticket.details}</td>
-                                    <td>{ticket.status}</td>
-                                    <td>{new Date(ticket.timestamp).toLocaleDateString()}</td>
-                                    
+                                {messages.map((message) => (
+                                    <tr key={message.contactusid}>
+                                    <td>{message.contactusid}</td>
+                                    <td>{message.name}</td>
+                                    <td>{message.email}</td>
+                                    <td>{message.message}</td>
                                     <td>
                                         <button className="a-btn-educator "
-                                        onClick={() => handleEdit(ticket)}
+                                        onClick={() => handleEdit(message)}
                                         >
                                         Edit
                                         </button>
                                         <button className="a-btn-educator a-red-bg"
-                                        onClick={() => handleConfirmDelete(ticket.ticketid)}
+                                        onClick={() => handleConfirmDelete(message.contactusid)}
                                         >
                                         Delete
                                         </button>
@@ -416,19 +381,19 @@ function TicketDashboard() {
         <Modal onClose={handleCloseAddModal}>
           <div className="a-ticket-modal">
             
-            <p style={{ fontSize: '25px', fontWeight: 'bold', backgroundColor: 'white', marginBottom: '20px' }}>Add New Ticket</p>
+            <p style={{ fontSize: '25px', fontWeight: 'bold', backgroundColor: 'white', marginBottom: '20px' }}>Add New Message</p>
             <div className="ticket-input-label">
-                <h5>Concern Title</h5>
-                {title === '' && <span style={{ color: 'red', marginLeft:'5px' }}>*</span>}
+                <h5>Name</h5>
+                { name === '' && <span style={{ color: 'red', marginLeft:'5px' }}>*</span>}
             </div>
             <input
                 className={`a-input`}
                 type="text"
-                id="titl"
+                id="name"
                 autoComplete="off"
                 required
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 aria-describedby="uidnote"
             />
 
@@ -447,123 +412,53 @@ function TicketDashboard() {
                 aria-invalid={validEmail ? "false" : "true"}
                 aria-describedby="uidnote"
             />
-            
-                {console.log("validemail:", validEmail)}
-                <div className="ticket-input-label">
-                    <h5>Concern Category</h5>
-                    {category === '' && <span style={{ color: 'red', marginLeft:'5px' }}>*</span>}
-                </div>
-                <select
-                    className={`ticket-input`}
-                    id="category"
-                    value={category}
-                    onChange={handleCategoryChange}
-                    
-                >
-                    <option value=''>Select a category</option>
-                    <option value="Account Issues">Account Issues</option>
-                    <option value="Class Management">Class Management</option>
-                    <option value="Ticket Submissions">Ticket Submissions</option>
-                    <option value="Admin Assistance">Admin Assistance</option>
-                    <option value="Course Content">Course Content</option>
-                    <option value="Technical Glitches">Technical Glitches</option>
-                    <option value="Feedback and Suggestions">Feedback and Suggestions</option>
-                    <option value="General Inquiries">General Inquiries</option>
-                </select>
-            
-            
-                
-                <div className="ticket-input-label">
-                    <h5>Details</h5>
-                    {details === '' && <span style={{ color: 'red', marginLeft:'5px' }}>*</span>}
-                </div>
-                <textarea
-                        className={`ticket-input ${details.length > MAX_CHARACTERS ? 'invalid' : ''}`}
-                        id="details"
-                        autoComplete="off"
-                        required
-                        value={details}
-                        onChange={handleDetailsChange}
-                        aria-describedby="uidnote"
-                        rows={5}
-                        style={{
-                            width: '100%',
-                            outline: 'none',
-                            fontSize: '1rem',
-                            margin: '5px 0',
-                            padding: '15px 15px',
-                            lineHeight: '25px',
-                            borderRadius: '10px',
-                            border: '2px solid #7c7c7c',
-                            background: 'transparent',
-                            zIndex: '1111',
-                            fontFamily: "'Inter', sans-serif",
-                            resize: 'none',
-                        }}
-                    ></textarea>
-                    <div style={{ fontSize: '10px', color: '#bbbbbb' }}>
-                        {details.length}/{MAX_CHARACTERS}
-                    </div>
-                
-            
 
+            <div className="ticket-input-label">
+                <h5>Message</h5>
+                { message === '' && <span style={{ color: 'red', marginLeft:'5px' }}>*</span>}
+            </div>
+            <input
+                className={`a-input`}
+                type="text"
+                id="name"
+                autoComplete="off"
+                required
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                aria-describedby="uidnote"
+            />
             
-                    <div className="ticket-input-label">
-                        <h5>Status</h5>
-                        {status === '' && <span style={{ color: 'red', marginLeft: '5px' }}>*</span>}
-                    </div>
-                    <div className="ticket-status-radio">
-                        <input
-                        type="radio"
-                        id="statusOpen"
-                        value="Open"
-                        checked={status === 'Open'}
-                        onChange={() => setStatus('Open')}
-                        defaultChecked
-                        />
-                        <label htmlFor="statusOpen">Open</label>
-
-                        <input
-                        type="radio"
-                        id="statusSolved"
-                        value="Solved"
-                        checked={status === 'Solved'}
-                        onChange={() => setStatus('Solved')}
-                        />
-                        <label htmlFor="statusSolved">Solved</label>
-                        
-                    </div>
             
                     
             <div style={{display: 'flex'}}>
                 <div className="error-message" style={{ color: 'red', margin: '10px 0', fontSize: '10px' }}>
                             {errMsg}
-                    </div><button className='a-ticket-submit' type="submit" onClick={handleSubmit}>Add</button> <br></br>
+                    </div><button className='a-message-submit' type="submit" onClick={handleSubmit}>Add</button> <br></br>
 
             </div>
                     
             
           </div>
         </Modal>
-      )}
+    )}
 
     {isUpdateOpen && (
-        <Modal onClose={handleCloseUpdateModal}>
+        <Modal onClose={handleCloseAddModal}>
           <div className="a-ticket-modal">
             
-            <p style={{ fontSize: '25px', fontWeight: 'bold', backgroundColor: 'white', marginBottom: '20px' }}>Add New Ticket</p>
+            <p style={{ fontSize: '25px', fontWeight: 'bold', backgroundColor: 'white', marginBottom: '20px' }}>Add New Message</p>
             <div className="ticket-input-label">
-                <h5>Concern Title</h5>
-                {title === '' && <span style={{ color: 'red', marginLeft:'5px' }}>*</span>}
+                <h5>Name</h5>
+                { name === '' && <span style={{ color: 'red', marginLeft:'5px' }}>*</span>}
             </div>
             <input
                 className={`a-input`}
                 type="text"
-                id="titl"
+                id="name"
                 autoComplete="off"
                 required
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 aria-describedby="uidnote"
             />
 
@@ -582,105 +477,38 @@ function TicketDashboard() {
                 aria-invalid={validEmail ? "false" : "true"}
                 aria-describedby="uidnote"
             />
-            
-                <div className="ticket-input-label">
-                    <h5>Concern Category</h5>
-                    {category === '' && <span style={{ color: 'red', marginLeft:'5px' }}>*</span>}
-                </div>
-                <select
-                    className={`ticket-input`}
-                    id="category"
-                    value={category}
-                    onChange={handleCategoryChange}
-                    
-                >
-                    <option value=''>Select a category</option>
-                    <option value="Account Issues">Account Issues</option>
-                    <option value="Class Management">Class Management</option>
-                    <option value="Ticket Submissions">Ticket Submissions</option>
-                    <option value="Admin Assistance">Admin Assistance</option>
-                    <option value="Course Content">Course Content</option>
-                    <option value="Technical Glitches">Technical Glitches</option>
-                    <option value="Feedback and Suggestions">Feedback and Suggestions</option>
-                    <option value="General Inquiries">General Inquiries</option>
-                </select>
-            
-            
-                
-                <div className="ticket-input-label">
-                    <h5>Details</h5>
-                    {details === '' && <span style={{ color: 'red', marginLeft:'5px' }}>*</span>}
-                </div>
-                <textarea
-                        className={`ticket-input ${details.length > MAX_CHARACTERS ? 'invalid' : ''}`}
-                        id="details"
-                        autoComplete="off"
-                        required
-                        value={details}
-                        onChange={handleDetailsChange}
-                        aria-describedby="uidnote"
-                        rows={5}
-                        style={{
-                            width: '100%',
-                            outline: 'none',
-                            fontSize: '1rem',
-                            margin: '5px 0',
-                            padding: '15px 15px',
-                            lineHeight: '25px',
-                            borderRadius: '10px',
-                            border: '2px solid #7c7c7c',
-                            background: 'transparent',
-                            zIndex: '1111',
-                            fontFamily: "'Inter', sans-serif",
-                            resize: 'none',
-                        }}
-                    ></textarea>
-                    <div style={{ fontSize: '10px', color: '#bbbbbb' }}>
-                        {details.length}/{MAX_CHARACTERS}
-                    </div>
-                
-            
 
             
-                    <div className="ticket-input-label">
-                        <h5>Status</h5>
-                        {status === '' && <span style={{ color: 'red', marginLeft: '5px' }}>*</span>}
-                    </div>
-                    <div className="ticket-status-radio">
-                        <input
-                        type="radio"
-                        id="statusOpen"
-                        value="Open"
-                        checked={status === 'Open'}
-                        onChange={() => setStatus('Open')}
-                        defaultChecked
-                        />
-                        <label htmlFor="statusOpen">Open</label>
-
-                        <input
-                        type="radio"
-                        id="statusSolved"
-                        value="Solved"
-                        checked={status === 'Solved'}
-                        onChange={() => setStatus('Solved')}
-                        />
-                        <label htmlFor="statusSolved">Solved</label>
-                        
-                    </div>
+            <div className="ticket-input-label">
+                <h5>Message</h5>
+                { message === '' && <span style={{ color: 'red', marginLeft:'5px' }}>*</span>}
+            </div>
+            <input
+                className={`a-input`}
+                type="text"
+                id="name"
+                autoComplete="off"
+                required
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                aria-describedby="uidnote"
+            />
+            
             
                     
             <div style={{display: 'flex'}}>
                 <div className="error-message" style={{ color: 'red', margin: '10px 0', fontSize: '10px' }}>
                             {errMsg}
-                    </div>
-                    <button className='a-ticket-submit' type="submit" onClick={handleSubmitUpdate}>Update</button> <br></br>
+                    </div><button className='a-message-submit' type="submit" onClick={handleSubmitUpdate}>Update</button> <br></br>
 
             </div>
                     
             
           </div>
         </Modal>
-      )}
+    )}
+
+    
 
             
 
@@ -717,7 +545,7 @@ function TicketDashboard() {
                         <h1 style={{fontSize:'20px',textAlign:'center'}}>Are you sure you want to delete this?</h1>
                         <div className="a-modal-buttons">
                             <button className="git-btn" style={{backgroundColor:'rgb(182, 78, 78)'}} onClick={handleCloseModalDeleteConfirm}>Cancel</button>
-                            <button className="git-btn" onClick={() => { handleDelete(modalDeleteTicket); setIsModalDeleteSuccessOpen(true); handleCloseModalDeleteConfirm(); setModalDeleteTicket(null);}}>Confirm</button>
+                            <button className="git-btn" onClick={() => { handleDelete(modalDeleteMessage); setIsModalDeleteSuccessOpen(true); handleCloseModalDeleteConfirm(); setModalDeleteMessage(null);}}>Confirm</button>
                         </div>
                     </div>
                 </Modal>
@@ -727,4 +555,4 @@ function TicketDashboard() {
 
 }
 
-export default TicketDashboard; 
+export default Message; 

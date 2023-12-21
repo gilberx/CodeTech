@@ -23,7 +23,7 @@ const Quiz = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:8080/lesson/addLesson", {
+      const response = await axios.post("http://localhost:8080/quiz/addQuiz", {
         title: title,
         content: content,
       }, {
@@ -39,7 +39,6 @@ const Quiz = () => {
       console.log('Lesson added successfully:', response.data);
     } catch (error) {
       console.error('Error adding lesson:', error);
-      // Handle the error, e.g., show an error message to the user
     }
   };
   if (!user) {

@@ -35,7 +35,6 @@ import SubmitTicket from './Tickets/SubmitTicket.js';
 import Lesson from './Lesson.js';
 import Quiz from './Quiz.js';
 
-
 import Lesson1 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1.jsx'
 import Lesson1_page2 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1_page2.jsx'
 import Lesson1_page3 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1_page3.jsx'
@@ -68,7 +67,7 @@ function App() {
           <Route path="/AddLesson" element={<AddLesson />} />
           <Route path="/Courses" element={<Courses/>}/>
           <Route path="/class/:classcode/Quiz" element={<Quiz/>}/>
-          <Route path="/class/:classcode/Lesson" element={<Lesson/>}/>
+          <Route path="/class/:classcode/Lesson" element={<Lesson />} />
           <Route path="/AboutUs" element={<AboutUs/>} />
           <Route path="/Courses=BeginnerPage" element={<Courses2/>}/>
           <Route path="/Courses=IntermediatePage" element={<Courses3/>}/>

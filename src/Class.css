@@ -41,9 +41,8 @@
 }
 
 .AddQuiz{
-margin-top: 10px;
 margin-bottom: 10px;
-margin-left: 1200px;
+margin-left: 1185px;
 position: absolute;
 width: 38px;
 border-radius: 100px;
@@ -59,9 +58,8 @@ font-size: 30px;
 }
 
 .AddLesson{
-  margin-top: 10px;
   margin-bottom: 10px;
-  margin-left: 1200px;
+  margin-left: 1185px;
   position: absolute;
   width: 38px;
   border-radius: 100px;
@@ -85,6 +83,8 @@ font-size: 30px;
   margin: auto;
   border-radius: 10px;
   margin-top: 10px;
+  padding: 30px;
+  padding-right: 20px;
 }
 
 .header{
@@ -108,13 +108,24 @@ font-size: 30px;
 
 .btnquiz,
 .btnlesson {
-  width: 1200px;
-  height: 90px;
-  margin: 8px;
+  width: 1150px;
+  height: 100px;
+  margin: 5px;
   border: none;
   margin-left: 30px;
   text-align: left;
   padding: 20px;
   font-size: 18px;
+  border-radius: 10px;
+}
+
+.btnlesson:hover{
+  background-color: #458C83;
+  color: white
+}
+
+.btnquiz:hover{
+  background-color: #458C83;
+  color: white
 }
 

@@ -32,7 +32,8 @@ text-decoration: none;
   justify-content: flex-start !important;
   align-items: center !important;
   position: relative !important;
-  margin-right: 40px !important;
+  margin-right: 50px !important;
+  margin-left: 40px;
 }
 
 
@@ -74,7 +75,7 @@ text-decoration: none;
 }
 
 .line {
-  width: 1240px !important;
+  width: 1400px !important;
   opacity: 40% !important;
   color: #EDEDED !important;
   margin-top: 50px !important;

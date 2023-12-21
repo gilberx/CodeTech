@@ -69,21 +69,17 @@ function App() {
           <Route path="/Courses=IntroductionToC" element={<IntroductionToC/>}/>
           <Route path="/Courses=IntroductionToCSharp" element={<IntroductionToCSharp/>}/>
           <Route path="/Courses=IntroductionToCplusplus" element={<IntroductionToCplusplus/>}/>
-
-              <Route path="/userprofile" element={<UserProfile />} />
-              <Route path="/achievements" element={<Achievements />} />
-              <Route path="/progress" element={<Progress />} />
-              <Route path="/settings" element={<Settings />} />
-              <Route path="/goals" element={<Goals />} />
-              <Route path="/creategoals/:group" element={<CreateGoals />} />
-              <Route path="/viewgoals/:group" element={<ViewGoals />} />
-              <Route path="/editgoals/:sid" element={<EditGoals />} />
-
-              <Route path="/helpcenter" element={<HelpCenter />} />
-              <Route path="/faq" element={<Faq />} />
-              <Route path="/submitticket" element={<SubmitTicket />} />
-          
-      
+          <Route path="/userprofile" element={<UserProfile />} />
+          <Route path="/achievements" element={<Achievements />} />
+          <Route path="/progress" element={<Progress />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/goals" element={<Goals />} />
+          <Route path="/creategoals/:group" element={<CreateGoals />} />
+          <Route path="/viewgoals/:group" element={<ViewGoals />} />
+          <Route path="/editgoals/:sid" element={<EditGoals />} />
+          <Route path="/helpcenter" element={<HelpCenter />} />
+          <Route path="/faq" element={<Faq />} />
+          <Route path="/submitticket" element={<SubmitTicket />} />
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/achievements" element={<Achievements />} />
           <Route path="/progress" element={<Progress />} />

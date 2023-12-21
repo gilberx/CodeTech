@@ -1,37 +1,48 @@
 .ViewQuiz{
-  width: 635px !important;
+  width: 630px !important;
   height: 80px !important;
   border: none !important;
-  border-radius: 10px !important;
-  margin-left: 58px !important;
   font-size: 25px !important;
   font-weight: bold !important;
   margin-top: 20px !important;
+  background-color: #458C83 !important;
+  color: white;
+  border-radius: 10px;
+  margin-left: 155px;
+}
+
+.pinakacontainer{
+  display: flex !important;
+  margin: 0 auto !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 
 .ViewQuiz:hover{
-  background-color: white;
+  background-color: #D6E4E5 !important;
+  color: #2C3333;
 }
 
 .ViewLesson{
-  width: 632px;
+  width: 630px;
   height: 80px;
   border: none;
   border-radius: 10px;
   font-size: 25px;
   font-weight: bold;
-  margin: auto;
-
+  background-color: #458C83 !important;
+  color: white;
+  margin-left: 10px;
 }
 
 .ViewLesson:hover{
-background-color: white;
-
+  background-color: #D6E4E5 !important;
+  color: #2C3333;
 }
 
 .AddQuiz{
-margin-left: 1200px;
-margin-top: 530px;
+margin-bottom: 10px;
+margin-left: 1185px;
 position: absolute;
 width: 38px;
 border-radius: 100px;
@@ -40,14 +51,15 @@ color: white;
 border: none;
 font-size: 30px;
 }
+
 .AddQuiz:hover{
   background-color: #6FDDCF;
   color: #2C3333;
 }
 
 .AddLesson{
-  margin-left: 1200px;
-  margin-top: 530px;
+  margin-bottom: 10px;
+  margin-left: 1185px;
   position: absolute;
   width: 38px;
   border-radius: 100px;
@@ -62,12 +74,17 @@ font-size: 30px;
   color: #2C3333;
 }
 
-.container1{
+.container1,
+.container2{
   width: 1266px;
-  height: 582px;
-  background-color: white;
+  height: auto;
+  background-color: #D6E4E5;
   display: flex;
   margin: auto;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 30px;
+  padding-right: 20px;
 }
 
 .header{
@@ -88,3 +105,27 @@ font-size: 30px;
   font-family: 'Montserrat', sans-serif;
   padding-top: 200px;
 }
+
+.btnquiz,
+.btnlesson {
+  width: 1150px;
+  height: 100px;
+  margin: 5px;
+  border: none;
+  margin-left: 30px;
+  text-align: left;
+  padding: 20px;
+  font-size: 18px;
+  border-radius: 10px;
+}
+
+.btnlesson:hover{
+  background-color: #458C83;
+  color: white
+}
+
+.btnquiz:hover{
+  background-color: #458C83;
+  color: white
+}
+

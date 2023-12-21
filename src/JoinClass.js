@@ -48,7 +48,7 @@ const JoinClass = () => {
                     <Paper style={{ backgroundColor: 'rgba(163, 163, 163, 0.33)', width: '250px', height: '100px', borderRadius: '20px', marginLeft: '10px', marginRight: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                       <Paper style={{ backgroundColor: 'rgba(163, 163, 163, 0.33)', width: '220px', height: '135px', borderRadius: '20px', marginRight: '0px' }}>
                         <Paper style={{ backgroundColor: '#F0F0F0', borderRadius: '20px', width: '260px', height: '100px', marginTop: '38px', marginLeft: '-19.5px' }}>
-                          <p style={{ textAlign: 'center', fontSize: '15px', paddingTop: '20px', paddingLeft: '10px', paddingRight: '15px', fontWeight: '600' }}>{classItem.classdescription}</p>
+                          <p style={{ textAlign: 'center', fontSize: '12px', paddingTop: '20px', paddingLeft: '10px', paddingRight: '15px', fontWeight: '600' }}>{classItem.classdescription}</p>
                         </Paper>
                       </Paper>
                     </Paper>

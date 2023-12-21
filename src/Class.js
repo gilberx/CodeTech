@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Class.css';
 import Navbar from './Navbar';
 
 const TeacherPage = () => {
-  const navigate = useNavigate(); // Use useNavigate instead of useHistory
+  const navigate = useNavigate();
   const { classcode } = useParams();
   const [showQuizContainer, setShowQuizContainer] = useState(false);
   const [showLessonContainer, setShowLessonContainer] = useState(false);
   const [classInfo, setClassInfo] = useState(null);
+  const [quizzes, setQuizzes] = useState([]);
+  const [lessons, setLessons] = useState([]);
 
   useEffect(() => {
     const fetchClassInfo = async () => {
@@ -21,10 +23,24 @@ const TeacherPage = () => {
       }
     };
 
+    const fetchQuizzesAndLessons = async () => {
+      try {
+        // Fetch quizzes
+        const quizzesResponse = await axios.get(`http://localhost:8080/quiz/getAllQuestions`);
+        setQuizzes(quizzesResponse.data);
+
+        // Fetch lessons
+        const lessonsResponse = await axios.get(`http://localhost:8080/lesson/getAllLessons`);
+        setLessons(lessonsResponse.data);
+      } catch (error) {
+        console.error('An error occurred while fetching quizzes and lessons:', error);
+      }
+    };
+
     fetchClassInfo();
+    fetchQuizzesAndLessons();
   }, [classcode]);
 
-  // Define classname and use it in the JSX
   const classname = classInfo && classInfo.classname ? classInfo.classname : 'Class Name Loading...';
 
   const handleViewQuiz = () => {
@@ -38,13 +54,19 @@ const TeacherPage = () => {
   };
 
   const handleAddQuiz = () => {
-    // Navigate to the addQuiz page for the current class
     navigate(`/class/${classcode}/addQuiz`);
   };
 
   const handleAddLesson = () => {
-    // Navigate to the addLesson page for the current class
     navigate(`/class/${classcode}/addLesson`);
+  };
+
+  const handleTakeLesson = () => {
+    navigate(`/class/${classcode}/lesson`);
+  };
+
+  const handleTakeQuiz = () => {
+    navigate(`/class/${classcode}/quiz`);
   };
 
   return (
@@ -67,6 +89,13 @@ const TeacherPage = () => {
               +
             </button>
           </div>
+          <div>
+              {quizzes.map((quiz) => (
+                <button className='btnquiz' onClick={handleTakeQuiz}>
+                <a key={quiz.id}>{quiz.title}</a>
+                </button>
+              ))}
+          </div>
         </div>
       )}
 
@@ -76,6 +105,13 @@ const TeacherPage = () => {
             <button className='AddLesson' onClick={handleAddLesson}>
               +
             </button>
+          </div>
+          <div>
+              {lessons.map((lesson) => (
+                <button className='btnlesson' onClick={handleTakeLesson}>
+                  <a key={lesson.id}>{lesson.title}</a>
+                </button>
+              ))}
           </div>
         </div>
       )}

@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle} from '@fortawesome/free-solid-svg-icons';
 import { Link, Redirect } from 'react-router-dom';
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 import UserContext from '../Register/UserContext';
 const Login = () => {
@@ -13,15 +14,19 @@ const Login = () => {
 
     const [username, setUsername] = useState('');
     const [validUsername, setValidUsername] = useState(true);
-    // const [usernameFocus, setUsernameFocus] = useState(false);
 
     const [pwd, setPwd] = useState('');
     const [validPwd, setValidPwd] = useState(true);
-    // const [pwdFocus, setPwdFocus] = useState(false);
 
     const [notFoundError, setNotFoundError] = useState(false);
     const [emptyInput, setEmptyInput] = useState(false);
-
+    const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        setLoading(true);
+        setTimeout(() => {
+          setLoading(false);
+        }, 3000);
+      }, [])
 
     useEffect(() => {
         console.log("logged in user: ", user);
@@ -39,14 +44,14 @@ const Login = () => {
         if (isAdmin) {
             handleDashboardRedirect();
             return;
+        } else if (user){
+            handleRedirect();
         }
     }, [user]);
 
     const handleDashboardRedirect = () => {
-        // Perform any additional actions needed before navigating to /dashboard
         console.log('Navigating to /dashboard...');
-        // You can add any other logic here before navigating
-        window.location.href = '/dashboard'; // This changes the URL directly
+        window.location.href = '/dashboard';
     };
 
     const handleRedirect = () => {
@@ -119,7 +124,17 @@ const Login = () => {
     
     
     return (
+        
         <main className='login-main-bg'>
+            {loading ? (
+            <div id="loader">
+                <PropagateLoader
+                loading={loading}
+                size={30}
+                color={'#36d7b7'}
+              />
+            </div>
+              ):(
             <div className="login-main">
                 <div className="login-left">
                         <form>
@@ -209,6 +224,7 @@ const Login = () => {
                         </div>
                     </div>
             </div>
+              )}
         </main>
     );
 }

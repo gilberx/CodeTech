@@ -26,28 +26,28 @@ const HelpCenter = () => {
                     Help Center
                 </Typography>
             </div>
-            <div className="hc-options" onClick={() => navigate('/faq')}>
-                <div className="hc-option">
+            <div className="hc-options">
+                <div className="hc-option" onClick={() => navigate('/faq')}>
                     <img src="/faq.png"/>
                     <h2>FAQs</h2>
                     <span>Read frequently asked questions</span>
                     
                 </div>
 
-                <div className="hc-option">
+                <div className="hc-option"  onClick={() => navigate('/viewtickets')}>
                     <img src="/ticket.png"/>
                     <h2>My Tickets</h2>
                     <span>View your submitted concerns/requests</span>
                     
                 </div>
 
-                <div className="hc-option">
+                <div className="hc-option" onClick={() => navigate('/getintouch')}>
                     <img src="/contact-hc.png"/>
                     <h2>Get In Touch</h2>
                     <span>If you want to talk to us directly, we're here to listen!</span>
                     
                 </div>
-
+                
             </div>
 
             <div className="hc-divider">

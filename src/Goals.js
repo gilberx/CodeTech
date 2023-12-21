@@ -44,9 +44,9 @@ const Goals = () => {
           </div>
     <div className="user-goals">
         <h2>Goals</h2>
-        <div className="goalsButtons">
-        <div className='cppGroup'>
-        <div className='image'><img
+        <div className="goalsButtons" style={{marginTop: "40px" }}>
+        <div className='cppGroup' style={{marginTop: '10px', marginBottom: '10px'}}>
+        <div className='image' style={{marginRight: "15px" }}><img
           src="/17.png"
           alt="cpp"
           style={{ width: "125px", height: "65px", marginRight: "10px" }}
@@ -64,8 +64,8 @@ const Goals = () => {
         </button>
         </Link>
         </div>
-        <div className='cGroup'>
-        <div className='image'><img
+        <div className='cGroup' style={{marginTop: '10px', marginBottom: '10px'}}>
+        <div className='image' style={{marginRight: "15px" }}><img
           src="/18.png"
           alt="c"
           style={{ width: "125px", height: "65px", marginRight: "10px" }}
@@ -83,8 +83,8 @@ const Goals = () => {
         </button>
         </Link>
         </div>
-        <div className='csGroup'>
-        <div className='image'><img
+        <div className='csGroup' style={{marginTop: '10px', marginBottom: '10px'}}>
+        <div className='image' style={{marginRight: "15px" }}><img
           src="/19.png"
           alt="cs"
           style={{ width: "143px", height: "80px", marginRight: "0px" }}

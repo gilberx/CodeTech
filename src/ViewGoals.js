@@ -147,7 +147,7 @@ const ViewGoals = () => {
           <button>Goals</button>
         </Link>
       </div>
-      <div className="user-viewgoals">
+      <div className="user-viewgoals" style={{overflow: 'auto', maxHeight: '600px'}}>
         <h2>Goals</h2>
         <p style={{ color: '#53ffe8' }}>{completedGoalsCount} OUT OF {goals.length}</p>
         {goals.map((goal) => (

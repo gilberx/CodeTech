@@ -75,7 +75,7 @@ function JoinCreate() {
       <hr className='line' />
 
       <nav>
-        <button className="Create" onClick={handleCreateClick}>
+        <button className="Create" disabled={user && user.role == 'learner'} onClick={handleCreateClick}>
           Create a Class
           <button className='Createbutton' 
                   onClick={handleCreateClick} 

@@ -10,6 +10,12 @@ function Dashboard() {
 
     
     const { user, setUser } = useContext(UserContext);
+    const [counts, setCounts] = useState({
+        educators: 0,
+        learners: 0,
+        messages: 0,
+        tickets: 0,
+    });
 
     useEffect(() => {
         console.log("logged in user: ", user);
@@ -21,6 +27,30 @@ function Dashboard() {
         localStorage.removeItem('user');
         window.location.href = "/login";
     };
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const [educators, learners, messages, tickets] = await Promise.all([
+                    fetch('http://localhost:8080/count/getTotalEducators').then((response) => response.json()),
+                    fetch('http://localhost:8080/count/getTotalLearners').then((response) => response.json()),
+                    fetch('http://localhost:8080/count/getTotalMessages').then((response) => response.json()),
+                    fetch('http://localhost:8080/count/getTotalTickets').then((response) => response.json()),
+                ]);
+                console.log("went in");
+                setCounts({
+                    educators,
+                    learners,
+                    messages,
+                    tickets,
+                });
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
       const isAdmin =
       user &&
       user.userid === 1 &&
@@ -71,19 +101,19 @@ function Dashboard() {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/#" className='a-link-text'>
+                    <Link to="/learner" className='a-link-text'>
                         <FontAwesomeIcon icon={faUserGraduate} style={{fontSize:"1.2rem"}} />
                         <span>Learners</span>
                     </Link>
                 </li>
                 <li>
-                    <Link to="/#" className='a-link-text'>
+                    <Link to="/messagedashboard" className='a-link-text'>
                         <FontAwesomeIcon icon={faBook} style={{fontSize:"1.2rem"}} />
-                        <span>Courses</span>
+                        <span>Messages</span>
                     </Link>
                 </li>
                 <li>
-                    <Link to="/#" className='a-link-text'>
+                    <Link to="/ticketdashboard" className='a-link-text'>
                         <FontAwesomeIcon icon={faExclamationTriangle} style={{fontSize:"1.2rem"}} />
                         <span>Tickets</span>
                     </Link>
@@ -118,8 +148,8 @@ function Dashboard() {
                     <div className="a-payment-card a-light-red">
                         <div className="a-card-header">
                             <div className="a-amount">
-                                <span className="a-title">Total Educator</span>
-                                <span className="a-amount-value">50</span>
+                                <span className="a-title">Total Educators</span>
+                                <span className="a-amount-value">{counts.educators}</span>
 
                             </div>
                             <FontAwesomeIcon icon={faChalkboardTeacher} 
@@ -139,8 +169,8 @@ function Dashboard() {
                     <div className="a-payment-card a-light-purple">
                         <div className="a-card-header">
                             <div className="a-amount">
-                                <span className="a-title">Total Learner</span>
-                                <span className="a-amount-value">50</span>
+                                <span className="a-title">Total Learners</span>
+                                <span className="a-amount-value">{counts.learners}</span>
 
                             </div>
                             <FontAwesomeIcon icon={faUserGraduate} 
@@ -161,8 +191,8 @@ function Dashboard() {
                     <div className="a-payment-card a-light-green">
                         <div className="a-card-header">
                             <div className="a-amount">
-                                <span className="a-title">Total Courses</span>
-                                <span className="a-amount-value">50</span>
+                                <span className="a-title">Total Messages</span>
+                                <span className="a-amount-value">{counts.messages}</span>
 
                             </div>
                             <FontAwesomeIcon icon={faBook} 
@@ -184,7 +214,7 @@ function Dashboard() {
                         <div className="a-card-header">
                             <div className="a-amount">
                                 <span className="a-title">Total Tickets</span>
-                                <span className="a-amount-value">50</span>
+                                <span className="a-amount-value">{counts.tickets}</span>
 
                             </div>
                             <FontAwesomeIcon icon={faExclamationTriangle} 

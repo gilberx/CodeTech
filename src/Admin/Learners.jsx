@@ -6,15 +6,16 @@ import { useState, useRef, useEffect, useContext,  } from 'react';
 import "./Admin.css";
 import UserContext from "../Register/UserContext";
 import Modal from "../Modal";
+import Footer from "../Footer";
 import { faTachometerAlt, faChalkboardTeacher, faUserGraduate, faBook, faExclamationTriangle, faSignOut, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
-import { Paper } from "@mui/material";
+import { Paper, Box, Button } from "@mui/material";
 
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const NAME_REGEX = /^[a-zA-Z][a-zA-Z-_]{1,23}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
-function Educator() {
+function Learner() {
     
     const { user, setUser } = useContext(UserContext);
     useEffect(() => {
@@ -23,11 +24,11 @@ function Educator() {
 
     const [isAddOpen, setIsAddOpen] = useState(false);
     const [isUpdateOpen, setIsUpdateOpen] = useState(false);
-    const [educators, setEducators] = useState([]);
+    const [learners, setLearners] = useState([]);
     
     const [submitClicked, setSubmitClicked] = useState(false);
     
-    const [role, setRole] = useState('educator');
+    const [role, setRole] = useState('learner');
     const [isDelete, setIsDelete] = useState(false);
 
     const [email, setEmail] = useState('');
@@ -120,18 +121,18 @@ function Educator() {
 
     const handleCloseUpdateModal = () => {
         setIsUpdateOpen(false);
-        setUpdateUserId(null); // Reset the update user id when the modal is closed
+        setUpdateUserId(null);
         resetForm();
       };
     
-      const handleEdit = (educator) => {
-        setUpdateUserId(educator.userid);
+      const handleEdit = (learner) => {
+        setUpdateUserId(learner.userid);
         setIsUpdateOpen(true);
 
-        setEmail(educator.email);
-        setUsername(educator.username);
-        setFirstname(educator.firstname);
-        setLastname(educator.lastname);
+        setEmail(learner.email);
+        setUsername(learner.username);
+        setFirstname(learner.firstname);
+        setLastname(learner.lastname);
         setErrMsg('');
         setEmptyInput(false);
         setSubmitClicked(false);
@@ -213,6 +214,8 @@ function Educator() {
         setSubmitClicked(true);
         if(submitClicked && (!firstname || !lastname || !matchPwd || !email || !username|| !pwd)){
             setEmptyInput(true);
+            setErrMsg("All inputs are required")
+            return;
         }
         const v1 = PWD_REGEX.test(pwd);
         if(!v1){
@@ -295,11 +298,11 @@ function Educator() {
         fetch("http://localhost:8080/user/getAllUsers")
           .then((res) => res.json())
           .then((result) => {
-            const activeEducators = result.filter(
-              (user) => !user.isDelete && user.role === 'educator'
+            const activeLearners = result.filter(
+              (user) => !user.isDelete && user.role === 'learner'
             );
       
-            setEducators(activeEducators);
+            setLearners(activeLearners);
             const deletedUsers = result.filter(
               (user) =>
                 user.isDelete &&
@@ -324,19 +327,18 @@ function Educator() {
           });
       }, [isAddOpen, isUpdateOpen, isModalDeleteSuccessOpen, isModalAddSuccessOpen, isModalEditSuccessOpen]);
 
-    const handleDelete = (userid) => {
-        fetch(`http://localhost:8080/user/removeUser?userid=${userid}`, {
-            method: 'PUT',
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                console.log('User removed successfully:', result);
+      const handleDelete = (userid) => {
+            fetch(`http://localhost:8080/user/removeUser?userid=${userid}`, {
+                method: 'PUT',
             })
-            .catch((error) => {
-                console.error('Error removing user:', error);
-            });
+                .then((res) => res.json())
+                .then((result) => {
+                    console.log('User removed successfully:', result);
+                })
+                .catch((error) => {
+                    console.error('Error removing user:', error);
+                });
     };
-
     const handleConfirmDelete = (userid) => {
         setIsModalDeleteConfirmOpen(true);
         setModalDeleteUser(userid);
@@ -348,6 +350,8 @@ function Educator() {
         
         if(submitClicked && (!firstname || !lastname || !matchPwd || !email || !username)){
             setEmptyInput(true);
+            setErrMsg("All inputs are required")
+            return;
         }
         
         const v1 = PWD_REGEX.test(pwd);
@@ -461,13 +465,13 @@ function Educator() {
                         <span>Dashboard</span>
                     </Link>
                 </li>
-                <li className="a-active">
+                <li>
                     <Link to="/educator" className='a-link-text'>
                         <FontAwesomeIcon icon={faChalkboardTeacher} style={{fontSize:"1.1rem"}} />
                         <span>Educators</span>
                     </Link>
                 </li>
-                <li>
+                <li className="a-active">
                     <Link to="/learner" className='a-link-text'>
                         <FontAwesomeIcon icon={faUserGraduate} style={{fontSize:"1.2rem"}} />
                         <span>Learners</span>
@@ -499,7 +503,7 @@ function Educator() {
             <div className="a-header-wrapper">
                 <div className="a-header-title">
                     <span>CodeTech</span>
-                    <h2>Educators</h2>
+                    <h2>Learners</h2>
                 </div>
                 <div className="a-user-info">
                     <div className="user-info-box">
@@ -518,9 +522,9 @@ function Educator() {
                                 Add +
                             </button>
                         </div>
-                        {educators.length === 0 ? (
+                        {learners.length === 0 ? (
                             <div className="a-no-educators">
-                                <p>There are currently no active educators...</p>
+                                <p>There are currently no active learners...</p>
                             </div>
                         ) : (
                             <div style={{ overflowX: 'auto' }}>
@@ -538,23 +542,23 @@ function Educator() {
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {educators.map((educator) => (
-                                    <tr key={educator.userid}>
-                                    <td>{educator.userid}</td>
-                                    <td>{educator.username}</td>
-                                    <td>{educator.email}</td>
-                                    <td>{educator.password}</td>
-                                    <td>{educator.firstname}</td>
-                                    <td>{educator.lastname}</td>
-                                    <td>{educator.role}</td>
+                                {learners.map((learner) => (
+                                    <tr key={learner.userid}>
+                                    <td>{learner.userid}</td>
+                                    <td>{learner.username}</td>
+                                    <td>{learner.email}</td>
+                                    <td>{learner.password}</td>
+                                    <td>{learner.firstname}</td>
+                                    <td>{learner.lastname}</td>
+                                    <td>{learner.role}</td>
                                     <td>
                                         <button className="a-btn-educator "
-                                        onClick={() => handleEdit(educator)}
+                                        onClick={() => handleEdit(learner)}
                                         >
                                         Edit
                                         </button>
                                         <button className="a-btn-educator a-red-bg"
-                                        onClick={() => handleConfirmDelete(educator.userid)}
+                                        onClick={() => handleConfirmDelete(learner.userid)}
                                         >
                                         Delete
                                         </button>
@@ -574,7 +578,7 @@ function Educator() {
         <Modal onClose={handleCloseAddModal}>
           <div>
             
-            <p style={{ fontSize: '25px', fontWeight: 'bold', backgroundColor: 'white', marginBottom: '0px' }}>Add New Educator</p>
+            <p style={{ fontSize: '25px', fontWeight: 'bold', backgroundColor: 'white', marginBottom: '0px' }}>Add New Learner</p>
             <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Email Address</p>
             <input
             className={`a-input ${emailFocus && email && !validEmail ? 'invalid' : ''}`}
@@ -722,9 +726,12 @@ function Educator() {
         <Modal onClose={handleCloseUpdateModal}>
           <div>
             <p style={{ fontSize: '25px', fontWeight: 'bold', backgroundColor: 'white', marginBottom: '0px' }}>
-              Update Educator
+              Update Learner
             </p>
-            <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Email Address</p>
+            <div style={{display: 'flex'}}>
+                <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Email Address</p>
+                {email === '' && <span style={{ color: 'red', margin:'5px' }}>*</span>}
+            </div>
             <input
             className={`a-input ${emailFocus && email && !validEmail || emailExists ? 'invalid' : ''}`}
             type="text"
@@ -753,7 +760,10 @@ function Educator() {
                 </p>
             ) : null}
 
-            <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Username</p>
+            <div style={{display: 'flex'}}>
+                <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Username</p>
+                {username === '' && <span style={{ color: 'red', margin:'5px' }}>*</span>}
+            </div>
             <input
             className={`a-input ${usernameFocus && username && usernameExists ? 'invalid' : ''}`}
             type="text"
@@ -775,9 +785,20 @@ function Educator() {
                 </p>
             ) : null}
 
+            {submitClicked && !username  ? (
+                <p id="uidnote" className="instructions instructions-shake">
+                    <FontAwesomeIcon icon={faInfoCircle} />&nbsp;
+                    Username is required
+                </p>
+            ) : null}
+
             <div className="a-names-input">
                 <div>
-                    <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Firstname</p>
+                    
+                    <div style={{display: 'flex'}}>
+                        <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Firstname</p>
+                        {firstname === '' && <span style={{ color: 'red', margin:'5px' }}>*</span>}
+                    </div>
                     <input
                         className={`a-input ${firstnameFocus && firstname && validFirstname ? '' : 'invalid'}`}
                         type="text"
@@ -799,7 +820,10 @@ function Educator() {
                 </div>
 
                 <div>
-                    <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Lastname</p>
+                    <div style={{display: 'flex'}}>
+                        <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Lastname</p>
+                        {lastname === '' && <span style={{ color: 'red', margin:'5px' }}>*</span>}
+                    </div>
                     <input
                         className={`a-input ${lastnameFocus && lastname && validLastname ? '' : 'invalid'}`}
                         type="text"
@@ -821,7 +845,10 @@ function Educator() {
                 </div>
             </div>
 
-            <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Password</p>
+            <div style={{display: 'flex'}}>
+                <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Password</p>
+                {pwd === '' && <span style={{ color: 'red', margin:'5px' }}>*</span>}
+            </div>
             <input
             className={`a-input ${pwdFocus && pwd && !validPwd ? 'invalid' : ''}`}
             type="password"
@@ -842,7 +869,10 @@ function Educator() {
                 </p>
             ) : null}
 
-            <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Confirm Password</p>
+            <div style={{display: 'flex'}}>
+                <p style={{ fontSize: '15px', backgroundColor: 'white', margin: '4px 0' }}>Confirm Password</p>
+                {matchPwd === '' && <span style={{ color: 'red', margin:'5px' }}>*</span>}
+            </div>
             <input
             className={`a-input ${matchFocus && matchPwd && !validMatch ? 'invalid' : ''}`}
             type="password"
@@ -862,14 +892,23 @@ function Educator() {
                     Must match the first password input field.
                 </p>
             ) : null}
+
+            <div className="error-message" style={{ color: 'red', margin: '10px 0', fontSize: '10px', textAlign: 'right' }}>
+                {errMsg}
+            </div>
             <button className="submit" type="submit" onClick={handleSubmitUpdate}>
               Update
             </button>
+            
+
           </div>
+
+          
         </Modal>
       )}
+            
 
-{isModalEditSuccessOpen && (
+            {isModalEditSuccessOpen && (
                 <Modal onClose={handleCloseModalEditSuccess}>
                     <div className="a-modal-container">
                         <h1 style={{fontSize:'20px',textAlign:'center'}}>Successfully Updated!</h1>
@@ -906,11 +945,10 @@ function Educator() {
                         </div>
                     </div>
                 </Modal>
-            )}   
-        
+            )}        
         </main>
     );
 
 }
 
-export default Educator; 
+export default Learner; 

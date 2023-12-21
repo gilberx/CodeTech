@@ -10,9 +10,6 @@ import { useEffect, useState } from 'react'
 import Navbar from '../Navbar';
 import PropagateLoader from "react-spinners/PropagateLoader";
 
-
-const pages = ['Join a Class', 'Courses', 'How it Works', 'About Us'];
-
 function Courses() {
   const [loading, setLoading] = useState(false)
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -76,10 +73,8 @@ function Courses() {
       try {
         const response = await fetch('http://localhost:8080/courses/getCourse/1');
         if (response.ok) {
-          // If the course with cid: 1 exists, set isCourseTaken to true
           setIsCourseTaken(true);
         } else {
-          // If the course with cid: 1 does not exist, set isCourseTaken to false
           setIsCourseTaken(false);
         }
       } catch (error) {
@@ -87,7 +82,6 @@ function Courses() {
       }
     };
 
-    // Call the fetchCourseData function
     fetchCourseData();
   }, []);
 
@@ -95,10 +89,10 @@ function Courses() {
 
   const handleTakeCourse = async () => {
     const courseData = {
-      cid: "1",
-      title: "Introduction to C",
-      desc: "C Programming Language",
-      dlevel: "Beginner",
+      cid: "6",
+      title: "C++ Intermediate",
+      desc: "C++ Programming Language",
+      dlevel: "Intermediate",
     };
 
     try {
@@ -151,12 +145,11 @@ function Courses() {
                   <p style={{fontSize:'25px', 
                   fontWeight:'800', 
                   fontFamily:'Montserrat, sans-serif', 
-                  textTransform:'none', color:'black', textAlign:'center', paddingTop:'7px'}}>Introduction to C</p>
+                  textTransform:'none', color:'black', textAlign:'center', paddingTop:'7px'}}>C++ Intermediate</p>
               </Paper>
-              <p style={{fontFamily:'Montserrat, sans-serif', fontSize:'15px', paddingTop:'10px'}}>C is a general-purpose programming language that is 
-                efficient, portable, and powerful. It is used to develop a 
-                wide variety of applications, including operating 
-                systems, embedded systems, and system software.</p>
+              <p style={{fontFamily:'Montserrat, sans-serif', fontSize:'15px', paddingTop:'10px'}}>Intermediate C++ programming covers advanced topics such 
+              as OOP, templates, and generic programming, enabling programmers 
+              to write more complex and reusable code.</p>
             </div>  
           </Paper>
         </div>
@@ -191,8 +184,8 @@ function Courses() {
         ):(
           <img src='./topiclogo.png' style={{height:'35px', marginLeft:'-10px'}}/>
         )}
-            Basic Concepts
-            <img src='./dropdownlogo.png' style={{height:'30px', marginLeft:'155px'}}/>
+            Structures & Unions
+            <img src='./dropdownlogo.png' style={{height:'30px', marginLeft:'115px'}}/>
           </button>
           {isDrawerOpen1 && (
             <div>
@@ -320,8 +313,8 @@ function Courses() {
         flexDirection:'column'}}>
           <button class='buttoncontainer' onClick={toggleDrawer2}>
             <img src='./topiclogo.png' style={{height:'35px', marginLeft:'-10px'}}/>
-            Conditional & Loops
-            <img src='./dropdownlogo.png' style={{height:'30px', marginLeft:'115px'}}/>
+            Memory Management
+            <img src='./dropdownlogo.png' style={{height:'30px', marginLeft:'98px'}}/>
           </button>
           {isDrawerOpen2 && (
             <div>
@@ -425,8 +418,8 @@ function Courses() {
         flexDirection:'column'}}>
           <button class='buttoncontainer' onClick={toggleDrawer3}>
             <img src='./topiclogo.png' style={{height:'35px', marginLeft:'-10px'}}/>
-            Function, Arrays & Pointers
-            <img src='./dropdownlogo.png' style={{height:'30px', marginLeft:'50px'}}/>
+            Files & Error Handling
+            <img src='./dropdownlogo.png' style={{height:'30px', marginLeft:'97px'}}/>
           </button>
           {isDrawerOpen3 && (
             <div>
@@ -527,8 +520,8 @@ function Courses() {
         <div style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
         <button class='buttoncontainer' onClick={toggleDrawer4}>
             <img src='./topiclogo.png' style={{height:'35px', marginLeft:'-10px'}}/>
-            Strings, Function & Pointers
-            <img src='./dropdownlogo.png' style={{height:'30px', marginLeft:'44px'}}/>
+            Preprocessor
+            <img src='./dropdownlogo.png' style={{height:'30px', marginLeft:'172px'}}/>
           </button>
           {isDrawerOpen4 && (
             <div>

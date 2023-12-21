@@ -484,7 +484,7 @@ function Learner() {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/#" className='a-link-text'>
+                    <Link to="/ticketdashboard" className='a-link-text'>
                         <FontAwesomeIcon icon={faExclamationTriangle} style={{fontSize:"1.2rem"}} />
                         <span>Tickets</span>
                     </Link>

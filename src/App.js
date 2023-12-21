@@ -42,6 +42,7 @@ import Lesson2 from './Courses/Modules/C_Module/Module_1/Lesson2/Lesson2.jsx'
 import ViewTicket from './Tickets/ViewTicket.js';
 import GetInTouch from './Tickets/GetInTouch.js';
 import Learner from './Admin/Learners.jsx';
+import TicketDashboard from './Admin/TicketDashboard.jsx';
 
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/educator" element={<Educator />} />
           <Route path="/learner" element={<Learner />} />
+          <Route path="/ticketdashboard" element={<TicketDashboard />} />
           <Route path="/joinClass" element={<JoinClass/>} />
           <Route path="/JoinCreate" element={<JoinCreate />} />
           <Route path="/class/:classcode" element={<Class />} />

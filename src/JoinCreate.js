@@ -52,6 +52,7 @@ function JoinCreate() {
         classname: classname,
         classdescription: classdescription,
         classcode: classcode,
+        user: {userid: user.userid}
       }, {
         headers: {
           'Content-Type': 'application/json',

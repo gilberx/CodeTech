@@ -40,6 +40,9 @@ import Lesson1 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1.jsx'
 import Lesson1_page2 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1_page2.jsx'
 import Lesson1_page3 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1_page3.jsx'
 import Lesson2 from './Courses/Modules/C_Module/Module_1/Lesson2/Lesson2.jsx'
+import Learner from './Admin/Learners.jsx';
+import TicketDashboard from './Admin/TicketDashboard.jsx';
+import Message from './Admin/Message.jsx';
 
 function App() {
   return (
@@ -53,6 +56,9 @@ function App() {
           <Route path="/getcode" element={<ResetPassword />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/educator" element={<Educator />} />
+          <Route path="/learner" element={<Learner />} />
+          <Route path="/ticketdashboard" element={<TicketDashboard />} />
+          <Route path="/messagedashboard" element={<Message />} />
           <Route path="/joinClass" element={<JoinClass/>} />
           <Route path="/JoinCreate" element={<JoinCreate />} />
           <Route path="/class/:classcode" element={<Class />} />
@@ -78,7 +84,6 @@ function App() {
               <Route path="/creategoals/:group" element={<CreateGoals />} />
               <Route path="/viewgoals/:group" element={<ViewGoals />} />
               <Route path="/editgoals/:sid" element={<EditGoals />} />
-
               <Route path="/helpcenter" element={<HelpCenter />} />
               <Route path="/faq" element={<Faq />} />
               <Route path="/submitticket" element={<SubmitTicket />} />

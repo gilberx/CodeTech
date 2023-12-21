@@ -5,23 +5,21 @@ import './Lesson.css';
 import Navbar from './Navbar';
 
 const Lesson = () => {
+  const { lessonId } = useParams();
   const [lesson, setLesson] = useState(null);
-  const { lid } = useParams();
-  console.log('Lesson ID from URL:', lid);
-  
+
   useEffect(() => {
     const fetchLessonDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/lesson/getLesson/${lid}`);
-        console.log('Lesson Details Response:', response.data);
+        const response = await axios.get(`http://localhost:8080/lesson/getLesson/${lessonId}`);
         setLesson(response.data);
       } catch (error) {
         console.error('Error fetching lesson details:', error);
       }
     };
-  
+
     fetchLessonDetails();
-  }, [lid]);
+  }, [lessonId]);
 
   if (!lesson) {
     return (
@@ -41,6 +39,7 @@ const Lesson = () => {
     <div>
       <Navbar />
       <div className="header-container4">
+        {/* You can add content or components for the header here */}
       </div>
       <div className='container33'>
         <h2>{lesson.title}</h2>

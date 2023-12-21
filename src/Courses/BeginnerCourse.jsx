@@ -24,7 +24,6 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { useEffect, useState } from 'react';
-
 import Navbar from '../Navbar';
 
 

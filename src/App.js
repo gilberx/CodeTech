@@ -20,6 +20,9 @@ import Courses3 from './Courses/IntermediateCourse.jsx'
 import IntroductionToC from './Courses/IntroductionToC.jsx'
 import IntroductionToCSharp from './Courses/IntroductionToCSharp.jsx'
 import IntroductionToCplusplus from './Courses/IntroductionToCplusplus.jsx'
+import CIntermediate from './Courses/CIntermediate.jsx'
+import CSharpIntermediate from './Courses/CSharpIntermediate.jsx'
+import CplusplusIntermediate from './Courses/CplusplusIntermediate.jsx'
 import AboutUs  from './AboutUs'
 import Achievements from './Achievements.js';
 import Progress from './Progress.js';
@@ -34,8 +37,6 @@ import Faq from './Tickets/Faq.js';
 import SubmitTicket from './Tickets/SubmitTicket.js';
 import Lesson from './Lesson.js';
 import Quiz from './Quiz.js';
-
-
 import Lesson1 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1.jsx'
 import Lesson1_page2 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1_page2.jsx'
 import Lesson1_page3 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1_page3.jsx'
@@ -69,6 +70,9 @@ function App() {
           <Route path="/Courses=IntroductionToC" element={<IntroductionToC/>}/>
           <Route path="/Courses=IntroductionToCSharp" element={<IntroductionToCSharp/>}/>
           <Route path="/Courses=IntroductionToCplusplus" element={<IntroductionToCplusplus/>}/>
+          <Route path="/Courses=CIntermediate" element={<CIntermediate/>}/>
+          <Route path="/Courses=CSharpIntermediate" element={<CSharpIntermediate/>}/>
+          <Route path="/Courses=CplusplusIntermediate" element={<CplusplusIntermediate/>}/>
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/achievements" element={<Achievements />} />
           <Route path="/progress" element={<Progress />} />

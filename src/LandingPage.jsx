@@ -363,7 +363,8 @@ function ResponsiveAppBar() {
               </Button>
             </div>
             <div>
-            <Button style={{
+            <Button onClick={() => navigate('/Courses=CIntermediate')}
+            style={{
                 border: '10px solid white',
                 borderRadius: '20px',
                 height: '300px',
@@ -388,7 +389,8 @@ function ResponsiveAppBar() {
               </Button>
             </div>
             <div>
-            <Button style={{
+            <Button onClick={() => navigate('/Courses=CSharpIntermediate')} 
+            style={{
                 border: '10px solid white',
                 borderRadius: '20px',
                 height: '300px',
@@ -413,7 +415,8 @@ function ResponsiveAppBar() {
               </Button>
             </div>
             <div>
-            <Button style={{
+            <Button onClick={() => navigate('/Courses=CplusplusIntermediate')}
+            style={{
                 border: '10px solid white',
                 borderRadius: '20px',
                 height: '300px',

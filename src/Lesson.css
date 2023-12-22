@@ -1,11 +1,10 @@
 .container33{
-    width: 1500px !important;
-    height: auto !important;
+    width: 1550px !important;
+    height:550px !important;
     background-color: #D6E4E5 !important;
     display: flex;
     margin: auto;
     margin-top: 20px;
     border-radius: 10px;
-    padding: 20px;
 }
 

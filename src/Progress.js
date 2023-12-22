@@ -12,6 +12,10 @@ const Progress = () => {
     console.log("logged in user: ", user);
   }, [user]);
 
+  const updateProgress = () => {
+    setProgress((prevProgress) => (prevProgress + 20 <= 100 ? prevProgress + 20 : 100));
+  };
+
   const linkStyle = {
     textDecoration: 'none',
     color: '#ffffff',
@@ -58,7 +62,7 @@ const Progress = () => {
           <h4>Introduction to C#</h4>
         </div>
         </div>
-      <LinearProgress variant="determinate" value={100/*progress*/} sx={{
+      <LinearProgress variant="determinate" value={progress} sx={{
           height: 20,
           borderRadius: 10,
           backgroundColor: '#458C83',
@@ -79,7 +83,7 @@ const Progress = () => {
           <h4>Introduction to C#</h4>
         </div>
         </div>
-      <LinearProgress variant="determinate" value={75/*progress*/} sx={{
+      <LinearProgress variant="determinate" value={progress} sx={{
           height: 20,
           borderRadius: 10,
           backgroundColor: '#458C83',
@@ -100,7 +104,7 @@ const Progress = () => {
           <h4>Introduction to C#</h4>
         </div>
         </div>
-      <LinearProgress variant="determinate" value={45/*progress*/} sx={{
+      <LinearProgress variant="determinate" value={progress} sx={{
           height: 20,
           borderRadius: 10,
           backgroundColor: '#458C83',

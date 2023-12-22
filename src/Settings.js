@@ -4,8 +4,6 @@ import './Settings.css';
 import Navbar from "./Navbar";
 import UserContext from "./Register/UserContext";
 
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-
 const Settings = ({ onUpdate }) => {
   const { user, setUser } = useContext(UserContext);
 
@@ -13,7 +11,6 @@ const Settings = ({ onUpdate }) => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
   const [isCurrentPasswordValid, setIsCurrentPasswordValid] = useState(true);
 
   const linkStyle = {
@@ -22,6 +19,7 @@ const Settings = ({ onUpdate }) => {
   };
 
 
+<<<<<<< HEAD
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -33,11 +31,49 @@ const Settings = ({ onUpdate }) => {
       return;
     }
   
+=======
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setError(''); // Clear any previous error
+
+    switch (name) {
+      case 'currentPassword':
+        setCurrentPassword(value);
+        break;
+      case 'newPassword':
+        setNewPassword(value);
+        break;
+      case 'confirmPassword':
+        setConfirmPassword(value);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleUpdate = async () => {
+    // Check if the current password is correct
+    if (currentPassword !== user.password) {
+      setError('Incorrect current password');
+      setIsCurrentPasswordValid(false);
+      return;
+    }
+
+    // Check if the new password meets criteria (e.g., length, complexity)
+    if (newPassword.length < 8) {
+      setError('New password must be at least 8 characters long');
+      setIsCurrentPasswordValid(true);
+      return;
+    }
+
+>>>>>>> de1ea3c6f7cebfa3b499dc3e11f4d0a842742a68
     // Check if the confirm password matches the new password
     if (newPassword !== confirmPassword) {
       setError('New password and confirm password do not match');
+      setIsCurrentPasswordValid(true);
       return;
     }
+<<<<<<< HEAD
   
     const v1 = PWD_REGEX.test(newPassword);
     if (!v1) {
@@ -48,6 +84,25 @@ const Settings = ({ onUpdate }) => {
     try {
       const response = await fetch(`http://localhost:8080/user/authenticate`, {
         method: 'POST',
+=======
+
+    const userId = user.userid;
+
+    // Assuming you have an `onUpdate` callback for handling updates
+    const updatedUserData = {
+      userId,
+      role: user.role,
+      username: user.username,
+      email: user.email,
+      password: newPassword, // Update the password
+      firstname: user.firstname,
+      lastname: user.lastname,
+    };
+
+    try {
+      const response = await fetch(`http://localhost:8080/user/updateUser?userid=${userId}`, {
+        method: 'PUT',
+>>>>>>> de1ea3c6f7cebfa3b499dc3e11f4d0a842742a68
         headers: {
           'Content-Type': 'application/json',
         },
@@ -56,6 +111,7 @@ const Settings = ({ onUpdate }) => {
           password: currentPassword,
         }),
       });
+<<<<<<< HEAD
   
       const authenticationResult = await response.json();
   
@@ -98,6 +154,16 @@ const Settings = ({ onUpdate }) => {
         } catch (error) {
           console.error('Error during update:', error.message);
         }
+=======
+
+      if (response.ok) {
+        setIsCurrentPasswordValid(true);
+        // Optionally, you can clear the password fields after a successful update
+        setCurrentPassword(newPassword);
+        setNewPassword('');
+        setConfirmPassword('');
+        onUpdate(updatedUserData);
+>>>>>>> de1ea3c6f7cebfa3b499dc3e11f4d0a842742a68
       } else {
         setError('Incorrect current password');
       }
@@ -145,30 +211,28 @@ const Settings = ({ onUpdate }) => {
             name="currentPassword"
             placeholder="Current Password"
             value={currentPassword}
-            onChange={(e) => setCurrentPassword(e.target.value)}
+            onChange={handleChange}
           />
           <input
             type="password"
             name="newPassword"
             placeholder="New Password"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
+            onChange={handleChange}
           />
           <input
             type="password"
             name="confirmPassword"
             placeholder="Confirm Password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChange={handleChange}
           />
         </div>
-        <br/>
         {error && <p style={{ color: 'red' }}>{error}</p>}
-        {success && <p style={{ color: 'green' }}>{success}</p>}
+        {!isCurrentPasswordValid && (
+          <p style={{ color: 'red' }}>Incorrect current password. Please try again.</p>
+        )}
         <div className="userButtons">
           <button onClick={handleUpdate}>Change Password</button>
         </div>
-        
       </div>
     </div>
   );

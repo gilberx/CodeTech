@@ -425,7 +425,6 @@ function Educator() {
     user.username === 'admin' &&
     user.firstname === 'code' &&
     user.lastname === 'tech' &&
-    user.password === 'CodeTech!23' &&
     user.isDelete === false &&
     user.role === 'admin';
 
@@ -713,6 +712,7 @@ function Educator() {
                 </p>
             ) : null}
             
+            {errMsg && <p style={{ color: 'red',marginTop:'10px' }}>{errMsg}</p>}
             <button className='submit' type="submit" onClick={handleSubmit}>Add</button> <br></br>
           </div>
         </Modal>

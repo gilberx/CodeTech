@@ -1,7 +1,7 @@
 import './Login.css';
 import { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfoCircle} from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle, faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 import { Link, Redirect } from 'react-router-dom';
 import PropagateLoader from "react-spinners/PropagateLoader";
 
@@ -17,6 +17,7 @@ const Login = () => {
 
     const [pwd, setPwd] = useState('');
     const [validPwd, setValidPwd] = useState(true);
+    const [showPwd, setShowPwd] = useState(false);
 
     const [notFoundError, setNotFoundError] = useState(false);
     const [emptyInput, setEmptyInput] = useState(false);
@@ -174,7 +175,7 @@ const Login = () => {
                                     
                                     <input 
                                         className="input"
-                                        type="password"
+                                        type={showPwd ? 'text' : 'password'}
                                         id="pwd"
                                         autoComplete="off"
                                         required
@@ -185,6 +186,15 @@ const Login = () => {
                                         // onBlur={()=> setPwdFocus(false)}
                                     ></input>
                                     <div className="labelline">Password</div>
+                                    <button
+                                        type="button"
+                                        className="show-hide-btn"
+                                        onClick={() => setShowPwd(!showPwd)}
+                                    >
+                                        <FontAwesomeIcon
+                                        icon={showPwd ? faEye : faEyeSlash}
+                                        />
+                                    </button>
                                 </div>
                             </div>
 

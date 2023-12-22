@@ -1,9 +1,10 @@
 import './Register.css';
 import { useState, useRef, useEffect, useContext,  } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChalkboardTeacher, faUser, faInfoCircle} from '@fortawesome/free-solid-svg-icons';
+import { faChalkboardTeacher, faUser, faInfoCircle, faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import UserContext from './UserContext';
+// import bcrypt from 'bcrypt';
 import PropagateLoader from "react-spinners/PropagateLoader";
 
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -41,6 +42,8 @@ const Register = () => {
     const [pwd, setPwd] = useState('');
     const [validPwd, setValidPwd] = useState(false);
     const [pwdFocus, setPwdFocus] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [showMatchPassword, setShowMatchPassword] = useState(false);
 
     const [matchPwd, setMatchPwd] = useState('');
     const [validMatch, setValidMatch] = useState(false);
@@ -217,6 +220,8 @@ const Register = () => {
             console.log(errMsg)
             return;
         }
+
+        // const hashedPassword = await bcrypt.hash(pwd, 10);
         const user = {username, email, password: pwd, firstname, lastname, role, isDelete}
         console.log("user: ", user);
         try {
@@ -407,7 +412,7 @@ const Register = () => {
                                 
                                 <input 
                                     className={`input ${pwdFocus && pwd && !validPwd ? 'invalid' : ''}`}
-                                    type="password"
+                                    type={showPassword ? 'text' : 'password'}
                                     id="pwd"
                                     autoComplete="off"
                                     required
@@ -416,8 +421,17 @@ const Register = () => {
                                     aria-describedby="uidnote"
                                     onFocus={()=> setPwdFocus(true)}
                                     onBlur={()=> setPwdFocus(false)}
-                                ></input>
+                                />
                                 <div className="labelline">Password</div>
+                                <button
+                                    type="button"
+                                    className="show-hide-btn"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                >
+                                    <FontAwesomeIcon
+                                    icon={showPassword ? faEye : faEyeSlash}
+                                    />
+                                </button>
                             </div>
                             
                         </div>
@@ -432,7 +446,7 @@ const Register = () => {
                                 
                                 <input 
                                     className={`input ${matchFocus && matchPwd && !validMatch ? 'invalid' : ''}`}
-                                    type="password"
+                                    type={showMatchPassword ? 'text' : 'password'}
                                     id="confirmpwd"
                                     autoComplete="off"
                                     required
@@ -441,8 +455,17 @@ const Register = () => {
                                     aria-describedby="uidnote"
                                     onFocus={()=> setMatchFocus(true)}
                                     onBlur={()=> setMatchFocus(false)}
-                                ></input>
+                                />
                                 <div className="labelline">Confirm Password</div>
+                                <button
+                                    type="button"
+                                    className="show-hide-btn"
+                                    onClick={() => setShowMatchPassword(!showMatchPassword)}
+                                >
+                                    <FontAwesomeIcon
+                                    icon={showMatchPassword ? faEye : faEyeSlash}
+                                    />
+                                </button>
                             </div>
                             
                         </div>
@@ -479,7 +502,7 @@ const Register = () => {
                         </div>
                     </form>
                 </div>
-
+                
                 
             </div>
               )}

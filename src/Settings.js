@@ -21,90 +21,88 @@ const Settings = ({ onUpdate }) => {
     color: '#ffffff',
   };
 
-  useEffect(() => {
-    console.log('User data from context:', user);
-  }, [user]);
 
-  useEffect(() => {
-    console.log('currentPass: ', currentPassword);
-  }, [currentPassword]);
-
-  useEffect(() => {
-    console.log('newpass: ', newPassword);
-  }, [newPassword]);
-  useEffect(() => {
-    console.log('confirmpass: ', confirmPassword);
-  }, [confirmPassword]);
 
   const handleUpdate = async (e) => {
     e.preventDefault();
     setError('');
     setSuccess('');
-
-    if(!currentPassword || !newPassword || !confirmPassword){
+  
+    if (!currentPassword || !newPassword || !confirmPassword) {
       setError('All input fields are required');
       return;
     }
-
-    
-    // Check if the current password is correct
-    if (currentPassword !== user.password) {
-      console.log('password')
-      setError('Incorrect current password');
-      return;
-    }
-
+  
     // Check if the confirm password matches the new password
     if (newPassword !== confirmPassword) {
       setError('New password and confirm password do not match');
       return;
     }
-
+  
     const v1 = PWD_REGEX.test(newPassword);
-    if(!v1){
-      setError('Must be at least 8 characters and include lowercase, uppercase, number, and a special character.')
+    if (!v1) {
+      setError('Must be at least 8 characters and include lowercase, uppercase, number, and a special character.');
       return;
     }
-    
-
-    // Assuming you have an `onUpdate` callback for handling updates
-    const updatedUserData = {
-      userid: user.userid,
-      username: user.username,
-      email: user.email,
-      password: newPassword, // Update the password
-      firstname: user.firstname,
-      lastname: user.lastname,
-      role: user.role,
-      isDelete: false
-    };
-
+  
     try {
-      const response = await fetch(`http://localhost:8080/user/updateUser?userid=${user.userid}`, {
-        method: 'PUT',
+      const response = await fetch(`http://localhost:8080/user/authenticate`, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(updatedUserData),
+        body: JSON.stringify({
+          usernameOrEmail: user.username,
+          password: currentPassword,
+        }),
       });
-
-      if (response.ok) {
-        setIsCurrentPasswordValid(true);
-        // Optionally, you can clear the password fields after a successful update
-        setCurrentPassword('');
-        setNewPassword('');
-        setConfirmPassword('');
-        setUser(updatedUserData);
-        localStorage.setItem('user', JSON.stringify(updatedUserData));
-        setSuccess('Password updated successfully.');
-        onUpdate(updatedUserData);
-        
+  
+      const authenticationResult = await response.json();
+  
+      if (authenticationResult.user) {
+        const newuser = authenticationResult.user;
+        const updatedUserData = {
+          userid: newuser.userid,
+          username: newuser.username,
+          email: newuser.email,
+          password: newPassword, // Update the password
+          firstname: newuser.firstname,
+          lastname: newuser.lastname,
+          role: newuser.role,
+          isDelete: false,
+        };
+  
+        try {
+          const response = await fetch(`http://localhost:8080/user/updateUser?userid=${user.userid}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedUserData),
+          });
+  
+          if (response.ok) {
+            setIsCurrentPasswordValid(true);
+            // Optionally, you can clear the password fields after a successful update
+            setCurrentPassword('');
+            setNewPassword('');
+            setConfirmPassword('');
+            setUser(newuser);
+            localStorage.setItem('user', JSON.stringify(newuser));
+            setSuccess('Password updated successfully.');
+            onUpdate(updatedUserData);
+          } else {
+            console.error('Update failed:', response.statusText);
+            setError('Error updating user data');
+          }
+        } catch (error) {
+          console.error('Error during update:', error.message);
+        }
       } else {
-        console.error('Update failed:', response.statusText);
-        setError('Error updating user data');
+        setError('Incorrect current password');
       }
     } catch (error) {
-      console.error('Error during update:', error.message);
+      console.error('Error during authentication:', error.message);
     }
   };
 

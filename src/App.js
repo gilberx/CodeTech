@@ -20,9 +20,6 @@ import Courses3 from './Courses/IntermediateCourse.jsx'
 import IntroductionToC from './Courses/IntroductionToC.jsx'
 import IntroductionToCSharp from './Courses/IntroductionToCSharp.jsx'
 import IntroductionToCplusplus from './Courses/IntroductionToCplusplus.jsx'
-import CIntermediate from './Courses/CIntermediate.jsx'
-import CSharpIntermediate from './Courses/CSharpIntermediate.jsx'
-import CplusplusIntermediate from './Courses/CplusplusIntermediate.jsx'
 import AboutUs  from './AboutUs'
 import Achievements from './Achievements.js';
 import Progress from './Progress.js';
@@ -37,10 +34,16 @@ import Faq from './Tickets/Faq.js';
 import SubmitTicket from './Tickets/SubmitTicket.js';
 import Lesson from './Lesson.js';
 import Quiz from './Quiz.js';
+
 import Lesson1 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1.jsx'
 import Lesson1_page2 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1_page2.jsx'
 import Lesson1_page3 from './Courses/Modules/C_Module/Module_1/Lesson1/Lesson1_page3.jsx'
 import Lesson2 from './Courses/Modules/C_Module/Module_1/Lesson2/Lesson2.jsx'
+import Learner from './Admin/Learners.jsx';
+import TicketDashboard from './Admin/TicketDashboard.jsx';
+import Message from './Admin/Message.jsx';
+import ViewTicket from './Tickets/ViewTicket.js';
+import GetInTouch from './Tickets/GetInTouch.js';
 
 function App() {
   return (
@@ -51,9 +54,12 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgot" element={<ForgotPassword />} />
-          <Route path="/getcode" element={<ResetPassword />} />
+          <Route path="/reset" element={<ResetPassword />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/educator" element={<Educator />} />
+          <Route path="/learner" element={<Learner />} />
+          <Route path="/ticketdashboard" element={<TicketDashboard />} />
+          <Route path="/messagedashboard" element={<Message />} />
           <Route path="/joinClass" element={<JoinClass/>} />
           <Route path="/JoinCreate" element={<JoinCreate />} />
           <Route path="/class/:classcode" element={<Class />} />
@@ -63,27 +69,30 @@ function App() {
           <Route path="/AddLesson" element={<AddLesson />} />
           <Route path="/Courses" element={<Courses/>}/>
           <Route path="/class/:classcode/Quiz" element={<Quiz/>}/>
-          <Route path="/class/:classcode/Lesson" element={<Lesson/>}/>
+          <Route path="/class/:classcode/Lesson" element={<Lesson />} />
           <Route path="/AboutUs" element={<AboutUs/>} />
           <Route path="/Courses=BeginnerPage" element={<Courses2/>}/>
           <Route path="/Courses=IntermediatePage" element={<Courses3/>}/>
           <Route path="/Courses=IntroductionToC" element={<IntroductionToC/>}/>
           <Route path="/Courses=IntroductionToCSharp" element={<IntroductionToCSharp/>}/>
           <Route path="/Courses=IntroductionToCplusplus" element={<IntroductionToCplusplus/>}/>
-          <Route path="/Courses=CIntermediate" element={<CIntermediate/>}/>
-          <Route path="/Courses=CSharpIntermediate" element={<CSharpIntermediate/>}/>
-          <Route path="/Courses=CplusplusIntermediate" element={<CplusplusIntermediate/>}/>
-          <Route path="/userprofile" element={<UserProfile />} />
-          <Route path="/achievements" element={<Achievements />} />
-          <Route path="/progress" element={<Progress />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/goals" element={<Goals />} />
-          <Route path="/creategoals/:group" element={<CreateGoals />} />
-          <Route path="/viewgoals/:group" element={<ViewGoals />} />
-          <Route path="/editgoals/:sid" element={<EditGoals />} />
-          <Route path="/helpcenter" element={<HelpCenter />} />
-          <Route path="/faq" element={<Faq />} />
-          <Route path="/submitticket" element={<SubmitTicket />} />
+
+              <Route path="/userprofile" element={<UserProfile />} />
+              <Route path="/achievements" element={<Achievements />} />
+              <Route path="/progress" element={<Progress />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/goals" element={<Goals />} />
+              <Route path="/creategoals/:group" element={<CreateGoals />} />
+              <Route path="/viewgoals/:group" element={<ViewGoals />} />
+              <Route path="/editgoals/:sid" element={<EditGoals />} />
+              <Route path="/helpcenter" element={<HelpCenter />} />
+              <Route path="/faq" element={<Faq />} />
+              <Route path="/viewtickets" element={<ViewTicket />} />
+              <Route path="/submitticket" element={<SubmitTicket />} />
+              <Route path="/getintouch" element={<GetInTouch />} />
+
+          
+      
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/achievements" element={<Achievements />} />
           <Route path="/progress" element={<Progress />} />

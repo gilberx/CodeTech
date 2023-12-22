@@ -296,3 +296,35 @@ form{
         transform: translateX(5px);
     }
 }
+
+
+.show-hide-btn {
+    position: absolute;
+    top: 53%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 11111;
+  }
+  
+  /* Style for the FontAwesome icons */
+  .show-hide-btn svg {
+    font-size: 1.2em;
+    color: #555; /* Adjust the color as needed */
+  }
+
+  .error-message {
+    color: #f74d4d; 
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .success-message {
+    color: #417d4d; 
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+  }

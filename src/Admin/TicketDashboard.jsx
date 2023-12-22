@@ -266,7 +266,6 @@ function TicketDashboard() {
     user.username === 'admin' &&
     user.firstname === 'code' &&
     user.lastname === 'tech' &&
-    user.password === 'CodeTech!23' &&
     user.isDelete === false &&
     user.role === 'admin';
 

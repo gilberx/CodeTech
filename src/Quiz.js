@@ -23,7 +23,7 @@ const Quiz = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:8080/lesson/addLesson", {
+      const response = await axios.post("http://localhost:8080/quiz/addQuiz", {
         title: title,
         content: content,
       }, {
@@ -39,7 +39,6 @@ const Quiz = () => {
       console.log('Lesson added successfully:', response.data);
     } catch (error) {
       console.error('Error adding lesson:', error);
-      // Handle the error, e.g., show an error message to the user
     }
   };
   if (!user) {
@@ -59,23 +58,7 @@ const Quiz = () => {
     </main>
     );
   }
-  if (user.role==='learner') {
-    return (
-        <main className='a-notadmin-main'>
-        <div className='a-notadmin-container'>
-            <form className='a-notadmin-form'>
-                <h1 style={{fontSize:'35px',textAlign:'center'}}>Off Access!</h1>
-                <div style={{marginTop:'10px', marginBottom:'20px', textAlign:'center', padding:"0 10px"}}>
-                    <span className="small-text">This page is for admin-only access. You don't have the necessary privileges to view this content.</span>
-                </div>
-                <Link to="/" className='link-btn'>
-                    <button className="btn">Go back</button>
-                </Link>
-            </form>
-        </div>
-    </main>
-    );
-  }
+  
   return (
     <div>
       <Navbar/>

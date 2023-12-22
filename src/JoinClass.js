@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 import './JoinClass.css';
 import Navbar from './Navbar';
 import axios from 'axios';
+import UserContext from './Register/UserContext';
+
 
 const JoinClass = () => {
   const [classes, setClasses] = useState([]);
+  const {user, setUser} = useContext(UserContext);
 
   const handleJoinClass = () => {
     // Handle join class logic if needed
@@ -15,7 +18,8 @@ const JoinClass = () => {
   useEffect(() => {
     const fetchClasses = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/createClass/getClass');
+        // Include the user's userid in the request parameters
+        const response = await axios.get(`http://localhost:8080/createClass/getClassbyId?userid=${user.userid}`);
         setClasses(response.data);
       } catch (error) {
         console.error('Error fetching classes:', error);
@@ -23,7 +27,7 @@ const JoinClass = () => {
     };
 
     fetchClasses();
-  }, []);
+  }, [user]);
 
   return (
     <>

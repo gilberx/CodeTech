@@ -32,7 +32,7 @@ text-decoration: none;
   justify-content: flex-start !important;
   align-items: center !important;
   position: relative !important;
-  margin-right: 50px !important;
+  margin-right: 20px !important;
   margin-left: 40px;
 }
 
@@ -52,6 +52,7 @@ text-decoration: none;
   margin-top: 0 !important;
   color: #EDEDED !important;
   font-size: 18px !important;
+  margin-left: 40px;
 }
 
 .JoinCreate::before {
@@ -75,7 +76,7 @@ text-decoration: none;
 }
 
 .line {
-  width: 1400px !important;
+  width: 1320px !important;
   opacity: 40% !important;
   color: #EDEDED !important;
   margin-top: 50px !important;

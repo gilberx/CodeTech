@@ -4,8 +4,6 @@ import './Settings.css';
 import Navbar from "./Navbar";
 import UserContext from "./Register/UserContext";
 
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-
 const Settings = ({ onUpdate }) => {
   const { user, setUser } = useContext(UserContext);
 
@@ -13,7 +11,6 @@ const Settings = ({ onUpdate }) => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
   const [isCurrentPasswordValid, setIsCurrentPasswordValid] = useState(true);
 
   const linkStyle = {
@@ -25,62 +22,62 @@ const Settings = ({ onUpdate }) => {
     console.log('User data from context:', user);
   }, [user]);
 
-  useEffect(() => {
-    console.log('currentPass: ', currentPassword);
-  }, [currentPassword]);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setError(''); // Clear any previous error
 
-  useEffect(() => {
-    console.log('newpass: ', newPassword);
-  }, [newPassword]);
-  useEffect(() => {
-    console.log('confirmpass: ', confirmPassword);
-  }, [confirmPassword]);
+    switch (name) {
+      case 'currentPassword':
+        setCurrentPassword(value);
+        break;
+      case 'newPassword':
+        setNewPassword(value);
+        break;
+      case 'confirmPassword':
+        setConfirmPassword(value);
+        break;
+      default:
+        break;
+    }
+  };
 
-  const handleUpdate = async (e) => {
-    e.preventDefault();
-    setError('');
-    setSuccess('');
-
-    if(!currentPassword || !newPassword || !confirmPassword){
-      setError('All input fields are required');
+  const handleUpdate = async () => {
+    // Check if the current password is correct
+    if (currentPassword !== user.password) {
+      setError('Incorrect current password');
+      setIsCurrentPasswordValid(false);
       return;
     }
 
-    
-    // Check if the current password is correct
-    if (currentPassword !== user.password) {
-      console.log('password')
-      setError('Incorrect current password');
+    // Check if the new password meets criteria (e.g., length, complexity)
+    if (newPassword.length < 8) {
+      setError('New password must be at least 8 characters long');
+      setIsCurrentPasswordValid(true);
       return;
     }
 
     // Check if the confirm password matches the new password
     if (newPassword !== confirmPassword) {
       setError('New password and confirm password do not match');
+      setIsCurrentPasswordValid(true);
       return;
     }
 
-    const v1 = PWD_REGEX.test(newPassword);
-    if(!v1){
-      setError('Must be at least 8 characters and include lowercase, uppercase, number, and a special character.')
-      return;
-    }
-    
+    const userId = user.userid;
 
     // Assuming you have an `onUpdate` callback for handling updates
     const updatedUserData = {
-      userid: user.userid,
+      userId,
+      role: user.role,
       username: user.username,
       email: user.email,
       password: newPassword, // Update the password
       firstname: user.firstname,
       lastname: user.lastname,
-      role: user.role,
-      isDelete: false
     };
 
     try {
-      const response = await fetch(`http://localhost:8080/user/updateUser?userid=${user.userid}`, {
+      const response = await fetch(`http://localhost:8080/user/updateUser?userid=${userId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -91,14 +88,10 @@ const Settings = ({ onUpdate }) => {
       if (response.ok) {
         setIsCurrentPasswordValid(true);
         // Optionally, you can clear the password fields after a successful update
-        setCurrentPassword('');
+        setCurrentPassword(newPassword);
         setNewPassword('');
         setConfirmPassword('');
-        setUser(updatedUserData);
-        localStorage.setItem('user', JSON.stringify(updatedUserData));
-        setSuccess('Password updated successfully.');
         onUpdate(updatedUserData);
-        
       } else {
         console.error('Update failed:', response.statusText);
         setError('Error updating user data');
@@ -147,30 +140,28 @@ const Settings = ({ onUpdate }) => {
             name="currentPassword"
             placeholder="Current Password"
             value={currentPassword}
-            onChange={(e) => setCurrentPassword(e.target.value)}
+            onChange={handleChange}
           />
           <input
             type="password"
             name="newPassword"
             placeholder="New Password"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
+            onChange={handleChange}
           />
           <input
             type="password"
             name="confirmPassword"
             placeholder="Confirm Password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChange={handleChange}
           />
         </div>
-        <br/>
         {error && <p style={{ color: 'red' }}>{error}</p>}
-        {success && <p style={{ color: 'green' }}>{success}</p>}
+        {!isCurrentPasswordValid && (
+          <p style={{ color: 'red' }}>Incorrect current password. Please try again.</p>
+        )}
         <div className="userButtons">
           <button onClick={handleUpdate}>Change Password</button>
         </div>
-        
       </div>
     </div>
   );

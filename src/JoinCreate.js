@@ -31,7 +31,7 @@ function JoinCreate() {
     try {
       await axios.post(`http://localhost:8080/createClass/joinClass/${classcode}`);
       alert("Successfully joined the class");
-      navigate('/class/${classcode}', { state: { classname: classname } });
+      navigate('/class', { state: { classname: classname } });
     } catch (error) {
       console.error('An error occurred while joining class:', error);
       alert('Failed to join class. Please check the class code and try again.');
@@ -52,7 +52,6 @@ function JoinCreate() {
         classname: classname,
         classdescription: classdescription,
         classcode: classcode,
-        user: {userid: user.userid}
       }, {
         headers: {
           'Content-Type': 'application/json',
@@ -76,13 +75,7 @@ function JoinCreate() {
       <hr className='line' />
 
       <nav>
-        <button className="Create" onClick={handleCreateClick}
-        disabled={user && user.role == 'learner'}
-        style={{
-          backgroundColor: user && user.role === 'learner' ? '#ccc' : '#458C83',
-          cursor: user && user.role === 'learner' ? 'not-allowed' : 'pointer',
-          // Add other styles as needed
-        }}>
+        <button className="Create" onClick={handleCreateClick}>
           Create a Class
           <button className='Createbutton' 
                   onClick={handleCreateClick} 

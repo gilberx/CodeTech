@@ -3,9 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Class.css';
 import Navbar from './Navbar';
-import { useContext } from "react";
-import UserContext from './Register/UserContext';
-
 
 const TeacherPage = () => {
   const navigate = useNavigate();
@@ -15,8 +12,6 @@ const TeacherPage = () => {
   const [classInfo, setClassInfo] = useState(null);
   const [quizzes, setQuizzes] = useState([]);
   const [lessons, setLessons] = useState([]);
-  const { user, setUser } = useContext(UserContext);
-
 
   useEffect(() => {
     const fetchClassInfo = async () => {
@@ -90,13 +85,7 @@ const TeacherPage = () => {
       {showQuizContainer && (
         <div className='container1'>
           <div>
-            <button className='AddQuiz' onClick={handleAddQuiz}
-            disabled={user && user.role == 'learner'}
-            style={{
-              backgroundColor: user && user.role === 'learner' ? '#ccc' : '#458C83',
-              cursor: user && user.role === 'learner' ? 'not-allowed' : 'pointer',
-              // Add other styles as needed
-            }}>
+            <button className='AddQuiz' onClick={handleAddQuiz}>
               +
             </button>
           </div>
@@ -113,13 +102,7 @@ const TeacherPage = () => {
       {showLessonContainer && (
         <div className='container2'>
           <div>
-            <button className='AddLesson' onClick={handleAddLesson}
-            disabled={user && user.role == 'learner'}
-            style={{
-              backgroundColor: user && user.role === 'learner' ? '#ccc' : '#458C83',
-              cursor: user && user.role === 'learner' ? 'not-allowed' : 'pointer',
-              // Add other styles as needed
-            }}>
+            <button className='AddLesson' onClick={handleAddLesson}>
               +
             </button>
           </div>

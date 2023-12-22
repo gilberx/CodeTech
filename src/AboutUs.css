@@ -37,7 +37,6 @@
 	white-space: pre-line;
     text-align: center;
     color: white;
-	margin-top: 10px;
  }
 
 .team-item:hover h3{
@@ -152,14 +151,14 @@ ul.team-icon li a.instagram{
   }
 
   .twitterlogo{
-    width: 20px;
+    width: 32px;
   }
 
   .facebooklogo{
-    width: 20px;
+    width: 32px;
   }
   .instagramlogo{
-    width: 20px;
+    width: 32px;
   }
 
   .info{

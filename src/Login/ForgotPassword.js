@@ -14,6 +14,7 @@ const ForgotPassword = () =>{
     const [successMessage, setSuccessMessage] = useState('');
     const [enteredCode, setEnteredCode] = useState('');
     const [sentEmail, setSentEmail] = useState('');
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         document.title = "CodeTech";
@@ -44,6 +45,7 @@ const ForgotPassword = () =>{
     
         if (email) {
             // Check if the email exists
+            setLoading(true);
             fetch(`http://localhost:8080/user/checkEmail/${email}`)
                 .then(response => response.json())
                 .then(emailCheckData => {
@@ -92,8 +94,11 @@ const ForgotPassword = () =>{
                     setErrorMessage("An error occurred while checking email existence");
                     setIsEmailValid(false);
                 });
+                setLoading(false);
         } else {
             setErrorMessage("Email address is empty");
+            setLoading(false);
+            
         }
     };
     
@@ -182,7 +187,7 @@ const ForgotPassword = () =>{
                     
                     {errorMessage && <p className="error-message">{errorMessage}</p>}
                     {successMessage && <p className="success-message">{successMessage}</p>}
-                    <button onClick={successMessage ? handleSubmitCode : handleGetCodeClick} className="btn">
+                    <button disabled={loading} onClick={successMessage ? handleSubmitCode : handleGetCodeClick} className="btn">
                         {successMessage ? "Submit Code" : "Get Code"}
                     </button>
                     

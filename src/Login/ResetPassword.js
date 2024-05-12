@@ -33,6 +33,7 @@ const ResetPassword = () =>{
 
     useEffect(() => {
         document.title = 'CodeTech';
+        
 
         // Fetch userid based on the provided email
         if (email) {
@@ -90,7 +91,17 @@ const ResetPassword = () =>{
         setError('');
         setSuccess('');
     
-        // ... (other validation checks)
+        const v1 = PWD_REGEX.test(newPassword);
+        if(!v1){
+            setError("Invalid password");
+            console.log(error)
+            return;
+        }
+
+        if (newPassword !== confirmPassword) {
+          setError('Passwords do not match');
+          return;
+        }
     
         const updatedUserData = {
           userid: userid, // Use the fetched userid

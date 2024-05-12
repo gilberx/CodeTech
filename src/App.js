@@ -44,6 +44,9 @@ import TicketDashboard from './Admin/TicketDashboard.jsx';
 import Message from './Admin/Message.jsx';
 import ViewTicket from './Tickets/ViewTicket.js';
 import GetInTouch from './Tickets/GetInTouch.js';
+import CIntermediate from './Courses/CIntermediate.jsx';
+import CplusplusIntermediate from './Courses/CplusplusIntermediate.jsx';
+import CSharpIntermediate from './Courses/CSharpIntermediate.jsx';
 
 function App() {
   return (
@@ -76,6 +79,10 @@ function App() {
           <Route path="/Courses=IntroductionToC" element={<IntroductionToC/>}/>
           <Route path="/Courses=IntroductionToCSharp" element={<IntroductionToCSharp/>}/>
           <Route path="/Courses=IntroductionToCplusplus" element={<IntroductionToCplusplus/>}/>
+          <Route path="/Courses=CIntermediate" element={<CIntermediate/>}/>
+          <Route path="/Courses=CplusplusIntermediate" element={<CplusplusIntermediate/>}/>
+          <Route path="/Courses=CsharpIntermediate" element={<CSharpIntermediate/>}/>
+
 
               <Route path="/userprofile" element={<UserProfile />} />
               <Route path="/achievements" element={<Achievements />} />

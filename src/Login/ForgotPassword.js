@@ -42,7 +42,6 @@ const ForgotPassword = () =>{
         e.preventDefault();
         setErrorMessage('');
         setSuccessMessage('');
-    
         if (email) {
             // Check if the email exists
             setLoading(true);
@@ -95,6 +94,7 @@ const ForgotPassword = () =>{
                     setIsEmailValid(false);
                 });
                 setLoading(false);
+
         } else {
             setErrorMessage("Email address is empty");
             setLoading(false);
@@ -184,7 +184,7 @@ const ForgotPassword = () =>{
                         </div>
                         </div>
                     )}
-                    
+                    {loading && <p className="success-message">Loading...</p>}
                     {errorMessage && <p className="error-message">{errorMessage}</p>}
                     {successMessage && <p className="success-message">{successMessage}</p>}
                     <button disabled={loading} onClick={successMessage ? handleSubmitCode : handleGetCodeClick} className="btn">

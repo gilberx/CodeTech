@@ -97,7 +97,8 @@ const ResetPassword = () =>{
             console.log(error)
             return;
         }
-
+        console.log("newPassword: ", newPassword );
+        console.log("confirm password: ", confirmPassword);
         if (newPassword !== confirmPassword) {
           setError('Passwords do not match');
           return;
@@ -184,7 +185,7 @@ const ResetPassword = () =>{
                                 id="confirmpwd-reset"
                                 autoComplete="off"
                                 required
-                                onChange={(e) => setCurrentPassword(e.target.value)}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
                                 // aria-invalid={validName ? "false" : "true"}
                                 // aria-describedby="uidnote"
                                 // onFocus={()=> setUserFocus(true)}
